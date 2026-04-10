@@ -192,7 +192,7 @@ body::after{
 }
 /* push ticker above gnav on mobile only */
 @media(max-width:899px){
-  body.has-gnav #ticker{bottom:56px;bottom:calc(56px + env(safe-area-inset-bottom,0));}
+  body.has-gnav #ticker{bottom:48px;bottom:calc(48px + env(safe-area-inset-bottom,0));}
 }
 .tick-label{
   background:var(--red);color:#fff;

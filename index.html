@@ -10,6 +10,14 @@
 <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
+<style>
+/* Boot active: hide EVERYTHING behind it */
+body.boot-active #topbar,
+body.boot-active #ticker,
+body.boot-active #main,
+body.boot-active .gnav{display:none!important;}
+body.boot-active{overflow:hidden!important;}
+</style>
 <script>
 if(sessionStorage.getItem('tiu-boot-done')){
   document.addEventListener('DOMContentLoaded',function(){
@@ -17,12 +25,10 @@ if(sessionStorage.getItem('tiu-boot-done')){
     if(b)b.style.display='none';
   });
 } else {
-  // First visit: hide everything behind boot, prevent scroll bleed
-  document.documentElement.style.overflow='hidden';
+  document.documentElement.className+=' boot-active';
+  document.body && (document.body.className+=' boot-active');
   document.addEventListener('DOMContentLoaded',function(){
-    var tk=document.getElementById('ticker'), gn=document.querySelector('.gnav'), mn=document.getElementById('main');
-    if(tk)tk.style.display='none'; if(gn)gn.style.display='none';
-    if(mn)mn.style.display='none';
+    document.body.classList.add('boot-active');
   });
 }
 </script>

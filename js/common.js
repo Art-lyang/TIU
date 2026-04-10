@@ -118,11 +118,8 @@ const BOOT_LINES = [
 function initInterface(){
   const btn = document.querySelector('.boot-btn');
   if(btn) btn.style.display='none';
-  // hide ticker/gnav during boot
-  var tk=document.getElementById('ticker'), gn=document.querySelector('.gnav');
-  if(tk)tk.style.display='none'; if(gn)gn.style.display='none';
   const term = document.getElementById('boot-terminal');
-  if(!term){ document.getElementById('boot')?.classList.add('hidden'); if(tk)tk.style.display=''; if(gn)gn.style.display=''; return; }
+  if(!term){ document.getElementById('boot')?.classList.add('hidden'); document.body.classList.remove('boot-active'); document.documentElement.classList.remove('boot-active'); return; }
   term.classList.add('active');
   BOOT_LINES.forEach((line, i) => {
     setTimeout(()=>{
@@ -133,9 +130,8 @@ function initInterface(){
       if(i === BOOT_LINES.length - 1){
         setTimeout(()=>{
           document.getElementById('boot').classList.add('hidden');
-          if(tk)tk.style.display=''; if(gn)gn.style.display='';
-          var mn=document.getElementById('main'); if(mn)mn.style.display='';
-          document.documentElement.style.overflow='';
+          document.body.classList.remove('boot-active');
+          document.documentElement.classList.remove('boot-active');
         }, 600);
       }
     }, i * 280);
