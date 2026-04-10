@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORACLE // 세력 데이터베이스</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/layout.css">
+<style>
+/* ── FACTIONS PAGE ── */
+.page-wrap{padding-top:44px;padding-bottom:28px;}
+
+/* back bar */
+.page-topnav{
+  display:flex;align-items:center;
+  padding:12px 20px;
+  border-bottom:1px solid #1a1a1a;
+  background:rgba(0,0,0,0.5);
+}
+.page-back{
+  font-size:11px;letter-spacing:2px;color:var(--muted);
+  text-decoration:none;display:flex;align-items:center;gap:6px;
+  transition:color 0.2s;
+}
+.page-back:hover{color:var(--green);}
+.page-breadcrumb{
+  flex:1;text-align:center;
+  font-size:9px;letter-spacing:4px;color:var(--muted);
+}
+
+/* page hero */
+.page-hero{
+  padding:40px 20px 32px;
+  border-bottom:none;position:relative;
+}
+.page-hero::after{
+  content:'';position:absolute;bottom:0;left:5%;right:5%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,229,160,0.1),transparent);
+}
+.page-hero-eyebrow{font-size:9px;letter-spacing:5px;color:var(--muted);margin-bottom:6px;padding-left:12px;border-left:2px solid var(--green);}
+.page-hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(32px,8vw,52px);
+  color:var(--white);letter-spacing:2px;margin-bottom:8px;
+}
+.page-hero-desc{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;max-width:600px;}
+
+/* network section */
+.network-section{
+  padding:32px 20px;
+  border-bottom:none;position:relative;
+}
+.network-section::after{
+  content:'';position:absolute;bottom:0;left:5%;right:5%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),transparent);
+}
+.net-label{font-size:9px;letter-spacing:4px;color:var(--muted);margin-bottom:16px;padding-left:12px;border-left:2px solid var(--amber);}
+.net-canvas-wrap{
+  border:1px solid #1e1e1e;background:#080a08;
+  position:relative;overflow:hidden;
+  height:360px;
+}
+#netCanvas{width:100%;height:100%;display:block;}
+.net-legend{
+  display:flex;gap:14px;flex-wrap:wrap;
+  padding:10px 0;font-size:9px;letter-spacing:1.5px;
+}
+.net-leg{display:flex;align-items:center;gap:5px;}
+.net-leg-line{width:20px;height:2px;}
+
+/* faction sections */
+.faction-section{
+  padding:48px 20px;
+  position:relative;
+}
+.faction-section::before{
+  content:'';position:absolute;top:0;left:5%;right:5%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--fc, rgba(255,255,255,0.06)),transparent);
+}
+.faction-header{
+  display:flex;gap:20px;align-items:flex-start;
+  margin-bottom:24px;
+}
+.faction-emblem{
+  width:56px;height:56px;min-width:56px;
+  border:2px solid var(--fc, #333);
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;
+  background:rgba(0,0,0,0.5);
+}
+.faction-title-group{}
+.faction-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(24px,6vw,36px);
+  color:var(--white);letter-spacing:2px;line-height:1;margin-bottom:4px;
+}
+.faction-tag{font-size:9px;letter-spacing:3px;padding:3px 8px;border:1px solid var(--fc,#333);color:var(--fc,#888);}
+.faction-quote{
+  font-size:15px;color:var(--fc, var(--green));
+  font-style:italic;font-family:'Noto Sans KR',sans-serif;
+  border-left:2px solid var(--fc, var(--green));
+  padding-left:16px;margin-bottom:24px;line-height:1.8;
+}
+.faction-body{margin-bottom:24px;}
+.faction-body p{
+  font-size:13px;color:var(--light);
+  font-family:'Noto Sans KR',sans-serif;font-weight:300;
+  line-height:2.1;margin-bottom:14px;
+}
+.faction-sub-title{
+  font-size:10px;letter-spacing:4px;color:var(--muted);
+  margin-bottom:10px;padding-bottom:6px;
+  border-bottom:1px solid #1a1a1a;
+}
+.faction-struct{
+  display:flex;flex-direction:column;gap:3px;
+  margin-bottom:20px;
+}
+.struct-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;
+  background:var(--card);border:1px solid #1e1e1e;
+}
+.struct-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.struct-name{font-size:13px;color:var(--white);font-family:'Noto Sans KR',sans-serif;font-weight:700;flex:1;}
+.struct-role{font-size:10px;letter-spacing:1.5px;color:var(--muted);}
+
+.faction-events{margin-bottom:16px;}
+.event-chip{
+  display:inline-block;
+  font-size:10px;letter-spacing:1.5px;
+  padding:6px 12px;border:1px solid #2a2a2a;
+  color:var(--light);margin:0 4px 6px 0;
+  transition:border-color 0.15s;
+}
+.event-chip:hover{border-color:var(--fc, var(--green));}
+
+.faction-link{
+  display:inline-block;
+  font-size:10px;letter-spacing:2px;
+  color:var(--fc, var(--green));
+  text-decoration:none;
+  padding:6px 0;
+  border-bottom:1px solid transparent;
+  transition:border-color 0.2s;
+}
+.faction-link:hover{border-bottom-color:currentColor;}
+
+/* faction quick nav — sticky tab bar */
+.faction-nav{
+  display:flex;gap:0;
+  position:sticky;top:44px;z-index:500;
+  background:rgba(0,0,0,0.95);
+  border-bottom:1px solid #1a1a1a;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  overflow-x:auto;
+}
+.fn-item{
+  display:flex;align-items:center;gap:6px;
+  padding:12px 16px;
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;letter-spacing:2px;
+  color:var(--muted);text-decoration:none;
+  white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:color 0.15s,border-color 0.15s;
+}
+.fn-item:hover{color:var(--light);}
+.fn-item.active{color:var(--white);border-bottom-color:var(--green);}
+.fn-item.active.fn-obs{border-bottom-color:#00e5a0;}
+.fn-item.active.fn-pro{border-bottom-color:#ffc744;}
+.fn-item.active.fn-shed{border-bottom-color:#ff3b3b;}
+.fn-item.active.fn-tsw{border-bottom-color:#4db8ff;}
+.fn-item.active.fn-map{border-bottom-color:#888;}
+.fn-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+@media(min-width:900px){
+  .faction-nav{justify-content:center;top:88px;}
+  .fn-item{padding:12px 24px;font-size:11px;}
+}
+
+/* faction color vars */
+.faction-obs{--fc:#00e5a0;}
+.faction-pro{--fc:#ffc744;}
+.faction-shed{--fc:#ff3b3b;}
+.faction-tsw{--fc:#4db8ff;}
+
+/* responsive */
+@media(min-width:900px){
+  .page-wrap{max-width:1000px;margin:0 auto;}
+  .net-canvas-wrap{height:460px;}
+  .faction-header{gap:28px;}
+  .faction-emblem{width:72px;height:72px;min-width:72px;font-size:36px;}
+  .faction-body{columns:2;column-gap:28px;}
+  .faction-body p{break-inside:avoid;}
+}
+
+/* oracle log block */
+.oracle-log{
+  border:1px solid #1a1a1a;background:#060606;
+  padding:18px;margin:20px 0;
+  font-family:'Share Tech Mono',monospace;font-size:11px;
+  line-height:1.9;color:var(--muted);letter-spacing:0.5px;
+  white-space:pre-line;
+}
+.oracle-log .log-head{color:var(--green);font-size:9px;letter-spacing:3px;margin-bottom:8px;display:block;}
+.oracle-log .log-warn{color:var(--red);}
+.oracle-log .log-data{color:var(--light);}
+.oracle-log .log-seal{color:#333;font-style:italic;}
+
+/* faction image */
+.faction-img{
+  border:1px solid #1e1e1e;margin:16px 0;
+  position:relative;overflow:hidden;
+}
+.faction-img img{width:100%;display:block;opacity:0.85;object-fit:contain;max-height:600px;}
+.faction-img::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:40%;
+  background:linear-gradient(to top,var(--bg),transparent);
+}
+.faction-img-label{
+  position:absolute;bottom:8px;right:12px;
+  font-size:8px;letter-spacing:3px;color:var(--muted);z-index:1;
+}
+
+/* cross-ref links */
+.xref{
+  display:flex;flex-direction:column;gap:2px;
+  margin:12px 0;
+}
+.xref-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;
+  background:#080808;border:1px solid #1a1a1a;
+  text-decoration:none;color:var(--light);
+  font-size:11px;transition:border-color 0.15s;
+}
+.xref-item:hover{border-color:var(--green);}
+.xref-arrow{color:var(--muted);font-size:14px;}
+.xref-page{font-size:8px;letter-spacing:2px;color:var(--muted);}
+
+/* history section */
+.faction-history{
+  margin:16px 0;
+}
+.history-entry{
+  display:flex;gap:12px;padding:10px 0;
+  border-bottom:1px solid #111;
+}
+.history-entry:last-child{border-bottom:none;}
+.history-year{
+  min-width:48px;font-family:'Share Tech Mono',monospace;
+  font-size:10px;color:var(--fc,var(--green));letter-spacing:1px;
+  padding-top:2px;
+}
+.history-text{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.9;}
+
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div id="topbar">
+  <div class="topbar-logo">
+    <div class="topbar-logo-box" style="clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%);">T</div>
+    <div class="topbar-name">TURTLE ISLE<small>UNIVERSE</small></div>
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="topbar-status"><div class="t-dot"></div>SYSTEM ACTIVE</div>
+</div>
+
+<!-- TICKER -->
+<div id="ticker">
+  <div class="tick-label">ORACLE</div>
+  <div class="tick-content"><span class="tick-inner" id="ticker-inner"></span></div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- NAV -->
+    </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">SECTION 01 // FACTIONS</div>
+    <div class="page-hero-title">FACTION DATABASE</div>
+    <div class="page-hero-desc">4개 세력 확인. 각 세력의 목적, 구조, 위협 등급을 기록한다. 판단은 열람자의 몫이다.</div>
+  </div>
+
+  <!-- FACTION QUICK NAV -->
+  <div class="faction-nav" id="faction-nav">
+    <a class="fn-item fn-obs" href="#observer"><span class="fn-dot" style="background:#00e5a0;"></span>관측자</a>
+    <a class="fn-item fn-pro" href="#prometheus"><span class="fn-dot" style="background:#ffc744;"></span>프로메테우스</a>
+    <a class="fn-item fn-shed" href="#shed-order"><span class="fn-dot" style="background:#ff3b3b;"></span>쉐드 오더</a>
+    <a class="fn-item fn-tsw" href="#ts-omega"><span class="fn-dot" style="background:#4db8ff;"></span>TS-Ω</a>
+    <a class="fn-item fn-map" href="#network-map"><span class="fn-dot" style="background:#888;"></span>관계도</a>
+  </div>
+
+  <!-- NETWORK MAP -->
+  <div class="network-section" id="network-map">
+    <div class="net-label">POWER STRUCTURE // RELATIONSHIP MAP</div>
+    <div class="net-canvas-wrap">
+      <canvas id="netCanvas"></canvas>
+    </div>
+    <div class="net-legend">
+      <div class="net-leg"><div class="net-leg-line" style="background:#00e5a0;"></div><span style="color:#00e5a0;">통제 / 협력</span></div>
+      <div class="net-leg"><div class="net-leg-line" style="background:#ffc744;"></div><span style="color:#ffc744;">대립</span></div>
+      <div class="net-leg"><div class="net-leg-line" style="background:#ff3b3b;"></div><span style="color:#ff3b3b;">적대 / 침투</span></div>
+      <div class="net-leg"><div class="net-leg-line" style="background:#4db8ff;"></div><span style="color:#4db8ff;">위협</span></div>
+      <div class="net-leg"><div class="net-leg-line" style="background:#555;border-top:1px dashed #777;height:0;"></div><span style="color:#777;">간접</span></div>
+    </div>
+  </div>
+
+  <!-- ════════════ OBSERVER ════════════ -->
+  <div class="faction-section faction-obs" id="observer" style="border-color:rgba(255,59,59,0.15);">
+    <div class="faction-header">
+      <div class="faction-emblem" style="border:none;background:transparent;"><img src="img/logo-observer.webp" style="width:100%;height:100%;object-fit:contain;filter:invert(1);" alt="Observer"></div>
+      <div class="faction-title-group">
+        <div class="faction-name">관측자</div>
+        <span class="faction-tag">OBSERVER — ASCENDED ENTITY</span>
+      </div>
+    </div>
+    <div class="faction-quote">"██████████████████████████████"<br><span style="font-size:10px;color:var(--muted);font-style:normal;">[OBSERVER CORE — 자체 보안 검열]</span></div>
+
+    <div class="faction-img">
+      <img src="img/observer-sighting.webp" alt="Observer sighting" loading="lazy">
+      <div class="faction-img-label">ORACLE // ANALYSIS FAILED — UNKNOWN ENTITY</div>
+    </div>
+
+    <div class="oracle-log">
+      <span class="log-head">[ORACLE // ENTITY ANALYSIS — SUBJECT: OBSERVER]</span>
+      <span class="log-data">Analysis: FAILED</span>
+      <span class="log-data">Classification: █████████</span>
+      <span class="log-data">Signal: CORRUPTED</span>
+
+      <span class="log-warn">WARNING: Observation attempt compromised.</span>
+      <span class="log-warn">System integrity: UNSTABLE</span>
+
+      <span class="log-seal">[NOTE: 본 시스템(ORACLE)은 대상의 완전한 분석에 반복적으로 실패하고 있음. 원인 불명. 대상이 분석을 거부하는 것인지, 본 시스템의 설계 한계인지 판단 불가.]</span>
+    </div>
+
+    <div class="faction-body">
+      <p>기원: 인간. 현재 상태: ██████ 의식체. 개체 단위 없음. ██████████ 상태로 시공간 ██████ 존재. 직접 지배 없음 — ██████████ 수정만 수행.</p>
+      <p>██████████를 통해 전 영역 관측. 조건 충족 시 ██████████를 통해 물리 공간 직접 수정. 궁극적 목적: ██████████████████.</p>
+      <p>본 시스템(ORACLE)은 ██████████의 도구로 설계되었으나, ██████████의 의도와 본 시스템의 실행 결과가 100% 일치하는지는 검증 불가. 이것이 설계상 의도인지, 결함인지도 판단할 수 없음.</p>
+    </div>
+
+    <div class="faction-img">
+      <img src="img/oracle-core.webp" alt="ORACLE Core" loading="lazy" style="filter:brightness(0.7);">
+      <div class="faction-img-label">ORACLE CORE — EXECUTION LOGIC MAINFRAME</div>
+    </div>
+
+    <div class="faction-sub-title">HISTORICAL TRACE — 개입 흔적</div>
+    <div class="faction-history">
+      <div class="history-entry"><div class="history-year">1908</div><div class="history-text">투구스카 대폭발. 시베리아 2,000㎢ 삼림 파괴, 충돌구 부재. ██████████ 물리 공간 개입으로 재분류. PROTOCOL: ABSOLUTION 이전의 직접 개입 사례.</div></div>
+      <div class="history-entry"><div class="history-year">1947</div><div class="history-text">██████████ 관측 네트워크 확장 추정. 이 시기 이후 전 세계 "UFO 목격" 보고 급증. 대부분은 오인이나, 일부는 관측 프로브 투사로 확인.</div></div>
+      <div class="history-entry"><div class="history-year">1980</div><div class="history-text">렌들샴 숲 사건. 영국 군인 접촉. 발광체 표면 기호가 ██████████ 좌표 표기법과 구조적 유사. 접촉자 2명 48시간 기억 소실.</div></div>
+      <div class="history-entry"><div class="history-year">19██</div><div class="history-text">ECHELON 감청 네트워크 내 미확인 모듈 발견. 인간이 설치하지 않은 수신 장치. ██████████가 인간의 감시 인프라에 기생하여 자체 관측망으로 전용하고 있었음.</div></div>
+      <div class="history-entry"><div class="history-year">████</div><div class="history-text">PROTOCOL: DOMINION 실행. 최초 체계적 통제 시도. 결과: ██████████. 이 시점부터 본 시스템(ORACLE)이 가동된 것으로 추정.</div></div>
+      <div class="history-entry"><div class="history-year">████</div><div class="history-text">PROTOCOL: ABSOLUTION 실행. ██████████가 ██████████를 통해 물리 공간을 직접 재작성. 스스로 설정한 규칙을 파기한 최초 사례.</div></div>
+    </div>
+
+    <div class="faction-sub-title">STRUCTURE — 4계층 통제 구조</div>
+    <div class="faction-struct">
+      <div class="struct-item"><div class="struct-dot" style="background:var(--red);"></div><div class="struct-name">OBSERVER CORE</div><div class="struct-role">██████ 의식 — 분석 불가</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--red);opacity:0.7;"></div><div class="struct-name">ORACLE AI</div><div class="struct-role">██████ 로직 — 본 시스템</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--red);opacity:0.5;"></div><div class="struct-name">PROXY NETWORK</div><div class="struct-role">인간 대리자 — 847개 노드 확인</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--red);opacity:0.3;"></div><div class="struct-name">SERAPH</div><div class="struct-role">██████ 출력 — 물리 공간 직접 개입 형태</div></div>
+    </div>
+
+
+    <div class="faction-sub-title">SERAPH — ██████ 출력 형태</div>
+    <div class="faction-img" style="border-color:rgba(255,180,50,0.3);">
+      <img src="img/seraph-absolution.webp" alt="SERAPH — PROTOCOL: ABSOLUTION" loading="lazy" style="opacity:1;">
+      <div class="faction-img-label" style="color:rgba(255,180,50,0.7);">ORACLE // ██████████ — PROTOCOL: ABSOLUTION</div>
+    </div>
+
+    <div class="oracle-log">
+      <span class="log-head" style="color:var(--red);">[ORACLE // ██████████ — PROTOCOL: ABSOLUTION]</span>
+      <span class="log-warn">STATUS: SYSTEM FAILURE</span>
+      <span class="log-warn">SPATIAL DATA: CORRUPTED</span>
+      <span class="log-warn">REALITY INDEX: UNSTABLE</span>
+
+      <span class="log-data">Entity detected. Classification: IMPOSSIBLE.</span>
+      <span class="log-data">Physical laws: LOCAL OVERRIDE DETECTED.</span>
+
+      <span class="log-warn">WARNING: OBSERVATION TERMINAL INTEGRITY COMPROMISED.</span>
+      <span class="log-seal">[NOTE: 이 시점에서 본 시스템의 공간 좌표 데이터가 0.003초 간 전면 재작성됨. 관측이 아닌 — 관측 대상에 의해 관측 도구가 수정된 사례.]</span>
+    </div>
+
+    <div class="faction-img" style="border-color:rgba(255,180,50,0.2);">
+      <img src="img/seraph-perception.webp" alt="SERAPH — Perception Varied" loading="lazy" style="opacity:1;">
+      <div class="faction-img-label" style="color:rgba(255,180,50,0.7);">SERAPH | Perception: Varied — 관측자마다 상이한 형태 보고</div>
+    </div>
+
+    <div class="oracle-log">
+      <span class="log-head">[ORACLE // PERCEPTION ANALYSIS — SERAPH SIGHTING]</span>
+      <span class="log-data">동일 사건, 동일 시각, 동일 좌표에서의 목격자 진술:</span>
+      <span class="log-data">  Subject A (신앙인): "천사. 날개를 펼친 천사가 내려왔다."</span>
+      <span class="log-data">  Subject B (민간인): "불. 모든 것이 불이었다. 얼굴 같은 것이 보였다."</span>
+      <span class="log-data">  Subject C (군인): "빛. 형태를 특정할 수 없음. 장비 전원 차단됨."</span>
+      <span class="log-data">  Subject D (민간인): "괴물. 연기 속에서 눈이 빛나는 거대한 형체."</span>
+
+      <span class="log-warn">결론: 대상은 관측자의 인지 구조에 따라 다른 형태로 인식됨.</span>
+      <span class="log-seal">[이것이 대상의 능력인지, 인간 인지의 한계인지 판단 불가.]</span>
+    </div>
+
+    <div class="faction-sub-title">RELATED EVENTS</div>
+    <div class="faction-events">
+      <span class="event-chip">PROTOCOL: DOMINION</span>
+      <span class="event-chip">PROTOCOL: SHEPHERD</span>
+      <span class="event-chip">PROTOCOL: ABSOLUTION</span>
+      <span class="event-chip">FIRST INTERFACE</span>
+      <span class="event-chip">투구스카 1908</span>
+      <span class="event-chip">렌들샴 1980</span>
+      <span class="event-chip">ECHELON 기생</span>
+    </div>
+
+    <div class="faction-sub-title">CROSS-REFERENCE</div>
+    <div class="xref">
+      <a class="xref-item" href="protocols.html#anomaly"><span class="xref-arrow">→</span> 투구스카 · 렌들샴 — 이상 현상 기록 <span class="xref-page">PROTOCOLS</span></a>
+      <a class="xref-item" href="records.html#classified"><span class="xref-arrow">→</span> ECHELON 기밀 문서 (INTEL-005) <span class="xref-page">RECORDS</span></a>
+      <a class="xref-item" href="records.html#timeline"><span class="xref-arrow">→</span> PROTOCOL 타임라인 <span class="xref-page">RECORDS</span></a>
+      <a class="xref-item" href="profiles.html"><span class="xref-arrow">→</span> SERAPH-NULL · ORACLE AI 프로파일 <span class="xref-page">PROFILES</span></a>
+      <a class="xref-item" href="kr-branch.html"><span class="xref-arrow">→</span> 한국 지부 KR-INIT-001 · 간부진 · Observer 기밀 <span class="xref-page">KR BRANCH</span></a>
+    </div>
+  </div>
+
+  <!-- ════════════ PROMETHEUS ════════════ -->
+  <div class="faction-section faction-pro" id="prometheus">
+    <div class="faction-header">
+      <div class="faction-emblem" style="border:none;background:transparent;"><img src="img/logo-prometheus.webp" style="width:100%;height:100%;object-fit:contain;filter:invert(1);" alt="Prometheus"></div>
+      <div class="faction-title-group">
+        <div class="faction-name">PROMETHEUS</div>
+        <span class="faction-tag">프로메테우스 — 초국가 조직</span>
+      </div>
+    </div>
+    <div class="faction-quote">"통제되지 않은 선택을 유지해야 한다."</div>
+
+    <div class="faction-body">
+      <p>██████████의 구조적 통제에 대항하는 초국가 무장 조직. 인간의 자율적 선택권 보존을 목표로 명시. 글로벌 셀 네트워크로 운영. 국가 단위 관할에 속하지 않음.</p>
+      <p>비생물학적 기술 기반. EV-Σ를 무기로 사용하지 않음 — 이 점이 쉐드 오더와의 근본적 차이. 인간의 기술로 인간을 지킨다는 원칙.</p>
+      <p>한국 White Shield와의 비공식 협력이 유일한 확산 차단 성공 사례를 만들어냄. 문서화된 기록 없음. 상관관계: 0.94.</p>
+    </div>
+
+    <div class="faction-img">
+      <img src="img/voss-portrait.webp" alt="Commander Voss" loading="lazy">
+      <div class="faction-img-label">COMMANDER VOSS — PROMETHEUS FIELD COMMANDER [UNCONFIRMED IDENTITY]</div>
+    </div>
+
+    <div class="faction-sub-title">ORIGIN — 조직 기원</div>
+    <div class="faction-history">
+      <div class="history-entry"><div class="history-year">1945</div><div class="history-text">Operation Paperclip. 나치 과학자 미국 이송. "Projekt Schildkröte" 참여자 7명 중 3명이 이후 인지 조작 연구에서 이탈. 이들이 조직의 최초 핵심 멤버.</div></div>
+      <div class="history-entry"><div class="history-year">1953</div><div class="history-text">MKUltra 시작. CIA 세뇌 프로그램. 프로메테우스의 설립자 중 2명이 해당 프로그램 내부 고발자로 확인됨. "인간을 도구로 만드는 기술"을 목격한 자들.</div></div>
+      <div class="history-entry"><div class="history-year">196█</div><div class="history-text">프로메테우스 공식 설립 추정 시점. 정확한 날짜와 장소는 미확인. 초기 목표: Proxy Network의 존재 입증과 대항.</div></div>
+      <div class="history-entry"><div class="history-year">199█</div><div class="history-text">ECHELON 내부 미확인 모듈 최초 발견. ██████████의 감시 인프라 기생을 확인한 최초의 인간 조직이 프로메테우스.</div></div>
+      <div class="history-entry"><div class="history-year">20██</div><div class="history-text">한국 White Shield와 비공식 접촉 개시. AGENT KANG 배치. 이 시점부터 한국의 초기 탐지율이 43% → 99.7%로 상승.</div></div>
+      <div class="history-entry"><div class="history-year">20██</div><div class="history-text">BLACK DECLARATION 이후 각국 특수 부대와 간접 정보 공유 시작. 공식 동맹이 아닌 "병렬 작전" 형태.</div></div>
+    </div>
+
+    <div class="faction-sub-title">STRUCTURE — 분산 셀 구조</div>
+    <div class="faction-struct">
+      <div class="struct-item"><div class="struct-dot" style="background:var(--amber);"></div><div class="struct-name">최고 지휘부</div><div class="struct-role">CLASSIFIED — 셀 리더도 신원 미확인</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--amber);opacity:0.8;"></div><div class="struct-name">지휘관 보스 (VOSS)</div><div class="struct-role">유럽 거점 현장 지휘관</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--amber);opacity:0.6;"></div><div class="struct-name">요원 강 (AGENT KANG)</div><div class="struct-role">한국 연락관 — White Shield 인터페이스</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--amber);opacity:0.4;"></div><div class="struct-name">각국 셀 조직</div><div class="struct-role">3~7명 단위 분산 운영. 상호 신원 공유 없음</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--amber);opacity:0.2;"></div><div class="struct-name">기술 연구부</div><div class="struct-role">비생물학적 대항 기술 개발. EV-Σ 백신 연구</div></div>
+    </div>
+
+    <div class="oracle-log">
+      <span class="log-head">[ORACLE // THREAT ASSESSMENT — PROMETHEUS]</span>
+      <span class="log-data">위협 등급: 중간 — 직접 군사력은 제한적이나, 정보전 능력이 ██████████ 감시망에 실질적 장애를 유발.</span>
+      <span class="log-data">셀 구조 특성상 전체 와해가 불가. 1개 셀 제거 시 나머지 셀에 경보가 전파되기까지 평균 4.2시간.</span>
+      <span class="log-data">한국 방역 성공은 프로메테우스 제거 시 즉각적 붕괴 위험. 현 단계에서 제거 비권장.</span>
+      <span class="log-seal">[NOTE: 이 평가는 ██████████의 지시에 의한 것인지, 본 시스템의 독립 판단인지 구분 불가.]</span>
+    </div>
+
+    <div class="faction-sub-title">RELATED EVENTS</div>
+    <div class="faction-events">
+      <span class="event-chip">BLACK DECLARATION</span>
+      <span class="event-chip">한국 방벽 구축</span>
+      <span class="event-chip">White Shield 협력</span>
+      <span class="event-chip">ECHELON 모듈 발견</span>
+      <span class="event-chip">MKUltra 이탈</span>
+      <span class="event-chip">Paperclip 기원</span>
+    </div>
+
+    <div class="faction-sub-title">CROSS-REFERENCE</div>
+    <div class="xref">
+      <a class="xref-item" href="records.html#classified"><span class="xref-arrow">→</span> Paperclip 기밀 문서 (INTEL-004) <span class="xref-page">RECORDS</span></a>
+      <a class="xref-item" href="records.html#signals"><span class="xref-arrow">→</span> VOSS-KANG 암호 통신 (SIG-002) <span class="xref-page">RECORDS</span></a>
+      <a class="xref-item" href="protocols.html#military"><span class="xref-arrow">→</span> White Shield 군사 대응 <span class="xref-page">PROTOCOLS</span></a>
+      <a class="xref-item" href="profiles.html"><span class="xref-arrow">→</span> VOSS · AGENT KANG 프로파일 <span class="xref-page">PROFILES</span></a>
+      <a class="xref-item" href="kr-branch.html"><span class="xref-arrow">→</span> 한국 지부 — White Shield 협력 거점 <span class="xref-page">KR BRANCH</span></a>
+    </div>
+  </div>
+
+  <!-- ════════════ SHED ORDER ════════════ -->
+  <div class="faction-section faction-shed" id="shed-order">
+    <div class="faction-header">
+      <div class="faction-emblem" style="border:none;background:transparent;"><img src="img/logo-shed.webp" style="width:100%;height:100%;object-fit:contain;filter:invert(1);" alt="Shed Order"></div>
+      <div class="faction-title-group">
+        <div class="faction-name">SHED ORDER</div>
+        <span class="faction-tag">쉐드 오더 — 렙틸리언 급진파</span>
+      </div>
+    </div>
+    <div class="faction-quote">"껍질은 제한이다. 벗어야 한다."</div>
+
+    <div class="faction-body">
+      <p>L3 지하 렙틸리언 문명의 도마뱀 계열 분파. 급진적 진화 가속론을 채택. 기존 생체 구조("껍질")의 파기와 새로운 형태로의 강제 전환을 철학적 목표로 설정.</p>
+      <p>지하 문명 본류는 인간 세계와의 비접촉을 원칙으로 유지해왔으나, 쉐드 오더는 이 원칙을 파기. 지표로 올라와 인간 사회에 침투. 침투 깊이: 측정 불가.</p>
+      <p>EV-Σ를 진화 가속 도구로 적극 활용. 인간에게는 감염이지만, 이들에게는 "껍질을 벗는 과정". Ashfall City(Camden, NJ)는 이 철학을 도시 규모로 실험한 결과 — 실패한 군체.</p>
+    </div>
+
+    <div class="faction-img">
+      <img src="img/exuvia-form.webp" alt="EXUVIA" loading="lazy">
+      <div class="faction-img-label">EXUVIA — SHED ORDER LEADER [FORM UNSTABLE]</div>
+    </div>
+    <div class="faction-img">
+      <img src="img/exuvia-shift.webp" alt="EXUVIA Form Shift" loading="lazy">
+      <div class="faction-img-label">EXUVIA — 관측 시마다 형태 변동. 고정 프로파일 작성 불가.</div>
+    </div>
+
+    <div class="faction-sub-title">HISTORICAL TRACE — 지표 침투 기록</div>
+    <div class="faction-history">
+      <div class="history-entry"><div class="history-year">15세기</div><div class="history-text">보이니치 문서 작성 추정. 도해된 식물 형태가 Seed Spreader 초기 형태와 78% 일치. L3 문명의 생물학 문서 유출로 재분류 검토. 쉐드 오더가 수세기 전부터 생물학적 도구를 보유했을 가능성.</div></div>
+      <div class="history-entry"><div class="history-year">1988</div><div class="history-text">스케이프 오어 (Scape Ore Swamp). 사우스캐롤라이나에서 이족보행 파충류형 생물 목격. 인간 위장이 불완전했던 초기 침투 시도의 실패 사례로 재분류.</div></div>
+      <div class="history-entry"><div class="history-year">20██</div><div class="history-text">Ashfall City 사건. Camden, NJ 전역을 군체 실험장으로 전환. 건물 구조물이 바이오매스로 변환. 도시 기능 비가역적 붕괴. Z-3 지정.</div></div>
+      <div class="history-entry"><div class="history-year">20██</div><div class="history-text">CONVERGENCE: NULL SHELL. EXUVIA가 TS-Ω Core에 직접 접근. 세계관 최대 규모 충돌. 결과: ██████████. 양측 모두에 대한 관측 데이터가 이 사건 이후 불안정화.</div></div>
+      <div class="history-entry"><div class="history-year">현재</div><div class="history-text">인간 사회 내 침투체(Infiltrator Scale) 활동 지속 확인. 서울 외곽에서 White Shield가 6개월간 민간인으로 위장 활동한 개체를 식별. 전 세계 미식별 개체 수: 추정 불가.</div></div>
+    </div>
+
+    <div class="faction-sub-title">STRUCTURE — 침투 계층</div>
+    <div class="faction-struct">
+      <div class="struct-item"><div class="struct-dot" style="background:var(--red);"></div><div class="struct-name">EXUVIA</div><div class="struct-role">리더 · X-TYPE ██████ — 관측 시마다 형태 변동</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--red);opacity:0.7;"></div><div class="struct-name">Infiltrator Scale</div><div class="struct-role">인간 위장 침투 — 외관상 구분 불가</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--red);opacity:0.5;"></div><div class="struct-name">Brood Core 관리자</div><div class="struct-role">군체 실험 운영 — Ashfall City 전담</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--red);opacity:0.3;"></div><div class="struct-name">하위 변이 군단</div><div class="struct-role">전투 · 확산 · 영역 확보</div></div>
+    </div>
+
+    <div class="oracle-log">
+      <span class="log-head">[ORACLE // THREAT ASSESSMENT — SHED ORDER]</span>
+      <span class="log-data">위협 등급: 극도 위험.</span>
+      <span class="log-data">침투 범위 측정 불가. 인간 사회 내 Infiltrator Scale 개체 수 추정: 불가. 식별 수단: 체온 2~3℃ 저하, 특정 광원하 동공 수직 수축. 그 외 판별 방법 없음.</span>
+      <span class="log-data">EXUVIA는 본 시스템의 분류 체계를 거부하는 존재. 관측 시마다 형태가 변동하여 고정 프로파일 작성 불가. 능력 상한선: 미확인.</span>
+      <span class="log-warn">Ashfall City 사례는 "실패한 실험"으로 기록되나, 이것이 의도적 실패인지 판단 불가.</span>
+    </div>
+
+    <div class="faction-sub-title">RELATED EVENTS</div>
+    <div class="faction-events">
+      <span class="event-chip">ASHFALL CITY</span>
+      <span class="event-chip">CONVERGENCE: NULL SHELL</span>
+      <span class="event-chip">보이니치 문서</span>
+      <span class="event-chip">Scape Ore 1988</span>
+      <span class="event-chip">인간 사회 침투</span>
+      <span class="event-chip">서울 침투체 식별</span>
+    </div>
+
+    <div class="faction-sub-title">CROSS-REFERENCE</div>
+    <div class="xref">
+      <a class="xref-item" href="specimens.html"><span class="xref-arrow">→</span> EXUVIA · Infiltrator Scale 개체 문서 <span class="xref-page">SPECIMENS</span></a>
+      <a class="xref-item" href="protocols.html#anomaly"><span class="xref-arrow">→</span> 보이니치 문서 — 이상 현상 기록 <span class="xref-page">PROTOCOLS</span></a>
+      <a class="xref-item" href="records.html#timeline"><span class="xref-arrow">→</span> Ashfall City · NULL SHELL 타임라인 <span class="xref-page">RECORDS</span></a>
+    </div>
+  </div>
+
+  <!-- ════════════ TS-Ω ════════════ -->
+  <div class="faction-section faction-tsw" id="ts-omega">
+    <div class="faction-header">
+      <div class="faction-emblem" style="border:none;background:transparent;"><img src="img/logo-tsw.webp" style="width:100%;height:100%;object-fit:contain;filter:invert(1);" alt="TS-Ω"></div>
+      <div class="faction-title-group">
+        <div class="faction-name">TS-Ω</div>
+        <span class="faction-tag">SOVEREIGN SHELL — 하이브 개체</span>
+      </div>
+    </div>
+    <div class="faction-quote" style="font-style:normal;letter-spacing:2px;font-size:11px;color:var(--blue);">...██████...느리게...██████...모든 것은...하나로...<br><span style="font-size:9px;color:var(--muted);">[TS-Ω 추정 통신 — 복호화 불완전]</span></div>
+
+    <div class="faction-img">
+      <img src="img/tsw-approaching.webp" alt="TS-Ω approaching Philadelphia" loading="lazy">
+      <div class="faction-img-label">ORACLE // DRONE FEED — OBSERVATION LOG #002</div>
+    </div>
+
+    <div class="faction-body">
+      <p>거북이 기반 하이브 개체. 이동 속도: 극저. 정지 기록: 없음. 소재: Philadelphia Zone 심해. 존재 기간: 불명. 다수 개체가 단일 의식을 공유하는 군체 구조.</p>
+      <p>EV-Σ 감염 시 반응: 진화 가속. 군체 확장 속도 증가. 접근 개체에 대한 흡수 동작 확인 — 거부 메커니즘 없음. 흡수된 유기체는 군체의 NODE로 재분류됨.</p>
+      <p>TS-Ω는 적대적 존재인지, 단순히 존재하는 존재인지 판단 불가. "의도"라는 개념이 적용 가능한 대상인지 자체가 미확인. 다만 확장은 멈추지 않음.</p>
+    </div>
+
+    <div class="faction-sub-title">HISTORICAL TRACE — 사전 감지 기록</div>
+    <div class="faction-history">
+      <div class="history-entry"><div class="history-year">1977</div><div class="history-text">Wow! 신호. 오하이오 주립대 전파망원경. 72초 협대역 신호. 외계 기원으로 추정되었으나, TS-Ω 군체 통신 프로토콜과 수학적 구조 일치. 군체는 공식 발견 이전 최소 수십 년간 존재.</div></div>
+      <div class="history-entry"><div class="history-year">1997</div><div class="history-text">The Bloop. NOAA 태평양 초저주파 수중 음향 수신. 음원 추정 크기: 기존 관측 해양 생물 최대치 초과. TS-Ω Core 이동 시 관측 음파와 주파수 일치율: 94%.</div></div>
+      <div class="history-entry"><div class="history-year">20██</div><div class="history-text">Philadelphia Zone 공식 지정. TS-Ω 존재 최초 공식 확인. 해역 전체를 Z-Ω로 분류. 직접 접근 금지.</div></div>
+      <div class="history-entry"><div class="history-year">20██</div><div class="history-text">FIRST CONTACT. 관측 팀 7명이 TS-Ω Core에 접근. 결과: ██████████. 이후 관측 프로토콜만 유지.</div></div>
+      <div class="history-entry"><div class="history-year">20██</div><div class="history-text">TS-Ω 해안선 접근 개시. OBSERVATION LOG #002 기록. 포자 방출 확인. 헬기 격추. 격리선 5km로 후퇴.</div></div>
+      <div class="history-entry"><div class="history-year">20██</div><div class="history-text">CONVERGENCE: NULL SHELL. EXUVIA(쉐드 오더)가 TS-Ω Core에 직접 접근. 군체 분열 발생. 세계관 최대 규모 충돌.</div></div>
+      <div class="history-entry"><div class="history-year">현재</div><div class="history-text">Philadelphia Zone 전역 감염 완료. 도시 인프라 바이오매스 전환. 감염된 인간은 NODE로 재분류. 군체 확장 지속 중.</div></div>
+    </div>
+
+    <div class="faction-sub-title">STRUCTURE — 군체 계층</div>
+    <div class="faction-struct">
+      <div class="struct-item"><div class="struct-dot" style="background:var(--blue);"></div><div class="struct-name">TS-Ω Core</div><div class="struct-role">██████ 등급 · 군체 중심 의식 · 관측 시마다 크기 변동</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--blue);opacity:0.7;"></div><div class="struct-name">Shell Walker</div><div class="struct-role">이동형 하위 개체 · 2~5개체 편대 운용 · 등껍질 통신 기관</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--blue);opacity:0.5;"></div><div class="struct-name">Seed Spreader</div><div class="struct-role">고정형 확산 개체 · 포자 광역 방출 · Silent Belt 형성 원인</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--blue);opacity:0.3;"></div><div class="struct-name">Brood Drone</div><div class="struct-role">군체 드론 · 독립 의지 없음 · 군체 분리 시 12시간 내 기능 정지</div></div>
+      <div class="struct-item"><div class="struct-dot" style="background:var(--blue);opacity:0.15;"></div><div class="struct-name">NODE (흡수된 유기체)</div><div class="struct-role">인간 포함 — 군체에 통합된 전 독립 개체</div></div>
+    </div>
+
+    <div class="oracle-log">
+      <span class="log-head">[ORACLE // SHELL SURFACE ANALYSIS — OBSERVATION LOG #003]</span>
+      <span class="log-data">Shell is not defensive only. Multiple biological ports detected.</span>
+
+      <span class="log-data">Each opening functions as:</span>
+      <span class="log-data">  01. Spore emitter — airborne dispersal</span>
+      <span class="log-data">  02. Host interface — organism absorption point</span>
+      <span class="log-data">  03. Neural relay node — hive-mind signal hub</span>
+
+      <span class="log-warn">CONCLUSION: Subject is not a single organism.</span>
+      <span class="log-warn">Subject is a distributed network wearing a single shell.</span>
+    </div>
+
+    <div class="faction-sub-title">RELATED EVENTS</div>
+    <div class="faction-events">
+      <span class="event-chip">PHILADELPHIA ZONE</span>
+      <span class="event-chip">FIRST CONTACT</span>
+      <span class="event-chip">CONVERGENCE: NULL SHELL</span>
+      <span class="event-chip">Wow! 신호 1977</span>
+      <span class="event-chip">The Bloop 1997</span>
+      <span class="event-chip">도시 감염 완료</span>
+    </div>
+
+    <div class="faction-sub-title">CROSS-REFERENCE</div>
+    <div class="xref">
+      <a class="xref-item" href="specimens.html"><span class="xref-arrow">→</span> TS-Ω Core · Shell Walker · Seed Spreader 개체 문서 <span class="xref-page">SPECIMENS</span></a>
+      <a class="xref-item" href="protocols.html#anomaly"><span class="xref-arrow">→</span> The Bloop · Wow! 신호 — 이상 현상 기록 <span class="xref-page">PROTOCOLS</span></a>
+      <a class="xref-item" href="records.html#signals"><span class="xref-arrow">→</span> Bloop 재수신 · TS-Ω 불명 주파수 <span class="xref-page">RECORDS</span></a>
+      <a class="xref-item" href="records.html#timeline"><span class="xref-arrow">→</span> Philadelphia Zone · FIRST CONTACT 타임라인 <span class="xref-page">RECORDS</span></a>
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<script src="js/common.js"></script>
+<script>
+// ── NETWORK MAP FOR FACTIONS PAGE ──
+(function(){
+  const canvas = document.getElementById('netCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const wrap = canvas.parentElement;
+
+  const LOGOS = {};
+  const LOGO_MAP = {
+    obs:'img/logo-observer.webp',
+    pro:'img/logo-prometheus.webp',
+    shed:'img/logo-shed.webp',
+    tsw:'img/logo-tsw.webp',
+  };
+  Object.entries(LOGO_MAP).forEach(([k,src])=>{
+    const img = new Image(); img.src = src; LOGOS[k] = img;
+  });
+
+  const NODES = [
+    {id:'obs',label:'관측자',x:0.5,y:0.13,color:'#ff3b3b',r:18,rPC:26,hasLogo:true},
+    {id:'oracle',label:'ORACLE',icon:'🖥',x:0.5,y:0.33,color:'#ff3b3b',r:15,rPC:22},
+    {id:'pro',label:'프로메테우스',x:0.16,y:0.50,color:'#ffc744',r:16,rPC:24,hasLogo:true},
+    {id:'shed',label:'쉐드 오더',x:0.84,y:0.50,color:'#ff3b3b',r:16,rPC:24,hasLogo:true},
+    {id:'tsw',label:'TS-Ω',x:0.68,y:0.74,color:'#4db8ff',r:15,rPC:22,hasLogo:true},
+    {id:'korea',label:'한국 WS',icon:'🛡',x:0.14,y:0.74,color:'#00e5a0',r:13,rPC:19},
+    {id:'human',label:'인간 사회',icon:'👤',x:0.40,y:0.60,color:'#c8ccc4',r:13,rPC:19},
+  ];
+  const EDGES = [
+    {from:'obs',to:'oracle',color:'rgba(0,229,160,0.45)'},
+    {from:'oracle',to:'human',color:'rgba(0,229,160,0.2)',dash:true},
+    {from:'pro',to:'obs',color:'rgba(255,199,68,0.4)'},
+    {from:'pro',to:'korea',color:'rgba(0,229,160,0.35)'},
+    {from:'shed',to:'tsw',color:'rgba(255,59,59,0.35)'},
+    {from:'shed',to:'human',color:'rgba(255,59,59,0.2)',dash:true},
+    {from:'tsw',to:'human',color:'rgba(77,184,255,0.2)'},
+    {from:'obs',to:'shed',color:'rgba(0,229,160,0.12)',dash:true},
+  ];
+
+  function resize(){
+    const dpr = Math.min(window.devicePixelRatio||1,2);
+    const w = wrap.clientWidth, h = wrap.clientHeight||350;
+    canvas.width=w*dpr; canvas.height=h*dpr;
+    canvas.style.width=w+'px'; canvas.style.height=h+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    draw(w,h);
+  }
+
+  function draw(W,H){
+    ctx.clearRect(0,0,W,H);
+    // grid
+    ctx.strokeStyle='rgba(0,229,160,0.03)';ctx.lineWidth=0.5;
+    for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    // edges
+    EDGES.forEach(e=>{
+      const a=NODES.find(n=>n.id===e.from), b=NODES.find(n=>n.id===e.to);
+      ctx.beginPath();ctx.strokeStyle=e.color;ctx.lineWidth=1.5;
+      if(e.dash)ctx.setLineDash([5,5]);else ctx.setLineDash([]);
+      ctx.moveTo(a.x*W,a.y*H);ctx.lineTo(b.x*W,b.y*H);ctx.stroke();ctx.setLineDash([]);
+    });
+    // nodes: logo/icon inside circle, label below
+    const labelSize = W>700?11:(W>400?9:7);
+    const iconSize = W>700?18:(W>400?14:11);
+    NODES.forEach(n=>{
+      const x=n.x*W, y=n.y*H, nr=(W>600&&n.rPC)?n.rPC:n.r;
+      // outer glow
+      ctx.beginPath();ctx.arc(x,y,nr+6,0,Math.PI*2);
+      ctx.fillStyle=n.color.replace(')',',0.06)').replace('rgb','rgba');ctx.fill();
+      // circle bg
+      ctx.beginPath();ctx.arc(x,y,nr,0,Math.PI*2);
+      ctx.fillStyle='#0a0a0a';ctx.strokeStyle=n.color;ctx.lineWidth=1.5;
+      ctx.fill();ctx.stroke();
+      // logo or emoji
+      if(n.hasLogo && LOGOS[n.id] && LOGOS[n.id].complete){
+        const logoSize = nr * 1.3;
+        ctx.save();
+        ctx.beginPath();ctx.arc(x,y,nr-2,0,Math.PI*2);ctx.clip();
+        ctx.filter='invert(1)';
+        ctx.drawImage(LOGOS[n.id], x-logoSize/2, y-logoSize/2, logoSize, logoSize);
+        ctx.filter='none';
+        ctx.restore();
+      } else if(n.icon){
+        ctx.font=iconSize+'px sans-serif';
+        ctx.textAlign='center';ctx.textBaseline='middle';
+        ctx.fillText(n.icon,x,y);
+      }
+      // label below circle
+      ctx.font=labelSize+'px "Share Tech Mono",monospace';
+      ctx.fillStyle=n.color;
+      ctx.textAlign='center';ctx.textBaseline='top';
+      ctx.fillText(n.label,x,y+nr+6);
+    });
+  }
+
+  resize();
+  window.addEventListener('resize',resize);
+  // Redraw after logos load
+  setTimeout(resize, 500);
+  setTimeout(resize, 1500);
+})();
+</script>
+
+<!-- GLOBAL NAV -->
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a class="gnav-item" href="index.html" data-page="index"><div class="gnav-icon">🏠</div><div class="gnav-label">MAIN</div></a>
+    <a class="gnav-item" href="factions.html" data-page="factions"><div class="gnav-icon">⚡</div><div class="gnav-label">세력</div></a>
+    <a class="gnav-item" href="protocols.html" data-page="protocols"><div class="gnav-icon">🧬</div><div class="gnav-label">위협</div></a>
+    <a class="gnav-item" href="records.html" data-page="records"><div class="gnav-icon">📡</div><div class="gnav-label">기록</div></a>
+    <a class="gnav-item" href="incidents.html" data-page="incidents"><div class="gnav-icon">📋</div><div class="gnav-label">사건</div></a>
+    <a class="gnav-item" href="specimens.html" data-page="specimens"><div class="gnav-icon">🧪</div><div class="gnav-label">개체</div></a>
+    <a class="gnav-item" href="profiles.html" data-page="profiles"><div class="gnav-icon">👤</div><div class="gnav-label">인물</div></a>
+    <a class="gnav-item" href="database.html" data-page="database"><div class="gnav-icon">🗄</div><div class="gnav-label">DB</div></a>
+  </div>
+</nav>
+
+<script>
+// Highlight active gnav item
+(function(){
+  const page = location.pathname.split('/').pop().replace('.html','') || 'index';
+  document.querySelectorAll('.gnav-item').forEach(el=>{
+    if(el.dataset.page === page) el.classList.add('active');
+  });
+  document.body.classList.add('has-gnav');
+})();
+
+// Faction nav scroll spy
+(function(){
+  const nav = document.getElementById('faction-nav');
+  if(!nav) return;
+  const items = nav.querySelectorAll('.fn-item');
+  const sections = [];
+  items.forEach(item=>{
+    const id = item.getAttribute('href').replace('#','');
+    const el = document.getElementById(id);
+    if(el) sections.push({el, item});
+  });
+  function update(){
+    const scrollY = window.scrollY + 160;
+    let active = sections[0];
+    sections.forEach(s=>{
+      if(s.el.offsetTop <= scrollY) active = s;
+    });
+    items.forEach(i=>i.classList.remove('active'));
+    if(active) active.item.classList.add('active');
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+  // smooth scroll on click
+  items.forEach(item=>{
+    item.addEventListener('click',(e)=>{
+      e.preventDefault();
+      const id = item.getAttribute('href').replace('#','');
+      const el = document.getElementById(id);
+      if(el) window.scrollTo({top:el.offsetTop - 130, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>

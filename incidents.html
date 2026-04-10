@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORACLE // INCIDENT ARCHIVES</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/layout.css">
+<style>
+.page-wrap{padding-top:44px;padding-bottom:28px;}
+.page-hero{padding:40px 20px 32px;position:relative;}
+.page-hero::after{content:'';position:absolute;bottom:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,199,68,0.12),transparent);}
+.page-hero-eyebrow{font-size:10px;letter-spacing:5px;color:var(--muted);margin-bottom:6px;padding-left:12px;border-left:2px solid var(--amber);}
+.page-hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,8vw,52px);color:var(--white);letter-spacing:2px;margin-bottom:8px;}
+.page-hero-desc{font-size:13px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:2.0;max-width:640px;}
+
+/* era tabs */
+.era-tabs{display:flex;gap:0;padding:0 20px;border-bottom:1px solid #1a1a1a;margin-bottom:20px;}
+.era-tab{
+  font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;
+  padding:12px 16px;color:var(--muted);cursor:pointer;
+  border-bottom:2px solid transparent;transition:all 0.15s;
+}
+.era-tab:hover{color:var(--light);}
+.era-tab.active{color:var(--amber);border-bottom-color:var(--amber);}
+
+/* incident card grid */
+.inc-grid{display:grid;grid-template-columns:1fr;gap:4px;padding:0 20px;}
+.inc-card{
+  background:var(--card);border:1px solid #1e1e1e;
+  padding:20px;cursor:pointer;position:relative;overflow:hidden;
+  transition:border-color 0.2s;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.inc-card:hover{border-color:rgba(255,199,68,0.4);}
+.inc-card.hidden{display:none;}
+.inc-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;}
+.inc-card.t-red::before{background:var(--red);}
+.inc-card.t-amber::before{background:var(--amber);}
+.inc-card.t-green::before{background:var(--green);}
+.inc-card.t-locked::before{background:var(--purple);}
+
+.inc-code{
+  font-family:'Bebas Neue',sans-serif;font-size:28px;
+  color:var(--amber);letter-spacing:2px;white-space:nowrap;
+  min-width:60px;line-height:1;
+}
+.inc-info{flex:1;min-width:0;}
+.inc-title{font-family:'Noto Sans KR',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.inc-date{font-size:9px;letter-spacing:3px;color:var(--muted);margin-bottom:6px;}
+.inc-summary{font-size:13px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.9;}
+.inc-era-badge{
+  font-size:8px;letter-spacing:2px;padding:2px 8px;
+  border:1px solid var(--muted);color:var(--muted);
+  flex-shrink:0;
+}
+
+/* modal overlay */
+.inc-overlay{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,0.8);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  display:none;align-items:flex-start;justify-content:center;
+  padding:20px;overflow-y:auto;
+}
+.inc-overlay.open{display:flex;}
+.inc-modal{
+  background:var(--bg);border:1px solid var(--amber);
+  width:100%;max-width:720px;margin:40px auto;
+  animation:incUp 0.25s ease;
+}
+@keyframes incUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.inc-modal-top{
+  position:sticky;top:0;z-index:10;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;background:var(--bg);border-bottom:1px solid #1e1e1e;
+}
+.inc-modal-label{font-size:9px;letter-spacing:4px;color:var(--amber);}
+.inc-modal-close{font-size:18px;color:var(--muted);cursor:pointer;transition:color 0.15s;line-height:1;}
+.inc-modal-close:hover{color:var(--white);}
+.inc-modal-inner{padding:20px;}
+
+/* modal header */
+.inc-m-header{margin-bottom:20px;}
+.inc-m-code{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--amber);letter-spacing:2px;margin-bottom:4px;}
+.inc-m-title{font-family:'Noto Sans KR',sans-serif;font-size:20px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.inc-m-quote{
+  font-size:14px;color:var(--amber);font-style:italic;
+  font-family:'Noto Sans KR',sans-serif;
+  border-left:2px solid var(--amber);padding-left:14px;
+  margin-bottom:20px;line-height:1.8;
+}
+.inc-m-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.inc-m-tag{font-size:9px;letter-spacing:2px;padding:3px 10px;border:1px solid #2a2a2a;color:var(--muted);}
+
+/* phases */
+.inc-phase{
+  border:1px solid #1e1e1e;background:var(--card);
+  margin-bottom:3px;padding:16px;
+}
+.inc-phase-name{font-size:12px;color:var(--amber);font-weight:700;margin-bottom:2px;}
+.inc-phase-time{font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:8px;}
+.inc-phase-text{font-size:13px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:2.0;}
+
+/* oracle log in modal */
+.inc-oracle{
+  border:1px solid #1a1a1a;background:#060606;
+  padding:18px;margin:16px 0;
+  font-family:'Share Tech Mono',monospace;font-size:11px;
+  line-height:1.9;color:var(--muted);letter-spacing:0.5px;
+  white-space:pre-line;
+}
+.inc-oracle-head{font-size:9px;letter-spacing:3px;color:var(--green);margin-bottom:8px;}
+
+/* impact & refs */
+.inc-impact{
+  border:1px solid rgba(255,199,68,0.2);background:rgba(255,199,68,0.03);
+  padding:14px;margin:16px 0;font-size:13px;color:var(--light);
+  font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.9;
+}
+.inc-impact-label{font-size:9px;letter-spacing:3px;color:var(--amber);margin-bottom:6px;}
+.inc-refs{display:flex;flex-direction:column;gap:2px;margin-top:12px;}
+.inc-ref{
+  display:flex;align-items:center;gap:10px;padding:10px 14px;
+  background:#080808;border:1px solid #1a1a1a;
+  text-decoration:none;color:var(--light);font-size:11px;
+  transition:border-color 0.15s;
+}
+.inc-ref:hover{border-color:var(--amber);}
+.inc-ref-page{font-size:8px;letter-spacing:2px;color:var(--muted);margin-left:auto;}
+
+@media(min-width:900px){
+  .page-wrap{max-width:1100px;margin:0 auto;}
+  .inc-grid{grid-template-columns:1fr 1fr;gap:6px;}
+  .inc-modal{max-width:760px;}
+  .inc-m-code{font-size:42px;}
+  .era-tab{padding:12px 24px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <div class="topbar-logo">
+    <div class="topbar-logo-box" style="clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%);">T</div>
+    <div class="topbar-name">TURTLE ISLE<small>UNIVERSE</small></div>
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="topbar-status"><div class="t-dot"></div>SYSTEM ACTIVE</div>
+</div>
+<div id="ticker"><div class="tick-label">ORACLE</div><div class="tick-content"><span class="tick-inner" id="ticker-inner"></span></div></div>
+
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">DECLASSIFIED // INCIDENT ARCHIVES</div>
+    <div class="page-hero-title">INCIDENT ARCHIVES</div>
+    <div class="page-hero-desc">기밀 해제된 사건 보고서. 각 사건의 전개, 현장 기록, ORACLE 분석을 포함한다. 일부 기록은 보안 등급에 의해 편집되었다.</div>
+  </div>
+
+  <!-- Era filter tabs -->
+  <div class="era-tabs" id="era-tabs">
+    <div class="era-tab active" data-era="all">ALL</div>
+    <div class="era-tab" data-era="2020s">2020s EVENTS</div>
+    <div class="era-tab" data-era="2000s">2000s HISTORY</div>
+  </div>
+
+  <!-- Incident cards -->
+  <div class="inc-grid" id="inc-grid"></div>
+</div>
+
+<!-- Incident Detail Modal -->
+<div class="inc-overlay" id="inc-overlay">
+  <div class="inc-modal" id="inc-modal"></div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/incidents-data.js"></script>
+<script>
+function initIncidents(){
+  const grid = document.getElementById('inc-grid');
+  const tabs = document.getElementById('era-tabs');
+
+  // render cards
+  grid.innerHTML = INCIDENTS.map((inc,i)=>`
+    <div class="inc-card t-${inc.threat}" data-era="${inc.era}" data-idx="${i}">
+      <div>
+        <div class="inc-code">${inc.code.split(' ').slice(-1)}</div>
+      </div>
+      <div class="inc-info">
+        <div class="inc-title">${inc.title}</div>
+        <div class="inc-date">${inc.id} // ${inc.date}</div>
+        <div class="inc-summary">${inc.summary}</div>
+      </div>
+      <div class="inc-era-badge">${inc.era}</div>
+    </div>
+  `).join('');
+
+  // card click → open modal
+  grid.querySelectorAll('.inc-card').forEach(card=>{
+    card.addEventListener('click',()=>openIncident(parseInt(card.dataset.idx)));
+  });
+
+  // era filter
+  tabs.querySelectorAll('.era-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      tabs.querySelectorAll('.era-tab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      const era = tab.dataset.era;
+      grid.querySelectorAll('.inc-card').forEach(card=>{
+        card.classList.toggle('hidden', era!=='all' && card.dataset.era!==era);
+      });
+    });
+  });
+}
+
+function openIncident(idx){
+  const inc = INCIDENTS[idx];
+  const modal = document.getElementById('inc-modal');
+  const overlay = document.getElementById('inc-overlay');
+
+  const phasesHtml = inc.phases.map(p=>`
+    <div class="inc-phase">
+      <div class="inc-phase-name">${p.name}</div>
+      <div class="inc-phase-time">${p.time}</div>
+      <div class="inc-phase-text">${p.text}</div>
+    </div>
+  `).join('');
+
+  const refsHtml = (inc.refs||[]).map(r=>`
+    <a class="inc-ref" href="${r.href}"><span>→</span> ${r.text} <span class="inc-ref-page">${r.page}</span></a>
+  `).join('');
+
+  modal.innerHTML = `
+    <div class="inc-modal-top">
+      <div class="inc-modal-label">INCIDENT REPORT</div>
+      <div class="inc-modal-close" onclick="closeIncident()">✕</div>
+    </div>
+    <div class="inc-modal-inner">
+      <div class="inc-m-header">
+        <div class="inc-m-code">${inc.code}</div>
+        <div class="inc-m-title">${inc.title}</div>
+        <div class="inc-m-quote">${inc.quote}</div>
+        <div class="inc-m-meta">
+          <span class="inc-m-tag">${inc.id}</span>
+          <span class="inc-m-tag">${inc.era}</span>
+          <span class="inc-m-tag">${inc.date}</span>
+        </div>
+      </div>
+
+      ${phasesHtml}
+
+      <div class="inc-oracle">
+        <div class="inc-oracle-head">ORACLE // ANALYSIS</div>
+        ${inc.oracle}
+      </div>
+
+      <div class="inc-impact">
+        <div class="inc-impact-label">IMPACT ASSESSMENT</div>
+        ${inc.impact}
+      </div>
+
+      ${refsHtml ? '<div class="inc-refs">'+refsHtml+'</div>' : ''}
+    </div>
+  `;
+
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeIncident(){
+  document.getElementById('inc-overlay').classList.remove('open');
+  document.getElementById('inc-modal').innerHTML='';
+  document.body.style.overflow='';
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  initIncidents();
+  document.getElementById('inc-overlay').addEventListener('click',(e)=>{
+    if(e.target===document.getElementById('inc-overlay')) closeIncident();
+  });
+});
+</script>
+
+<!-- GLOBAL NAV -->
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a class="gnav-item" href="index.html" data-page="index"><div class="gnav-icon">🏠</div><div class="gnav-label">MAIN</div></a>
+    <a class="gnav-item" href="factions.html" data-page="factions"><div class="gnav-icon">⚡</div><div class="gnav-label">세력</div></a>
+    <a class="gnav-item" href="protocols.html" data-page="protocols"><div class="gnav-icon">🧬</div><div class="gnav-label">위협</div></a>
+    <a class="gnav-item" href="records.html" data-page="records"><div class="gnav-icon">📡</div><div class="gnav-label">기록</div></a>
+    <a class="gnav-item" href="incidents.html" data-page="incidents"><div class="gnav-icon">📋</div><div class="gnav-label">사건</div></a>
+    <a class="gnav-item" href="specimens.html" data-page="specimens"><div class="gnav-icon">🧪</div><div class="gnav-label">개체</div></a>
+    <a class="gnav-item" href="profiles.html" data-page="profiles"><div class="gnav-icon">👤</div><div class="gnav-label">인물</div></a>
+    <a class="gnav-item" href="database.html" data-page="database"><div class="gnav-icon">🗄</div><div class="gnav-label">DB</div></a>
+  </div>
+</nav>
+
+<script>
+(function(){
+  const page = location.pathname.split('/').pop().replace('.html','') || 'index';
+  document.querySelectorAll('.gnav-item').forEach(el=>{
+    if(el.dataset.page === page) el.classList.add('active');
+  });
+  document.body.classList.add('has-gnav');
+})();
+</script>
+</body>
+</html>

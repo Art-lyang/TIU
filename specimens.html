@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORACLE // SPECIMEN INDEX — ABERRANT</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/layout.css">
+<style>
+.page-wrap{padding-top:44px;padding-bottom:28px;}
+.page-topnav{display:flex;align-items:center;padding:12px 20px;border-bottom:1px solid #1a1a1a;background:rgba(0,0,0,0.5);}
+.page-back{font-size:11px;letter-spacing:2px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.page-back:hover{color:var(--green);}
+.page-breadcrumb{flex:1;text-align:center;font-size:9px;letter-spacing:4px;color:var(--muted);}
+.page-hero{padding:40px 20px 32px;position:relative;}
+.page-hero::after{content:'';position:absolute;bottom:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,59,59,0.12),transparent);}
+.page-hero-eyebrow{font-size:9px;letter-spacing:5px;color:var(--muted);margin-bottom:6px;padding-left:12px;border-left:2px solid var(--red);}
+.page-hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,8vw,52px);color:var(--white);letter-spacing:2px;margin-bottom:4px;}
+.page-hero-title span{color:var(--red);}
+.page-hero-desc{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;max-width:600px;}
+.page-hero-warn{
+  margin-top:14px;padding:10px 14px;
+  border:1px solid rgba(255,59,59,0.25);background:rgba(255,59,59,0.04);
+  font-size:10px;letter-spacing:1px;color:var(--red);
+  display:flex;align-items:center;gap:8px;
+}
+
+/* classification guide */
+.class-bar{
+  display:flex;gap:2px;padding:20px 20px 0;flex-wrap:wrap;
+}
+.class-chip{
+  font-size:9px;letter-spacing:2px;padding:6px 12px;
+  border:1px solid;cursor:pointer;transition:all 0.15s;
+  font-family:'Share Tech Mono',monospace;
+}
+.class-chip:hover{background:rgba(255,255,255,0.03);}
+.class-chip.active{background:rgba(255,255,255,0.06);}
+.class-chip.all{border-color:var(--muted);color:var(--muted);}
+.class-chip.all.active{border-color:var(--white);color:var(--white);}
+.class-chip.M{border-color:var(--red);color:var(--red);}
+.class-chip.H{border-color:var(--amber);color:var(--amber);}
+.class-chip.S{border-color:var(--blue);color:var(--blue);}
+.class-chip.X{border-color:#b47aff;color:#b47aff;}
+
+.class-legend{
+  padding:10px 20px 20px;font-size:10px;color:var(--muted);
+  font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.7;
+}
+
+/* specimen list */
+.spec-list{padding:0 20px;}
+
+/* specimen card (list mode) */
+.spec-card{
+  border:1px solid #1e1e1e;background:var(--card);
+  margin-bottom:3px;cursor:pointer;
+  transition:border-color 0.15s;
+  display:flex;overflow:hidden;
+}
+.spec-card:hover{border-color:rgba(255,59,59,0.4);}
+.spec-card.hidden{display:none;}
+.spec-side{
+  width:4px;flex-shrink:0;
+}
+.spec-side.safe{background:var(--green);}
+.spec-side.caution{background:var(--amber);}
+.spec-side.danger{background:#ff8840;}
+.spec-side.critical{background:var(--red);}
+.spec-side.unknown{background:#b47aff;}
+.spec-icon{
+  width:52px;min-width:52px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;border-right:1px solid #1a1a1a;
+  background:linear-gradient(135deg,#0a0000 0%,#000 100%);
+}
+.spec-main{flex:1;padding:12px 14px;}
+.spec-id{font-size:8px;letter-spacing:3px;color:var(--red);margin-bottom:2px;}
+.spec-name{font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.spec-tags{display:flex;gap:4px;flex-wrap:wrap;}
+.spec-type{
+  font-size:7px;letter-spacing:1.5px;padding:2px 6px;border:1px solid;
+}
+.spec-type.M{border-color:var(--red);color:var(--red);}
+.spec-type.H{border-color:var(--amber);color:var(--amber);}
+.spec-type.S{border-color:var(--blue);color:var(--blue);}
+.spec-type.X{border-color:#b47aff;color:#b47aff;}
+.spec-threat-tag{
+  font-size:7px;letter-spacing:1.5px;padding:2px 6px;border:1px solid #2a2a2a;color:var(--muted);
+}
+
+/* ═══ DOCUMENT VIEW — MODAL POPUP ═══ */
+.doc-overlay{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,0.8);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  display:none;align-items:flex-start;justify-content:center;
+  padding:20px;overflow-y:auto;
+}
+.doc-overlay.open{display:flex;}
+.doc-modal{
+  background:var(--bg);border:1px solid var(--red);
+  width:100%;max-width:680px;
+  margin:40px auto;position:relative;
+  animation:docUp 0.25s ease;
+}
+@keyframes docUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.doc-close-bar{
+  position:sticky;top:0;z-index:10;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;background:var(--bg);border-bottom:1px solid #1e1e1e;
+}
+.doc-close-label{font-size:9px;letter-spacing:4px;color:var(--red);}
+.doc-close-btn{font-size:18px;color:var(--muted);cursor:pointer;transition:color 0.15s;line-height:1;}
+.doc-close-btn:hover{color:var(--white);}
+.doc-inner{padding:0;}
+.doc-back{display:none;}
+
+.doc-header{
+  border:1px solid #1e1e1e;background:#0a0a0a;
+  margin-bottom:3px;overflow:hidden;
+}
+.doc-header-top{
+  display:flex;align-items:center;gap:14px;
+  padding:16px;border-bottom:1px solid #1a1a1a;
+}
+.doc-icon{
+  width:48px;height:48px;min-width:48px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;border:1px solid #2a2a2a;background:#050000;
+}
+.doc-title{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--white);letter-spacing:1px;margin-bottom:2px;}
+.doc-subtitle{font-size:9px;letter-spacing:3px;color:var(--red);}
+.doc-meta{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+}
+.doc-meta-cell{
+  padding:10px 16px;border-bottom:1px solid #111;border-right:1px solid #111;
+}
+.doc-meta-cell:nth-child(2n){border-right:none;}
+.doc-meta-label{font-size:7px;letter-spacing:3px;color:var(--muted);margin-bottom:3px;}
+.doc-meta-value{font-size:11px;color:var(--white);}
+.doc-meta-value.red{color:var(--red);}
+.doc-meta-value.amber{color:var(--amber);}
+.doc-meta-value.green{color:var(--green);}
+.doc-meta-value.purple{color:#b47aff;}
+
+/* document sections */
+.doc-section{
+  border:1px solid #1e1e1e;background:var(--card);
+  margin-bottom:3px;
+}
+.doc-section-head{
+  padding:12px 16px;border-bottom:1px solid #1a1a1a;
+  font-size:9px;letter-spacing:4px;color:var(--muted);
+  display:flex;align-items:center;gap:8px;
+}
+.doc-section-head::before{
+  content:'';width:8px;height:1px;background:var(--red);
+}
+.doc-section-body{padding:16px;}
+.doc-section-body p{
+  font-size:12px;color:var(--light);
+  font-family:'Noto Sans KR',sans-serif;font-weight:300;
+  line-height:1.9;margin-bottom:10px;
+}
+.doc-section-body p:last-child{margin-bottom:0;}
+
+/* addendum / experiment logs */
+.doc-log{
+  border:1px solid #1a1a1a;background:#080808;
+  padding:14px;margin-bottom:8px;
+}
+.doc-log-id{font-size:8px;letter-spacing:3px;color:var(--amber);margin-bottom:6px;}
+.doc-log-text{font-size:11px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
+.doc-log-note{font-size:10px;color:var(--muted);font-style:italic;margin-top:6px;}
+
+/* censored addendum */
+.doc-sealed{
+  border:1px solid #1a0000;background:#060000;
+  padding:20px;text-align:center;
+}
+.doc-sealed-icon{font-size:24px;opacity:0.4;margin-bottom:6px;}
+.doc-sealed-label{font-size:12px;letter-spacing:4px;color:var(--red);opacity:0.6;margin-bottom:4px;font-family:'Bebas Neue',sans-serif;}
+.doc-sealed-sub{font-size:9px;color:#333;letter-spacing:1px;}
+
+/* warning footer */
+.doc-footer{
+  margin-top:16px;padding:10px 14px;
+  border:1px solid rgba(255,59,59,0.15);
+  font-size:9px;letter-spacing:1.5px;color:var(--red);opacity:0.7;
+}
+
+@media(min-width:900px){
+  .page-wrap{max-width:1000px;margin:0 auto;}
+  .spec-list{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+  .spec-card{margin-bottom:0;}
+  .doc-modal{max-width:720px;}
+}
+
+.xref{display:flex;flex-direction:column;gap:2px;margin:12px 0;}
+.xref-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#080808;border:1px solid #1a1a1a;text-decoration:none;color:var(--light);font-size:11px;transition:border-color 0.15s;}
+.xref-item:hover{border-color:var(--green);}
+.xref-arrow{color:var(--muted);font-size:14px;}
+.xref-page{font-size:8px;letter-spacing:2px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <div class="topbar-logo">
+    <div class="topbar-logo-box" style="clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%);">T</div>
+    <div class="topbar-name">TURTLE ISLE<small>UNIVERSE</small></div>
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="topbar-status"><div class="t-dot"></div>SYSTEM ACTIVE</div>
+</div>
+<div id="ticker"><div class="tick-label">ORACLE</div><div class="tick-content"><span class="tick-inner" id="ticker-inner"></span></div></div>
+
+<div class="page-wrap">
+    </div>
+
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">SPECIMEN INDEX // ABERRANT REGISTRY</div>
+    <div class="page-hero-title">SPECIMEN <span>INDEX</span></div>
+    <div class="page-hero-desc">EV-Σ 감염 및 자연 변이 발생 개체 기록. 통칭 ABERRANT(이탈체). 각 개체에 대한 격리 절차, 외형 기술, 행동 패턴을 문서화한다.</div>
+    <div class="page-hero-warn">⚠ 일부 개체는 직접 관측이 금지됩니다 — OMEGA CLEARANCE REQUIRED</div>
+    <a href="incidents.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:8px 14px;border:1px solid var(--amber);color:var(--amber);font-size:10px;letter-spacing:2px;text-decoration:none;font-family:'Share Tech Mono',monospace;transition:background 0.15s;">
+      <span>📋</span> 관련 사건 보고서 열람
+    </a>
+  </div>
+
+  <!-- CLASSIFICATION -->
+  <div class="class-bar" id="class-bar"></div>
+  <div class="class-legend">M-TYPE: 인간/동물 변이 &nbsp;·&nbsp; H-TYPE: 군체 하위 개체 &nbsp;·&nbsp; S-TYPE: 확산형 &nbsp;·&nbsp; X-TYPE: 정점 등급 (부분 검열)</div>
+
+  <!-- SPECIMEN LIST -->
+  <div class="spec-list" id="spec-list"></div>
+
+  <!-- DOCUMENT VIEW -->
+  <!-- Specimen doc modal rendered outside page-wrap -->
+
+</div>
+
+<script src="js/common.js"></script>
+<script>
+const SPECIMENS = [
+  {
+    id:'SPEC-001',name:'감염체 마네킹',img:'img/mannequin-cluster.webp',type:'M',typeLabel:'M-TYPE MUTATION',
+    threat:'caution',threatLabel:'CAUTION',icon:'🧍',
+    desc:'EV-Σ Phase 1 감염체. 행동 정지 상태. 외관상 마네킹과 구분 불가. 자극 시 즉각 공격 전환.',
+    containment:'최소 안전 거리: 3m. 열감지 스캐너로 생체 반응 확인 필수. 자극 금지. 공격 전환 소요 시간: 0.3초 미만.',
+    appearance:'피부 표면이 플라스틱과 유사한 광택을 띠며, 동공이 완전히 확장된 상태로 고정된다. 호흡은 감지 불가 수준으로 느려진다.',
+    behavior:'외부 자극이 없는 한 수 시간에서 수일 간 완전한 부동 상태를 유지한다. 접촉, 소음, 급격한 광량 변화 시 즉각적이고 폭력적인 공격 행동으로 전환된다. 전환까지 소요 시간: 0.3초 미만.',
+    logs:[
+      {id:'LOG-001A',text:'White Shield 초기 조우 보고. "상가 2층 창문 쪽에 마네킹이 서 있었다. 우리 중 누구도 그것이 살아있다고 생각하지 못했다."',note:'— WS-07, 최초 접촉 보고서'},
+      {id:'LOG-001B',text:'격리 실험 #14. 암실에서 48시간 관찰. 개체는 미동도 하지 않았다. 실험자가 기록 장비를 회수하기 위해 방에 진입한 순간, 0.2초 만에 대상의 팔이 실험자의 목을 잡았다.',note:'— 격리 시설 CCTV 분석'},
+      {id:'SURVEILLANCE #MN-07',text:'[ORACLE // SURVEILLANCE — SPEC-001 CLUSTER]\n\nEntity type: EV-Σ Phase 1 — Mannequin state\nFacial data: NULL — features smoothed\nIdentity: IRRECOVERABLE\nCount: 7+ (estimate)\n\nMovement: NONE\nRespiration: UNDETECTABLE\nThreat: PASSIVE — DO NOT STIMULATE\n\nSubjects appear stationary. Duration of current state: UNKNOWN.\nTransition trigger: ANY physical/auditory/optical stimulus.\nResponse time: <0.3 sec.',note:'— ORACLE SURVEILLANCE / 도심 감시 카메라 클러스터'},
+    ]
+  },
+  {
+    id:'SPEC-002',name:'경질화 개체',img:'img/infection-transition.webp',type:'M',typeLabel:'M-TYPE MUTATION',
+    threat:'danger',threatLabel:'DANGER',icon:'🪨',
+    desc:'EV-Σ Phase 2 감염체. 전신 경질화. 통상 화기 무효. 이동 속도 저하, 정지 기록 없음.',
+    containment:'물리 공격 무효. 대응: 도주 우선. 이동 속도가 느리므로 거리 확보 가능. 제거 시 고온 소각 또는 산성 용제.',
+    appearance:'피부 전체가 회색~갈색의 각질층으로 덮이며, 관절 가동 범위가 크게 제한된다. 눈은 외부에서 식별 불가. 체중이 원래의 3~4배로 증가한다.',
+    behavior:'지능이 대폭 저하되어 단순 추적 본능만 남는다. 느리지만 멈추지 않는다. 벽과 차량을 관통하는 사례가 보고되었다.',
+    logs:[
+      {id:'MONITORING #EV-T1',text:'[ORACLE // MONITORING — EV-Σ PROGRESSION]\n\nInfection stage: TRANSITIONAL (Phase 0 → 1)\nCognition: PARTIAL — declining\nMotor control: DEGRADED\nEmotional response: ABSENT\nSkin surface: Early calcification detected\n\nSubject may still retain awareness.\nThis is the last stage at which the host recognizes what is happening.\n\nEstimated time to Phase 1 completion: 6~12 hours.',note:'— ORACLE MONITORING / Philadelphia Zone 격리 시설'},
+      {id:'LOG-002A',text:'Ashfall City 구출 작전 중 조우. "총알이 파편처럼 튕겨나갔다. 세 발을 머리에 맞췄는데 걸음도 늦추지 않았다."',note:'— ARES Division 현장 보고'},
+    ]
+  },
+  {
+    id:'SPEC-003',name:'Brood Drone',img:'img/brood-drone-closeup.webp',type:'H',typeLabel:'H-TYPE HIVE',
+    threat:'danger',threatLabel:'DANGER',icon:'🐛',
+    desc:'군체 하위 개체. 단독 위협도: 낮음. 집단 출현 시 위협도: 상. 독립 의지 없음.',
+    containment:'단독 개체는 위협이 낮으나 집단 출현 시 즉시 후퇴. 군체 통신 교란 장비가 효과적이다.',
+    appearance:'인간 크기의 60% 정도. 외골격 구조. 단안(單眼). 앞다리가 날카로운 갈고리 형태로 변형.',
+    behavior:'독립 의지 없음. 군체 명령에 따라 정찰, 자원 수집, 방어를 수행. 군체에서 분리 시 12시간 내 기능 정지.',
+    logs:[
+      {id:'LOG-003A',text:'Ashfall City(Camden, NJ) 지하 터널에서 약 200개체 집단 관측. 하나가 쓰러지면 나머지가 즉시 대형을 재편했다. 개별 지능은 없지만 집단 반응 속도는 인간을 초월한다.',note:'— Permafrost Unit 관측 기록'},
+      {id:'SURVEILLANCE #AC-04',text:'[ORACLE // SURVEILLANCE — ASHFALL CITY INTERIOR]\n\nLocation: Camden, NJ — Sector 4\nClassification: Z-3 COLLAPSE\n\nBrood Drone count: 200+ (estimate)\nFormation: COORDINATED\nIndividual intelligence: NONE\nCollective response time: <0.1 sec\n\nInfrastructure status: FULLY CONVERTED TO BIOMASS.\n\nNOTE: Structures are no longer buildings. They are organs.',note:'— ORACLE SURVEILLANCE / Ashfall City sector 4'},
+    ]
+  },
+  {
+    id:'SPEC-004',name:'Seed Spreader',img:'img/seed-spreader.webp',type:'S',typeLabel:'S-TYPE SPREADER',
+    threat:'critical',threatLabel:'CRITICAL',icon:'🌿',
+    desc:'고정형 확산 개체. 토양 고착 후 포자 광역 방출. 숙주 행동 변형 메커니즘: Cordyceps(동충하초)와 동일 원리. 영향 범위: 수km.',
+    containment:'반경 500m 내 접근 금지. 포자 흡입 시 즉시 감염 — 1994년 오크빌 사건(ANOMALY-011)이 초기 대기 확산 테스트였을 가능성. 제거 시 반드시 소각 후 토양 오염 처리를 병행해야 한다.',
+    appearance:'높이 2~4m. 식물과 유사한 외형이나 내부에 맥동하는 생체 조직이 있다. 상부에서 불규칙적으로 포자 구름을 방출.',
+    behavior:'이동하지 않는다. 반경 수km에 걸쳐 포자를 확산시키며, 이것이 Silent Belt 형성의 주요 원인이다. 제거 시 폭발적 포자 방출(2차 확산)의 위험이 있다.',
+    logs:[
+      {id:'LOG-004A',text:'Silent Belt 경계에서 첫 번째 Seed Spreader 발견. 주변 3km 내 모든 동물이 사라져 있었다. 새 한 마리도.',note:'— Permafrost Unit 초기 정찰'},
+      {id:'LOG-004B',text:'소각 처리 시도. 개체가 파괴되는 순간 저장된 포자가 폭발적으로 방출됨. 작전 인원 4명 즉시 감염. 이후 프로토콜에 방호복 의무화 추가.',note:'— 소각 작전 사후 보고'},
+      {id:'LOG-004C',text:'생물학 분석팀 보고: Seed Spreader의 포자 전파 메커니즘은 동충하초(Ophiocordyceps)의 숙주 행동 조작과 놀라울 정도로 유사하다. 차이점은 규모 — 동충하초는 개미 한 마리, Seed Spreader는 도시 하나.',note:'— EV-Σ 생물학 분석 보고 #47'},
+      {id:'OBJECT EXAMINATION #SB-01',text:'[ORACLE // OBJECT EXAMINATION]\n\nType: Seed Spreader\nPurpose: Atmospheric spore dispersal\nStatus: ACTIVE\n\nOperating temperature: Mid-range\nExtreme environments: Deactivated\nDispersal method: Airborne spore\nClassification: Environment-dependent organism\n\nNote: Morphological structure matches Voynich Manuscript botanical illustrations at 78% correlation.',note:'— ORACLE VISUAL FEED / Silent Belt perimeter'},
+      {id:'SILENT BELT SURVEY #07',text:'[SILENT BELT EXPANSION LOG]\n\nSeed Spreader count: Increasing. 12 confirmed structures within 40km radius.\nNo audible activity detected within zone perimeter.\nInfected units observed — non-aggressive, converging toward Spreader structures.\n\nConclusion: Zone has stabilized into propagation state. Expansion rate: 1.2km/month.',note:'— Permafrost Unit aerial survey / Silent Belt sector 7'},
+    ]
+  },
+  {
+    id:'SPEC-005',name:'Shell Walker',img:'img/tsw-approaching.webp',type:'H',typeLabel:'H-TYPE HIVE',
+    threat:'danger',threatLabel:'DANGER',icon:'🐢',
+    desc:'TS-Ω 군체의 이동형 하위 개체. 등껍질에 생체 통신 기관이 발달.',
+    containment:'TS-Ω 군체 통신 범위 외로 유인하면 기능이 저하된다. 분리 후 24시간 내 기능 정지. 등껍질의 통신 기관을 우선 파괴.',
+    appearance:'거북이를 인간 크기로 확대한 형태. 등껍질 표면에 발광하는 문양이 있으며, 이것이 군체 통신 수신부로 추정.',
+    behavior:'단독 행동 불가. 항상 2~5개체가 편대로 이동. Philadelphia Zone 외곽에서 주로 관측. 해안가로 접근하는 인간에 대해 비공격적이나, 군체 범위에 진입하면 즉시 공격.',
+    logs:[
+      {id:'LOG-005A',text:'관측 드론이 Philadelphia Zone 해안에서 Shell Walker 편대를 포착. 3개체가 삼각 대형으로 해안선을 순찰하고 있었다. 등껍질의 문양이 동시에 점멸했다.',note:'— 해양 관측 드론 #7'},
+    ]
+  },
+  {
+    id:'SPEC-006',name:'EXUVIA',img:'img/exuvia-shift.webp',type:'X',typeLabel:'X-TYPE ██████',
+    threat:'unknown',threatLabel:'██████',icon:'🦎',redacted:true,
+    desc:'쉐드 오더 지도자. 탈피 기반 진화 극한체. 관측 시마다 형태 변동. 고정 프로파일 작성 불가.',
+    containment:'격리 불가. ██████████. 접촉 시 ██████████. 발견 즉시 후퇴하고 본부에 보고.',
+    appearance:'관측된 형태가 매번 다르다. ██████████. 유일하게 일관된 특징은 ██████████.',
+    behavior:'██████████. 능력의 상한선이 확인되지 않음. CONVERGENCE: NULL SHELL에서 TS-Ω Core와 ██████████.',
+    logs:[
+      {id:'LOG-006A',text:'████████████████████████████████████████████████████████',note:'[OMEGA CLEARANCE REQUIRED]'},
+    ]
+  },
+  {
+    id:'SPEC-007',name:'Phase 3 터미널',img:'img/integration-node.webp',type:'M',typeLabel:'M-TYPE MUTATION',
+    threat:'critical',threatLabel:'CRITICAL',icon:'💀',
+    desc:'EV-Σ Phase 3 최종 변이체. 원래 종 흔적 소실. 세포 특성: HeLa 세포주형 무한 증식. 감염 원리: 프리온형 단백질 자기 변형. 비가역.',
+    containment:'원거리 소각만 허용. 300m 이내 접근 금지. 생포 시도 절대 금지.',
+    appearance:'원래 종(인간/동물)의 외형적 특징이 완전히 사라짐. 새로운 생물학적 구조로 재편. 크기, 형태, 색상이 개체마다 다름.',
+    behavior:'높은 적응력과 공격성. 환경에 따라 신체 구조를 단시간에 변형하는 능력. 지능 수준은 개체마다 차이가 크다.',
+    logs:[
+      {id:'LOG-007A',text:'Red Veil 봉쇄선에서 포착. 최초에는 4족 보행이었으나 건물 벽을 타기 시작하면서 팔다리 길이가 실시간으로 변형됨. 대응 사격 중 몸통에 구멍이 뚫렸으나 3초 내 재생.',note:'— Red Dragon Force 전투 기록'},
+      {id:'INTEGRATION LOG #PH04',text:'[ORACLE // MONITORING — FILE: TS-Ω INTEGRATION]\n\nSubject: Infected human victim.\nLocation: Philadelphia Quarantine Zone.\n\nSpore-initiated infection confirmed.\nUnknown parasitic organisms converging.\nNeural link to TS-Ω established.\n\nSubject no longer independent.\nNeural signal rerouted.\nConnection status: ESTABLISHED.\n\nSubject reclassified: NODE.',note:'— ORACLE MONITORING / IDENT: PH04 / CLASSIFIED'},
+    ]
+  },
+  {
+    id:'SPEC-008',name:'Spore Phantom',img:'img/spore-phantom-light.webp',type:'S',typeLabel:'S-TYPE SPREADER',
+    threat:'caution',threatLabel:'CAUTION',icon:'👻',
+    desc:'포자 밀집 지역 관측 형체. 실체 불명. 포자 입자 집합체 추정. 1994년 오크빌 블롭스(ANOMALY-011)와의 관련성 검토 중.',
+    containment:'포자 방호 장비 필수. 물리적 격리 불가 — 형체가 없음. 포자 밀도를 낮추는 것이 유일한 대응.',
+    appearance:'반투명한 인간형 윤곽. 포자 입자의 집합체일 가능성. 빛을 비추면 일시적으로 흩어졌다가 재형성.',
+    behavior:'접촉 시 즉시 감염. 이동 패턴이 불규칙적. 인간을 "추적"하는 것처럼 보이나, 이것이 의도적인지 바람 흐름 때문인지 불명.',
+    logs:[
+      {id:'LOG-008A',text:'Silent Belt 경계 초소에서 야간 관측. "안개 속에서 사람 형태가 걸어오고 있었다. 조명을 비추자 흩어졌다가 5초 후 더 가까이에서 다시 나타났다."',note:'— Permafrost Unit 야간 보고'},
+      {id:'OBSERVATION #SB-PH01',text:'[ORACLE // OBSERVATION — SILENT BELT PERIMETER]\n\nEntity: SPORE PHANTOM (SPEC-008)\nForm: TRANSLUCENT HUMANOID\nSubstance: UNKNOWN — spore particle aggregate\n\nBehavior observed:\nLight exposure → dispersal → reformation at closer position.\nPhysical contact: IMMEDIATE INFECTION.\n\nEntity may not possess intent. Movement pattern correlates with airflow, not volition.\nDistinction between weather and threat: CURRENTLY IMPOSSIBLE.',note:'— ORACLE OBSERVATION / Silent Belt sector perimeter'},
+    ]
+  },
+  {
+    id:'SPEC-009',name:'TS-Ω Core',img:'img/tsw-closeup.webp',type:'X',typeLabel:'X-TYPE ██████',
+    threat:'unknown',threatLabel:'██████',icon:'🌊',redacted:true,
+    desc:'Sovereign Shell 본체. 해양 군체 중심 의식. The Bloop(1997, ANOMALY-007) 음원으로 확인. 물리적 크기: 관측 시마다 변동.',
+    containment:'격리 불가. ██████████. Philadelphia Zone 전체가 사실상 격리 구역. ██████████.',
+    appearance:'물리적 크기와 구조가 관측 시마다 ██████████. ██████████.',
+    behavior:'██████████. 직접 접촉 시 인지 구조 ██████████. FIRST CONTACT 관측 팀 7명 중 ██████████.',
+    logs:[
+      {id:'OBSERVATION LOG #002',text:'Movement detected toward coastline. Abscess growth ejecting large spore masses. Unknown tendril organisms detected. Airspace compromised — helicopter down. Multiple casualties confirmed.\n\nRECOMMENDATION: DO NOT ENGAGE. WITHDRAW ALL ASSETS TO 5KM PERIMETER.',note:'— ORACLE DRONE FEED / 02:13:47 EST / GRID 39.9321\'N, 75.0607°W'},
+      {id:'OBSERVATION LOG #003',text:'SHELL SURFACE ANALYSIS — Shell is not defensive only. Multiple biological ports detected.\n\nEach opening functions as:\n  01. Spore emitter — airborne dispersal\n  02. Host interface — organism absorption point\n  03. Neural relay node — hive-mind signal hub\n\nCONCLUSION: Subject is not a single organism. Subject is a distributed network wearing a single shell.',note:'— ORACLE DRONE FEED / THERMAL/LOW-LIGHT OPTIC / 02:19:28 EST'},
+      {id:'LOG-009C',text:'████████████████████████████████████████████████████████████████████████',note:'[OBSERVER CLEARANCE REQUIRED — ADDITIONAL DATA SEALED]'},
+    ]
+  },
+  {
+    id:'SPEC-010',name:'Infiltrator Scale',type:'M',typeLabel:'M-TYPE MUTATION',
+    threat:'danger',threatLabel:'DANGER',icon:'🐍',
+    desc:'쉐드 오더 침투형. 인간 외형 위장. 식별: 체온 2~3℃ 저하, 특정 광원하 동공 수직 수축. 외관상 구분 불가.',
+    containment:'열 감지 및 DNA 검사로만 식별 가능. 의심 대상은 격리 후 72시간 관찰. 정체 확인 시 즉시 무력화.',
+    appearance:'인간과 외형상 구분 불가. 체온이 주변보다 2~3℃ 낮음. 동공이 특정 광원에서 수직으로 수축하는 경우가 있음.',
+    behavior:'인간 사회에 완전히 동화된 상태로 활동. 정보 수집, 요인 암살, 사회 혼란 조성이 주 임무. 정체가 발각되면 즉시 전투 형태로 전환 — 피부 아래에서 비늘이 돌출하고 근력이 3배로 상승.',
+    logs:[
+      {id:'LOG-010A',text:'서울 외곽에서 White Shield가 식별. 6개월간 민간인으로 생활하며 군사 시설 정보를 수집하고 있었다. 체포 시도 시 전투 형태로 전환, 요원 2명 부상.',note:'— White Shield 기밀 보고'},
+    ]
+  },
+];
+
+// ── RENDER LIST ──
+function initSpecimens(){
+  // filters
+  const bar = document.getElementById('class-bar');
+  const types = [{key:'all',label:'ALL'},{key:'M',label:'M-TYPE'},{key:'H',label:'H-TYPE'},{key:'S',label:'S-TYPE'},{key:'X',label:'X-TYPE'}];
+  bar.innerHTML = types.map(t=>`<div class="class-chip ${t.key} ${t.key==='all'?'active':''}" data-type="${t.key}">${t.label}</div>`).join('');
+  bar.querySelectorAll('.class-chip').forEach(chip=>{
+    chip.addEventListener('click',()=>{
+      bar.querySelectorAll('.class-chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      const f = chip.dataset.type;
+      document.querySelectorAll('.spec-card').forEach(c=>{
+        c.classList.toggle('hidden', f!=='all' && c.dataset.type!==f);
+      });
+      closeDoc();
+    });
+  });
+
+  // list
+  const list = document.getElementById('spec-list');
+  list.innerHTML = SPECIMENS.map((s,i)=>`
+    <div class="spec-card" data-type="${s.type}" data-idx="${i}">
+      <div class="spec-side ${s.threat}"></div>
+      <div class="spec-icon">${s.img ? '<img src="'+s.img+'" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">' : s.icon}</div>
+      <div class="spec-main">
+        <div class="spec-id">${s.id} // ABERRANT</div>
+        <div class="spec-name">${s.name}</div>
+        <div class="spec-tags">
+          <span class="spec-type ${s.type}">${s.typeLabel}</span>
+          <span class="spec-threat-tag">${s.threatLabel}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  list.querySelectorAll('.spec-card').forEach(card=>{
+    card.addEventListener('click',()=>openDoc(parseInt(card.dataset.idx)));
+  });
+}
+
+function openDoc(idx){
+  const s = SPECIMENS[idx];
+  const d = document.getElementById('doc-view');
+  const censorNote = s.redacted ? '<div class="doc-footer">⊙ 이 문서의 일부는 ORACLE 보안 검열에 의해 편집되었습니다</div>' : '';
+
+  d.innerHTML = `
+    <div class="doc-close-bar">
+      <div class="doc-close-label">SPECIMEN DOCUMENT</div>
+      <div class="doc-close-btn" onclick="closeDoc()">✕</div>
+    </div>
+    <div class="doc-inner">
+
+    ${s.img ? '<div style="border-bottom:1px solid #1e1e1e;overflow:hidden;position:relative;"><img src="'+s.img+'" style="width:100%;display:block;opacity:0.85;filter:grayscale(20%);max-height:300px;object-fit:cover;"><div style="position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(to top,#0a0a0a,transparent);"></div><div style="position:absolute;bottom:8px;right:12px;font-size:8px;letter-spacing:3px;color:var(--muted);">ORACLE // VISUAL RECORD</div></div>' : ''}
+
+    <div class="doc-header">
+      <div class="doc-header-top">
+        <div class="doc-icon">${s.icon}</div>
+        <div>
+          <div class="doc-title">${s.name}</div>
+          <div class="doc-subtitle">${s.id} // ABERRANT</div>
+        </div>
+      </div>
+      <div class="doc-meta">
+        <div class="doc-meta-cell"><div class="doc-meta-label">CLASSIFICATION</div><div class="doc-meta-value">${s.typeLabel}</div></div>
+        <div class="doc-meta-cell"><div class="doc-meta-label">THREAT LEVEL</div><div class="doc-meta-value ${s.threat}">${s.threatLabel}</div></div>
+        <div class="doc-meta-cell"><div class="doc-meta-label">STATUS</div><div class="doc-meta-value">${s.redacted ? '██████' : 'ACTIVE'}</div></div>
+        <div class="doc-meta-cell"><div class="doc-meta-label">FIRST OBSERVED</div><div class="doc-meta-value">${s.redacted ? '██████' : 'POST-GENESIS'}</div></div>
+      </div>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-head">DESCRIPTION</div>
+      <div class="doc-section-body"><p>${s.desc}</p></div>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-head">CONTAINMENT PROTOCOL</div>
+      <div class="doc-section-body"><p>${s.containment}</p></div>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-head">PHYSICAL CHARACTERISTICS</div>
+      <div class="doc-section-body"><p>${s.appearance}</p></div>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-head">BEHAVIORAL PATTERN</div>
+      <div class="doc-section-body"><p>${s.behavior}</p></div>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-head">FIELD LOGS / ADDENDUM</div>
+      <div class="doc-section-body">
+        ${s.logs.map(l=>`
+          <div class="doc-log">
+            <div class="doc-log-id">${l.id}</div>
+            <div class="doc-log-text">${l.text}</div>
+            <div class="doc-log-note">${l.note}</div>
+          </div>
+        `).join('')}
+        <div class="doc-sealed">
+          <div class="doc-sealed-icon">🔒</div>
+          <div class="doc-sealed-label">ADDITIONAL LOGS SEALED</div>
+          <div class="doc-sealed-sub">추가 기록은 열람 등급 상향 후 접근 가능합니다</div>
+        </div>
+      </div>
+    </div>
+    ${censorNote}
+    </div>
+  `;
+  document.getElementById('doc-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeDoc(){
+  document.getElementById('doc-overlay').classList.remove('open');
+  document.getElementById('doc-view').innerHTML='';
+  document.body.style.overflow='';
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  initSpecimens();
+  document.getElementById('doc-overlay').addEventListener('click',(e)=>{
+    if(e.target===document.getElementById('doc-overlay')) closeDoc();
+  });
+});
+</script>
+
+<!-- Specimen Document Modal -->
+<div class="doc-overlay" id="doc-overlay">
+  <div class="doc-modal" id="doc-view"></div>
+</div>
+
+<!-- GLOBAL NAV -->
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a class="gnav-item" href="index.html" data-page="index"><div class="gnav-icon">🏠</div><div class="gnav-label">MAIN</div></a>
+    <a class="gnav-item" href="factions.html" data-page="factions"><div class="gnav-icon">⚡</div><div class="gnav-label">세력</div></a>
+    <a class="gnav-item" href="protocols.html" data-page="protocols"><div class="gnav-icon">🧬</div><div class="gnav-label">위협</div></a>
+    <a class="gnav-item" href="records.html" data-page="records"><div class="gnav-icon">📡</div><div class="gnav-label">기록</div></a>
+    <a class="gnav-item" href="incidents.html" data-page="incidents"><div class="gnav-icon">📋</div><div class="gnav-label">사건</div></a>
+    <a class="gnav-item" href="specimens.html" data-page="specimens"><div class="gnav-icon">🧪</div><div class="gnav-label">개체</div></a>
+    <a class="gnav-item" href="profiles.html" data-page="profiles"><div class="gnav-icon">👤</div><div class="gnav-label">인물</div></a>
+    <a class="gnav-item" href="database.html" data-page="database"><div class="gnav-icon">🗄</div><div class="gnav-label">DB</div></a>
+  </div>
+</nav>
+
+<script>
+// Highlight active gnav item
+(function(){
+  const page = location.pathname.split('/').pop().replace('.html','') || 'index';
+  document.querySelectorAll('.gnav-item').forEach(el=>{
+    if(el.dataset.page === page) el.classList.add('active');
+  });
+  document.body.classList.add('has-gnav');
+})();
+</script>
+</body>
+</html>

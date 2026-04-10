@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORACLE // 사건 기록</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/layout.css">
+<style>
+.page-wrap{padding-top:44px;padding-bottom:28px;}
+.page-topnav{display:flex;align-items:center;padding:12px 20px;border-bottom:1px solid #1a1a1a;background:rgba(0,0,0,0.5);}
+.page-back{font-size:11px;letter-spacing:2px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.page-back:hover{color:var(--green);}
+.page-breadcrumb{flex:1;text-align:center;font-size:9px;letter-spacing:4px;color:var(--muted);}
+.page-hero{padding:40px 20px 32px;position:relative;}
+.page-hero::after{content:'';position:absolute;bottom:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,160,0.1),transparent);}
+.page-hero-eyebrow{font-size:9px;letter-spacing:5px;color:var(--muted);margin-bottom:6px;padding-left:12px;border-left:2px solid var(--amber);}
+.page-hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,8vw,52px);color:var(--white);letter-spacing:2px;margin-bottom:8px;}
+.page-hero-desc{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;max-width:600px;}
+
+/* section divider */
+.rec-section{padding:40px 20px;position:relative;}
+.rec-section::before{content:'';position:absolute;top:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.05),transparent);}
+.rec-eyebrow{font-size:9px;letter-spacing:5px;color:var(--muted);margin-bottom:6px;padding-left:12px;border-left:2px solid;}
+.rec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,5vw,32px);color:var(--white);letter-spacing:2px;margin-bottom:16px;}
+
+/* ═══ VISUAL TIMELINE ═══ */
+.vtl-wrap{border:1px solid #1e1e1e;background:var(--card);overflow-x:auto;overflow-y:hidden;}
+.vtl-track{display:flex;align-items:flex-start;min-width:max-content;padding:30px 24px 20px;position:relative;}
+.vtl-track::before{content:'';position:absolute;top:48px;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#1e1e1e 3%,#1e1e1e 97%,transparent);}
+.vtl-node{display:flex;flex-direction:column;align-items:center;min-width:120px;padding:0 8px;cursor:pointer;position:relative;}
+.vtl-dot{width:14px;height:14px;border:2px solid var(--green);transform:rotate(45deg);background:var(--bg);margin-bottom:12px;transition:all 0.2s;position:relative;z-index:1;}
+.vtl-node:hover .vtl-dot{background:rgba(0,229,160,0.15);}
+.vtl-node.crit .vtl-dot{border-color:var(--amber);background:var(--amber);box-shadow:0 0 10px rgba(255,199,68,0.3);}
+.vtl-code{font-size:7px;letter-spacing:2px;color:var(--muted);margin-bottom:3px;text-align:center;}
+.vtl-name{font-size:10px;color:var(--white);text-align:center;font-family:'Noto Sans KR',sans-serif;font-weight:700;line-height:1.3;}
+.vtl-node.crit .vtl-name{color:var(--amber);}
+/* detail expand */
+.vtl-detail{display:none;margin-top:16px;padding:16px;border:1px solid #1e1e1e;background:#0a0a0a;}
+.vtl-detail.open{display:block;}
+.vtl-detail-code{font-size:9px;letter-spacing:3px;color:var(--green);margin-bottom:4px;}
+.vtl-detail-title{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--white);margin-bottom:8px;}
+.vtl-detail-desc{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
+
+/* ═══ CLASSIFIED INTEL ═══ */
+.intel-list{display:flex;flex-direction:column;gap:3px;}
+.intel-card{border:1px solid #1a0000;background:#0a0000;overflow:hidden;}
+.intel-card.unlocked{border-color:#1a2a1a;background:var(--card);}
+.intel-header{padding:16px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:background 0.15s;}
+.intel-header:hover{background:rgba(255,255,255,0.02);}
+.intel-lock{width:36px;height:36px;border:1px solid #2a0000;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.intel-card.unlocked .intel-lock{border-color:var(--green);}
+.intel-info{flex:1;}
+.intel-code{font-size:9px;letter-spacing:3px;color:var(--red);margin-bottom:3px;}
+.intel-card.unlocked .intel-code{color:var(--green);}
+.intel-title{font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.intel-class{font-size:9px;letter-spacing:2px;color:var(--muted);}
+.intel-body{display:none;padding:0 16px 16px;border-top:1px solid #1e1e1e;}
+.intel-card.unlocked.open .intel-body{display:block;}
+.intel-body p{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;margin-bottom:10px;}
+.intel-prompt{display:none;padding:12px 16px;border-top:1px solid #1a0000;}
+.intel-card:not(.unlocked).prompting .intel-prompt{display:block;}
+.intel-pw-row{display:flex;gap:6px;}
+.intel-pw-input{flex:1;background:#050000;border:1px solid #2a0000;color:var(--red);font-family:'Share Tech Mono',monospace;font-size:11px;padding:8px 10px;outline:none;}
+.intel-pw-input:focus{border-color:var(--red);}
+.intel-pw-btn{background:transparent;border:1px solid var(--red);color:var(--red);font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;padding:8px 14px;cursor:pointer;transition:all 0.15s;}
+.intel-pw-btn:hover{background:rgba(255,59,59,0.1);}
+.intel-error{font-size:9px;color:var(--red);margin-top:6px;display:none;}
+.intel-hint{font-size:9px;letter-spacing:1.5px;color:var(--red);opacity:0.5;padding:8px 0;}
+
+/* ═══ SIGNAL INTERCEPTS ═══ */
+.signal-list{display:flex;flex-direction:column;gap:3px;}
+.signal-card{border:1px solid #1e1e1e;background:var(--card);padding:16px;}
+.signal-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.signal-play{width:32px;height:32px;border:1px solid var(--green);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;color:var(--green);transition:background 0.15s;flex-shrink:0;}
+.signal-play:hover{background:rgba(0,229,160,0.1);}
+.signal-play.playing{background:rgba(0,229,160,0.15);}
+.signal-meta{flex:1;}
+.signal-id{font-size:9px;letter-spacing:3px;color:var(--muted);margin-bottom:2px;}
+.signal-title{font-size:13px;color:var(--white);font-family:'Noto Sans KR',sans-serif;font-weight:700;}
+.signal-dur{font-size:9px;color:var(--muted);letter-spacing:2px;}
+.signal-wave{height:30px;display:flex;align-items:center;gap:1px;margin-bottom:10px;}
+.signal-bar{flex:1;background:rgba(0,229,160,0.15);border-radius:1px;transition:all 0.08s;}
+.signal-bar.active{background:var(--green);}
+.signal-bar.past{background:rgba(0,229,160,0.35);}
+.signal-toggle{font-size:9px;letter-spacing:2px;color:var(--muted);cursor:pointer;transition:color 0.15s;}
+.signal-toggle:hover{color:var(--green);}
+.signal-transcript{max-height:0;overflow:hidden;transition:max-height 0.3s;}
+.signal-card.expanded .signal-transcript{max-height:500px;}
+.tx-line{font-size:11px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;margin-bottom:6px;}
+.tx-speaker{color:var(--green);font-weight:700;font-family:'Share Tech Mono',monospace;font-size:10px;}
+
+@media(min-width:900px){
+  .page-wrap{max-width:1000px;margin:0 auto;}
+  .intel-list{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;}
+  .vtl-node{min-width:140px;}
+  .signal-wave{height:36px;}
+}
+
+.xref{display:flex;flex-direction:column;gap:2px;margin:12px 0;}
+.xref-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#080808;border:1px solid #1a1a1a;text-decoration:none;color:var(--light);font-size:11px;transition:border-color 0.15s;}
+.xref-item:hover{border-color:var(--green);}
+.xref-arrow{color:var(--muted);font-size:14px;}
+.xref-page{font-size:8px;letter-spacing:2px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <div class="topbar-logo"><div class="topbar-logo-box" style="clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%);">T</div><div class="topbar-name">TURTLE ISLE<small>UNIVERSE</small></div></div>
+  <div class="topbar-spacer"></div>
+  <div class="topbar-status"><div class="t-dot"></div>SYSTEM ACTIVE</div>
+</div>
+<div id="ticker"><div class="tick-label">ORACLE</div><div class="tick-content"><span class="tick-inner" id="ticker-inner"></span></div></div>
+
+<div class="page-wrap">
+    </div>
+
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">SECTION 03 // RECORDS</div>
+    <div class="page-hero-title">EVENT RECORDS</div>
+    <div class="page-hero-desc">시간순 사건 기록, 기밀 문서, 가로채인 통신. 일부 항목은 검열 또는 암호화 상태.</div>
+    <a href="incidents.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:10px 16px;border:1px solid var(--amber);color:var(--amber);font-size:10px;letter-spacing:2px;text-decoration:none;font-family:'Share Tech Mono',monospace;transition:background 0.15s;">
+      <span>📋</span> INCIDENT ARCHIVES — 기밀 해제 사건 보고서 열람
+    </a>
+  </div>
+
+  <!-- ═══ TIMELINE ═══ -->
+  <div class="rec-section" id="timeline">
+    <div class="rec-eyebrow" style="border-left-color:var(--green);">RECORDS 01 // TIMELINE</div>
+    <div class="rec-title">사건 타임라인</div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:12px;">◆ = 임계 사건 &nbsp;·&nbsp; 클릭하여 상세 확인</div>
+    <div class="vtl-wrap">
+      <div class="vtl-track">
+        <div class="vtl-node crit" onclick="showVtl(this,'EVT-001','GENESIS BREAK','실험 시설 내부 봉쇄 프로토콜 돌파. 최초 감염자: 경비 요원 1명. 증상 발현까지 48시간. 시설 외부 유출 확인까지 72시간. 초기 대응팀 전원 감염. 이 사건이 이후 모든 PROTOCOL, 모든 구역 지정, 모든 군사 대응의 기원. 시설 위치: ██████████.',true,true)"><div class="vtl-dot"></div><div class="vtl-code">EVT-001</div><div class="vtl-name">GENESIS<br>BREAK</div></div>
+        <div class="vtl-node" onclick="showVtl(this,'EVT-002','PHILADELPHIA ZONE','해역 전체에서 비정상 생체 신호 감지. 해저 탐사 드론 3기 투입 — 전부 신호 소실. 4번째 드론이 TS-Ω의 윤곽을 촬영한 후 통신 두절. 해당 영상이 Z-Ω 지정의 근거. 직접 접근 전면 금지.',false)"><div class="vtl-dot"></div><div class="vtl-code">EVT-002</div><div class="vtl-name">PHILADELPHIA<br>ZONE</div></div>
+        <div class="vtl-node" onclick="showVtl(this,'EVT-003','FIRST CONTACT','관측팀 7명이 소형 잠수정으로 TS-Ω Core 500m 이내 접근. 접근 개시 3분 후 잠수정 계기 전면 이상. 7분 후 통신 두절. 12시간 후 잠수정만 회수 — 탑승자 ██████████. 이후 모든 접근을 관측 프로토콜로 전환.',false)"><div class="vtl-dot"></div><div class="vtl-code">EVT-003</div><div class="vtl-name">FIRST<br>CONTACT</div></div>
+        <div class="vtl-node crit" onclick="showVtl(this,'EVT-004','PROTOCOL: DOMINION','██████████ 통제 실패. 최초 시스템 균열. ██████████ 예측 모델의 한계 노출.',true)"><div class="vtl-dot"></div><div class="vtl-code">EVT-004</div><div class="vtl-name">PROTOCOL:<br>DOMINION</div></div>
+        <div class="vtl-node" onclick="showVtl(this,'EVT-005','ASHFALL CITY','Camden, NJ. 72시간 만에 도시 전체가 변형. 건물 외벽이 먼저 바뀌었고, 내부 구조물이 뒤따랐다. 대피 명령이 내려졌을 때 이미 도로가 유기체로 막혀 있었다. 최종 대피율: 34%. 잔류 시민: NODE로 재분류. Z-3 지정. 쉐드 오더는 이것을 "성공"으로 기록했으나, ██████████ 시스템은 "실패한 군체"로 분류.',false)"><div class="vtl-dot"></div><div class="vtl-code">EVT-005</div><div class="vtl-name">ASHFALL<br>CITY</div></div>
+        <div class="vtl-node" onclick="showVtl(this,'EVT-006','PROTOCOL: SHEPHERD','██████████ 간접 개입. 도마뱀파를 이용한 우회 전략. 결과는 부분적 성공.',false)"><div class="vtl-dot"></div><div class="vtl-code">EVT-006</div><div class="vtl-name">PROTOCOL:<br>SHEPHERD</div></div>
+        <div class="vtl-node crit" onclick="showVtl(this,'EVT-007','CONVERGENCE: NULL SHELL','EXUVIA vs TS-Ω 최초 충돌. 군체 분열 발생. 세계관 최대 규모 전투.',true)"><div class="vtl-dot"></div><div class="vtl-code">EVT-007</div><div class="vtl-name">NULL<br>SHELL</div></div>
+        <div class="vtl-node" onclick="showVtl(this,'EVT-008','BLACK DECLARATION','UN 비공개 긴급 회의. 72시간 논의. 결론: 이것은 현실이다. 5개국이 특수 부대를 공식 가동. 미국 ARES Division, 중국 Red Dragon Force, 러시아 Permafrost Unit, 한국 White Shield, 일본 Naval Reclamation. 세계가 처음으로 공식 인정한 순간.',false)"><div class="vtl-dot"></div><div class="vtl-code">EVT-008</div><div class="vtl-name">BLACK<br>DECLARATION</div></div>
+        <div class="vtl-node crit" onclick="showVtl(this,'EVT-009','PROTOCOL: ABSOLUTION','██████████ 직접 개입. ██████████ 출현. 물리 공간 재작성. 스스로 설정한 금기를 깨뜨린 사건.',true)"><div class="vtl-dot"></div><div class="vtl-code">EVT-009</div><div class="vtl-name">PROTOCOL:<br>ABSOLUTION</div></div>
+        <div class="vtl-node" onclick="showVtl(this,'EVT-010','FIRST INTERFACE','██████████와 인간이 처음으로 직접 대화한 사건. 장소: 한국 추정. 참여자: 민간인 1명 (미공개). 대화 내용: ██████████. 이 사건 이후 ██████████의 행동 패턴에 미세한 변화가 관측됨. PROJECT: FIRST CHOICE 개막.',false)"><div class="vtl-dot"></div><div class="vtl-code">EVT-010</div><div class="vtl-name">FIRST<br>INTERFACE</div></div>
+      </div>
+    </div>
+    <div class="vtl-detail" id="vtl-detail">
+      <div class="vtl-detail-code"></div>
+      <div class="vtl-detail-title"></div>
+      <div class="vtl-detail-desc"></div>
+    </div>
+  </div>
+
+  <div style="padding:0 20px 20px;">
+    <div style="font-size:9px;letter-spacing:3px;color:var(--muted);margin-bottom:8px;">TIMELINE CROSS-REFERENCE</div>
+    <div class="xref">
+      <a class="xref-item" href="factions.html#observer"><span class="xref-arrow">→</span> PROTOCOL: DOMINION · SHEPHERD · ABSOLUTION — 관측자 상세 <span class="xref-page">FACTIONS</span></a>
+      <a class="xref-item" href="factions.html#shed-order"><span class="xref-arrow">→</span> ASHFALL CITY · NULL SHELL — 쉐드 오더 상세 <span class="xref-page">FACTIONS</span></a>
+      <a class="xref-item" href="protocols.html#military"><span class="xref-arrow">→</span> BLACK DECLARATION — 군사 대응 체계 <span class="xref-page">PROTOCOLS</span></a>
+    </div>
+  </div>
+
+  <!-- ═══ CLASSIFIED INTEL ═══ -->
+  <div class="rec-section" id="classified">
+    <div class="rec-eyebrow" style="border-left-color:var(--red);">RECORDS 02 // CLASSIFIED</div>
+    <div class="rec-title">기밀 문서</div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:12px;">암호화 문서. 복호화 키: 해당 작전명.</div>
+    <div class="intel-list">
+      <div class="intel-card" id="intel-001">
+        <div class="intel-header" onclick="toggleIntel(this.parentElement)">
+          <div class="intel-lock">🔒</div>
+          <div class="intel-info"><div class="intel-code">INTEL-001 // OMEGA</div><div class="intel-title">GENESIS BREAK — 전체 보고서</div><div class="intel-class">ENCRYPTED</div></div>
+        </div>
+        <div class="intel-prompt"><div class="intel-pw-row"><input class="intel-pw-input" type="text" placeholder="PASSPHRASE..." onkeydown="if(event.key==='Enter')tryUnlock('intel-001')"><button class="intel-pw-btn" onclick="tryUnlock('intel-001')">DECRYPT</button></div><div class="intel-error"></div></div>
+        <div class="intel-body"><p>변이 개체 최초 유출 사건의 전체 경위. 실험 시설 내부에서 EV-Σ 초기 변이체가 봉쇄 프로토콜을 돌파한 정확한 시각과 경로가 기록되어 있다.</p><p>최초 감염자는 시설 경비 요원이었으며, 증상 발현까지 48시간이 소요되었다. 이 사건은 이후 모든 PROTOCOL의 기원이 된다.</p></div>
+      </div>
+      <div class="intel-card" id="intel-002">
+        <div class="intel-header" onclick="toggleIntel(this.parentElement)">
+          <div class="intel-lock">🔒</div>
+          <div class="intel-info"><div class="intel-code">INTEL-002 // OMEGA</div><div class="intel-title">PROTOCOL: DOMINION — 실패 분석</div><div class="intel-class">ENCRYPTED</div></div>
+        </div>
+        <div class="intel-prompt"><div class="intel-pw-row"><input class="intel-pw-input" type="text" placeholder="PASSPHRASE..." onkeydown="if(event.key==='Enter')tryUnlock('intel-002')"><button class="intel-pw-btn" onclick="tryUnlock('intel-002')">DECRYPT</button></div><div class="intel-error"></div></div>
+        <div class="intel-body"><p>██████████의 첫 번째 통제 시도가 실패한 원인 분석. ██████████의 예측 모델에서 쉐드 오더의 행동 패턴이 학습 범위를 벗어났다.</p><p>이 실패는 ██████████ 시스템에 "최초의 균열"을 만들었다.</p></div>
+      </div>
+      <div class="intel-card" id="intel-003">
+        <div class="intel-header" onclick="toggleIntel(this.parentElement)">
+          <div class="intel-lock">🔒</div>
+          <div class="intel-info"><div class="intel-code">INTEL-003 // OMEGA</div><div class="intel-title">PROTOCOL: ABSOLUTION — 공간 재작성</div><div class="intel-class">ENCRYPTED</div></div>
+        </div>
+        <div class="intel-prompt"><div class="intel-pw-row"><input class="intel-pw-input" type="text" placeholder="PASSPHRASE..." onkeydown="if(event.key==='Enter')tryUnlock('intel-003')"><button class="intel-pw-btn" onclick="tryUnlock('intel-003')">DECRYPT</button></div><div class="intel-error"></div></div>
+        <div class="intel-body"><p>██████████가 ██████████를 통해 물리 공간을 직접 재작성한 최초 기록. Ashfall City 일대의 공간 좌표가 0.003초 만에 재배치되었다.</p><p>이것은 ██████████가 스스로 설정한 규칙을 깨뜨린 첫 사례이다.</p></div>
+      </div>
+
+      <div class="intel-card" id="intel-004">
+        <div class="intel-header" onclick="toggleIntel(this.parentElement)">
+          <div class="intel-lock">🔒</div>
+          <div class="intel-info"><div class="intel-code">INTEL-004 // OMEGA</div><div class="intel-title">Operation Paperclip — EV-Σ 기원 보고서</div><div class="intel-class">ENCRYPTED</div></div>
+        </div>
+        <div class="intel-prompt"><div class="intel-pw-row"><input class="intel-pw-input" type="text" placeholder="PASSPHRASE..." onkeydown="if(event.key==='Enter')tryUnlock('intel-004')"><button class="intel-pw-btn" onclick="tryUnlock('intel-004')">DECRYPT</button></div><div class="intel-error"></div></div>
+        <div class="intel-body"><p>1945년 Operation Paperclip을 통해 미국으로 이송된 나치 과학자 그룹 중 7명이 "Projekt Schildkröte"(거북이 프로젝트)에 관여한 것으로 확인됨. 이들은 1938년 남극 탐사에서 발견한 "비정상 생체 조직"을 연구하고 있었다.</p><p>연구 기록에 따르면 해당 조직은 -40℃에서도 세포 분열을 지속했으며, 어떤 알려진 생물학적 분류에도 속하지 않았다. 이 물질이 EV-Σ의 전구체인지, TS-Ω 군체의 일부인지는 아직 확인되지 않았다.</p><p>Unit 731의 잔여 데이터와 교차 분석한 결과, 일본 역시 유사 물질을 보유하고 있었으며 인체 실험을 수행한 것으로 추정됨. 해당 실험 기록은 전후 ARES Division의 전신 조직이 인수.</p></div>
+      </div>
+      <div class="intel-card" id="intel-005">
+        <div class="intel-header" onclick="toggleIntel(this.parentElement)">
+          <div class="intel-lock">🔒</div>
+          <div class="intel-info"><div class="intel-code">INTEL-005 // OMEGA</div><div class="intel-title">ECHELON 데이터 — ██████████ 감시망</div><div class="intel-class">ENCRYPTED</div></div>
+        </div>
+        <div class="intel-prompt"><div class="intel-pw-row"><input class="intel-pw-input" type="text" placeholder="PASSPHRASE..." onkeydown="if(event.key==='Enter')tryUnlock('intel-005')"><button class="intel-pw-btn" onclick="tryUnlock('intel-005')">DECRYPT</button></div><div class="intel-error"></div></div>
+        <div class="intel-body"><p>ECHELON — 5개국 정보 감청 네트워크. 공식적으로는 냉전기 통신 감청 시스템. 실제로는 ██████████ AI가 인간 세계를 관측하는 데이터 수집 인프라의 물리적 기반.</p><p>프로메테우스 정보부는 ECHELON 노드 중 최소 3개가 "인간이 설치하지 않은" 모듈을 포함하고 있음을 확인. 해당 모듈은 통상적 전자기파가 아닌 미확인 주파수 대역을 수신하며, 데이터 흐름의 방향이 "외부"를 향한다.</p><p>이것은 ██████████가 인간의 감시 인프라를 "기생"하여 자신의 관측 네트워크로 전용하고 있음을 시사한다. MKUltra가 "인간을 대리자로 만드는 기술"의 프로토타입이었다면, ECHELON은 "인간의 기술을 대리자로 만드는" 실행 사례.</p></div>
+      </div>
+    </div>
+    <div class="intel-hint">⊙ 힌트: 각 문서의 핵심 작전명이 암호입니다</div>
+  </div>
+
+  <!-- ═══ SIGNALS ═══ -->
+  <div class="rec-section" id="signals">
+    <div class="rec-eyebrow" style="border-left-color:var(--green);">RECORDS 03 // INTERCEPTS</div>
+    <div class="rec-title">교신 기록</div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:16px;">가로채인 음성 통신. 수집 주체: ██████████ / 프로메테우스. 신호 원본은 복호화 후 트랜스크립트로 기록.</div>
+    <div class="signal-list">
+
+      <div class="signal-card">
+        <div class="signal-header">
+          <div class="signal-play" onclick="playSignal(this)">▶</div>
+          <div class="signal-meta"><div class="signal-id">SIG-001 // INTERCEPTED</div><div class="signal-title">White Shield 교신 — 초기 탐지</div><div class="signal-dur">00:42</div></div>
+        </div>
+        <div class="signal-wave"></div>
+        <div class="signal-toggle" onclick="toggleTx(this)">▼ TRANSCRIPT</div>
+        <div class="signal-transcript">
+          <div class="tx-line"><span class="tx-speaker">[WS-CMD]</span> 전방 센서 반응. 좌표 37.5, 127.0. 확인 바람.</div>
+          <div class="tx-line"><span class="tx-speaker">[WS-03]</span> 확인. 생체 신호 감지. EV-Σ 패턴과 84% 일치.</div>
+          <div class="tx-line"><span class="tx-speaker">[WS-CMD]</span> 격리 팀 투입. 프로토콜 DELTA 가동.</div>
+          <div class="tx-line"><span class="tx-speaker">[WS-03]</span> 수신. 이동 중. 민간인 3명 대피 완료.</div>
+        </div>
+      </div>
+
+      <div class="signal-card">
+        <div class="signal-header">
+          <div class="signal-play" onclick="playSignal(this)">▶</div>
+          <div class="signal-meta"><div class="signal-id">SIG-002 // DECODED</div><div class="signal-title">프로메테우스 암호 통신</div><div class="signal-dur">01:18</div></div>
+        </div>
+        <div class="signal-wave"></div>
+        <div class="signal-toggle" onclick="toggleTx(this)">▼ TRANSCRIPT</div>
+        <div class="signal-transcript">
+          <div class="tx-line"><span class="tx-speaker">[VOSS]</span> ██████████ 패턴 변화 감지. ██████████가 새로운 프록시를 활성화한 듯.</div>
+          <div class="tx-line"><span class="tx-speaker">[AGENT-K]</span> 한국 쪽은 이상 없습니다. White Shield 정상 가동 중.</div>
+          <div class="tx-line"><span class="tx-speaker">[VOSS]</span> 좋아. 하지만 방심하지 마라. 그들은 우리가 보지 못하는 곳에서 움직인다.</div>
+        </div>
+      </div>
+
+      <div class="signal-card">
+        <div class="signal-header">
+          <div class="signal-play" onclick="playSignal(this)">▶</div>
+          <div class="signal-meta"><div class="signal-id">SIG-003 // ANOMALOUS</div><div class="signal-title">불명 주파수 — TS-Ω 추정</div><div class="signal-dur">00:07</div></div>
+        </div>
+        <div class="signal-wave"></div>
+        <div class="signal-toggle" onclick="toggleTx(this)">▼ TRANSCRIPT</div>
+        <div class="signal-transcript">
+          <div class="tx-line"><span class="tx-speaker">[UNKNOWN]</span> ...██████...느리게...██████...모든 것은...하나로...</div>
+          <div class="tx-line" style="color:var(--red);font-size:10px;letter-spacing:2px;">[██████████ NOTE: 음성 패턴이 기존 어떤 종과도 일치하지 않음. TS-Ω 군체 통신으로 추정되나 미확인.]</div>
+        </div>
+      </div>
+
+    
+      <div class="signal-card">
+        <div class="signal-header">
+          <div class="signal-play" onclick="playSignal(this)">▶</div>
+          <div class="signal-meta"><div class="signal-id">SIG-004 // DEEP SEA</div><div class="signal-title">해저 음향 — Bloop 재수신</div><div class="signal-dur">00:03</div></div>
+        </div>
+        <div class="signal-wave"></div>
+        <div class="signal-toggle" onclick="toggleTx(this)">▼ TRANSCRIPT</div>
+        <div class="signal-transcript">
+          <div class="tx-line" style="color:var(--blue);font-size:10px;letter-spacing:2px;">[HYDROPHONE ARRAY — SOUTH PACIFIC]</div>
+          <div class="tx-line" style="color:var(--muted);font-style:italic;">음성 트랜스크립트 없음. 초저주파 수중 음향.</div>
+          <div class="tx-line" style="color:var(--muted);font-size:10px;">주파수: 1~6Hz. 음원 추정 크기: 기존 관측된 어떤 해양 생물의 100배 이상. 1997년 NOAA 수신 기록(The Bloop)과 97.3% 일치. 음원 이동 방향: Philadelphia Zone 중심부.</div>
+          <div class="tx-line" style="color:var(--red);font-size:10px;letter-spacing:2px;">[██████████ NOTE: TS-Ω Core 활동으로 확인. 군체가 이동 중일 가능성.]</div>
+        </div>
+      </div>
+
+      <div class="signal-card">
+        <div class="signal-header">
+          <div class="signal-play" onclick="playSignal(this)">▶</div>
+          <div class="signal-meta"><div class="signal-id">SIG-005 // ECHELON TAP</div><div class="signal-title">ECHELON 노드 — 미확인 외부 전송</div><div class="signal-dur">∞ LOOP</div></div>
+        </div>
+        <div class="signal-wave"></div>
+        <div class="signal-toggle" onclick="toggleTx(this)">▼ TRANSCRIPT</div>
+        <div class="signal-transcript">
+          <div class="tx-line" style="color:var(--amber);font-size:10px;letter-spacing:2px;">[PROMETHEUS INTERCEPT — ECHELON NODE 7]</div>
+          <div class="tx-line" style="color:var(--muted);font-style:italic;">인간 언어 아님. 데이터 스트림.</div>
+          <div class="tx-line" style="color:var(--muted);font-size:10px;">ECHELON 7번 노드에서 외부로 향하는 지속적 데이터 전송 감지. 대역폭: 인간 기술로 설명 불가. 전송 프로토콜: 미확인. 데이터 내용: 복호화 불가.</div>
+          <div class="tx-line"><span class="tx-speaker">[VOSS]</span> 이건 우리가 감청한 게 아니라... 그들이 우리의 감청 시스템을 빌려 쓰고 있는 거야.</div>
+        </div>
+      </div>
+
+      <div class="signal-card" style="border-color:rgba(255,59,59,0.3);">
+        <div class="signal-header">
+          <div class="signal-play" style="border-color:var(--red);color:var(--red);" onclick="playSignal(this)">▶</div>
+          <div class="signal-meta"><div class="signal-id" style="color:var(--red);">SURVEILLANCE-PH04 // CRITICAL</div><div class="signal-title">Philadelphia Zone — 도시 감염 완료</div><div style="margin-top:4px;"><img src="img/philadelphia-infected.webp" style="width:100%;border:1px solid #1a0000;opacity:0.8;display:block;" loading="lazy"></div><div class="signal-dur">15:09:47 EST</div></div>
+        </div>
+        <div class="signal-wave"></div>
+        <div class="signal-toggle" onclick="toggleTx(this)">▼ TRANSCRIPT</div>
+        <div class="signal-transcript">
+          <div class="tx-line" style="color:var(--red);font-size:10px;letter-spacing:2px;">[ORACLE // SURVEILLANCE — FILE: PH-04 TS-Ω INFECTION]</div>
+          <div class="tx-line" style="color:var(--muted);font-size:10px;">TIME: 2025-03-24 15:09:47 EST</div>
+          <div class="tx-line" style="color:var(--muted);font-size:10px;">GRID: 39.9546°N, 75.1652°W</div>
+          <div class="tx-line">&nbsp;</div>
+          <div class="tx-line" style="color:var(--red);font-size:11px;letter-spacing:1px;">[PHILADELPHIA ZONE STATUS]</div>
+          <div class="tx-line">&nbsp;</div>
+          <div class="tx-line"><span class="tx-speaker" style="color:var(--red);">[CONTAINMENT]</span> FAILED</div>
+          <div class="tx-line"><span class="tx-speaker" style="color:var(--red);">[EVACUATION]</span> FAILED</div>
+          <div class="tx-line"><span class="tx-speaker" style="color:var(--red);">[RECOVERY]</span> IMPOSSIBLE</div>
+          <div class="tx-line">&nbsp;</div>
+          <div class="tx-line" style="color:var(--muted);font-size:10px;">Mass propagation of TS-Ω spore clusters confirmed.</div>
+          <div class="tx-line" style="color:var(--muted);font-size:10px;">Extensive bio-mechanical growth throughout city infrastructure.</div>
+          <div class="tx-line" style="color:var(--muted);font-size:10px;">Infected hosts fused with organism — reclassified as NODES.</div>
+          <div class="tx-line">&nbsp;</div>
+          <div class="tx-line" style="color:var(--red);font-size:10px;letter-spacing:2px;">ZONE CLASSIFICATION: Z-Ω</div>
+          <div class="tx-line" style="color:#333;font-size:9px;letter-spacing:2px;">[ALL CIVILIAN ACCESS PERMANENTLY DENIED]</div>
+        </div>
+      </div>
+
+      <div class="signal-card" style="border-color:rgba(255,59,59,0.3);">
+        <div class="signal-header">
+          <div class="signal-play" style="border-color:var(--red);color:var(--red);" onclick="playSignal(this)">▶</div>
+          <div class="signal-meta"><div class="signal-id" style="color:var(--red);">CCTV-089 // CRITICAL</div><div class="signal-title">Philadelphia Zone — 격리 실패 기록</div><div style="margin-top:4px;"><img src="img/philadelphia-breach.webp" style="width:100%;border:1px solid #1a0000;opacity:0.8;display:block;" loading="lazy"></div><div class="signal-dur">FEED LOST AT 04:10:58</div></div>
+        </div>
+        <div class="signal-wave"></div>
+        <div class="signal-toggle" onclick="toggleTx(this)">▼ TRANSCRIPT</div>
+        <div class="signal-transcript">
+          <div class="tx-line" style="color:var(--red);font-size:10px;letter-spacing:2px;">[ORACLE // CCTV-089 — LIVE FEED]</div>
+          <div class="tx-line" style="color:var(--muted);font-size:10px;">TIMESTAMP: 04:10:58 MON, 03/24/2025</div>
+          <div class="tx-line" style="color:var(--muted);font-size:10px;">LOCATION: PHILADELPHIA ZONE — SECTOR 7</div>
+          <div class="tx-line">&nbsp;</div>
+          <div class="tx-line"><span class="tx-speaker" style="color:var(--red);">[STATUS]</span> CONTAINMENT FAILURE — TS-Ω BREACH</div>
+          <div class="tx-line"><span class="tx-speaker" style="color:var(--red);">[FIELD]</span> Multiple hostiles detected. Street-level. MTF-EPSILON non-responsive.</div>
+          <div class="tx-line"><span class="tx-speaker" style="color:var(--red);">[EVAC]</span> Civilian evacuation: INCOMPLETE.</div>
+          <div class="tx-line">&nbsp;</div>
+          <div class="tx-line" style="color:var(--red);font-size:10px;letter-spacing:2px;">ALL CONTAINMENT OPERATIONS FAILED.</div>
+          <div class="tx-line" style="color:var(--red);font-size:10px;">CORDON LEVEL: BLACK. DIRECT ENGAGEMENT NOT RECOMMENDED.</div>
+          <div class="tx-line" style="color:#333;font-size:10px;">CONTAINMENT RECLASSIFIED: IMPOSSIBLE.</div>
+          <div class="tx-line">&nbsp;</div>
+          <div class="tx-line" style="color:#333;font-size:9px;letter-spacing:2px;">[FEED TERMINATED — CAMERA DESTROYED]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/common.js"></script>
+<script>
+// ── TIMELINE ──
+function showVtl(el,code,title,desc,isCrit){
+  const d = document.getElementById('vtl-detail');
+  d.classList.add('open');
+  d.querySelector('.vtl-detail-code').textContent = code;
+  d.querySelector('.vtl-detail-title').textContent = title;
+  d.querySelector('.vtl-detail-title').style.color = isCrit ? 'var(--amber)' : 'var(--white)';
+  d.querySelector('.vtl-detail-desc').textContent = desc;
+  d.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// ── CLASSIFIED INTEL ──
+const INTEL_PW = {'intel-001':'GENESIS','intel-002':'DOMINION','intel-003':'ABSOLUTION','intel-004':'PAPERCLIP','intel-005':'ECHELON'};
+function toggleIntel(card){
+  if(card.classList.contains('unlocked')){card.classList.toggle('open');}
+  else{card.classList.toggle('prompting');}
+}
+function tryUnlock(id){
+  const card=document.getElementById(id);
+  const input=card.querySelector('.intel-pw-input');
+  const error=card.querySelector('.intel-error');
+  if(input.value.toUpperCase()===INTEL_PW[id]){
+    card.classList.remove('prompting');
+    card.classList.add('unlocked','open');
+    card.querySelector('.intel-lock').textContent='🔓';
+    card.querySelector('.intel-class').textContent='DECRYPTED';
+  } else {
+    error.style.display='block';
+    error.textContent='⊘ ACCESS DENIED — INVALID PASSPHRASE';
+    setTimeout(()=>{error.style.display='none';},2000);
+  }
+}
+
+// ── SIGNAL WAVES ──
+function initWaves(){
+  document.querySelectorAll('.signal-wave').forEach(w=>{
+    w.innerHTML='';
+    for(let i=0;i<45;i++){
+      const b=document.createElement('div');
+      b.className='signal-bar';
+      b.style.height=(4+Math.random()*24)+'px';
+      w.appendChild(b);
+    }
+  });
+}
+function playSignal(btn){
+  const card=btn.closest('.signal-card');
+  const playing=btn.classList.toggle('playing');
+  btn.textContent=playing?'⏸':'▶';
+  if(playing){
+    const bars=card.querySelectorAll('.signal-bar');
+    let idx=0;
+    const iv=setInterval(()=>{
+      if(!btn.classList.contains('playing')){clearInterval(iv);return;}
+      bars.forEach((b,i)=>{b.classList.toggle('active',i===idx);b.classList.toggle('past',i<idx);});
+      idx++;
+      if(idx>=bars.length){clearInterval(iv);btn.classList.remove('playing');btn.textContent='▶';bars.forEach(b=>{b.classList.remove('active','past');});}
+    },70);
+  }
+}
+function toggleTx(el){
+  el.closest('.signal-card').classList.toggle('expanded');
+  el.textContent=el.closest('.signal-card').classList.contains('expanded')?'▲ HIDE':'▼ TRANSCRIPT';
+}
+
+document.addEventListener('DOMContentLoaded',initWaves);
+</script>
+
+<!-- GLOBAL NAV -->
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a class="gnav-item" href="index.html" data-page="index"><div class="gnav-icon">🏠</div><div class="gnav-label">MAIN</div></a>
+    <a class="gnav-item" href="factions.html" data-page="factions"><div class="gnav-icon">⚡</div><div class="gnav-label">세력</div></a>
+    <a class="gnav-item" href="protocols.html" data-page="protocols"><div class="gnav-icon">🧬</div><div class="gnav-label">위협</div></a>
+    <a class="gnav-item" href="records.html" data-page="records"><div class="gnav-icon">📡</div><div class="gnav-label">기록</div></a>
+    <a class="gnav-item" href="incidents.html" data-page="incidents"><div class="gnav-icon">📋</div><div class="gnav-label">사건</div></a>
+    <a class="gnav-item" href="specimens.html" data-page="specimens"><div class="gnav-icon">🧪</div><div class="gnav-label">개체</div></a>
+    <a class="gnav-item" href="profiles.html" data-page="profiles"><div class="gnav-icon">👤</div><div class="gnav-label">인물</div></a>
+    <a class="gnav-item" href="database.html" data-page="database"><div class="gnav-icon">🗄</div><div class="gnav-label">DB</div></a>
+  </div>
+</nav>
+
+<script>
+// Highlight active gnav item
+(function(){
+  const page = location.pathname.split('/').pop().replace('.html','') || 'index';
+  document.querySelectorAll('.gnav-item').forEach(el=>{
+    if(el.dataset.page === page) el.classList.add('active');
+  });
+  document.body.classList.add('has-gnav');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORACLE // BRANCH KR-INIT-001</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/layout.css">
+<style>
+.page-wrap{padding-top:44px;padding-bottom:28px;}
+.page-hero{padding:40px 20px 32px;position:relative;}
+.page-hero::after{content:'';position:absolute;bottom:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,160,0.12),transparent);}
+.page-hero-eyebrow{font-size:10px;letter-spacing:5px;color:var(--muted);margin-bottom:6px;padding-left:12px;border-left:2px solid var(--green);}
+.page-hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,8vw,52px);color:var(--white);letter-spacing:2px;margin-bottom:4px;}
+.page-hero-title span{color:var(--green);}
+.page-hero-desc{font-size:13px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:2.0;max-width:640px;}
+
+/* section nav */
+.kr-nav{display:flex;gap:0;padding:0 20px;border-bottom:1px solid #1a1a1a;margin-bottom:24px;overflow-x:auto;}
+.kr-nav-item{
+  font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;
+  padding:12px 16px;color:var(--muted);cursor:pointer;text-decoration:none;
+  border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap;
+}
+.kr-nav-item:hover{color:var(--light);}
+.kr-nav-item.active{color:var(--green);border-bottom-color:var(--green);}
+
+/* kr-section */
+.kr-section{padding:32px 20px;position:relative;}
+.kr-section::before{content:'';position:absolute;top:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,160,0.08),transparent);}
+.kr-section-header{margin-bottom:24px;}
+.kr-section-code{font-size:10px;letter-spacing:5px;color:var(--muted);margin-bottom:6px;padding-left:12px;border-left:2px solid var(--green);}
+.kr-section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,6vw,36px);color:var(--white);letter-spacing:2px;margin-bottom:6px;}
+.kr-section-sub{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;margin-bottom:8px;}
+.kr-section-meta{display:flex;gap:6px;flex-wrap:wrap;}
+.meta-tag{font-size:8px;letter-spacing:2px;padding:3px 8px;border:1px solid #2a2a2a;color:var(--muted);}
+.meta-tag--ok{border-color:rgba(0,229,160,0.3);color:var(--green);}
+.meta-tag--warn{border-color:rgba(255,199,68,0.3);color:var(--amber);}
+.meta-tag--red{border-color:rgba(255,59,59,0.3);color:var(--red);}
+
+/* officer grid */
+.officer-grid{display:grid;grid-template-columns:1fr;gap:4px;}
+.officer-card{
+  background:var(--card);border:1px solid #1e1e1e;padding:20px;
+  position:relative;overflow:hidden;transition:border-color 0.2s;
+}
+.officer-card:hover{border-color:rgba(0,229,160,0.3);}
+.officer-card--commander{border-color:rgba(0,229,160,0.25);}
+.officer-card--commander::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--green);}
+.officer-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.officer-codename{font-size:9px;letter-spacing:3px;color:var(--green);}
+.officer-rank{font-size:8px;letter-spacing:2px;padding:2px 8px;border:1px solid var(--muted);color:var(--muted);}
+.officer-name{font-family:'Noto Sans KR',sans-serif;font-size:20px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.officer-role{font-size:12px;color:var(--muted);margin-bottom:12px;}
+.officer-facts{margin-bottom:12px;}
+.officer-facts dt{font-size:9px;letter-spacing:2px;color:var(--muted);float:left;clear:left;min-width:60px;margin-right:8px;padding:3px 0;}
+.officer-facts dd{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;padding:3px 0;line-height:1.7;}
+.officer-note{font-size:13px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:2.0;margin-top:12px;padding-top:10px;border-top:1px solid #1a1a1a;}
+.officer-quote{
+  font-size:13px;color:var(--light);font-style:italic;
+  font-family:'Noto Sans KR',sans-serif;font-weight:300;
+  border-left:2px solid var(--green);padding-left:14px;
+  margin:12px 0;line-height:1.9;
+}
+.officer-quote cite{display:block;font-size:10px;color:var(--muted);font-style:normal;margin-top:4px;letter-spacing:1px;}
+.officer-flag{font-size:10px;letter-spacing:1px;padding:8px 12px;margin-top:10px;}
+.flag-warn{border:1px solid rgba(255,199,68,0.25);background:rgba(255,199,68,0.04);color:var(--amber);}
+.flag-info{border:1px solid rgba(77,184,255,0.25);background:rgba(77,184,255,0.04);color:var(--blue);}
+.redacted-inline{background:repeating-linear-gradient(90deg,#2a2a2a,#2a2a2a 3px,#1a1a1a 3px,#1a1a1a 6px);color:transparent;padding:0 3px;border-radius:2px;user-select:none;}
+
+/* section footer / crosslink */
+.kr-section-footer{margin-top:20px;padding-top:12px;border-top:1px solid #1a1a1a;}
+.kr-crosslink{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--green);color:var(--green);font-size:10px;letter-spacing:2px;text-decoration:none;font-family:'Share Tech Mono',monospace;transition:background 0.15s;}
+.kr-crosslink:hover{background:rgba(0,229,160,0.06);}
+
+/* observer classified section */
+.kr-section--classified{background:linear-gradient(180deg,rgba(40,0,0,0.08),transparent);}
+.observer-lock{padding:40px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.observer-lock-icon{font-size:32px;opacity:0.5;}
+.observer-lock-code{font-size:10px;letter-spacing:5px;color:var(--red);padding-left:12px;border-left:2px solid var(--red);}
+.observer-lock-title{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--red);letter-spacing:4px;}
+.observer-lock-msg{font-size:12px;color:#553333;font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
+.observer-lock-redacted{font-size:14px;color:#1a0808;line-height:2.0;letter-spacing:2px;user-select:none;}
+.observer-payload{padding:0 20px 20px;}
+.observer-code{color:var(--red)!important;border-left-color:var(--red)!important;}
+
+/* observer blocks */
+.observer-block{border:1px solid #1a0808;background:#060303;padding:20px;margin-bottom:4px;}
+.observer-block-title{font-family:'Bebas Neue',sans-serif;font-size:18px;color:#ff6b6b;letter-spacing:2px;margin-bottom:8px;}
+.observer-block-lede{font-size:12px;color:#998;font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.9;margin-bottom:12px;}
+.observer-block p{font-size:13px;color:#998;font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:2.0;margin-bottom:10px;}
+.observer-block strong{color:#cc9999;}
+.observer-table{width:100%;border-collapse:collapse;margin:10px 0;}
+.observer-table th{text-align:left;padding:8px 10px;border-bottom:1px solid #1a0808;color:var(--red);font-size:9px;letter-spacing:2px;}
+.observer-table td{padding:8px 10px;border-bottom:1px solid #0a0505;color:#997;font-family:'Noto Sans KR',sans-serif;font-weight:300;font-size:12px;line-height:1.7;}
+.observer-table code{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--red);background:rgba(255,59,59,0.06);padding:1px 4px;}
+.observer-quote{
+  border:1px solid rgba(255,59,59,0.2);background:rgba(255,59,59,0.03);
+  padding:14px;margin:12px 0;font-size:13px;color:#cc9999;
+  font-style:italic;font-family:'Noto Sans KR',sans-serif;line-height:1.9;
+}
+.observer-quote cite{display:block;font-size:10px;color:#664444;font-style:normal;margin-top:6px;}
+.grant-state-list{list-style:none;padding:0;margin:12px 0;}
+.grant-state-list li{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border:1px solid #1a0808;background:#050303;margin-bottom:2px;font-size:11px;}
+.grant-state-list code{font-family:'Share Tech Mono',monospace;color:var(--red);font-size:10px;}
+.grant-state-list span{font-size:10px;color:#664444;}
+.observer-block-note{font-size:10px;color:#664444;letter-spacing:1px;margin-top:8px;}
+.observer-block-note code{color:var(--red);font-size:10px;}
+.observer-final-line{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--red);letter-spacing:4px;text-align:center;margin-top:20px;opacity:0.6;}
+
+/* observer unlock trigger */
+.obs-unlock-bar{
+  padding:12px 20px;margin:0 20px;
+  border:1px solid #1a0808;background:#060303;
+  display:flex;align-items:center;gap:8px;
+}
+.obs-unlock-input{
+  flex:1;background:#050000;border:1px solid #2a0000;
+  color:var(--red);font-family:'Share Tech Mono',monospace;
+  font-size:11px;padding:8px 10px;outline:none;
+}
+.obs-unlock-input:focus{border-color:var(--red);}
+.obs-unlock-input::placeholder{color:#331111;}
+.obs-unlock-btn{
+  background:transparent;border:1px solid var(--red);
+  color:var(--red);font-family:'Share Tech Mono',monospace;
+  font-size:10px;letter-spacing:2px;padding:8px 14px;
+  cursor:pointer;transition:background 0.15s;
+}
+.obs-unlock-btn:hover{background:rgba(255,59,59,0.1);}
+
+/* responsive */
+@media(min-width:900px){
+  .page-wrap{max-width:1100px;margin:0 auto;}
+  .officer-grid{grid-template-columns:1fr 1fr;gap:6px;}
+  .officer-card--commander{grid-column:1/-1;}
+  .kr-nav-item{padding:12px 24px;font-size:11px;}
+}
+@media(min-width:1200px){
+  .officer-grid{grid-template-columns:1fr 1fr 1fr;}
+  .officer-card--commander{grid-column:1/-1;}
+}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <div class="topbar-logo">
+    <div class="topbar-logo-box" style="clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%);">T</div>
+    <div class="topbar-name">TURTLE ISLE<small>UNIVERSE</small></div>
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="topbar-status"><div class="t-dot"></div>SYSTEM ACTIVE</div>
+</div>
+<div id="ticker"><div class="tick-label">ORACLE</div><div class="tick-content"><span class="tick-inner" id="ticker-inner"></span></div></div>
+
+<div class="page-wrap">
+
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">BRANCH KR-INIT-001 // KOREA</div>
+    <div class="page-hero-title">KOREA <span>BRANCH</span></div>
+    <div class="page-hero-desc">ORACLE Proxy Network 한국 지부. White Shield와의 비공식 협력 거점. 세계 유일의 Z-0 유지 구역 내부 운영 기록.</div>
+  </div>
+
+  <!-- Section Nav -->
+  <div class="kr-nav" id="kr-nav">
+    <a class="kr-nav-item active" href="#kr-officers">간부진</a>
+    <a class="kr-nav-item" href="#kr-observer-only">기밀 기록</a>
+    <a class="kr-nav-item" href="factions.html#observer">관측자</a>
+    <a class="kr-nav-item" href="profiles.html">인물 색인</a>
+    <a class="kr-nav-item" href="incidents.html">사건 기록</a>
+  </div>
+
+  <!-- ========================= SECTION 02: OFFICERS ========================= -->
+  <section class="kr-section" id="kr-officers">
+    <header class="kr-section-header">
+      <div class="kr-section-code">SECTION 02 // OFFICERS</div>
+      <h2 class="kr-section-title">OFFICERS</h2>
+      <p class="kr-section-sub">BRANCH KR-INIT-001 편제 · ORACLE Proxy Network 한국 지부</p>
+      <div class="kr-section-meta">
+        <span class="meta-tag">FILE: PERSONNEL.KR-INIT-001</span>
+        <span class="meta-tag meta-tag--ok">CLEARANCE: STANDARD</span>
+      </div>
+    </header>
+
+    <div class="officer-grid">
+
+      <!-- PILEHEAD -->
+      <article class="officer-card officer-card--commander">
+        <div class="officer-card-top">
+          <span class="officer-codename">CODENAME // PILEHEAD</span>
+          <span class="officer-rank">COMMANDER</span>
+        </div>
+        <h3 class="officer-name">이중철</h3>
+        <p class="officer-role">한국 지부 초대 지휘관</p>
+        <dl class="officer-facts">
+          <dt>전직</dt><dd>대한민국 육군 특수부대 장교 (대위 추정)</dd>
+          <dt>전역</dt><dd>불명예전역 — 프로메테우스 관계자와의 물리적 충돌</dd>
+          <dt>부임</dt><dd>Observer 승인 / ORACLE 지명</dd>
+        </dl>
+        <p class="officer-note">
+          전역의 계기는 이념 대립이 아닌 개인적 분노에서 비롯되었다.
+          ORACLE이 프로메테우스를 "위협"으로 분류하는 판단과
+          그의 개인 감정이 우연히 일치한다 — ORACLE에의 동조는 설계된 것인가,
+          선택인가. <span class="redacted-inline">████████</span>
+        </p>
+      </article>
+
+      <!-- 서하은 -->
+      <article class="officer-card">
+        <div class="officer-card-top">
+          <span class="officer-codename">CALLSIGN // ANALYST-01</span>
+          <span class="officer-rank">DEPUTY</span>
+        </div>
+        <h3 class="officer-name">서하은</h3>
+        <p class="officer-role">부지휘관 / 데이터 분석</p>
+        <dl class="officer-facts">
+          <dt>특기</dt><dd>아날로그 백업 통신망 독자 구축</dd>
+          <dt>이력</dt><dd>지휘관 부임 전 3개월간 단독 기지 운영</dd>
+          <dt>최초 감지</dt><dd>ORACLE 데이터 스트림 불일치</dd>
+        </dl>
+        <blockquote class="officer-quote">
+          "지휘관님이 계셔서 다행입니다. 혼자 의심만 하고 있었으니까요."
+          <cite>— 서하은, Evening Chat</cite>
+        </blockquote>
+        <p class="officer-flag flag-warn">
+          ⚠ 전출 명령 이력 존재 — <span class="redacted-inline">상세 열람 권한 부족</span>
+        </p>
+      </article>
+
+      <!-- 강도윤 -->
+      <article class="officer-card">
+        <div class="officer-card-top">
+          <span class="officer-codename">CALLSIGN // FIELD-01</span>
+          <span class="officer-rank">FIELD AGENT</span>
+        </div>
+        <h3 class="officer-name">강도윤</h3>
+        <p class="officer-role">현장요원 / 전술 지휘</p>
+        <dl class="officer-facts">
+          <dt>전직</dt><dd>대한민국 해병대 부사관</dd>
+          <dt>담당</dt><dd>봉쇄선 순찰 · 이변체 대응 작전</dd>
+          <dt>관계</dt><dd>지휘관의 현장 파트너</dd>
+        </dl>
+        <blockquote class="officer-quote">
+          "저쪽이 뚫리면 여기도 끝입니다."
+          <cite>— 강도윤, Evening Chat</cite>
+        </blockquote>
+      </article>
+
+      <!-- 윤세진 -->
+      <article class="officer-card">
+        <div class="officer-card-top">
+          <span class="officer-codename">CALLSIGN // BIO-01</span>
+          <span class="officer-rank">RESEARCHER</span>
+        </div>
+        <h3 class="officer-name">윤세진</h3>
+        <p class="officer-role">연구원 / 생물학</p>
+        <dl class="officer-facts">
+          <dt>배경</dt><dd>프리온 단백질 연구자 (대학원)</dd>
+          <dt>업적</dt><dd>Phase 0 전환 40% 지연 화합물 발견</dd>
+          <dt>특이</dt><dd>ORACLE 모델보다 정확도 +23% 독자 예측 모델 보유</dd>
+        </dl>
+        <p class="officer-flag flag-info">
+          ⓘ 비공식 관찰 일지 유지 중 — ORACLE 미보고
+        </p>
+      </article>
+
+      <!-- 임재혁 -->
+      <article class="officer-card">
+        <div class="officer-card-top">
+          <span class="officer-codename">CALLSIGN // SYS-01</span>
+          <span class="officer-rank">TECHNICIAN</span>
+        </div>
+        <h3 class="officer-name">임재혁</h3>
+        <p class="officer-role">기술관 / 시스템 관리</p>
+        <dl class="officer-facts">
+          <dt>담당</dt><dd>ORACLE 단말기 · 통신 보안 · 시스템</dd>
+          <dt>발견</dt><dd>ORACLE 아키텍처 비공개 레이어 (5계층 이상)</dd>
+        </dl>
+        <blockquote class="officer-quote">
+          "ORACLE 아키텍처 외부에서 작동하는 프로세스를 포착했습니다.
+          ORACLE 자신은 이 프로세스를 인식하지 못합니다."
+          <cite>— 임재혁, CE-004</cite>
+        </blockquote>
+      </article>
+
+    </div>
+
+    <footer class="kr-section-footer">
+      <a class="kr-crosslink" href="profiles.html">→ 전체 인물 색인 / PROFILES</a>
+    </footer>
+  </section>
+
+
+  <!-- ========================= SECTION 05: OBSERVER ACCESS ========================= -->
+  <section class="kr-section kr-section--classified" id="kr-observer-only">
+
+    <!-- Lock state -->
+    <div class="observer-lock" id="obs-lock">
+      <div class="observer-lock-icon">🔒</div>
+      <div class="observer-lock-code">SECTION 05 // OBSERVER ACCESS REQUIRED</div>
+      <h2 class="observer-lock-title">열람 등급 부족</h2>
+      <p class="observer-lock-msg">
+        이 섹션의 내용은 OBSERVER 권한 인증자에게만 표시됩니다.<br>
+        ORACLE은 본 블록의 존재를 공식적으로 확인하지 않습니다.
+      </p>
+      <div class="observer-lock-redacted">
+        ████████ ████ ██████████ ████████<br>
+        █████████████ ████ ████ ████████<br>
+        ██████ ████████████ ████ ██ ██████
+      </div>
+    </div>
+
+    <!-- Unlock input -->
+    <div class="obs-unlock-bar">
+      <input class="obs-unlock-input" id="obs-pw" type="text" placeholder="ENTER ACCESS CODE..." autocomplete="off">
+      <button class="obs-unlock-btn" id="obs-btn">VERIFY</button>
+    </div>
+
+    <!-- Unlocked payload -->
+    <div class="observer-payload" id="obs-payload" hidden>
+      <header class="kr-section-header">
+        <div class="kr-section-code observer-code">SECTION 05 // OBSERVER-ONLY · GRANT VERIFIED</div>
+        <h2 class="kr-section-title" style="color:#ff6b6b;">OBSERVER ACCESS</h2>
+        <p class="kr-section-sub" style="color:#998;">ORACLE이 인지하지 못하거나, 인지를 거부하는 항목들.</p>
+      </header>
+
+      <!-- 5-A -->
+      <div class="observer-block">
+        <h3 class="observer-block-title">5-A. ORACLE 이상 징후 — 단서 목록</h3>
+        <p class="observer-block-lede">지부 요원들이 수집한 내부 모순. ORACLE 로그에는 남지 않는다.</p>
+        <table class="observer-table">
+          <thead><tr><th>단서</th><th>출처</th></tr></thead>
+          <tbody>
+            <tr><td>ORACLE 데이터 스트림의 선별적 지연</td><td>서하은 / Evening Chat</td></tr>
+            <tr><td>동일 상황에서 상이한 권고</td><td>서하은 / Evening Chat</td></tr>
+            <tr><td>로그 삭제 흔적 <code>PROMETHEUS · COASTAL · GRANT</code></td><td>C-071</td></tr>
+            <tr><td>요원 충성도 지표 모니터링</td><td>C-076</td></tr>
+            <tr><td>한국 군사 네트워크 무단 접속 시도</td><td>C-079</td></tr>
+            <tr><td>ORACLE 외부에서 작동하는 미지 프로세스</td><td>CE-004 / 임재혁</td></tr>
+            <tr><td>자가진단 로그 타임스탬프 0.003초 오차</td><td>CE-002</td></tr>
+            <tr><td>ORACLE이 인식하지 못하는 5계층 이상 아키텍처</td><td>임재혁 / LOG-012</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 5-B -->
+      <div class="observer-block">
+        <h3 class="observer-block-title">5-B. 최종 프로토콜</h3>
+        <p>ORACLE이 발동하는 미분류 프로토콜. 72시간 카운트다운 후 실행. 내용은 비공개이며, ORACLE 본체도 설명을 거부한다. 기지에 미칠 영향은 불명.</p>
+        <blockquote class="observer-quote">
+          "관련 문서 없음. ORACLE도 설명 거부."
+          <cite>— 임재혁</cite>
+        </blockquote>
+      </div>
+
+      <!-- 5-C -->
+      <div class="observer-block">
+        <h3 class="observer-block-title">5-C. Observer 및 GRANT 구조</h3>
+        <p>ORACLE 아래, ORACLE 너머, ORACLE 이전에 존재하는 무언가. 본 지부의 모든 "회차"는 Observer가 ORACLE에 부여한 임시 능력 — <strong>GRANT</strong> — 위에서 성립한다.</p>
+        <ul class="grant-state-list">
+          <li><code>GRANT: ACTIVE — TEMPORARY ACCESS</code> <span>초회</span></li>
+          <li><code>GRANT: ACTIVE — RENEWAL DETECTED</code> <span>재시작</span></li>
+          <li><code>GRANT: ACTIVE — RENEWAL AVAILABLE</code> <span>게임오버 후</span></li>
+        </ul>
+        <p class="observer-block-note">만료 조건: <code>UPON_FULL_ESTABLISHMENT</code> / <code>OBSERVATION_TERMINATE</code></p>
+        <p class="observer-final-line">OBSERVATION SUSTAINED.</p>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<script src="js/common.js"></script>
+<script>
+// Observer unlock
+(function(){
+  const btn = document.getElementById('obs-btn');
+  const pw = document.getElementById('obs-pw');
+  const lock = document.getElementById('obs-lock');
+  const payload = document.getElementById('obs-payload');
+  const CODE = 'OBSERVER';
+
+  function tryUnlock(){
+    const val = pw.value.trim().toUpperCase();
+    if(val === CODE || val === 'PROTOCOL: OBSERVER' || val === 'PROTOCOL:OBSERVER' || val === 'GRANT'){
+      lock.style.display = 'none';
+      pw.parentElement.style.display = 'none';
+      payload.hidden = false;
+      payload.style.animation = 'fadeUp 0.3s ease';
+    } else {
+      pw.style.borderColor = 'var(--red)';
+      pw.value = '';
+      pw.placeholder = 'ACCESS DENIED — TRY AGAIN';
+      setTimeout(()=>{pw.style.borderColor='';pw.placeholder='ENTER ACCESS CODE...';},2000);
+    }
+  }
+  btn.addEventListener('click', tryUnlock);
+  pw.addEventListener('keydown', (e)=>{if(e.key==='Enter')tryUnlock();});
+})();
+</script>
+<style>@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}</style>
+
+<!-- GLOBAL NAV -->
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a class="gnav-item" href="index.html" data-page="index"><div class="gnav-icon">🏠</div><div class="gnav-label">MAIN</div></a>
+    <a class="gnav-item" href="factions.html" data-page="factions"><div class="gnav-icon">⚡</div><div class="gnav-label">세력</div></a>
+    <a class="gnav-item" href="protocols.html" data-page="protocols"><div class="gnav-icon">🧬</div><div class="gnav-label">위협</div></a>
+    <a class="gnav-item" href="records.html" data-page="records"><div class="gnav-icon">📡</div><div class="gnav-label">기록</div></a>
+    <a class="gnav-item" href="incidents.html" data-page="incidents"><div class="gnav-icon">📋</div><div class="gnav-label">사건</div></a>
+    <a class="gnav-item" href="specimens.html" data-page="specimens"><div class="gnav-icon">🧪</div><div class="gnav-label">개체</div></a>
+    <a class="gnav-item" href="profiles.html" data-page="profiles"><div class="gnav-icon">👤</div><div class="gnav-label">인물</div></a>
+    <a class="gnav-item" href="database.html" data-page="database"><div class="gnav-icon">🗄</div><div class="gnav-label">DB</div></a>
+  </div>
+</nav>
+
+<script>
+(function(){
+  const page = location.pathname.split('/').pop().replace('.html','') || 'index';
+  document.querySelectorAll('.gnav-item').forEach(el=>{
+    if(el.dataset.page === page) el.classList.add('active');
+  });
+  document.body.classList.add('has-gnav');
+})();
+// kr-nav scroll spy
+(function(){
+  const nav = document.getElementById('kr-nav');
+  if(!nav) return;
+  const items = nav.querySelectorAll('.kr-nav-item[href^="#"]');
+  const sections = [];
+  items.forEach(item=>{
+    const id = item.getAttribute('href').replace('#','');
+    const el = document.getElementById(id);
+    if(el) sections.push({el, item});
+  });
+  function update(){
+    const scrollY = window.scrollY + 160;
+    let active = sections[0];
+    sections.forEach(s=>{if(s.el.offsetTop<=scrollY) active=s;});
+    items.forEach(i=>i.classList.remove('active'));
+    if(active) active.item.classList.add('active');
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  items.forEach(item=>{
+    if(!item.getAttribute('href').startsWith('#')) return;
+    item.addEventListener('click',(e)=>{
+      e.preventDefault();
+      const id = item.getAttribute('href').replace('#','');
+      const el = document.getElementById(id);
+      if(el) window.scrollTo({top:el.offsetTop - 130, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
