@@ -8,27 +8,31 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/pages.css">
 <link rel="stylesheet" href="css/layout.css">
-</head>
-<body>
 <style>
-/* Boot active: hide EVERYTHING behind it */
+/* Boot: hide everything behind boot screen */
 body.boot-active #topbar,
 body.boot-active #ticker,
 body.boot-active #main,
-body.boot-active .gnav{display:none!important;}
+body.boot-active .gnav{display:none!important;visibility:hidden!important;}
 body.boot-active{overflow:hidden!important;}
 </style>
 <script>
-if(sessionStorage.getItem('tiu-boot-done')){
+var _bootDone = sessionStorage.getItem('tiu-boot-done');
+if(!_bootDone){
+  // Write class onto <html> immediately so CSS applies before first paint
+  document.documentElement.classList.add('boot-active');
+}
+</script>
+</head>
+<body class="boot-active">
+<script>
+if(_bootDone){
+  // Returning user: skip boot, remove boot-active
+  document.body.classList.remove('boot-active');
+  document.documentElement.classList.remove('boot-active');
   document.addEventListener('DOMContentLoaded',function(){
     var b=document.getElementById('boot');
     if(b)b.style.display='none';
-  });
-} else {
-  document.documentElement.className+=' boot-active';
-  document.body && (document.body.className+=' boot-active');
-  document.addEventListener('DOMContentLoaded',function(){
-    document.body.classList.add('boot-active');
   });
 }
 </script>

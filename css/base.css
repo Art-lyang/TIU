@@ -190,10 +190,7 @@ body::after{
   overflow:hidden;
   padding-bottom:env(safe-area-inset-bottom,0);
 }
-/* push ticker above gnav on mobile only */
-@media(max-width:899px){
-  body.has-gnav #ticker{bottom:48px;bottom:calc(48px + env(safe-area-inset-bottom,0));}
-}
+/* ticker stays at bottom, gnav is now always at top */
 .tick-label{
   background:var(--red);color:#fff;
   font-size:10px;letter-spacing:2px;
