@@ -11,17 +11,18 @@
 </head>
 <body>
 <script>
-// Skip boot if returning from other page
 if(sessionStorage.getItem('tiu-boot-done')){
   document.addEventListener('DOMContentLoaded',function(){
     var b=document.getElementById('boot');
     if(b)b.style.display='none';
   });
 } else {
-  // First visit: hide ticker/gnav until boot completes
+  // First visit: hide everything behind boot, prevent scroll bleed
+  document.documentElement.style.overflow='hidden';
   document.addEventListener('DOMContentLoaded',function(){
-    var tk=document.getElementById('ticker'), gn=document.querySelector('.gnav');
+    var tk=document.getElementById('ticker'), gn=document.querySelector('.gnav'), mn=document.getElementById('main');
     if(tk)tk.style.display='none'; if(gn)gn.style.display='none';
+    if(mn)mn.style.display='none';
   });
 }
 </script>

@@ -134,6 +134,8 @@ function initInterface(){
         setTimeout(()=>{
           document.getElementById('boot').classList.add('hidden');
           if(tk)tk.style.display=''; if(gn)gn.style.display='';
+          var mn=document.getElementById('main'); if(mn)mn.style.display='';
+          document.documentElement.style.overflow='';
         }, 600);
       }
     }, i * 280);
