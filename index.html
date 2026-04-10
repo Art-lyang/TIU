@@ -17,6 +17,12 @@ if(sessionStorage.getItem('tiu-boot-done')){
     var b=document.getElementById('boot');
     if(b)b.style.display='none';
   });
+} else {
+  // First visit: hide ticker/gnav until boot completes
+  document.addEventListener('DOMContentLoaded',function(){
+    var tk=document.getElementById('ticker'), gn=document.querySelector('.gnav');
+    if(tk)tk.style.display='none'; if(gn)gn.style.display='none';
+  });
 }
 </script>
 <!-- ═══════════════════════════════════
