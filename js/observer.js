@@ -12,11 +12,15 @@
 
     input.addEventListener('keydown', function(e){
       if(e.key !== 'Enter') return;
-      
+
       var cmd = input.value.trim().toUpperCase();
-      if(cmd !== 'PROTOCOL: OBSERVER' && cmd !== 'PROTOCOL:OBSERVER') return;
-      
+      if(cmd !== 'PROTOCOL: OBSERVER' && cmd !== 'PROTOCOL:OBSERVER'){
+        // Not an observer command — let other handlers process it
+        return;
+      }
+
       e.preventDefault();
+      e.stopImmediatePropagation();
       input.disabled = true;
       
       if(response){

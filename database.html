@@ -164,10 +164,16 @@ function initDB(){
     }
   }
 
-  // Enter key
+  // Enter key — use capture phase to run before observer.js
   input.addEventListener('keydown',(e)=>{
-    if(e.key==='Enter'){e.preventDefault();clearTimeout(searchTimer);executeSearch();}
-  });
+    if(e.key!=='Enter') return;
+    var cmd = input.value.trim().toUpperCase();
+    // let observer.js handle PROTOCOL commands
+    if(cmd==='PROTOCOL: OBSERVER'||cmd==='PROTOCOL:OBSERVER') return;
+    e.preventDefault();
+    clearTimeout(searchTimer);
+    executeSearch();
+  }, true);
 
   // live search with debounce
   let searchTimer;
