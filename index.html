@@ -180,7 +180,7 @@ if(_bootDone){
           </div>
           <div class="hero-nav-arrow">›</div>
         </a>
-        <a class="hero-nav-item" href="kr-branch.html" style="border:1px solid rgba(255,59,59,0.2);background:rgba(255,59,59,0.02);position:relative;overflow:hidden;">
+        <div class="hero-nav-item" id="kr-locked-nav" style="border:1px solid rgba(255,59,59,0.2);background:rgba(255,59,59,0.02);position:relative;overflow:hidden;cursor:pointer;" onclick="document.getElementById('kr-pw-prompt').style.display=document.getElementById('kr-pw-prompt').style.display==='flex'?'none':'flex'">
           <div class="hero-nav-icon" style="opacity:0.5;">🇰🇷</div>
           <div class="hero-nav-info">
             <div class="hero-nav-title" style="color:var(--red);opacity:0.7;">한국 지부 <span style="font-size:9px;letter-spacing:2px;color:var(--red);font-family:'Share Tech Mono',monospace;opacity:0.6;margin-left:6px;">RESTRICTED</span></div>
@@ -188,7 +188,11 @@ if(_bootDone){
           </div>
           <div style="font-size:14px;opacity:0.4;">🔒</div>
           <div class="hero-nav-arrow" style="color:var(--red);opacity:0.5;">›</div>
-        </a>
+        </div>
+        <div id="kr-pw-prompt" style="display:none;align-items:center;gap:6px;padding:8px 12px;border:1px solid #1a0000;background:#060000;margin-top:-1px;">
+          <input id="kr-pw-input" type="text" placeholder="ACCESS CODE..." style="flex:1;background:#050000;border:1px solid #2a0000;color:var(--red);font-family:'Share Tech Mono',monospace;font-size:11px;padding:8px 10px;outline:none;" autocomplete="off" onkeydown="if(event.key==='Enter'){if(this.value.trim().toUpperCase()==='OBSERVATION TERMINATE'){location.href='kr-branch.html'}else{this.value='';this.placeholder='ACCESS DENIED'}}">
+          <button onclick="if(document.getElementById('kr-pw-input').value.trim().toUpperCase()==='OBSERVATION TERMINATE'){location.href='kr-branch.html'}else{document.getElementById('kr-pw-input').value='';document.getElementById('kr-pw-input').placeholder='ACCESS DENIED'}" style="background:transparent;border:1px solid var(--red);color:var(--red);font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;padding:8px 14px;cursor:pointer;">VERIFY</button>
+        </div>
         <a class="hero-nav-item" href="database.html">
           <div class="hero-nav-icon">🗄</div>
           <div class="hero-nav-info">
