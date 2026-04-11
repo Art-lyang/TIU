@@ -89,7 +89,7 @@ function initDB(){
     const refsHtml = (d.refs||[]).map(r=>
       '<a class="db-ref" href="'+r.href+'"><span class="db-ref-arrow">→</span> '+r.text+' <span class="db-ref-page">'+r.page+'</span></a>'
     ).join('');
-    return '<div class="db-entry" data-cat="'+d.cat+'" data-idx="'+i+'" onclick="this.classList.toggle('open')">'+
+    return '<div class="db-entry" data-cat="'+d.cat+'" data-idx="'+i+'" onclick="this.classList.toggle(\'open\')">'+
       '<div class="db-head">'+
         '<div class="db-clearance '+d.cl+'"></div>'+
         '<div class="db-term">'+d.term+'</div>'+
