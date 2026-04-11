@@ -48,6 +48,8 @@
 .prof-badge.tsw{border-color:var(--blue);color:var(--blue);}
 .prof-badge.civ{border-color:var(--light);color:var(--light);}
 .prof-badge.gov{border-color:#8888ff;color:#8888ff;}
+.prof-badge.kr{border-color:var(--green);color:var(--green);}
+.prof-badge.vil{border-color:var(--red);color:var(--red);}
 
 /* profile detail — modal/popup overlay */
 .prof-detail-overlay{

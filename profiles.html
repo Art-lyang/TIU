@@ -79,6 +79,12 @@ const PROFILES = [
   {id:'sarahkim',icon:'<img src="img/ember-sarah-kim.webp" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'Sarah Kim',code:'EMBER CORPS — OPERATIONS',faction:'vil',fLabel:'HOSTILE',bg:'#1a0f05',desc:'Ember Corps 작전 담당. 한국계 미국인. 전직 간호사. Ashfall City 내부 지도 작성 핵심 인물.',threat:'중간',status:'활동 중',loc:'Ashfall 외곽',notes:'버티는 인간에서 방향을 만드는 인간으로.'},
   {id:'volkov',icon:'🐺',name:'Arkady Volkov',code:'OLD WOLF — SILENT WOLVES',faction:'vil',fLabel:'HOSTILE',bg:'#0f0f14',desc:'Silent Wolves 보스. 전직 러시아 특수부대. Silent Belt 초기 생존자. 감염체를 무기로 이용하는 약탈 집단 지휘.',threat:'위험',status:'활동 중',loc:'Silent Belt',notes:'총은 마지막에 쓴다. 환경이 죽인다.'},
   {id:'tieshan',icon:'<img src="img/rdf-liang-wei.webp" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'Xu Tieshan',code:'GATEKEEPER — RED DRAGON FORCE',faction:'gov',fLabel:'GOVERNMENT',bg:'#1a0505',desc:'Red Dragon Force 전방 격리선 지휘관. Ascension Choir와의 이중 전선 상태에서 봉쇄선 유지.',threat:'아군',status:'활동 중',loc:'Red Veil 봉쇄선',notes:'철의 산. 뚫을 수 없는 봉쇄.'},
+  // ── KR BRANCH ──
+  {id:'kr-lee',icon:'<img src="img/kr-lee-jungchul.png" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'이중철',code:'CODENAME: PILEHEAD — KR BRANCH COMMANDER',faction:'kr',fLabel:'KR BRANCH',bg:'#0a1a0a',desc:'한국 지부 초대 지휘관. 전직 육군 특수부대 장교. 프로메테우스 관계자와의 물리적 충돌로 불명예전역. Observer 승인, ORACLE 지명.',threat:'관측 대상',status:'활동 중',loc:'한국 지부',notes:'ORACLE에의 동조는 설계된 것인가, 선택인가.'},
+  {id:'kr-seo',icon:'<img src="img/kr-seo-haeun.png" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'서하은',code:'CALLSIGN: ANALYST-01 — KR BRANCH DEPUTY',faction:'kr',fLabel:'KR BRANCH',bg:'#0a1a0a',desc:'부지휘관 겸 데이터 분석. 지휘관 부임 전 3개월간 단독 기지 운영. ORACLE 데이터 스트림 불일치를 최초 감지.',threat:'관측 대상',status:'활동 중',loc:'한국 지부',notes:'전출 명령 이력 — ERROR: RECORD NOT FOUND'},
+  {id:'kr-kang',icon:'<img src="img/kr-kang-doyun.png" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'강도윤',code:'CALLSIGN: FIELD-01 — KR BRANCH FIELD AGENT',faction:'kr',fLabel:'KR BRANCH',bg:'#0a1510',desc:'현장요원 겸 전술 지휘. 전직 해병대 부사관. 지휘관의 현장 파트너. 봉쇄선 순찰 및 이변체 대응 작전 담당.',threat:'관측 대상',status:'활동 중',loc:'한국 지부',notes:'필라델피아 봉쇄가 뚫리면 여기도 끝입니다.'},
+  {id:'kr-yoon',icon:'<img src="img/kr-yoon-sejin.png" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'윤세진',code:'CALLSIGN: BIO-01 — KR BRANCH RESEARCHER',faction:'kr',fLabel:'KR BRANCH',bg:'#0a1510',desc:'연구원. 프리온 단백질 연구자. Phase 0 전환 40% 지연 화합물 발견. ORACLE 생물학 예측 데이터에 현장 관측값을 결합한 보완 분석 기법 개발.',threat:'관측 대상',status:'활동 중',loc:'한국 지부',notes:'비공식 관찰 일지 유지 중 — ORACLE 미보고.'},
+  {id:'kr-lim',icon:'<img src="img/kr-lim-jaehyuk.png" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'임재혁',code:'CALLSIGN: SYS-01 — KR BRANCH TECHNICIAN',faction:'kr',fLabel:'KR BRANCH',bg:'#0a1510',desc:'기술관. ORACLE 단말기, 통신 보안, 시스템 관리 담당. ORACLE 아키텍처 비공개 레이어(5계층 이상)를 발견.',threat:'관측 대상',status:'활동 중',loc:'한국 지부',notes:'ORACLE 아키텍처 외부에서 작동하는 프로세스를 포착. ORACLE 자신은 이 프로세스를 인식하지 못합니다.'},
 ];
 
 const FACTIONS = [
@@ -86,8 +92,9 @@ const FACTIONS = [
   {key:'obs',label:'관측자'},
   {key:'pro',label:'프로메테우스'},
   {key:'she',label:'쉐드 오더'},
-  {key:'tsw',label:'TS-Ω'},
+  {key:'kr',label:'한국 지부'},
   {key:'gov',label:'정부 · 군'},
+  {key:'vil',label:'적대 세력'},
   {key:'civ',label:'민간인'},
 ];
 
