@@ -105,6 +105,7 @@
   width:100%;max-width:680px;
   margin:40px auto;position:relative;
   animation:docUp 0.25s ease;
+  max-height:85vh;overflow-y:auto;
 }
 @keyframes docUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 .doc-close-bar{
@@ -300,7 +301,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-005',name:'Shell Walker',img:'img/spec-005-shell-walker-cctv-089.png',type:'H',typeLabel:'H-TYPE HIVE',
+    id:'SPEC-005',name:'Shell Walker',img:'img/spec-005-shell-walker-cctv-089-v2.png',type:'H',typeLabel:'H-TYPE HIVE',
     threat:'danger',threatLabel:'DANGER',icon:'🐢',
     desc:'TS-Ω 군체의 이동형 하위 개체. 등껍질에 생체 통신 기관이 발달.',
     containment:'TS-Ω 군체 통신 범위 외로 유인하면 기능이 저하된다. 분리 후 24시간 내 기능 정지. 등껍질의 통신 기관을 우선 파괴.',
@@ -510,7 +511,7 @@ function openDoc(idx){
     </div>
     <div class="doc-inner">
 
-    ${s.img ? '<div style="border-bottom:1px solid #1e1e1e;overflow:hidden;position:relative;"><img src="'+s.img+'" style="width:100%;display:block;opacity:0.85;filter:grayscale(20%);max-height:300px;object-fit:cover;"><div style="position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(to top,#0a0a0a,transparent);"></div><div style="position:absolute;bottom:8px;right:12px;font-size:8px;letter-spacing:3px;color:var(--muted);">ORACLE // VISUAL RECORD</div></div>' : ''}
+    ${s.img ? '<div style="border-bottom:1px solid #1e1e1e;overflow:hidden;position:relative;"><img src="'+s.img+'" style="width:100%;display:block;opacity:0.85;filter:grayscale(20%);object-fit:contain;"><div style="position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(to top,#0a0a0a,transparent);"></div><div style="position:absolute;bottom:8px;right:12px;font-size:8px;letter-spacing:3px;color:var(--muted);">ORACLE // VISUAL RECORD</div></div>' : ''}
 
     <div class="doc-header">
       <div class="doc-header-top">
