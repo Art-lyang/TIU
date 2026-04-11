@@ -546,42 +546,43 @@ if(_bootDone){
         <div class="pc-count">10 SPECIMENS</div>
       </div>
 
-    <!-- Protocol quick stats -->
-    <div class="proto-stats">
-      <div class="proto-stat-card">
-        <div class="proto-stat-icon" style="color:var(--red);">⚠</div>
-        <div class="proto-stat-value red">3</div>
-        <div class="proto-stat-label">ACTIVE PROTOCOLS</div>
-        <div class="proto-stat-names">DOMINION · SHEPHERD · ABSOLUTION</div>
+    </div>
+
+    <!-- Stats + Alerts panel (outside protocol-grid) -->
+    <div class="proto-dashboard">
+      <div class="proto-stats">
+        <div class="proto-stat-card">
+          <div class="proto-stat-icon" style="color:var(--red);">⚠</div>
+          <div class="proto-stat-value red">3</div>
+          <div class="proto-stat-label">ACTIVE PROTOCOLS</div>
+          <div class="proto-stat-names">DOMINION · SHEPHERD · ABSOLUTION</div>
+        </div>
+        <div class="proto-stat-card">
+          <div class="proto-stat-icon" style="color:var(--amber);">🧬</div>
+          <div class="proto-stat-value amber">47.2%</div>
+          <div class="proto-stat-label">GLOBAL CONTAMINATION</div>
+          <div class="proto-stat-names">8개 구역 활성 · 확산 진행 중</div>
+        </div>
+        <div class="proto-stat-card">
+          <div class="proto-stat-icon" style="color:var(--green);">🛡</div>
+          <div class="proto-stat-value green">1</div>
+          <div class="proto-stat-label">CONTAINED NATION</div>
+          <div class="proto-stat-names">KOREA — White Shield 가동 중</div>
+        </div>
       </div>
-      <div class="proto-stat-card">
-        <div class="proto-stat-icon" style="color:var(--amber);">🧬</div>
-        <div class="proto-stat-value amber">47.2%</div>
-        <div class="proto-stat-label">GLOBAL CONTAMINATION</div>
-        <div class="proto-stat-names">8개 구역 활성 · 확산 진행 중</div>
-      </div>
-      <div class="proto-stat-card">
-        <div class="proto-stat-icon" style="color:var(--green);">🛡</div>
-        <div class="proto-stat-value green">1</div>
-        <div class="proto-stat-label">CONTAINED NATION</div>
-        <div class="proto-stat-names">KOREA — White Shield 가동 중</div>
+      <div class="proto-alerts">
+        <div class="proto-alerts-header">
+          <span style="font-size:10px;letter-spacing:4px;color:var(--muted);">RECENT THREAT ALERTS</span>
+          <span style="font-size:9px;color:var(--red);animation:tdot 1.5s ease-in-out infinite;">● LIVE</span>
+        </div>
+        <div class="proto-alert-item"><span class="pa-time">14:22:07</span><span class="pa-level red">CRIT</span><span class="pa-text">Ashfall City — 새로운 Brood Drone 집단 감지</span></div>
+        <div class="proto-alert-item"><span class="pa-time">13:58:31</span><span class="pa-level amber">WARN</span><span class="pa-text">Silent Belt — 포자 밀도 12% 증가</span></div>
+        <div class="proto-alert-item"><span class="pa-time">13:41:09</span><span class="pa-level green">INFO</span><span class="pa-text">Korea — White Shield 일일 점검 완료</span></div>
+        <div class="proto-alert-item"><span class="pa-time">12:17:44</span><span class="pa-level red">CRIT</span><span class="pa-text">Red Veil — 봉쇄선 구간 C-7 접촉 보고</span></div>
+        <div class="proto-alert-item"><span class="pa-time">11:33:22</span><span class="pa-level amber">WARN</span><span class="pa-text">Philadelphia Zone — TS-Ω 활동 파동 감지</span></div>
       </div>
     </div>
 
-    <!-- Recent threat alerts -->
-    <div class="proto-alerts">
-      <div class="proto-alerts-header">
-        <span style="font-size:9px;letter-spacing:4px;color:var(--muted);">RECENT THREAT ALERTS</span>
-        <span style="font-size:8px;color:var(--red);animation:tdot 1.5s ease-in-out infinite;">● LIVE</span>
-      </div>
-      <div class="proto-alert-item"><span class="pa-time">14:22:07</span><span class="pa-level red">CRIT</span><span class="pa-text">Ashfall City — 새로운 Brood Drone 집단 감지</span></div>
-      <div class="proto-alert-item"><span class="pa-time">13:58:31</span><span class="pa-level amber">WARN</span><span class="pa-text">Silent Belt — 포자 밀도 12% 증가</span></div>
-      <div class="proto-alert-item"><span class="pa-time">13:41:09</span><span class="pa-level green">INFO</span><span class="pa-text">Korea — White Shield 일일 점검 완료</span></div>
-      <div class="proto-alert-item"><span class="pa-time">12:17:44</span><span class="pa-level red">CRIT</span><span class="pa-text">Red Veil — 봉쇄선 구간 C-7 접촉 보고</span></div>
-      <div class="proto-alert-item"><span class="pa-time">11:33:22</span><span class="pa-level amber">WARN</span><span class="pa-text">Philadelphia Zone — TS-Ω 활동 파동 감지</span></div>
-    </div>
-
-    </div>
   </div>
 
 </div><!-- /main -->
