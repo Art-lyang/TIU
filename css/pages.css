@@ -1710,8 +1710,13 @@
   .wzone-name{font-size:14px;}
 }
 @media(min-width:900px){
-  .world-zones{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;}
-  .wzone-visual{width:140px;min-width:140px;}
+  .world-zones{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;}
+  .wzone-card{flex-direction:column;}
+  .wzone-visual{width:100%;min-width:100%;height:140px;}
+  .wzone-visual::after{background:linear-gradient(to bottom,transparent 40%,var(--card));}
+  .wzone-body{padding:14px 16px;}
+  .wzone-name{font-size:17px;}
+  .wzone-desc{font-size:12px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 }
 
 /* Specimen redacted card overlay */
