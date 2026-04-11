@@ -300,7 +300,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-005',name:'Shell Walker',img:'img/tsw-approaching.webp',type:'H',typeLabel:'H-TYPE HIVE',
+    id:'SPEC-005',name:'Shell Walker',img:'img/spec-005-shell-walker-cctv-089.png',type:'H',typeLabel:'H-TYPE HIVE',
     threat:'danger',threatLabel:'DANGER',icon:'🐢',
     desc:'TS-Ω 군체의 이동형 하위 개체. 등껍질에 생체 통신 기관이 발달.',
     containment:'TS-Ω 군체 통신 범위 외로 유인하면 기능이 저하된다. 분리 후 24시간 내 기능 정지. 등껍질의 통신 기관을 우선 파괴.',
@@ -346,7 +346,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-009',name:'TS-Ω Core',img:'img/tsw-closeup.webp',type:'X',typeLabel:'X-TYPE ██████',
+    id:'SPEC-009',name:'TS-Ω Core',img:'img/tsw-approaching.webp',type:'X',typeLabel:'X-TYPE ██████',
     threat:'unknown',threatLabel:'██████',icon:'🌊',redacted:true,
     desc:'Sovereign Shell 본체. 해양 군체 중심 의식. The Bloop(1997, ANOMALY-007) 음원으로 확인. 물리적 크기: 관측 시마다 변동.',
     containment:'격리 불가. ██████████. Philadelphia Zone 전체가 사실상 격리 구역. ██████████.',
@@ -368,6 +368,93 @@ const SPECIMENS = [
     logs:[
       {id:'LOG-010A',text:'서울 외곽에서 White Shield가 식별. 6개월간 민간인으로 생활하며 군사 시설 정보를 수집하고 있었다. 체포 시도 시 전투 형태로 전환, 요원 2명 부상.',note:'— White Shield 기밀 보고'},
       {id:'SURVEILLANCE #IS-03',text:'[ORACLE // SURVEILLANCE — INFILTRATOR DETECTION]\n\nSubject appears human.\nThermal signature: 2.7°C below ambient.\nPupil response under directed light: VERTICAL CONTRACTION.\n\nSubject has maintained civilian cover for 6+ months.\nOccupation: Municipal administrative staff.\nAccess level: Infrastructure blueprints, utility networks.\n\nAssessment:\nInfiltrators do not attack.\nThey prepare.\nThe attack comes later, from the city itself.',note:'— ORACLE SURVEILLANCE / 서울 외곽 감시 카메라'},
+    ]
+  },
+  // ── NEW SPECIMENS (SPEC-011 ~ 017) ──
+  {
+    id:'SPEC-011',name:'Shell Talker',img:'img/spec-011-shell-talker-cctv-073.png',type:'H',typeLabel:'H-TYPE HIVE (자율)',
+    threat:'danger',threatLabel:'HIGH',icon:'🐢',
+    desc:'성인 남성 크기의 긴목 거북 변이체. TS-Ω 군체 소속이나 독립적 판단이 가능한 사냥꾼이자 현장 지휘 개체. 죽은 사람의 목소리로 말을 건다. 대답하면 안 된다.',
+    containment:'모르는 목소리에 반응하지 마라. 아는 목소리에는 더더욱 반응하지 마라. 감염 구역에서 동료 음성을 들으면 무전으로 위치 먼저 확인. 목 사정거리(1.5m) + 촉수 범위(2~3m) 밖 유지.',
+    appearance:'체장 약 1.6~1.8m. 긴목 거북 형태. 목 길이만 0.7~1m. 껍질 표면에 따개비 유사 구멍(생체 포트). 자극 시 촉수 돌출 — 길이 2~3m. 목 표면에 인간 성대 유사 진동 기관.',
+    behavior:'음성 모방으로 희생자 유인. 독립적으로 유인 대상 선택. 무장 여부, 인원수, 경계 수준 관찰 후 가장 취약한 대상 선별. 사냥 실패 시 같은 전술 반복하지 않음. Shell Talker 1체 제거 = 해당 구역 수십 체의 조직력 붕괴.',
+    logs:[
+      {id:'LOG-011A',text:'벽 너머에서 민간인 여성의 목소리가 들렸다. "도와주세요, 여기 갇혔어요." 3명이 진입했다. 1명이 돌아왔다.',note:'— Ember Corps 야간 수색'},
+      {id:'LOG-011B',text:'같은 건물에서 두 번째 시도. 이번에는 다른 방향에서, 다른 목소리로 유인했다. 우리가 첫 번째 시도를 무시한 것을 — 기억하고 있었다.',note:'— Ember Corps 후속 보고'},
+      {id:'LOG-011C',text:'Shell Talker를 제거한 직후, 주변 반경 300m 내 Brood Drone 약 30체가 동시에 정지했다. 5초간. 이후 방향 없이 흩어졌다.',note:'— White Shield 교전 후 관측'},
+    ]
+  },
+  {
+    id:'SPEC-012',name:'Blood Pit',img:'img/spec-012-blood-pit-cctv-089.png',type:'M',typeLabel:'M-TYPE MUTATION',
+    threat:'danger',threatLabel:'DANGER',icon:'🩸',
+    desc:'EV-Σ 변이에 실패한 개체들이 녹아내려 핏빛 웅덩이처럼 바닥에 고인 상태. 살아있는 함정. 밟으면 잡힌다. 빠지면 나올 수 없다.',
+    containment:'저지대 진입 시 바닥 확인. 돌을 던져 반응 확인 — 일반 액체는 튀지만 Blood Pit은 돌을 삼킨다. 고착 시 겔 절단이 가장 빠름. 30분 내 이탈 실패 시 Phase 0 감염 추정.',
+    appearance:'짙은 적갈색~검붉은색. 표면 약한 광택. 크기 0.5~10m². 깊이 5~40cm. 간헐적 기포 발생. 부패한 금속 냄새.',
+    behavior:'자체 이동 없음. 유기체 접촉 시 점성 급변 — 0.3초 내 고착. 발버둥칠수록 접촉 면적 증가. Shell Talker가 의도적으로 몰이 사냥에 활용.',
+    logs:[
+      {id:'LOG-012A',text:'지하실에 물이 고여 있는 줄 알았다. 1번 대원이 진입하자마자 발이 안 빠졌다. 무릎까지 3분. 장비칼로 겔을 잘라 겨우 이탈. 부츠는 포기했다.',note:'— Ember Corps 건물 수색'},
+      {id:'LOG-012B',text:'Shell Talker의 목소리를 따라간 2명이 계단 하부에서 Blood Pit에 고착. Brood Drone 8체가 접근. 설계된 사냥이었다.',note:'— ARES Division 교전 보고'},
+    ]
+  },
+  {
+    id:'SPEC-013',name:'결착체 (The Bound)',img:'img/spec-013-bound-cctv-076.png',type:'M',typeLabel:'M-TYPE MUTATION',
+    threat:'danger',threatLabel:'DANGER',icon:'👥',
+    desc:'EV-Σ Phase 1→2 전환기 감염자 2명 이상이 좁은 공간에 장시간 갇혔을 때 발생하는 융합 변이. 의식이 부분적으로 공유된다. 한쪽 입은 한국어로, 다른 쪽 입은 다른 언어로 같은 말을 동시에 한다.',
+    containment:'폐쇄 공간 진입 전 음향·열화상 정찰. 조우 시 고온 화염. 발화 내용에 반응 금지. 회수반 정신 케어 의무.',
+    appearance:'2~4명의 인간이 비대칭 융합. 머리는 각자 유지. 어깨·흉부·복부에서 합착. 융합 부위 회갈색 경질화.',
+    behavior:'이중 발화 — 같은 의미, 다른 언어. 부분 의식 공유로 상호 모순된 행동. 고온 반응 시 각 숙주가 분리를 시도하며 자해.',
+    logs:[
+      {id:'LOG-013A',text:'지하 보일러실 문을 열었을 때, 머리가 셋이었다. 가운데가 한국어로 "도와주세요", 동시에 왼쪽이 러시아어로 같은 말을 했다. 오른쪽은 울고 있었다. 비명은 세 명 분이었다.',note:'— ARES Division 봉쇄 구역 정찰'},
+    ]
+  },
+  {
+    id:'SPEC-014',name:'자이언트 (Giant)',img:'img/spec-014-giant.png',type:'M',typeLabel:'M-TYPE MUTATION',
+    threat:'danger',threatLabel:'DANGER',icon:'🦎',
+    desc:'EV-Σ 감염 후 오직 거대화 한 방향으로만 진화한 테구 도마뱀. 체장 5~7m. 원종 형태를 거의 완전히 유지한 채 크기만 증대.',
+    containment:'고화력 무기 또는 고온 소각. 정글 환경 시 음향·진동 탐지 권장. 변이 흔적이 적어 야생 동물로 오인 주의.',
+    appearance:'일반 테구(약 1.2m)의 5배 이상. 비늘·체색·체형 원종 유지. 체중 1.5~2톤 추정. 단순 스케일 업.',
+    behavior:'영역 방어 본능 강함. 매복 후 단발 돌격. 저온 환경 활동성 급감. 다른 변이체와 협응 없음.',
+    logs:[
+      {id:'LOG-014A',text:'처음에는 쓰러진 나무인 줄 알았다. 그것이 머리를 들었을 때, 분대 전체가 동시에 후퇴를 결정했다.',note:'— 비공식 정찰 보고'},
+      {id:'LOG-014B',text:'변이 흔적을 찾으려 했으나 없었다. 그냥 큰 도마뱀이다. 너무 크다는 것 외에는 정상이다. 그게 가장 무서운 부분이다.',note:'— Permafrost Unit 표본 분석'},
+    ]
+  },
+  {
+    id:'SPEC-015',name:'브레인 시커 (Brain Seeker)',img:'img/spec-015-brain-seeker.png',type:'H',typeLabel:'H-TYPE (완전 이탈)',
+    threat:'critical',threatLabel:'HIGH / CRITICAL',icon:'💀',
+    desc:'바다거북 형상의 두개골에 등껍질이 없는 이탈 거북 변이. 어두운 수공간에 매복하여 단독 사냥. 희생자의 두개골을 부수고 뇌를 직접 섭취. 섭취량에 비례하여 지능 상승.',
+    containment:'단독 진입 금지. 물 표면 두개골 형상 확인 시 즉시 후퇴. 등껍질 없어 척추·두개골 직접 노출 — 화력 집중. NAMED SPECIMEN은 ORACLE 사전 브리핑 후 다중 분대 접근.',
+    appearance:'체고 약 2.0~2.4m. 바다거북형 두개골. 부리형 턱. 등껍질 완전 부재 — 노출된 척추 위 축축한 살가죽. 갈고리 손톱 15~20cm. 악력 800kg+. 체표에 인간 얼굴가죽.',
+    behavior:'수공간 매복 사냥. 뇌 조직만 선택적 포식. 누적 포식 10회 이상: 동선 학습. 30회 이상: 도구·함정 활용, 단순 발화 시도. 상한 미확인. NAMED SPECIMEN: 50회 이상 포식 개체.',
+    logs:[
+      {id:'LOG-015A',text:'하수구 입구에서 부유물을 확인하던 1번 대원이 끌려 들어갔다. 비명도 없었다. 이튿날 시신 회수 — 두개골만 비어 있었다.',note:'— ARES Division 도시 정찰'},
+      {id:'LOG-015B',text:'이 개체는 우리 분대의 순찰 시간을 알고 있었다. 동일 지점에서 3회 매복 패턴 변경. 짐승이 할 수 있는 일이 아니다.',note:'— White Shield 도시 작전'},
+      {id:'LOG-015C',text:'그것이 머리를 돌렸을 때, 그 얼굴은 — 3주 전 실종된 박 상사의 얼굴이었다. 가죽이었다. 우리는 0.5초간 망설였고, 그 시간이면 충분했다.',note:'— ARES Division 손실 보고'},
+    ]
+  },
+  {
+    id:'SPEC-016',name:'Beacon Swarm',img:'img/spec-016-beacon-swarm.png',type:'S',typeLabel:'S-TYPE SPREADER',
+    threat:'caution',threatLabel:'CAUTION / CRITICAL',icon:'🪼',
+    desc:'해파리 형태 변이체. 격자 발광 기관이 TS-Ω 군체 신호를 수신·증폭·재전송하는 생물학적 신호 중계기. 그 자체로는 약하나, 존재만으로 수역 내 변이체 생태계의 행동이 근본적으로 바뀐다.',
+    containment:'물리적 파괴 용이. 격자 발광 기관 파손 시 중계 기능 상실. 군집 규모 크면 해역 봉쇄가 효과적. 맨손 접촉 절대 금지 — 누적 마비독.',
+    appearance:'돔 직경 0.6~1.2m. 격자형 청백색 광점. 촉수 다수 1.5~2.5m. 투명 회흑색. 자체 이동 미약 — 조류 운반.',
+    behavior:'신호 증폭 전문. 군집 시 범위 기하급수적 확장. 촉수 약한 신경독 — 단일은 저림, 다수 접촉 시 누적 마비로 익사. Beacon Swarm 영향권 내 Shell Render가 군체 모드로 강제 전환.',
+    logs:[
+      {id:'LOG-016A',text:'해역 진입 직후, 단독으로 사냥하던 Shell Render들이 일제히 방향을 맞췄다. 물속 격자등이 깜빡이는 리듬에 맞춰. 후퇴했다.',note:'— 연안 작전 보고'},
+      {id:'LOG-016B',text:'격자 발광 기관을 표적 사격으로 파괴하자 주변 Shell Render 3체가 즉시 조율을 멈추고 흩어졌다. 이것이 스위치다.',note:'— ARES Division 연안 교전'},
+    ]
+  },
+  {
+    id:'SPEC-017',name:'Shell Render',img:'img/spec-017-shell-render.png',type:'H',typeLabel:'H-TYPE (조건부)',
+    threat:'danger',threatLabel:'HIGH / CRITICAL',icon:'🦈',
+    desc:'수생 거북 변이체. 비정상적으로 확장된 턱과 다중 송곳니. 평시 독립 사냥, Beacon Swarm 근처에서 수 초 만에 군체 모드로 전환. 조건부 이탈의 최초 관측 사례.',
+    containment:'수역 진입 전 Beacon Swarm 존재 여부 사전 정찰. 신호원 제거 후 독립 모드에서 개별 교전. 턱 관절 우선 표적. 군체 모드 중 단일 제거 무의미 — 신호원을 끊어야.',
+    appearance:'체장 2.2~2.8m. 턱 과도 확장 — 다중 송곳니 열. 등껍질 거칠고 균열. 군체 통신 기관 존재하나 활성도 저하. 전지느러미 보행 가능 구조. 흑녹색.',
+    behavior:'독립 모드: 단독 수중 매복 사냥. 영역 방어. 군체 모드: Beacon Swarm 신호 감지 시 발광 문양 활성, 주변 개체와 포위·몰이 전술. 신호 소멸 시 수 초 내 독립 복귀.',
+    logs:[
+      {id:'LOG-017A',text:'단독 개체 관측. 매복 후 단발 교합으로 1번 대원 대퇴골 파쇄. 이것은 짐승이다.',note:'— 초기 해안 정찰'},
+      {id:'LOG-017B',text:'Beacon Swarm 유입 후 동일 개체가 Shell Render 4체와 포위망 형성. 같은 개체였다. 다른 존재처럼 움직였다.',note:'— ARES Division 연안 작전'},
+      {id:'LOG-017C',text:'표식군 제거 직후 포위망이 풀렸다. 조금 전까지 한 팀이었던 것들이 다시 남남이 됐다. 5초 안에.',note:'— 동일 작전 후속 관측'},
     ]
   },
 ];
