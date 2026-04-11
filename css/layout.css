@@ -73,7 +73,7 @@ body.has-gnav{padding-top:88px;padding-bottom:28px;}
   .has-gnav .page-wrap{padding-top:8px;}
 
   /* Index — zone cards */
-  .world-zones{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .world-zones{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;}
   .wzone-card{display:flex;flex-direction:row;}
   .wzone-visual{width:180px;min-width:180px;height:120px;}
   .wzone-body{flex:1;padding:14px 18px;}

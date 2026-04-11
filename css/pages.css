@@ -1710,7 +1710,7 @@
   .wzone-name{font-size:14px;}
 }
 @media(min-width:900px){
-  .world-zones{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+  .world-zones{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;}
   .wzone-visual{width:140px;min-width:140px;}
 }
 
