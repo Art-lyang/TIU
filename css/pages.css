@@ -882,7 +882,7 @@
   .hero-glow-red{width:50%;height:60%;left:-5%;bottom:-10%;}
   .hero-glow-green{width:40%;height:50%;right:0;top:-5%;}
   #main{max-width:1200px;margin:0 auto;}
-  .protocol-grid{grid-template-columns:repeat(4,1fr);}
+  .protocol-grid{grid-template-columns:repeat(3,1fr);}
   .entity-grid{grid-template-columns:repeat(4,1fr);}
   .profile-grid{grid-template-columns:repeat(3,1fr);}
   .map-wrap{aspect-ratio:2/1;}
