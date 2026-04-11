@@ -1642,8 +1642,12 @@
 .pa-level.green{color:var(--green);}
 .pa-text{flex:1;font-family:'Noto Sans KR',sans-serif;font-weight:300;}
 @media(max-width:600px){
-  .proto-stats{grid-template-columns:1fr;}
+  .proto-stats{grid-template-columns:1fr 1fr 1fr;gap:2px;}
+  .proto-stat-card{padding:10px 8px;align-items:center;text-align:center;}
+  .proto-stat-icon{font-size:14px;}
   .proto-stat-value{font-size:22px;}
+  .proto-stat-label{font-size:7px;letter-spacing:2px;}
+  .proto-stat-names{font-size:9px;line-height:1.4;}
 }
 
 
