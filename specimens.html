@@ -249,7 +249,7 @@
 <script>
 const SPECIMENS = [
   {
-    id:'SPEC-001',name:'감염체 마네킹',img:'img/mannequin-cluster.webp',type:'M',typeLabel:'M-TYPE MUTATION',
+    id:'SPEC-001',name:'감염체 마네킹 (Mannequin)',img:'img/mannequin-cluster.webp',type:'M',typeLabel:'M-TYPE MUTATION',
     threat:'caution',threatLabel:'CAUTION',icon:'🧍',
     desc:'EV-Σ Phase 1 감염체. 행동 정지 상태. 외관상 마네킹과 구분 불가. 자극 시 즉각 공격 전환.',
     containment:'최소 안전 거리: 3m. 열감지 스캐너로 생체 반응 확인 필수. 자극 금지. 공격 전환 소요 시간: 0.3초 미만.',
@@ -262,7 +262,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-002',name:'경질화 개체',img:'img/infection-transition.webp',type:'M',typeLabel:'M-TYPE MUTATION',
+    id:'SPEC-002',name:'경질화 개체 (Calcified)',img:'img/infection-transition.webp',type:'M',typeLabel:'M-TYPE MUTATION',
     threat:'danger',threatLabel:'DANGER',icon:'🪨',
     desc:'EV-Σ Phase 2 감염체. 전신 경질화. 통상 화기 무효. 이동 속도 저하, 정지 기록 없음.',
     containment:'물리 공격 무효. 대응: 도주 우선. 이동 속도가 느리므로 거리 확보 가능. 제거 시 고온 소각 또는 산성 용제.',
@@ -274,7 +274,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-003',name:'Brood Drone',img:'img/brood-drone-closeup.webp',type:'H',typeLabel:'H-TYPE HIVE',
+    id:'SPEC-003',name:'브루드 드론 (Brood Drone)',img:'img/brood-drone-closeup.webp',type:'H',typeLabel:'H-TYPE HIVE',
     threat:'danger',threatLabel:'DANGER',icon:'🐛',
     desc:'군체 하위 개체. 단독 위협도: 낮음. 집단 출현 시 위협도: 상. 독립 의지 없음.',
     containment:'단독 개체는 위협이 낮으나 집단 출현 시 즉시 후퇴. 군체 통신 교란 장비가 효과적이다.',
@@ -286,7 +286,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-004',name:'Seed Spreader',img:'img/seed-spreader.webp',type:'S',typeLabel:'S-TYPE SPREADER',
+    id:'SPEC-004',name:'시드 스프레더 (Seed Spreader)',img:'img/seed-spreader.webp',type:'S',typeLabel:'S-TYPE SPREADER',
     threat:'critical',threatLabel:'CRITICAL',icon:'🌿',
     desc:'고정형 확산 개체. 토양 고착 후 포자 광역 방출. 숙주 행동 변형 메커니즘: Cordyceps(동충하초)와 동일 원리. 영향 범위: 수km.',
     containment:'반경 500m 내 접근 금지. 포자 흡입 시 즉시 감염 — 1994년 오크빌 사건(ANOMALY-011)이 초기 대기 확산 테스트였을 가능성. 제거 시 반드시 소각 후 토양 오염 처리를 병행해야 한다.',
@@ -301,7 +301,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-005',name:'Shell Walker',img:'img/spec-005-shell-walker-cctv-089.png',type:'H',typeLabel:'H-TYPE HIVE',
+    id:'SPEC-005',name:'쉘 워커 (Shell Walker)',img:'img/spec-005-shell-walker-cctv-089.png',type:'H',typeLabel:'H-TYPE HIVE',
     threat:'danger',threatLabel:'DANGER',icon:'🐢',
     desc:'TS-Ω 군체의 이동형 하위 개체. 등껍질에 생체 통신 기관이 발달.',
     containment:'TS-Ω 군체 통신 범위 외로 유인하면 기능이 저하된다. 분리 후 24시간 내 기능 정지. 등껍질의 통신 기관을 우선 파괴.',
@@ -312,7 +312,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-006',name:'EXUVIA',img:'img/exuvia-shift.webp',type:'X',typeLabel:'X-TYPE ██████',
+    id:'SPEC-006',name:'엑수비아 (EXUVIA)',img:'img/exuvia-shift.webp',type:'X',typeLabel:'X-TYPE ██████',
     threat:'unknown',threatLabel:'██████',icon:'🦎',redacted:true,
     desc:'쉐드 오더 지도자. 탈피 기반 진화 극한체. 관측 시마다 형태 변동. 고정 프로파일 작성 불가.',
     containment:'격리 불가. ██████████. 접촉 시 ██████████. 발견 즉시 후퇴하고 본부에 보고.',
@@ -323,7 +323,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-007',name:'Phase 3 터미널',img:'img/integration-node.webp',type:'M',typeLabel:'M-TYPE MUTATION',
+    id:'SPEC-007',name:'Phase 3 터미널 (Terminal)',img:'img/integration-node.webp',type:'M',typeLabel:'M-TYPE MUTATION',
     threat:'critical',threatLabel:'CRITICAL',icon:'💀',
     desc:'EV-Σ Phase 3 최종 변이체. 원래 종 흔적 소실. 세포 특성: HeLa 세포주형 무한 증식. 감염 원리: 프리온형 단백질 자기 변형. 비가역.',
     containment:'원거리 소각만 허용. 300m 이내 접근 금지. 생포 시도 절대 금지.',
@@ -335,7 +335,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-008',name:'Spore Phantom',img:'img/spore-phantom-light.webp',type:'S',typeLabel:'S-TYPE SPREADER',
+    id:'SPEC-008',name:'스포어 팬텀 (Spore Phantom)',img:'img/spore-phantom-light.webp',type:'S',typeLabel:'S-TYPE SPREADER',
     threat:'caution',threatLabel:'CAUTION',icon:'👻',
     desc:'포자 밀집 지역 관측 형체. 실체 불명. 포자 입자 집합체 추정. 1994년 오크빌 블롭스(ANOMALY-011)와의 관련성 검토 중.',
     containment:'포자 방호 장비 필수. 물리적 격리 불가 — 형체가 없음. 포자 밀도를 낮추는 것이 유일한 대응.',
@@ -347,7 +347,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-009',name:'TS-Ω Core',img:'img/tsw-approaching.webp',type:'X',typeLabel:'X-TYPE ██████',
+    id:'SPEC-009',name:'TS-Ω 코어 (TS-Ω Core)',img:'img/tsw-approaching.webp',type:'X',typeLabel:'X-TYPE ██████',
     threat:'unknown',threatLabel:'██████',icon:'🌊',redacted:true,
     desc:'Sovereign Shell 본체. 해양 군체 중심 의식. The Bloop(1997, ANOMALY-007) 음원으로 확인. 물리적 크기: 관측 시마다 변동.',
     containment:'격리 불가. ██████████. Philadelphia Zone 전체가 사실상 격리 구역. ██████████.',
@@ -360,7 +360,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-010',name:'Infiltrator Scale',img:'img/infiltrator-scale.png',type:'M',typeLabel:'M-TYPE MUTATION',
+    id:'SPEC-010',name:'인필트레이터 스케일 (Infiltrator Scale)',img:'img/infiltrator-scale.png',type:'M',typeLabel:'M-TYPE MUTATION',
     threat:'danger',threatLabel:'DANGER',icon:'🐍',
     desc:'쉐드 오더 침투 전담 변이체. 렙틸리언이 인간으로 위장한 형태. 인간과 외형이 거의 유사하며, 동공이 특정 광원에서 수직으로 수축하는 경우가 있음. 민간인, 공무원, 고위 국가 인사 등 다양한 신분으로 활동.',
     containment:'열 감지 및 DNA 검사로만 식별 가능. 의심 대상은 격리 후 72시간 관찰. 정체 확인 시 즉시 무력화. 체온이 주변보다 2~3℃ 낮은 점이 유일한 외형 식별 단서.',
@@ -373,7 +373,7 @@ const SPECIMENS = [
   },
   // ── NEW SPECIMENS (SPEC-011 ~ 017) ──
   {
-    id:'SPEC-011',name:'Shell Talker',img:'img/spec-011-shell-talker-cctv-073.png',type:'H',typeLabel:'H-TYPE HIVE (자율)',
+    id:'SPEC-011',name:'쉘 토커 (Shell Talker)',img:'img/spec-011-shell-talker-cctv-073.png',type:'H',typeLabel:'H-TYPE HIVE (자율)',
     threat:'danger',threatLabel:'HIGH',icon:'🐢',
     desc:'성인 남성 크기의 긴목 거북 변이체. TS-Ω 군체 소속이나 독립적 판단이 가능한 사냥꾼이자 현장 지휘 개체. 죽은 사람의 목소리로 말을 건다. 대답하면 안 된다.',
     containment:'모르는 목소리에 반응하지 마라. 아는 목소리에는 더더욱 반응하지 마라. 감염 구역에서 동료 음성을 들으면 무전으로 위치 먼저 확인. 목 사정거리(1.5m) + 촉수 범위(2~3m) 밖 유지.',
@@ -386,7 +386,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-012',name:'Blood Pit',img:'img/spec-012-blood-pit-cctv-089.png',type:'M',typeLabel:'M-TYPE MUTATION',
+    id:'SPEC-012',name:'블러드 핏 (Blood Pit)',img:'img/spec-012-blood-pit-cctv-089.png',type:'M',typeLabel:'M-TYPE MUTATION',
     threat:'danger',threatLabel:'DANGER',icon:'🩸',
     desc:'EV-Σ 변이에 실패한 개체들이 녹아내려 핏빛 웅덩이처럼 바닥에 고인 상태. 살아있는 함정. 밟으면 잡힌다. 빠지면 나올 수 없다.',
     containment:'저지대 진입 시 바닥 확인. 돌을 던져 반응 확인 — 일반 액체는 튀지만 Blood Pit은 돌을 삼킨다. 고착 시 겔 절단이 가장 빠름. 30분 내 이탈 실패 시 Phase 0 감염 추정.',
@@ -434,7 +434,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-016',name:'Beacon Swarm',img:'img/spec-016-beacon-swarm.png',type:'S',typeLabel:'S-TYPE SPREADER',
+    id:'SPEC-016',name:'비컨 스웜 (Beacon Swarm)',img:'img/spec-016-beacon-swarm.png',type:'S',typeLabel:'S-TYPE SPREADER',
     threat:'caution',threatLabel:'CAUTION / CRITICAL',icon:'🪼',
     desc:'해파리 형태 변이체. 격자 발광 기관이 TS-Ω 군체 신호를 수신·증폭·재전송하는 생물학적 신호 중계기. 그 자체로는 약하나, 존재만으로 수역 내 변이체 생태계의 행동이 근본적으로 바뀐다.',
     containment:'물리적 파괴 용이. 격자 발광 기관 파손 시 중계 기능 상실. 군집 규모 크면 해역 봉쇄가 효과적. 맨손 접촉 절대 금지 — 누적 마비독.',
@@ -446,7 +446,7 @@ const SPECIMENS = [
     ]
   },
   {
-    id:'SPEC-017',name:'Shell Render',img:'img/spec-017-shell-render.png',type:'H',typeLabel:'H-TYPE (조건부)',
+    id:'SPEC-017',name:'쉘 렌더 (Shell Render)',img:'img/spec-017-shell-render.png',type:'H',typeLabel:'H-TYPE (조건부)',
     threat:'danger',threatLabel:'HIGH / CRITICAL',icon:'🦈',
     desc:'수생 거북 변이체. 비정상적으로 확장된 턱과 다중 송곳니. 평시 독립 사냥, Beacon Swarm 근처에서 수 초 만에 군체 모드로 전환. 조건부 이탈의 최초 관측 사례.',
     containment:'수역 진입 전 Beacon Swarm 존재 여부 사전 정찰. 신호원 제거 후 독립 모드에서 개별 교전. 턱 관절 우선 표적. 군체 모드 중 단일 제거 무의미 — 신호원을 끊어야.',
