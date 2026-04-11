@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORACLE // REGIONAL DATABASE</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base-core.css">
+<link rel="stylesheet" href="css/base-modal.css">
+<link rel="stylesheet" href="css/pages-core.css">
+<link rel="stylesheet" href="css/pages-map.css">
+<link rel="stylesheet" href="css/pages-hero-fx.css">
+<link rel="stylesheet" href="css/pages-profiles.css">
+<link rel="stylesheet" href="css/pages-timeline.css">
+<link rel="stylesheet" href="css/pages-world.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/regions.css">
+</head>
+<body>
+
+<div id="topbar">
+  <div class="topbar-logo">
+    <div class="topbar-logo-box" style="clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%);">T</div>
+    <div class="topbar-name">TURTLE ISLE<small>UNIVERSE</small></div>
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="topbar-status"><div class="t-dot"></div>SYSTEM ACTIVE</div>
+</div>
+<div id="ticker"><div class="tick-label">ORACLE</div><div class="tick-content"><span class="tick-inner" id="ticker-inner"></span></div></div>
+
+<div class="rd-wrap">
+  <div class="rd-hero">
+    <div class="rd-hero-eyebrow">ORACLE // REGIONAL DATABASE</div>
+    <div class="rd-hero-title">REGIONAL <span>DATABASE</span></div>
+    <div class="rd-hero-desc">ORACLE이 관측 중인 주요 구역의 상태 보고서. 각 구역의 위협 등급, 오염 수준, 군사 대응 현황을 포함한다.</div>
+  </div>
+
+  <div class="region-grid">
+    <a class="region-card" href="region-philadelphia.html">
+      <img class="region-card-img" src="img/philadelphia-drone.webp" alt="">
+      <div class="region-card-body">
+        <div class="region-card-zone zone-omega">Z-Ω ANOMALOUS</div>
+        <div class="region-card-name">Philadelphia Zone</div>
+        <div class="region-card-desc">최초 오염 해역. TS-Ω가 잠든 심해. 접근하는 모든 것은 군체에 흡수된다.</div>
+      </div>
+    </a>
+    <a class="region-card" href="region-ashfall.html">
+      <img class="region-card-img" src="img/ashfall-city.webp" alt="">
+      <div class="region-card-body">
+        <div class="region-card-zone zone-collapse">Z-3 COLLAPSE</div>
+        <div class="region-card-name">Ashfall City</div>
+        <div class="region-card-desc">쉐드 오더의 실패한 군체 도시. 건물이 살아 숨쉬는 생체 실험장.</div>
+      </div>
+    </a>
+    <a class="region-card" href="region-silent-belt.html">
+      <img class="region-card-img" src="img/silent-belt.webp" alt="">
+      <div class="region-card-body">
+        <div class="region-card-zone zone-danger">Z-2 DANGER</div>
+        <div class="region-card-name">Silent Belt</div>
+        <div class="region-card-desc">포자가 만든 침묵의 대륙. 러시아 전역의 소리를 삼킨 오염 지대.</div>
+      </div>
+    </a>
+    <a class="region-card" href="region-red-veil.html">
+      <img class="region-card-img" src="img/red-veil.webp" alt="">
+      <div class="region-card-body">
+        <div class="region-card-zone zone-danger">Z-2 DANGER</div>
+        <div class="region-card-name">Red Veil</div>
+        <div class="region-card-desc">중국·북한 밀집권 대규모 감염 지대. 군사 봉쇄 중, 내부 통제 불가.</div>
+      </div>
+    </a>
+    <a class="region-card" href="region-korea.html" style="border-color:rgba(0,229,160,0.25);">
+      <img class="region-card-img" src="img/korea-barrier.webp" alt="">
+      <div class="region-card-body">
+        <div class="region-card-zone zone-controlled">K-01 CONTAINED</div>
+        <div class="region-card-name">한국 — 방벽 구역</div>
+        <div class="region-card-desc">유일한 확산 차단 성공 국가. White Shield와 프로메테우스의 비공식 협력.</div>
+      </div>
+    </a>
+    <a class="region-card" style="pointer-events:none;opacity:0.5;">
+      <div class="region-card-body" style="padding:40px 16px;text-align:center;">
+        <div style="font-size:24px;opacity:0.4;margin-bottom:8px;">🔒</div>
+        <div class="region-card-zone zone-classified">CLASSIFIED</div>
+        <div class="region-card-name" style="font-size:16px;">ADDITIONAL ZONES</div>
+        <div class="region-card-desc">열람 등급 부족 — 접근이 거부되었습니다</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<script src="js/common-core.js"></script>
+<script src="js/hero-canvas.js"></script>
+
+<!-- GLOBAL NAV -->
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a class="gnav-item" href="index.html" data-page="index"><div class="gnav-icon">🏠</div><div class="gnav-label">MAIN</div></a>
+    <a class="gnav-item" href="factions.html" data-page="factions"><div class="gnav-icon">⚡</div><div class="gnav-label">세력</div></a>
+    <a class="gnav-item" href="protocols.html" data-page="protocols"><div class="gnav-icon">🧬</div><div class="gnav-label">위협</div></a>
+    <a class="gnav-item" href="records.html" data-page="records"><div class="gnav-icon">📡</div><div class="gnav-label">기록</div></a>
+    <a class="gnav-item" href="incidents.html" data-page="incidents"><div class="gnav-icon">📋</div><div class="gnav-label">사건</div></a>
+    <a class="gnav-item" href="specimens.html" data-page="specimens"><div class="gnav-icon">🧪</div><div class="gnav-label">개체</div></a>
+    <a class="gnav-item" href="profiles.html" data-page="profiles"><div class="gnav-icon">👤</div><div class="gnav-label">인물</div></a>
+    <a class="gnav-item" href="regions.html" data-page="regions"><div class="gnav-icon">🌐</div><div class="gnav-label">지역</div></a>
+    <a class="gnav-item" href="database.html" data-page="database"><div class="gnav-icon">🗄</div><div class="gnav-label">DB</div></a>
+  </div>
+</nav>
+<script>
+(function(){
+  const page = location.pathname.split('/').pop().replace('.html','') || 'index';
+  document.querySelectorAll('.gnav-item').forEach(el=>{
+    if(el.dataset.page === page) el.classList.add('active');
+  });
+  document.body.classList.add('has-gnav');
+})();
+</script>
+</body>
+</html>

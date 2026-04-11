@@ -131,59 +131,75 @@
   .officer-grid{grid-template-columns:1fr 1fr 1fr;}
   .officer-card--commander{grid-column:1/-1;}
 }
-</style>
-<style>@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}</style>
 
-<!-- GLOBAL NAV -->
-<nav class="gnav">
-  <div class="gnav-inner">
-    <a class="gnav-item" href="index.html" data-page="index"><div class="gnav-icon">🏠</div><div class="gnav-label">MAIN</div></a>
-    <a class="gnav-item" href="factions.html" data-page="factions"><div class="gnav-icon">⚡</div><div class="gnav-label">세력</div></a>
-    <a class="gnav-item" href="protocols.html" data-page="protocols"><div class="gnav-icon">🧬</div><div class="gnav-label">위협</div></a>
-    <a class="gnav-item" href="records.html" data-page="records"><div class="gnav-icon">📡</div><div class="gnav-label">기록</div></a>
-    <a class="gnav-item" href="incidents.html" data-page="incidents"><div class="gnav-icon">📋</div><div class="gnav-label">사건</div></a>
-    <a class="gnav-item" href="specimens.html" data-page="specimens"><div class="gnav-icon">🧪</div><div class="gnav-label">개체</div></a>
-    <a class="gnav-item" href="profiles.html" data-page="profiles"><div class="gnav-icon">👤</div><div class="gnav-label">인물</div></a>
-    <a class="gnav-item" href="database.html" data-page="database"><div class="gnav-icon">🗄</div><div class="gnav-label">DB</div></a>
-  </div>
-</nav>
+/* status banner */
+.kr-status-banner{
+  padding:16px 20px;margin:0 20px 20px;
+  border:1px solid rgba(255,59,59,0.3);background:rgba(255,59,59,0.04);
+  display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+}
+.kr-status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.kr-status-dot--red{background:var(--red);box-shadow:0 0 6px rgba(255,59,59,0.5);}
+.kr-status-dot--amber{background:var(--amber);box-shadow:0 0 6px rgba(255,199,68,0.5);}
+.kr-status-dot--green{background:var(--green);box-shadow:0 0 6px rgba(0,229,160,0.5);}
+.kr-status-label{font-size:10px;letter-spacing:3px;color:var(--red);font-family:'Share Tech Mono',monospace;}
+.kr-status-text{font-size:12px;color:#998;font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;flex:1;min-width:200px;}
 
-<script>
-(function(){
-  const page = location.pathname.split('/').pop().replace('.html','') || 'index';
-  document.querySelectorAll('.gnav-item').forEach(el=>{
-    if(el.dataset.page === page) el.classList.add('active');
-  });
-  document.body.classList.add('has-gnav');
-})();
-// kr-nav scroll spy
-(function(){
-  const nav = document.getElementById('kr-nav');
-  if(!nav) return;
-  const items = nav.querySelectorAll('.kr-nav-item[href^="#"]');
-  const sections = [];
-  items.forEach(item=>{
-    const id = item.getAttribute('href').replace('#','');
-    const el = document.getElementById(id);
-    if(el) sections.push({el, item});
-  });
-  function update(){
-    const scrollY = window.scrollY + 160;
-    let active = sections[0];
-    sections.forEach(s=>{if(s.el.offsetTop<=scrollY) active=s;});
-    items.forEach(i=>i.classList.remove('active'));
-    if(active) active.item.classList.add('active');
-  }
-  window.addEventListener('scroll', update, {passive:true});
-  items.forEach(item=>{
-    if(!item.getAttribute('href').startsWith('#')) return;
-    item.addEventListener('click',(e)=>{
-      e.preventDefault();
-      const id = item.getAttribute('href').replace('#','');
-      const el = document.getElementById(id);
-      if(el) window.scrollTo({top:el.offsetTop - 130, behavior:'smooth'});
-    });
-  });
-})();
-</script>
-</body>
+/* overview section */
+.kr-overview-grid{display:grid;grid-template-columns:1fr;gap:4px;}
+.kr-overview-card{background:var(--card);border:1px solid #1e1e1e;padding:16px;}
+.kr-overview-card dt{font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:4px;}
+.kr-overview-card dd{font-size:13px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
+@media(min-width:600px){.kr-overview-grid{grid-template-columns:1fr 1fr;}}
+@media(min-width:900px){.kr-overview-grid{grid-template-columns:1fr 1fr 1fr;}}
+
+/* timeline section */
+.kr-timeline{position:relative;padding-left:24px;}
+.kr-timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--green),rgba(255,59,59,0.4));}
+.kr-tl-item{position:relative;margin-bottom:20px;padding:16px;background:var(--card);border:1px solid #1e1e1e;}
+.kr-tl-item::before{content:'';position:absolute;left:-20px;top:20px;width:8px;height:8px;border-radius:50%;border:2px solid var(--green);background:#0a0a0a;}
+.kr-tl-item--crisis::before{border-color:var(--red);}
+.kr-tl-item--end::before{border-color:var(--red);background:var(--red);}
+.kr-tl-act{font-size:9px;letter-spacing:3px;color:var(--muted);margin-bottom:4px;}
+.kr-tl-day{font-size:10px;color:var(--green);font-family:'Share Tech Mono',monospace;margin-bottom:6px;}
+.kr-tl-day--red{color:var(--red);}
+.kr-tl-title{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--white);letter-spacing:2px;margin-bottom:6px;}
+.kr-tl-body{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.9;}
+.kr-tl-body ul{margin:6px 0;padding-left:16px;}
+.kr-tl-body li{margin-bottom:4px;}
+.kr-tl-epilogue{font-size:11px;color:#553333;font-style:italic;margin-top:6px;padding-top:6px;border-top:1px solid #1a0808;}
+
+/* protocol section */
+.kr-proto-block{background:var(--card);border:1px solid #1e1e1e;padding:16px;margin-bottom:4px;}
+.kr-proto-title{font-size:10px;letter-spacing:3px;color:var(--green);margin-bottom:8px;}
+.kr-proto-text{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.9;}
+
+/* CTA section */
+.kr-cta{
+  text-align:center;padding:40px 20px;
+  border:1px solid rgba(0,229,160,0.15);background:rgba(0,229,160,0.02);
+  margin:0 20px;
+}
+.kr-cta-title{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--green);letter-spacing:4px;margin-bottom:8px;}
+.kr-cta-desc{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.9;margin-bottom:16px;}
+.kr-cta-btn{
+  display:inline-block;padding:12px 28px;
+  border:1px solid var(--green);color:var(--green);
+  font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:3px;
+  text-decoration:none;transition:all 0.2s;
+}
+.kr-cta-btn:hover{background:rgba(0,229,160,0.1);box-shadow:0 0 12px rgba(0,229,160,0.15);}
+
+/* footer links */
+.kr-footer-links{display:flex;flex-wrap:wrap;gap:4px;padding:20px;}
+.kr-footer-link{
+  flex:1;min-width:140px;padding:12px;
+  border:1px solid #1e1e1e;background:var(--card);
+  text-decoration:none;transition:border-color 0.15s;
+}
+.kr-footer-link:hover{border-color:rgba(0,229,160,0.3);}
+.kr-footer-link-label{font-size:8px;letter-spacing:2px;color:var(--muted);margin-bottom:4px;}
+.kr-footer-link-name{font-size:12px;color:var(--green);font-family:'Share Tech Mono',monospace;letter-spacing:1px;}
+
+/* fadeUp animation */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
