@@ -1,0 +1,213 @@
+  font-size:28px;
+  background:linear-gradient(135deg,#0a0000,#000);
+  border-right:1px solid #1a0000;
+}
+
+
+/* ══════════════════════════════════════
+   REDACTED STYLING (Vatican)
+══════════════════════════════════════ */
+.map-hotspot.redacted{
+  color:#888;
+  border-color:rgba(136,136,136,0.5);
+  background:repeating-linear-gradient(
+    45deg,transparent,transparent 2px,rgba(136,136,136,0.15) 2px,rgba(136,136,136,0.15) 4px
+  );
+  animation:hotspotPulseRedacted 3s ease-in-out infinite;
+}
+@keyframes hotspotPulseRedacted{
+  0%,100%{box-shadow:0 0 0 0 rgba(136,136,136,0.2);}
+  50%{box-shadow:0 0 0 6px rgba(136,136,136,0.04),0 0 14px rgba(136,136,136,0.12);}
+}
+.redacted-text{
+  position:relative;
+  background:#111;
+  color:transparent;
+  user-select:none;
+  border-radius:2px;
+  padding:0 4px;
+}
+.redacted-text::after{
+  content:'[REDACTED]';
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:8px;letter-spacing:3px;
+  color:var(--muted);
+  background:repeating-linear-gradient(
+    90deg,#1a1a1a,#1a1a1a 3px,#111 3px,#111 6px
+  );
+}
+
+
+/* ══════════════════════════════════════
+   OBSERVER DOTS ON MAP
+══════════════════════════════════════ */
+.obs-dot{
+  animation:obs-blink var(--d, 3s) ease-in-out infinite;
+  animation-delay:var(--dl, 0s);
+}
+@keyframes obs-blink{
+  0%,85%,100%{opacity:0.15;r:1.5;}
+  90%{opacity:0.8;r:2.5;}
+}
+
+.map-detail-status.redacted{
+  color:#888;
+  background:repeating-linear-gradient(90deg,#1a1a1a,#1a1a1a 3px,#111 3px,#111 6px);
+  border-color:#555;
+  letter-spacing:3px;
+}
+
+
+
+  50%{clip-path:polygon(0 60%,100% 60%,100% 85%,0 85%);transform:translate(-1px,0);}
+  75%{clip-path:polygon(0 75%,100% 75%,100% 100%,0 100%);transform:translate(1px,0);}
+  100%{clip-path:polygon(0 65%,100% 65%,100% 100%,0 100%);transform:translate(0);}
+}
+
+/* Redacted inline text */
+.redacted-inline{
+  background:repeating-linear-gradient(90deg,#2a2a2a,#2a2a2a 3px,#1a1a1a 3px,#1a1a1a 6px);
+  color:transparent;
+  padding:0 3px;
+  border-radius:2px;
+  user-select:none;
+}
+
+
+/* ══════════════════════════════════════
+   NETWORK MAP NODE FIX
+══════════════════════════════════════ */
+/* handled in JS - increase node radius, shrink font */
+
+
+/* ══════════════════════════════════════
+   WORLD ZONES (림버스 스타일)
+══════════════════════════════════════ */
+/* ══════════════════════════════════════
+   PROTO STATS + ALERTS (index page)
+══════════════════════════════════════ */
+/* dashboard wrapper */
+.proto-dashboard{
+  margin-top:20px;padding:0 20px;
+}
+.proto-stats{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;
+  margin-bottom:2px;
+}
+.proto-stat-card{
+  background:var(--card);border:1px solid #1e1e1e;
+  padding:16px;display:flex;flex-direction:column;gap:4px;
+}
+.proto-stat-icon{font-size:18px;}
+.proto-stat-value{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;}
+.proto-stat-value.red{color:var(--red);}
+.proto-stat-value.amber{color:var(--amber);}
+.proto-stat-value.green{color:var(--green);}
+.proto-stat-label{font-size:9px;letter-spacing:3px;color:var(--muted);}
+.proto-stat-names{font-size:11px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.6;}
+
+.proto-alerts{
+  background:var(--card);border:1px solid #1e1e1e;
+  padding:16px 20px;
+}
+.proto-alerts-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.proto-alert-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:8px 0;border-bottom:1px solid #131313;
+  font-size:13px;color:var(--light);line-height:1.7;
+}
+.proto-alert-item:last-child{border-bottom:none;}
+.pa-time{font-size:11px;color:var(--muted);min-width:68px;flex-shrink:0;}
+.pa-level{font-size:10px;letter-spacing:2px;min-width:40px;flex-shrink:0;font-weight:700;}
+.pa-level.red{color:var(--red);}
+.pa-level.amber{color:var(--amber);}
+.pa-level.green{color:var(--green);}
+.pa-text{flex:1;font-family:'Noto Sans KR',sans-serif;font-weight:300;}
+
+/* PC: stats left + alerts right side by side */
+@media(min-width:900px){
+  .proto-dashboard{
+    display:grid;grid-template-columns:280px 1fr;gap:4px;
+    max-width:1100px;margin-left:auto;margin-right:auto;
+    padding:0;margin-top:24px;
+  }
+  .proto-stats{grid-template-columns:1fr;gap:2px;margin-bottom:0;}
+  .proto-stat-card{padding:18px 20px;}
+  .proto-stat-value{font-size:32px;}
+  .proto-stat-label{font-size:10px;}
+  .proto-stat-names{font-size:12px;}
+  .proto-alerts{padding:18px 24px;}
+  .proto-alert-item{padding:10px 0;}
+}
+/* mobile compact */
+@media(max-width:600px){
+  .proto-stat-card{padding:10px 8px;align-items:center;text-align:center;}
+  .proto-stat-icon{font-size:14px;}
+  .proto-stat-value{font-size:22px;}
+  .proto-stat-label{font-size:7px;letter-spacing:2px;}
+  .proto-stat-names{font-size:9px;line-height:1.4;}
+}
+
+
+.world-zones{
+  display:flex;flex-direction:column;gap:2px;
+  margin-top:20px;
+}
+.wzone-card{
+  display:flex;
+  border:1px solid #1e1e1e;background:var(--card);
+  overflow:hidden;cursor:pointer;
+  transition:border-color 0.2s;
+}
+.wzone-card:hover{border-color:rgba(255,255,255,0.12);}
+.wzone-visual{
+  width:120px;min-width:120px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.wzone-visual::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 60%,var(--card));
+}
+.wzone-body{flex:1;padding:16px;display:flex;flex-direction:column;justify-content:center;}
+.wzone-tag{font-size:8px;letter-spacing:3px;margin-bottom:4px;}
+.wzone-tag.red{color:var(--red);}
+.wzone-tag.amber{color:var(--amber);}
+.wzone-tag.purple{color:var(--purple);}
+.wzone-tag.green{color:var(--green);}
+.wzone-tag.blue{color:var(--blue);}
+.wzone-name{
+  font-family:'Noto Sans KR',sans-serif;
+  font-size:16px;font-weight:700;color:var(--white);
+  margin-bottom:6px;
+}
+.wzone-desc{
+  font-size:12px;color:var(--light);
+  font-family:'Noto Sans KR',sans-serif;font-weight:300;
+  line-height:1.8;
+}
+@media(max-width:500px){
+  .wzone-visual{width:80px;min-width:80px;}
+  .wzone-name{font-size:14px;}
+}
+@media(min-width:900px){
+  .world-zones{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;}
+  .wzone-card{flex-direction:column;}
+  .wzone-visual{width:100%;min-width:100%;height:140px;}
+  .wzone-visual::after{background:linear-gradient(to bottom,transparent 40%,var(--card));}
+  .wzone-body{padding:14px 16px;}
+  .wzone-name{font-size:17px;}
+  .wzone-desc{font-size:12px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+}
+
+/* Specimen redacted card overlay */
+.spec-card.redacted-spec .spec-body::after{
+  content:'ORACLE 보안 검열 적용';
+  display:block;
+  font-size:9px;letter-spacing:2px;color:var(--muted);
+  margin-top:6px;font-style:italic;
+}
+
+
+

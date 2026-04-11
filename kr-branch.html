@@ -5,144 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ORACLE // BRANCH KR-INIT-001</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/base-core.css">
+<link rel="stylesheet" href="css/base-modal.css">
+<link rel="stylesheet" href="css/pages-core.css">
+<link rel="stylesheet" href="css/pages-map.css">
+<link rel="stylesheet" href="css/pages-hero-fx.css">
+<link rel="stylesheet" href="css/pages-profiles.css">
+<link rel="stylesheet" href="css/pages-timeline.css">
+<link rel="stylesheet" href="css/pages-world.css">
 <link rel="stylesheet" href="css/layout.css">
-<style>
-.page-wrap{padding-top:44px;padding-bottom:28px;}
-.page-hero{padding:40px 20px 32px;position:relative;}
-.page-hero::after{content:'';position:absolute;bottom:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,160,0.12),transparent);}
-.page-hero-eyebrow{font-size:10px;letter-spacing:5px;color:var(--muted);margin-bottom:6px;padding-left:12px;border-left:2px solid var(--green);}
-.page-hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,8vw,52px);color:var(--white);letter-spacing:2px;margin-bottom:4px;}
-.page-hero-title span{color:var(--green);}
-.page-hero-desc{font-size:13px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:2.0;max-width:640px;}
-
-/* section nav */
-.kr-nav{display:flex;gap:0;padding:0 20px;border-bottom:1px solid #1a1a1a;margin-bottom:24px;overflow-x:auto;}
-.kr-nav-item{
-  font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;
-  padding:12px 16px;color:var(--muted);cursor:pointer;text-decoration:none;
-  border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap;
-}
-.kr-nav-item:hover{color:var(--light);}
-.kr-nav-item.active{color:var(--green);border-bottom-color:var(--green);}
-
-/* kr-section */
-.kr-section{padding:32px 20px;position:relative;}
-.kr-section::before{content:'';position:absolute;top:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,160,0.08),transparent);}
-.kr-section-header{margin-bottom:24px;}
-.kr-section-code{font-size:10px;letter-spacing:5px;color:var(--muted);margin-bottom:6px;padding-left:12px;border-left:2px solid var(--green);}
-.kr-section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,6vw,36px);color:var(--white);letter-spacing:2px;margin-bottom:6px;}
-.kr-section-sub{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;margin-bottom:8px;}
-.kr-section-meta{display:flex;gap:6px;flex-wrap:wrap;}
-.meta-tag{font-size:8px;letter-spacing:2px;padding:3px 8px;border:1px solid #2a2a2a;color:var(--muted);}
-.meta-tag--ok{border-color:rgba(0,229,160,0.3);color:var(--green);}
-.meta-tag--warn{border-color:rgba(255,199,68,0.3);color:var(--amber);}
-.meta-tag--red{border-color:rgba(255,59,59,0.3);color:var(--red);}
-
-/* officer grid */
-.officer-grid{display:grid;grid-template-columns:1fr;gap:4px;}
-.officer-card{
-  background:var(--card);border:1px solid #1e1e1e;padding:20px;
-  position:relative;overflow:hidden;transition:border-color 0.2s;
-}
-.officer-card:hover{border-color:rgba(0,229,160,0.3);}
-.officer-card--commander{border-color:rgba(0,229,160,0.25);}
-.officer-card--commander::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--green);}
-.officer-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
-.officer-codename{font-size:9px;letter-spacing:3px;color:var(--green);}
-.officer-rank{font-size:8px;letter-spacing:2px;padding:2px 8px;border:1px solid var(--muted);color:var(--muted);}
-.officer-name{font-family:'Noto Sans KR',sans-serif;font-size:20px;font-weight:700;color:var(--white);margin-bottom:4px;}
-.officer-role{font-size:12px;color:var(--muted);margin-bottom:12px;}
-.officer-facts{margin-bottom:12px;}
-.officer-facts dt{font-size:9px;letter-spacing:2px;color:var(--muted);float:left;clear:left;min-width:60px;margin-right:8px;padding:3px 0;}
-.officer-facts dd{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;padding:3px 0;line-height:1.7;}
-.officer-note{font-size:13px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:2.0;margin-top:12px;padding-top:10px;border-top:1px solid #1a1a1a;}
-.officer-quote{
-  font-size:13px;color:var(--light);font-style:italic;
-  font-family:'Noto Sans KR',sans-serif;font-weight:300;
-  border-left:2px solid var(--green);padding-left:14px;
-  margin:12px 0;line-height:1.9;
-}
-.officer-quote cite{display:block;font-size:10px;color:var(--muted);font-style:normal;margin-top:4px;letter-spacing:1px;}
-.officer-flag{font-size:10px;letter-spacing:1px;padding:8px 12px;margin-top:10px;}
-.flag-warn{border:1px solid rgba(255,199,68,0.25);background:rgba(255,199,68,0.04);color:var(--amber);}
-.flag-info{border:1px solid rgba(77,184,255,0.25);background:rgba(77,184,255,0.04);color:var(--blue);}
-.redacted-inline{background:repeating-linear-gradient(90deg,#2a2a2a,#2a2a2a 3px,#1a1a1a 3px,#1a1a1a 6px);color:transparent;padding:0 3px;border-radius:2px;user-select:none;}
-
-/* section footer / crosslink */
-.kr-section-footer{margin-top:20px;padding-top:12px;border-top:1px solid #1a1a1a;}
-.kr-crosslink{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--green);color:var(--green);font-size:10px;letter-spacing:2px;text-decoration:none;font-family:'Share Tech Mono',monospace;transition:background 0.15s;}
-.kr-crosslink:hover{background:rgba(0,229,160,0.06);}
-
-/* observer classified section */
-.kr-section--classified{background:linear-gradient(180deg,rgba(40,0,0,0.08),transparent);}
-.observer-lock{padding:40px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;}
-.observer-lock-icon{font-size:32px;opacity:0.5;}
-.observer-lock-code{font-size:10px;letter-spacing:5px;color:var(--red);padding-left:12px;border-left:2px solid var(--red);}
-.observer-lock-title{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--red);letter-spacing:4px;}
-.observer-lock-msg{font-size:12px;color:#553333;font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
-.observer-lock-redacted{font-size:14px;color:#1a0808;line-height:2.0;letter-spacing:2px;user-select:none;}
-.observer-payload{padding:0 20px 20px;}
-.observer-code{color:var(--red)!important;border-left-color:var(--red)!important;}
-
-/* observer blocks */
-.observer-block{border:1px solid #1a0808;background:#060303;padding:20px;margin-bottom:4px;}
-.observer-block-title{font-family:'Bebas Neue',sans-serif;font-size:18px;color:#ff6b6b;letter-spacing:2px;margin-bottom:8px;}
-.observer-block-lede{font-size:12px;color:#998;font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.9;margin-bottom:12px;}
-.observer-block p{font-size:13px;color:#998;font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:2.0;margin-bottom:10px;}
-.observer-block strong{color:#cc9999;}
-.observer-table{width:100%;border-collapse:collapse;margin:10px 0;}
-.observer-table th{text-align:left;padding:8px 10px;border-bottom:1px solid #1a0808;color:var(--red);font-size:9px;letter-spacing:2px;}
-.observer-table td{padding:8px 10px;border-bottom:1px solid #0a0505;color:#997;font-family:'Noto Sans KR',sans-serif;font-weight:300;font-size:12px;line-height:1.7;}
-.observer-table code{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--red);background:rgba(255,59,59,0.06);padding:1px 4px;}
-.observer-quote{
-  border:1px solid rgba(255,59,59,0.2);background:rgba(255,59,59,0.03);
-  padding:14px;margin:12px 0;font-size:13px;color:#cc9999;
-  font-style:italic;font-family:'Noto Sans KR',sans-serif;line-height:1.9;
-}
-.observer-quote cite{display:block;font-size:10px;color:#664444;font-style:normal;margin-top:6px;}
-.grant-state-list{list-style:none;padding:0;margin:12px 0;}
-.grant-state-list li{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border:1px solid #1a0808;background:#050303;margin-bottom:2px;font-size:11px;}
-.grant-state-list code{font-family:'Share Tech Mono',monospace;color:var(--red);font-size:10px;}
-.grant-state-list span{font-size:10px;color:#664444;}
-.observer-block-note{font-size:10px;color:#664444;letter-spacing:1px;margin-top:8px;}
-.observer-block-note code{color:var(--red);font-size:10px;}
-.observer-final-line{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--red);letter-spacing:4px;text-align:center;margin-top:20px;opacity:0.6;}
-
-/* observer unlock trigger */
-.obs-unlock-bar{
-  padding:12px 20px;margin:0 20px;
-  border:1px solid #1a0808;background:#060303;
-  display:flex;align-items:center;gap:8px;
-}
-.obs-unlock-input{
-  flex:1;background:#050000;border:1px solid #2a0000;
-  color:var(--red);font-family:'Share Tech Mono',monospace;
-  font-size:11px;padding:8px 10px;outline:none;
-}
-.obs-unlock-input:focus{border-color:var(--red);}
-.obs-unlock-input::placeholder{color:#331111;}
-.obs-unlock-btn{
-  background:transparent;border:1px solid var(--red);
-  color:var(--red);font-family:'Share Tech Mono',monospace;
-  font-size:10px;letter-spacing:2px;padding:8px 14px;
-  cursor:pointer;transition:background 0.15s;
-}
-.obs-unlock-btn:hover{background:rgba(255,59,59,0.1);}
-
-/* responsive */
-@media(min-width:900px){
-  .page-wrap{max-width:1100px;margin:0 auto;}
-  .officer-grid{grid-template-columns:1fr 1fr;gap:6px;}
-  .officer-card--commander{grid-column:1/-1;}
-  .kr-nav-item{padding:12px 24px;font-size:11px;}
-}
-@media(min-width:1200px){
-  .officer-grid{grid-template-columns:1fr 1fr 1fr;}
-  .officer-card--commander{grid-column:1/-1;}
-}
-</style>
+<link rel="stylesheet" href="css/kr-branch.css">
 </head>
 <body>
 
@@ -391,7 +263,8 @@
 
 </div>
 
-<script src="js/common.js"></script>
+<script src="js/common-core.js"></script>
+<script src="js/hero-canvas.js"></script>
 <script>
 // Observer unlock
 (function(){

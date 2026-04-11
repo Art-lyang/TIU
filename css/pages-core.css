@@ -1,0 +1,418 @@
+/* ═══ PAGES.CSS — Page-specific component styles ═══ */
+
+/* ══════════════════════════════════════
+   HERO / MAIN SECTION
+══════════════════════════════════════ */
+#main{padding-top:44px;padding-bottom:28px;}
+
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:flex-start;justify-content:flex-end;
+  padding:40px 24px 60px;
+  overflow:hidden;
+  border-bottom:none;
+  background:
+    radial-gradient(ellipse at 25% 75%, rgba(0,229,160,0.025) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(212,168,67,0.015) 0%, transparent 40%),
+    var(--bg);
+}
+.hero::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;z-index:3;
+  background:linear-gradient(90deg,transparent,rgba(0,229,160,0.12) 30%,rgba(0,229,160,0.12) 70%,transparent);
+}
+.hero-bg-text{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(80px,25vw,280px);
+  color:rgba(255,255,255,0.02);
+  white-space:nowrap;
+  letter-spacing:20px;
+  pointer-events:none;
+  user-select:none;
+}
+/* crime tape */
+.crime-tape{
+  position:absolute;
+  left:-20px;right:-20px;
+  top:42%;
+  background:var(--amber);
+  padding:10px 0;
+  transform:rotate(-2deg);
+  overflow:hidden;
+  opacity:0.85;
+  pointer-events:none;
+}
+.tape-text{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:22px;letter-spacing:12px;color:rgba(0,0,0,0.55);
+  white-space:nowrap;
+  animation:tape-scroll 15s linear infinite;
+  display:inline-block;
+}
+@keyframes tape-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}  }
+
+.hero-content{position:relative;z-index:2;}
+.hero-tags{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+.hero-tag{
+  font-size:9px;letter-spacing:3px;
+  padding:4px 10px;border:1px solid var(--muted);color:var(--muted);
+}
+.hero-tag.active{border-color:var(--red);color:var(--red);}
+
+.hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(56px,15vw,96px);
+  line-height:0.85;letter-spacing:2px;color:var(--white);
+  margin-bottom:4px;
+}
+.hero-title span{color:var(--green);animation:uflk 6s ease-in-out infinite;}
+@keyframes uflk{
+  0%,92%,95%,100%{opacity:1;text-shadow:0 0 20px rgba(0,229,160,0.12);}
+  93%{opacity:0.7;text-shadow:0 0 4px rgba(0,229,160,0.5);}
+  94%{opacity:1;text-shadow:0 0 30px rgba(0,229,160,0.25);}
+}
+
+.hero-desc{
+  font-size:11px;letter-spacing:3px;color:var(--muted);
+  margin-bottom:32px;margin-top:12px;
+}
+.hero-desc b{color:var(--light);}
+
+.hero-nav{display:flex;flex-direction:column;gap:0;}
+.hero-nav-item{
+  display:flex;align-items:center;gap:16px;
+  padding:14px 0 14px 12px;
+  border-bottom:1px solid #1a1a1a;
+  border-left:2px solid transparent;
+  cursor:pointer;
+  transition:background 0.15s,border-color 0.2s,padding-left 0.2s;
+  text-decoration:none;color:inherit;
+}
+.hero-nav-item:hover{background:rgba(0,229,160,0.02);border-left-color:var(--green);padding-left:18px;}
+.hero-nav-icon{
+  width:36px;height:36px;border-radius:50%;
+  background:#1a1a1a;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;
+}
+.hero-nav-info{flex:1;}
+.hero-nav-title{font-size:16px;color:var(--white);margin-bottom:2px;font-family:'Noto Sans KR',sans-serif;font-weight:700;}
+.hero-nav-sub{font-size:10px;color:var(--muted);letter-spacing:2px;}
+.hero-nav-arrow{color:var(--muted);font-size:14px;}
+.hero-nav-badge{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--red);flex-shrink:0;
+  animation:tdot 1.5s ease-in-out infinite;
+}
+
+
+/* ══════════════════════════════════════
+   PROTOCOL GRID
+══════════════════════════════════════ */
+.section{
+  padding:60px 20px;
+  border-bottom:none;position:relative;
+}
+.section::after{
+  content:'';position:absolute;bottom:0;left:8%;right:8%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);
+}
+.section-header{margin-bottom:32px;}
+.section-eyebrow{font-size:10px;letter-spacing:5px;color:var(--muted);margin-bottom:6px;padding-left:12px;border-left:2px solid var(--green);}
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(28px,6vw,44px);
+  color:var(--white);letter-spacing:2px;
+}
+
+.protocol-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+}
+.protocol-card{
+  background:var(--card);
+  border:1px solid #1e1e1e;
+  padding:28px 20px;
+  cursor:pointer;
+  position:relative;
+  transition:border-color 0.2s,background 0.2s;
+  display:flex;flex-direction:column;align-items:center;
+  gap:14px;text-align:center;
+}
+.protocol-card:hover{border-color:var(--green);background:var(--card2);}
+.protocol-card::after{
+  content:'';position:absolute;
+  bottom:0;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);
+  opacity:0;transition:opacity 0.2s;
+}
+.protocol-card:hover::after{opacity:1;}
+
+.pc-icon{
+  width:56px;height:56px;border-radius:50%;
+  background:#1a1a1a;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;
+}
+.pc-name{font-family:'Noto Sans KR',sans-serif;font-size:15px;font-weight:700;color:var(--white);}
+.pc-divider{width:40px;height:1px;background:#2a2a2a;}
+.pc-count{font-size:10px;letter-spacing:3px;color:var(--muted);}
+
+
+/* ══════════════════════════════════════
+   ENTITY / FACTION DOSSIER CARDS
+══════════════════════════════════════ */
+.entity-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  padding:0 20px;margin-bottom:2px;
+}
+.entity-card{
+  background:var(--card);
+  border:1px solid #1e1e1e;
+  overflow:hidden;
+  cursor:pointer;
+  position:relative;
+  transition:border-color 0.2s;
+}
+.entity-card:hover{border-color:var(--green);}
+.entity-card-img{
+  height:100px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:40px;
+  background:linear-gradient(to bottom,#1a1a1a,#0d0d0d);
+  position:relative;overflow:hidden;
+}
+.entity-card-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 40%,var(--card));
+}
+.entity-card-bottom{padding:10px 12px;}
+.entity-card-name{font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.entity-badge{
+  display:inline-block;font-size:9px;letter-spacing:2px;
+  padding:2px 8px;border:1px solid;
+}
+.entity-badge.obs{border-color:var(--green);color:var(--green);}
+.entity-badge.pro{border-color:var(--amber);color:var(--amber);}
+.entity-badge.she{border-color:var(--red);color:var(--red);}
+.entity-badge.tsw{border-color:var(--blue);color:var(--blue);}
+
+
+/* ══════════════════════════════════════
+   ARCHIVE / DOSSIER SECTION  
+══════════════════════════════════════ */
+.archive-card{
+  margin:0 20px 4px;
+  position:relative;
+}
+.archive-tab{
+  display:inline-block;
+  background:#1a1510;
+  border:1px solid #2a2018;
+  border-bottom:none;
+  padding:6px 16px;
+  font-size:10px;letter-spacing:2px;color:#887755;
+}
+.archive-body{
+  background:#141210;
+  border:1px solid #2a2018;
+  padding:24px 20px;
+  display:flex;flex-direction:column;align-items:center;
+  gap:12px;text-align:center;
+  cursor:pointer;transition:border-color 0.2s;
+}
+.archive-body:hover{border-color:#4a3a22;}
+.archive-file-no{
+  font-size:10px;letter-spacing:3px;color:#5a4a32;
+  align-self:flex-start;
+}
+.archive-stamp{
+  position:absolute;top:32px;right:24px;
+  border:2px solid var(--green);color:var(--green);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:13px;letter-spacing:4px;padding:3px 10px;
+  transform:rotate(5deg);opacity:0.7;
+}
+.archive-doc-icon{font-size:28px;opacity:0.5;}
+.archive-title{font-family:'Noto Sans KR',sans-serif;font-size:17px;font-weight:700;color:#b8a888;}
+.archive-action{font-size:9px;letter-spacing:4px;color:#4a3a22;}
+
+/* timeline in modal */
+.tl-list{padding:8px 20px;}
+.tl-row{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:14px 0;border-bottom:1px solid #161616;
+}
+.tl-row:last-child{border-bottom:none;}
+.tl-dot{
+  width:10px;height:10px;min-width:10px;
+  border:1px solid var(--green);
+  margin-top:5px;transform:rotate(45deg);
+  flex-shrink:0;
+}
+.tl-dot.crit{background:var(--amber);border-color:var(--amber);box-shadow:0 0 8px var(--amber);}
+.tl-right{}
+.tl-code{font-size:9px;letter-spacing:3px;color:var(--muted);margin-bottom:3px;}
+.tl-name{font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.tl-row.crit .tl-name{color:var(--amber);}
+.tl-desc{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.9;}
+
+/* zone table */
+.zone-list{padding:0 20px;}
+.zone-row{
+  display:flex;align-items:center;gap:0;
+  border:1px solid #1e1e1e;margin-bottom:2px;
+  background:var(--card);
+}
+.zone-code{
+  width:64px;min-width:64px;
+  padding:16px 0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;font-size:16px;
+  border-right:1px solid #1e1e1e;
+}
+.z0{color:#6ec97a;} .z1{color:var(--amber);} .z2{color:#ff8840;} .z3{color:var(--red);} .zo{color:var(--purple);}
+.zone-info{flex:1;padding:14px 16px;}
+.zone-name{font-size:14px;color:var(--white);margin-bottom:3px;font-family:'Noto Sans KR',sans-serif;font-weight:700;}
+.zone-loc{font-size:12px;color:var(--muted);}
+
+/* infection phases */
+.phase-grid{padding:0 20px;}
+.phase-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:14px;border:1px solid #1e1e1e;background:var(--card);margin-bottom:2px;
+  position:relative;overflow:hidden;
+  transition:border-color 0.2s;
+}
+.phase-item::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--green);opacity:0.5;
+}
+.phase-item:nth-child(2)::before{background:var(--amber);opacity:0.6;}
+.phase-item:nth-child(3)::before{background:#ff8840;opacity:0.7;}
+.phase-item:nth-child(4)::before{background:var(--red);opacity:0.9;}
+.phase-item:hover{border-color:rgba(0,229,160,0.25);}
+.phase-n{
+  width:32px;min-width:32px;height:32px;
+  border:1px solid var(--green);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:var(--green);flex-shrink:0;
+  position:relative;
+}
+.phase-n.irr{border-color:var(--red);color:var(--red);}
+.phase-t{font-size:14px;color:var(--white);font-family:'Noto Sans KR',sans-serif;font-weight:700;margin-bottom:3px;}
+.phase-s{font-size:12px;color:var(--muted);}
+
+/* ev-sigma spread viz */
+.ev-viz{
+  margin:0 20px 2px;
+  background:var(--card);
+  border:1px solid #1e1e1e;
+  padding:16px 18px;
+  position:relative;
+  overflow:hidden;
+}
+.ev-viz-label{font-size:9px;letter-spacing:4px;color:var(--muted);margin-bottom:14px;}
+.ev-spread-track{
+  position:relative;height:3px;
+  background:#1e1e1e;
+  margin-bottom:20px;
+}
+.ev-spread-fill{
+  position:absolute;left:0;top:0;bottom:0;
+  background:linear-gradient(90deg,var(--green),var(--amber),#ff8840,var(--red));
+  width:100%;
+  animation:spread-pulse 3s ease-in-out infinite;
+}
+@keyframes spread-pulse{0%,100%{opacity:0.6;}50%{opacity:1;}}
+.ev-spread-nodes{
+  display:flex;justify-content:space-between;
+  position:absolute;top:-5px;left:0;right:0;
+}
+.ev-node{
+  width:13px;height:13px;border-radius:50%;
+  border:1px solid;
+  display:flex;align-items:center;justify-content:center;
+  font-size:7px;font-weight:700;
+  position:relative;
+  background:var(--bg);
+}
+.ev-node.n0{border-color:var(--green);color:var(--green);}
+.ev-node.n1{border-color:var(--amber);color:var(--amber);}
+.ev-node.n2{border-color:#ff8840;color:#ff8840;}
+.ev-node.n3{
+  border-color:var(--red);color:var(--red);
+  box-shadow:0 0 8px rgba(255,59,59,0.5);
+  animation:node-flicker 2s ease-in-out infinite;
+}
+@keyframes node-flicker{0%,100%{box-shadow:0 0 6px rgba(255,59,59,0.4);}50%{box-shadow:0 0 14px rgba(255,59,59,0.8);}}
+.ev-node-labels{
+  display:flex;justify-content:space-between;
+  margin-top:6px;
+}
+.ev-node-label{font-size:7.5px;letter-spacing:1px;color:var(--muted);text-align:center;width:13px;}
+
+/* transmission rules */
+.ev-rules{margin:0 20px 2px;display:flex;flex-direction:column;gap:2px;}
+.ev-rule{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 14px;
+  background:var(--card);border:1px solid #1e1e1e;
+  font-size:13px;color:var(--light);
+}
+.ev-rule-icon{
+  font-size:10px;min-width:16px;text-align:center;
+  font-weight:700;
+}
+.ev-rule-icon.ok {color:var(--green);}
+.ev-rule-icon.no {color:var(--red);}
+.ev-rule-icon.warn{color:var(--amber);}
+
+/* species result bars */
+.ev-species{margin:0 20px 2px;display:flex;flex-direction:column;gap:2px;}
+.ev-species-row{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 14px;
+  background:var(--card);border:1px solid #1e1e1e;
+  position:relative;overflow:hidden;
+}
+.ev-species-row::after{
+  content:'';position:absolute;right:0;top:0;bottom:0;width:3px;
+}
+.ev-species-row.human::after{background:var(--amber);}
+.ev-species-row.turtle::after{background:var(--blue);}
+.ev-species-row.lizard::after{background:var(--red);}
+.ev-species-badge{
+  font-size:8px;letter-spacing:2px;
+  padding:2px 8px;border:1px solid;
+  white-space:nowrap;
+}
+.ev-species-badge.human{border-color:var(--amber);color:var(--amber);}
+.ev-species-badge.turtle{border-color:var(--blue);color:var(--blue);}
+.ev-species-badge.lizard{border-color:var(--red);color:var(--red);}
+.ev-species-desc{font-size:13px;color:var(--light);}
+
+/* military cards */
+.mil-list{padding:0 20px;}
+.mil-item{
+  display:flex;gap:14px;align-items:center;
+  padding:14px;border:1px solid #1e1e1e;background:var(--card);margin-bottom:2px;
+}
+.mil-country{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:13px;letter-spacing:2px;color:var(--muted);
+  min-width:60px;
+}
+.mil-name{font-size:14px;color:var(--amber);font-family:'Noto Sans KR',sans-serif;font-weight:700;margin-bottom:3px;}
+.mil-desc{font-size:12px;color:var(--light);}
+
+/* anomaly */
+.anomaly-list{padding:0 20px;}
+.anomaly-item{
+  border:1px solid #1e1e1e;background:var(--card);margin-bottom:2px;padding:16px;
+}
+.anomaly-id{font-size:9px;letter-spacing:3px;color:var(--purple);margin-bottom:6px;}
+.anomaly-name{font-size:15px;color:var(--white);font-family:'Noto Sans KR',sans-serif;font-weight:700;margin-bottom:6px;}
+.anomaly-desc{font-size:12px;color:var(--light);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.9;}
+
