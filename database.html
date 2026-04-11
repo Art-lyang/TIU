@@ -105,56 +105,79 @@ function initDB(){
 
   count.textContent = DB.length + ' ENTRIES INDEXED';
 
-  // ORACLE Terminal search — Enter key triggers immediate search
-  input.addEventListener('keydown',(e)=>{
-    if(e.key==='Enter'){
-      e.preventDefault();
-      clearTimeout(searchTimer);
-      const q = input.value;
-      if(!q){response.classList.remove('active');response.textContent='';filterDB();return;}
-      response.classList.add('active');
-      const matches = filterDB();
-      if(matches===0){
-        response.innerHTML='<span style="color:var(--red);">NO RESULTS. Query "'+q+'" returned 0 matches.</span>';
-      } else {
-        const ql=q.toLowerCase();
-        const top=DB.filter(d=>d.term.toLowerCase().includes(ql)||d.en.toLowerCase().includes(ql)||d.def.toLowerCase().includes(ql)).slice(0,5);
-        const preview=top.map(d=>{
-          const link=(d.refs&&d.refs[0])?' <a href="'+d.refs[0].href+'" style="color:var(--green);text-decoration:none;font-size:10px;letter-spacing:1px;">[→ '+d.refs[0].page+']</a>':'';
-          return '<div style="margin-top:4px;padding:4px 0;border-bottom:1px solid #1a1a1a;"><span style="color:var(--white);font-size:12px;">'+d.term+'</span> <span style="color:var(--muted);font-size:10px;">'+d.cat+'</span>'+link+'</div>';
-        }).join('');
-        response.innerHTML='<span style="color:var(--green);">'+matches+' RESULT'+(matches>1?'S':'')+' FOUND.</span>'+preview;
+  // jump to DB entry by index
+  function jumpToEntry(idx){
+    const entries = list.querySelectorAll('.db-entry');
+    if(!entries[idx]) return;
+    // show all first
+    entries.forEach(el=>el.classList.remove('hidden'));
+    // open the target
+    entries[idx].classList.add('open');
+    // scroll to it
+    entries[idx].scrollIntoView({behavior:'smooth',block:'center'});
+    // flash highlight
+    entries[idx].style.borderColor='var(--green)';
+    setTimeout(()=>{entries[idx].style.borderColor='';},2000);
+  }
+
+  // build search result preview with clickable items
+  function buildPreview(q, maxItems){
+    const ql = q.toLowerCase();
+    const matches = [];
+    DB.forEach((d,i)=>{
+      if(d.term.toLowerCase().includes(ql)||d.en.toLowerCase().includes(ql)||d.def.toLowerCase().includes(ql)){
+        matches.push({d,i});
       }
+    });
+    const top = matches.slice(0, maxItems||5);
+    return {
+      total: matches.length,
+      html: top.map(m=>{
+        const ref = (m.d.refs&&m.d.refs[0]) ? ' <a href="'+m.d.refs[0].href+'" style="color:var(--green);text-decoration:none;font-size:10px;letter-spacing:1px;">[→ '+m.d.refs[0].page+']</a>' : '';
+        return '<div class="ot-result" data-jump="'+m.i+'" style="margin-top:4px;padding:6px 8px;border-bottom:1px solid #1a1a1a;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background=\'rgba(0,229,160,0.06)\'" onmouseout="this.style.background=\'none\'"><span style="color:var(--white);font-size:12px;">'+m.d.term+'</span> <span style="color:var(--muted);font-size:10px;margin-left:6px;">'+m.d.cat+'</span>'+ref+'</div>';
+      }).join('')
+    };
+  }
+
+  // attach click handlers to search results
+  function attachJumpHandlers(){
+    response.querySelectorAll('.ot-result[data-jump]').forEach(el=>{
+      el.addEventListener('click',(e)=>{
+        e.preventDefault();
+        jumpToEntry(parseInt(el.dataset.jump));
+      });
+    });
+  }
+
+  // search execution
+  function executeSearch(){
+    const q = input.value.trim();
+    if(!q){response.classList.remove('active');response.textContent='';filterDB();return;}
+    response.classList.add('active');
+    const filtered = filterDB();
+    const preview = buildPreview(q, 5);
+    if(preview.total===0){
+      response.innerHTML='<span style="color:var(--red);">NO RESULTS — "'+q+'" returned 0 matches.</span>';
+    } else {
+      response.innerHTML='<span style="color:var(--green);">'+preview.total+' RESULT'+(preview.total>1?'S':'')+' FOUND.</span> <span style="color:var(--muted);font-size:10px;">클릭하여 해당 항목으로 이동</span>'+preview.html;
+      attachJumpHandlers();
     }
+  }
+
+  // Enter key
+  input.addEventListener('keydown',(e)=>{
+    if(e.key==='Enter'){e.preventDefault();clearTimeout(searchTimer);executeSearch();}
   });
+
+  // live search with debounce
   let searchTimer;
   input.addEventListener('input',()=>{
     clearTimeout(searchTimer);
-    const q = input.value;
-
-    if(!q){
-      response.classList.remove('active');
-      response.textContent = '';
-      filterDB();
-      return;
-    }
+    const q = input.value.trim();
+    if(!q){response.classList.remove('active');response.textContent='';filterDB();return;}
     response.classList.add('active');
-    response.textContent = 'SEARCHING...';
-    searchTimer = setTimeout(()=>{
-      const matches = filterDB();
-      if(matches === 0){
-        response.innerHTML = '<span style="color:var(--red);">NO RESULTS. Query "'+q+'" returned 0 matches.</span>';
-      } else {
-        // show top 3 matching terms as quick links
-        const ql = q.toLowerCase();
-        const top = DB.filter(d=> d.term.toLowerCase().includes(ql)||d.en.toLowerCase().includes(ql)||d.def.toLowerCase().includes(ql)).slice(0,3);
-        const preview = top.map(d=>{
-          const link = (d.refs&&d.refs[0]) ? ' <a href="'+d.refs[0].href+'" style="color:var(--green);text-decoration:none;font-size:10px;letter-spacing:1px;">[→ '+d.refs[0].page+']</a>' : '';
-          return '<div style="margin-top:4px;padding:4px 0;border-bottom:1px solid #1a1a1a;"><span style="color:var(--white);font-size:12px;">'+d.term+'</span> <span style="color:var(--muted);font-size:10px;">'+d.cat+'</span>'+link+'</div>';
-        }).join('');
-        response.innerHTML = '<span style="color:var(--green);">'+matches+' RESULT'+(matches>1?'S':'')+' FOUND.</span>'+preview;
-      }
-    }, 400);
+    response.textContent='SEARCHING...';
+    searchTimer = setTimeout(executeSearch, 400);
   });
 
   function filterDB(){
