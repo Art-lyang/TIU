@@ -156,7 +156,7 @@ const INCIDENTS = [
   {
     id:'INC-009',
     code:'PROJECT: GOIBHNIU',
-    title:'고이브니우 프로젝트',
+    title:'고브뉴 프로젝트',
     era:'2000s',
     date:'2019~ (추정)',
     threat:'locked',
