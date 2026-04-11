@@ -13,8 +13,11 @@
 body.boot-active #topbar,
 body.boot-active #ticker,
 body.boot-active #main,
-body.boot-active .gnav{display:none!important;visibility:hidden!important;}
-body.boot-active{overflow:hidden!important;}
+body.boot-active .gnav,
+body.boot-active .hero,
+body.boot-active .world-zones{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;}
+body.boot-active{overflow:hidden!important;position:fixed!important;width:100%!important;height:100%!important;}
+html.boot-active{overflow:hidden!important;}
 </style>
 <script>
 var _bootDone = sessionStorage.getItem('tiu-boot-done');

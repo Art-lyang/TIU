@@ -118,6 +118,10 @@ const BOOT_LINES = [
 function initInterface(){
   const btn = document.querySelector('.boot-btn');
   if(btn) btn.style.display='none';
+  // hide corruption text when terminal starts
+  const corr = document.querySelector('.boot-corruption');
+  if(corr) corr.style.transition='opacity 0.3s';
+  if(corr) corr.style.opacity='0';
   const term = document.getElementById('boot-terminal');
   if(!term){ document.getElementById('boot')?.classList.add('hidden'); document.body.classList.remove('boot-active'); document.documentElement.classList.remove('boot-active'); return; }
   term.classList.add('active');
