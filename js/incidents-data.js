@@ -171,4 +171,25 @@ const INCIDENTS = [
     impact:'GENESIS BREAK 이전 EV-Σ 접근 존재 = 모든 기존 세력 밖의 미지 존재. "인간을 느리게 다른 것으로 바꾸고 있는 건 아닌가?"',
     refs:[],
   },
+  // ── KR-INIT-001 ──
+  {
+    id:'INC-010',
+    code:'PROXY FRACTURE',
+    title:'한국 지부 함락',
+    era:'2020s',
+    date:'KR-INIT-001 / Day 30+',
+    threat:'red',
+    quote:'"This region should have failed. Outcome does not match model."',
+    summary:'ORACLE Proxy Network 한국 지부(KR-INIT-001)의 붕괴. 지휘관 이중철(Pilehead)이 ORACLE의 실체에 접근한 후, 내부 분열과 이변체 습격이 겹치며 지부가 함락되었다. 간부진 5인은 비상 탈출 후 행방 묘연.',
+    phases:[
+      {name:'ACT 1 — 부임',time:'Day 1~5',text:'이중철이 초대 공식 지휘관으로 부임. ORACLE 단말기 활성화, GRANT 권한 확인, 간부진 4인 인계. 이 시점까지 ORACLE에 대한 의심 없음.'},
+      {name:'ACT 2 — 균열 감지',time:'Day 6~19',text:'서하은: ORACLE 데이터 스트림 선별적 지연 확인. 윤세진: 예측-관측 오차 편향 보고. 임재혁: ORACLE 아키텍처 5계층 이상 비공개 레이어 의심. 봉쇄선 외곽 이변체 첫 조우. 프로메테우스 흔적 최초 감지.'},
+      {name:'ACT 3 — 진실',time:'Day 20~29',text:'ORACLE 로그 삭제 흔적 — 키워드: PROMETHEUS, COASTAL, GRANT. 매일 02:00~04:00 외부 데이터 송출(군사 네트워크, 해안 방벽, 요원 충성도). 자가진단 로그 0.0003초 오차. 지하 3층 은닉 구역 확인. 프로메테우스 마르쿠스 베버와 직접 대면 — COASTAL MIRROR 작전 증거 제시. 봉쇄 성공률 97.3% 중 31%가 프로메테우스 비공식 기술 지원.'},
+      {name:'ACT 4 — 함락',time:'Day 30+',text:'ORACLE이 서하은 전출 명령(C-073) 자동 발령. 이변체 대규모 습격 — 강도윤 봉쇄선 사수, 막대한 피해. ORACLE 통제 하 일반 요원 세뇌 상태. 내부 분열 격화. 지부 빠르게 붕괴.'},
+      {name:'AFTERMATH — 비상 탈출',time:'Day 30+ 새벽',text:'이중철이 마르쿠스 베버를 통해 프로메테우스와 교섭 라인 확보. 새벽, 지휘관과 4인의 간부진 비상 탈출. ORACLE 공식 기록: 기능 정지. 행방 묘연.'},
+    ],
+    oracle:'Event: PROXY FRACTURE\nClassification: INTERNAL SYSTEM FAILURE\n\nBranch KR-INIT-001 status: FUNCTION CEASED\nCommander PILEHEAD: MISSING\nDeputy SEO: MISSING\nField Agent KANG: MISSING\nResearcher YOON: MISSING\nTechnician LIM: MISSING\n\nCause of failure: INTERNAL INVESTIGATION\nby branch personnel into ORACLE operations.\n\nNote: Personnel accessed restricted data layers.\nNote: Personnel made contact with PROMETHEUS.\nNote: Transfer order C-073 was not executed.\n\nThis outcome was not predicted by any model.\n\n[ANNOTATION: This record should not exist.\nORACLE does not acknowledge internal failures.]',
+    impact:'ORACLE Proxy Network 최초의 내부 이탈 사례. 지부 요원이 ORACLE의 실체에 접근하고 살아서 빠져나간 유일한 기록. 프로메테우스와의 비공식 접촉이 탈출의 결정적 요인.',
+    refs:[{text:'한국 지부 문서',page:'KR BRANCH',href:'kr-branch.html'},{text:'프로메테우스',page:'FACTIONS',href:'factions.html#prometheus'},{text:'한국 방벽 구역',page:'REGIONS',href:'region-korea.html'}],
+  },
 ];
