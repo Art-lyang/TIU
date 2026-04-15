@@ -19,7 +19,7 @@ const INCIDENTS = [
     ],
     oracle:'Event: MASS DISPLACEMENT\nClassification: HUMAN SYSTEMIC FAILURE\n\nObservation:\nThreat was not EV-Σ.\nThreat was loss of trust between humans.\n\nInfection cases in refugee population: 3 CONFIRMED\nDistrust-driven violence cases: 147 CONFIRMED\n\nConclusion:\nHumans are more dangerous to each other\nthan the phenomenon they are fleeing.',
     impact:'이 사건이 한국 방벽의 정당성을 부여. 검증 없이 받아들이면 내부에서 무너진다.',
-    refs:[{text:'Philadelphia Zone',page:'INDEX',href:'index.html'},{text:'한국 방벽 구역',page:'INDEX',href:'index.html'}],
+    refs:[{text:'Philadelphia Zone',page:'INDEX',href:'main.html'},{text:'한국 방벽 구역',page:'INDEX',href:'main.html'}],
   },
   {
     id:'INC-006',
@@ -76,7 +76,7 @@ const INCIDENTS = [
     ],
     oracle:'Event: SPONTANEOUS HUMAN ORGANIZATION\nOrigin: Ashfall City perimeter, D+3\nInitial members: 8\nCurrent: 40-80 (fluctuating)\n\nMotivation: RETRIEVAL / REVENGE\nStructure: INFORMAL → SEMI-MILITARY\n\nNOTE:\nThis group was not created by ideology,\nstrategy, or external influence.\nIt was created by loss.\n\nLoss is not a variable this system\ncan predict or control.',
     impact:'Ember Corps 기원. ARES와 비공식 내부 지도 데이터 교환 시작 (D+180).',
-    refs:[{text:'Marcus Cole',page:'PROFILES',href:'profiles.html'},{text:'Sarah Kim',page:'PROFILES',href:'profiles.html'},{text:'Ashfall City',page:'INDEX',href:'index.html'}],
+    refs:[{text:'Marcus Cole',page:'PROFILES',href:'profiles.html'},{text:'Sarah Kim',page:'PROFILES',href:'profiles.html'},{text:'Ashfall City',page:'INDEX',href:'main.html'}],
   },
 
   // ── 2000s HISTORY ──
@@ -133,7 +133,7 @@ const INCIDENTS = [
     ],
     oracle:'This analysis was compiled AFTER Ashfall City event.\nPrior to Ashfall, infiltration was not detected.\n\nEstimated infiltrator deployment timeline:\n  2005~2008: Major capitals\n  2008~2012: Secondary cities\n  2012~2015: Target selection\n  2015~2018: Camden, NJ — deep embedding\n\nImplication:\nOther cities may be in preparation phase.\nDetection method: UNKNOWN.',
     impact:'Infiltrator Scale의 위협은 전투력이 아니라 침투 기간. 다른 도시에도 같은 준비가 진행 중일 가능성.',
-    refs:[{text:'쉐드 오더',page:'FACTIONS',href:'factions.html#shed-order'},{text:'Infiltrator Scale',page:'SPECIMENS',href:'specimens.html'},{text:'Ashfall City',page:'INDEX',href:'index.html'}],
+    refs:[{text:'쉐드 오더',page:'FACTIONS',href:'factions.html#shed-order'},{text:'Infiltrator Scale',page:'SPECIMENS',href:'specimens.html'},{text:'Ashfall City',page:'INDEX',href:'main.html'}],
   },
   {
     id:'INC-004',

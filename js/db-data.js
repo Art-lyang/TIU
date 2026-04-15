@@ -26,7 +26,7 @@ const DB = [
 // ══════════════════════════════════════
 {term:'Philadelphia Zone',en:'PHILADELPHIA ZONE',cat:'LOCATION',cl:'omega',
  def:'최초 오염 해역. TS-Ω 존재 확인. Z-Ω ANOMALOUS 지정. 직접 접근 금지. 도시 전역 감염 완료 — 인프라 바이오매스 전환. 1977년 이전부터 TS-Ω가 잠들어 있었던 것으로 추정.',
- refs:[{text:'구역 상세 — 전술 지도',page:'INDEX',href:'index.html'},{text:'EV-Σ 확산 기록',page:'PROTOCOLS',href:'protocols.html#infection'},{text:'TS-Ω 개체 문서',page:'SPECIMENS',href:'specimens.html'}]},
+ refs:[{text:'구역 상세 — 전술 지도',page:'INDEX',href:'main.html'},{text:'EV-Σ 확산 기록',page:'PROTOCOLS',href:'protocols.html#infection'},{text:'TS-Ω 개체 문서',page:'SPECIMENS',href:'specimens.html'}]},
 
 {term:'Ashfall City',en:'ASHFALL CITY [CAMDEN, NJ]',cat:'LOCATION',cl:'omega',
  def:'쉐드 오더 군체 실험장. Camden, NJ 기반. 건물 구조물 바이오매스 전환. Z-3 COLLAPSE. 도시 기능 비가역적 붕괴. 72시간 만에 도시 전체 변형 — 건물 외벽이 먼저, 내부 구조물이 뒤따름. 최종 대피율: 34%. 잔류 시민: NODE로 재분류.',
@@ -90,7 +90,7 @@ const DB = [
 
 {term:'Seed Spreader',en:'FIXED DISPERSAL [S-TYPE / SPEC-004]',cat:'SPECIMEN',cl:'omega',
  def:'고정형 확산 개체. 높이 2~4m. 토양 고착 후 포자 광역 방출. 동충하초(Cordyceps) 모델. Silent Belt 형성 원인. 보이니치 문서 식물 도해와 78% 일치. 제거 시 2차 폭발적 포자 방출 위험. 반경 500m 접근 금지.',
- refs:[{text:'개체 상세',page:'SPECIMENS',href:'specimens.html'},{text:'동충하초 모델',page:'PROTOCOLS',href:'protocols.html#infection'},{text:'Silent Belt',page:'INDEX',href:'index.html'}]},
+ refs:[{text:'개체 상세',page:'SPECIMENS',href:'specimens.html'},{text:'동충하초 모델',page:'PROTOCOLS',href:'protocols.html#infection'},{text:'Silent Belt',page:'INDEX',href:'main.html'}]},
 
 {term:'Shell Walker',en:'MOBILE HIVE [H-TYPE / SPEC-005]',cat:'SPECIMEN',cl:'classified',
  def:'TS-Ω 이동형 하위 개체. 거북이 인간 크기 확대 형태. 등껍질 발광 문양 = 군체 통신 수신부. 항상 2~5개체 편대 이동. 군체 범위 외 유인 시 24시간 내 기능 정지. Naval Reclamation이 최초 확인.',
@@ -110,7 +110,7 @@ const DB = [
 
 {term:'TS-Ω Core',en:'SOVEREIGN SHELL [X-TYPE / SPEC-009]',cat:'SPECIMEN',cl:'observer',
  def:'Sovereign Shell 본체. 해양 군체 중심 의식. The Bloop(1997) 음원 94% 일치. Wow! 신호(1977) 통신 구조 일치. 물리적 크기 관측 시마다 변동. 단일 유기체가 아닌 분산 네트워크. 등껍질의 각 개구부: 포자 방출기/숙주 흡수점/신경 중계 노드.',
- refs:[{text:'개체 상세',page:'SPECIMENS',href:'specimens.html'},{text:'TS-Ω 세력',page:'FACTIONS',href:'factions.html#ts-omega'},{text:'Philadelphia Zone',page:'INDEX',href:'index.html'}]},
+ refs:[{text:'개체 상세',page:'SPECIMENS',href:'specimens.html'},{text:'TS-Ω 세력',page:'FACTIONS',href:'factions.html#ts-omega'},{text:'Philadelphia Zone',page:'INDEX',href:'main.html'}]},
 
 {term:'Infiltrator Scale',en:'REPTILIAN INFILTRATOR [M-TYPE / SPEC-010]',cat:'SPECIMEN',cl:'classified',
  def:'쉐드 오더 침투형. 인간 외형 완전 위장. 식별: 체온 2~3℃ 저하, 특정 광원 동공 수직 수축. 정체 발각 시 전투 형태 전환 — 비늘 돌출, 근력 3배 상승. 서울 외곽에서 6개월간 민간인 위장 활동 사례.',
@@ -118,7 +118,7 @@ const DB = [
 
 {term:'NODE',en:'ABSORBED ORGANISM',cat:'SPECIMEN',cl:'omega',
  def:'TS-Ω 군체에 흡수된 유기체(인간 포함). 독립성 소실. 신경 링크 재라우팅. 군체의 분산 노드로 재분류. Ashfall City 잔류 시민 다수가 NODE로 전환.',
- refs:[{text:'TS-Ω 세력',page:'FACTIONS',href:'factions.html#ts-omega'},{text:'Philadelphia Zone',page:'INDEX',href:'index.html'}]},
+ refs:[{text:'TS-Ω 세력',page:'FACTIONS',href:'factions.html#ts-omega'},{text:'Philadelphia Zone',page:'INDEX',href:'main.html'}]},
 
 
 // ══════════════════════════════════════
@@ -134,7 +134,7 @@ const DB = [
 
 {term:'쉐드 오더',en:'SHED ORDER',cat:'FACTION',cl:'omega',
  def:'L3 렙틸리언 도마뱀 계열 급진파. "껍질은 제한이다." EV-Σ를 진화 도구로 활용. 인간 사회 침투. Ashfall City 배후. Camden, NJ를 2005~2018년간 준비. Infiltrator Scale 배치 후 72시간 만에 도시 전환.',
- refs:[{text:'세력 상세',page:'FACTIONS',href:'factions.html#shed-order'},{text:'EXUVIA',page:'PROFILES',href:'profiles.html'},{text:'Ashfall City',page:'INDEX',href:'index.html'}]},
+ refs:[{text:'세력 상세',page:'FACTIONS',href:'factions.html#shed-order'},{text:'EXUVIA',page:'PROFILES',href:'profiles.html'},{text:'Ashfall City',page:'INDEX',href:'main.html'}]},
 
 {term:'TS-Ω',en:'SOVEREIGN SHELL — HIVE',cat:'FACTION',cl:'observer',
  def:'거북이 기반 하이브 군체. 자연 진화의 극한. 이동 속도 극저, 정지 기록 없음. Philadelphia Zone 심해. 1977년 이전부터 존재. 분산 네트워크형 의식. Brood Drone · Shell Walker · NODE를 하위 단위로 운용.',
@@ -142,7 +142,7 @@ const DB = [
 
 {term:'Ascension Choir',en:'ASCENSION CHOIR',cat:'FACTION',cl:'omega',
  def:'Wei Liang이 이끄는 EV-Σ 자발적 감염 숭배 집단. "감염은 연결이며 구원이다." Red Veil 경계 활동. CLASS II 감염자 다수 보유. 하이브 마인드 접근 가설. RDF와 교전 중. 약 2,000명 추종자.',
- refs:[{text:'Wei Liang 프로파일',page:'PROFILES',href:'profiles.html'},{text:'Red Veil',page:'INDEX',href:'index.html'}]},
+ refs:[{text:'Wei Liang 프로파일',page:'PROFILES',href:'profiles.html'},{text:'Red Veil',page:'INDEX',href:'main.html'}]},
 
 {term:'Meridian Group',en:'MERIDIAN GROUP',cat:'FACTION',cl:'classified',
  def:'EV-Σ 사업화 글로벌 기업. Elena Richter COO. 감염 소재를 무기·제약·에너지로 전환. BioAsset Division: Dormant 포자 거래, 감염 조직 샘플 판매. CEO "ZERO"는 정체 불명.',
@@ -150,11 +150,11 @@ const DB = [
 
 {term:'Ember Corps',en:'EMBER CORPS',cat:'FACTION',cl:'classified',
  def:'Ashfall City 생존자 민병대. Marcus Cole(Ash) 지휘. D+3에 8명으로 결성. "재(Ash)에서 불씨(Ember)로." Brood Drone 사냥 및 내부 지도 작성. Sarah Kim이 작전 담당. 비정규 전투 집단.',
- refs:[{text:'Marcus Cole',page:'PROFILES',href:'profiles.html'},{text:'Sarah Kim',page:'PROFILES',href:'profiles.html'},{text:'Ashfall City',page:'INDEX',href:'index.html'}]},
+ refs:[{text:'Marcus Cole',page:'PROFILES',href:'profiles.html'},{text:'Sarah Kim',page:'PROFILES',href:'profiles.html'},{text:'Ashfall City',page:'INDEX',href:'main.html'}]},
 
 {term:'Silent Wolves',en:'SILENT WOLVES',cat:'FACTION',cl:'classified',
  def:'Arkady Volkov가 이끄는 Silent Belt 약탈 집단. 전직 러시아 특수부대 출신. 감염체를 트랩으로 활용하는 전술. "총은 마지막에 쓴다. 환경이 죽인다." 생존을 위한 무법 집단.',
- refs:[{text:'Volkov 프로파일',page:'PROFILES',href:'profiles.html'},{text:'Silent Belt',page:'INDEX',href:'index.html'}]},
+ refs:[{text:'Volkov 프로파일',page:'PROFILES',href:'profiles.html'},{text:'Silent Belt',page:'INDEX',href:'main.html'}]},
 
 
 // ══════════════════════════════════════
@@ -322,7 +322,7 @@ const DB = [
 // ══════════════════════════════════════
 {term:'White Shield',en:'WHITE SHIELD [KOREA]',cat:'MILITARY',cl:'open',
  def:'한국군 특수 대응 부대. 정밀 봉쇄 전략. 안정도 97%. 세계 유일 확산 차단 성공. 프로메테우스 비공식 협력. AGENT KANG 배치 후 탐지율 43%→99.7%. DMZ 자연 방벽 활용.',
- refs:[{text:'군사 대응 상세',page:'PROTOCOLS',href:'protocols.html#military'},{text:'한국 방벽 구역',page:'INDEX',href:'index.html'}]},
+ refs:[{text:'군사 대응 상세',page:'PROTOCOLS',href:'protocols.html#military'},{text:'한국 방벽 구역',page:'INDEX',href:'main.html'}]},
 
 {term:'ARES Division',en:'ARES DIVISION [USA]',cat:'MILITARY',cl:'classified',
  def:'미국 특수 부대. 1947 Paperclip 기반 설립. 기술 우위 + 위성 전쟁. 안정도 62%. Ashfall City 봉쇄 실패. 최초 드론 피드 송출 부대.',
@@ -410,7 +410,7 @@ const DB = [
 
 {term:'L3 렙틸리언 문명',en:'L3 REPTILIAN CIVILIZATION [UNCONFIRMED]',cat:'UNCONFIRMED',cl:'observer',
  def:'쉐드 오더의 기원 문명. Antarctic Gate, 사하라 지하 구조물, 보이니치 문서가 유물 추정. 현 인류 이전 존재. 대부분 정보 ██████████.',
- refs:[{text:'쉐드 오더',page:'FACTIONS',href:'factions.html#shed-order'},{text:'Antarctic Gate',page:'INDEX',href:'index.html'}]},
+ refs:[{text:'쉐드 오더',page:'FACTIONS',href:'factions.html#shed-order'},{text:'Antarctic Gate',page:'INDEX',href:'main.html'}]},
 
 {term:'Chronovisor',en:'CHRONOVISOR — VATICAN',cat:'UNCONFIRMED',cl:'observer',
  def:'Vatican 소재 시간 관측 장치 추정. "과거가 현재를 관측하는" 사례 확인. 시간적 변칙의 물리적 매개체.',
