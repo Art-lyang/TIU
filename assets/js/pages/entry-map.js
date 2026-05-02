@@ -37,8 +37,12 @@ window.TIU_EntryMap = (function() {
       if (z.reticle) {
         extra = '<div class="map-reticle" style="left:' + z.x + '%;top:' + z.y + '%;"></div>';
       }
+      const edgeClass =
+        (z.x > 76 ? ' map-hotspot--edge-right' : '') +
+        (z.x < 24 ? ' map-hotspot--edge-left' : '') +
+        (z.y < 18 ? ' map-hotspot--edge-top' : '');
       return extra +
-        '<button class="map-hotspot map-hotspot--' + z.color + '" type="button"' +
+        '<button class="map-hotspot map-hotspot--' + z.color + edgeClass + '" type="button"' +
           ' data-zone="' + z.id + '"' +
           ' style="left:' + z.x + '%;top:' + z.y + '%;"' +
           ' aria-label="' + title + '" data-sound-hover>' +

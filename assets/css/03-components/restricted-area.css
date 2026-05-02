@@ -132,7 +132,7 @@
 }
 .restricted-modal-form { display: flex; flex-direction: column; gap: var(--space-2); }
 .restricted-modal-label {
-  font-family: var(--font-mono); font-size: 8px;
+  font-family: var(--font-mono); font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wider); color: var(--color-red);
 }
 .restricted-modal-input-row { display: flex; gap: var(--space-2); }
@@ -153,7 +153,7 @@
 }
 .restricted-modal-submit:hover { background: rgba(255,59,59,0.1); }
 .restricted-modal-hint {
-  font-family: var(--font-mono); font-size: 8px;
+  font-family: var(--font-mono); font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wider); color: #553333;
   margin-top: var(--space-2); font-style: italic;
 }

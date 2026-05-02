@@ -107,7 +107,7 @@
 
 .threat-card-status {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wider);
   padding: 2px var(--space-2);
   border: 1px solid currentColor;
@@ -130,7 +130,7 @@
 /* 마지막 활동 */
 .threat-card-last-label {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wider);
   color: var(--color-muted);
   margin-bottom: 2px;
@@ -148,7 +148,7 @@
   display: flex;
   justify-content: space-between;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wider);
   color: var(--color-muted);
   margin-bottom: 4px;

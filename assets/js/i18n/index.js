@@ -1,10 +1,12 @@
 /* TIU v3 — i18n MANAGER (global, non-module) */
 (function() {
   const STORAGE_KEY = 'tiu-lang';
-  const DICT = { ko: window.TIU_KO, en: window.TIU_EN };
-  let currentLang = localStorage.getItem(STORAGE_KEY) || 'ko';
+  const DICT = { ko: window.TIU_KO, en: window.TIU_EN, ja: window.TIU_JA };
+  const DEFAULT_LANG = 'ko';
+  let currentLang = localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
+  if (!DICT[currentLang]) currentLang = DEFAULT_LANG;
 
-  function getDict() { return DICT[currentLang]; }
+  function getDict() { return DICT[currentLang] || DICT[DEFAULT_LANG]; }
 
   function resolveKey(obj, path) {
     return path.split('.').reduce((acc, key) => acc && acc[key], obj);
@@ -36,7 +38,9 @@
 
   function updateLangToggle() {
     document.querySelectorAll('[data-lang-btn]').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.langBtn === currentLang);
+      const active = btn.dataset.langBtn === currentLang;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
   }
 

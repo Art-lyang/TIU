@@ -115,7 +115,7 @@
 
 .situation-act-state {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wider);
   padding: 2px var(--space-2);
   border: 1px solid currentColor;

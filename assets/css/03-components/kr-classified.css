@@ -78,7 +78,7 @@
 
 .kr-classified-label {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wider);
   color: var(--color-red);
 }
@@ -126,7 +126,7 @@
 
 .kr-classified-hint {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wider);
   color: #553333;
   margin-top: var(--space-2);

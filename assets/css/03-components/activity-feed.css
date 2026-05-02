@@ -67,7 +67,7 @@
   content: 'LIVE STREAM // PA SURFACE INDEX';
   display: block;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wider);
   color: var(--color-green);
   padding-bottom: var(--space-2);
@@ -126,7 +126,7 @@
   align-items: center;
   gap: 4px;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wider);
   color: var(--color-red);
   z-index: 1;
