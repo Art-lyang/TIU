@@ -87,6 +87,45 @@ window.TIU_EntryRender = (function() {
     ).join('');
   }
 
+  function _publicSpecIndex() {
+    const c = document.getElementById('publicSpecGrid');
+    if (!c) return;
+    const d = window.TIU_I18N.getDict().specIndex;
+    if (!d || !d.items) return;
+    c.innerHTML = d.items.map((item, i) =>
+      '<article class="public-spec-card public-spec-card--' + item.tone + '" data-reveal data-reveal-delay="' + (i * 55) + '">' +
+        '<div class="public-spec-head">' +
+          '<span class="public-spec-code">' + item.code + '</span>' +
+          '<span class="public-spec-risk">' + item.risk + '</span>' +
+        '</div>' +
+        '<h3 class="public-spec-name">' + item.name + '</h3>' +
+        '<p class="public-spec-desc">' + item.desc + '</p>' +
+        '<dl class="public-spec-meta">' +
+          '<div><dt>' + d.labels.type + '</dt><dd>' + item.type + '</dd></div>' +
+          '<div><dt>' + d.labels.rule + '</dt><dd>' + item.rule + '</dd></div>' +
+        '</dl>' +
+      '</article>'
+    ).join('');
+  }
+
+  function _regionDigest() {
+    const c = document.getElementById('regionDigestGrid');
+    if (!c) return;
+    const d = window.TIU_I18N.getDict().regions;
+    if (!d || !d.items) return;
+    c.innerHTML = d.items.map((item, i) =>
+      '<article class="region-digest-card region-digest-card--' + item.tone + '" data-reveal data-reveal-delay="' + (i * 45) + '">' +
+        '<div class="region-digest-top">' +
+          '<span class="region-digest-code">' + item.code + '</span>' +
+          '<span class="region-digest-status">' + item.status + '</span>' +
+        '</div>' +
+        '<h3 class="region-digest-name">' + item.name + '</h3>' +
+        '<p class="region-digest-line">' + item.line + '</p>' +
+        '<ul class="region-digest-tags">' + item.tags.map(tag => '<li>' + tag + '</li>').join('') + '</ul>' +
+      '</article>'
+    ).join('');
+  }
+
   function _mystery() {
     const container = document.getElementById('mysteryGrid');
     if (!container) return;
@@ -135,6 +174,8 @@ window.TIU_EntryRender = (function() {
           '<div class="officer-card-name">' + m.name + '</div>' +
           '<div class="officer-card-bg">' + m.bg + '</div>' +
           '<div class="officer-card-role">' + m.role + '</div>' +
+          (m.brief ? '<div class="officer-card-brief">' + m.brief + '</div>' : '') +
+          (m.links ? '<div class="officer-card-links">' + m.links.map(link => '<span>' + link + '</span>').join('') + '</div>' : '') +
         '</div>' +
       '</article>';
     }).join('');
@@ -206,7 +247,7 @@ window.TIU_EntryRender = (function() {
 
   return {
     all: function() {
-      _layers(); _factions(); _threatArchive(); _mystery();
+      _layers(); _factions(); _threatArchive(); _publicSpecIndex(); _regionDigest(); _mystery();
       _footer(); _status(); _timeline(); _dbPreview();
       _officers(); _koreaArchive(); _gameCta(); _voices();
       if (window.TIU_EntryMap) window.TIU_EntryMap.render();

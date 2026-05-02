@@ -7,9 +7,13 @@ window.TIU_EntryMap = (function() {
     { id: 'philadelphia', x: 27.9, y: 29.4, color: 'purple', ring: true  },
     { id: 'ashfall',      x: 25.3, y: 35,   color: 'red',    ring: false },
     { id: 'silentbelt',   x: 62.8, y: 11.6, color: 'amber',  ring: false },
+    { id: 'euBorder',     x: 48.2, y: 26.2, color: 'green',  ring: false },
+    { id: 'germany',      x: 50.6, y: 27.7, color: 'green',  ring: false },
     { id: 'redveil',      x: 80.6, y: 25.6, color: 'red',    ring: false },
     { id: 'korea',        x: 85.3, y: 28.4, color: 'green',  reticle: true },
     { id: 'japan',        x: 87.9, y: 31,   color: 'amber',  ring: false },
+    { id: 'australia',    x: 82.8, y: 70.5, color: 'green',  ring: false },
+    { id: 'meridian',     x: 55.6, y: 40.6, color: 'amber',  ring: false },
     { id: 'unregisteredInland', x: 48, y: 54, color: 'muted', ring: false },
     { id: 'antarctic',    x: 50,   y: 91,   color: 'purple', ring: true  }
   ];
