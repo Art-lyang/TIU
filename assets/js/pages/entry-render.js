@@ -92,8 +92,11 @@ window.TIU_EntryRender = (function() {
     if (!c) return;
     const d = window.TIU_I18N.getDict().specIndex;
     if (!d || !d.items) return;
-    c.innerHTML = d.items.map((item, i) =>
-      '<article class="public-spec-card public-spec-card--' + item.tone + '" data-reveal data-reveal-delay="' + (i * 55) + '">' +
+    c.innerHTML = d.items.map((item, i) => {
+      const mediaLabel = item.visual ? '<span class="public-spec-media-label">' + item.visual + '</span>' : '';
+      const media = item.img ? '<div class="public-spec-media"><img src="' + item.img + '" alt="' + item.name + '" loading="lazy">' + mediaLabel + '</div>' : '';
+      return '<article class="public-spec-card public-spec-card--' + item.tone + '" data-reveal data-reveal-delay="' + (i * 55) + '">' +
+        media +
         '<div class="public-spec-head">' +
           '<span class="public-spec-code">' + item.code + '</span>' +
           '<span class="public-spec-risk">' + item.risk + '</span>' +
@@ -104,8 +107,8 @@ window.TIU_EntryRender = (function() {
           '<div><dt>' + d.labels.type + '</dt><dd>' + item.type + '</dd></div>' +
           '<div><dt>' + d.labels.rule + '</dt><dd>' + item.rule + '</dd></div>' +
         '</dl>' +
-      '</article>'
-    ).join('');
+      '</article>';
+    }).join('');
   }
 
   function _regionDigest() {

@@ -137,12 +137,14 @@ window.TIU_KO = {
     labels: { type: 'TYPE', rule: 'FIELD RULE' },
     note: '완전 계보, 발생 원인, 상위 분류 코드는 공개 색인에서 제외된다. 하지만 플레이어는 이 정도 정보만으로도 작전 선택을 시작할 수 있다.',
     items: [
-      { code: 'SPEC-001', name: '감염체 마네킹', risk: 'PHASE 1 / CLOSE RANGE', tone: 'amber', type: 'M-TYPE 인간형', rule: '정지 개체로 보여도 3m 내 단독 접근 금지', desc: '정지 시 인체와 구분하기 어렵다. 자극이 들어오면 0.3초 안에 공격 전환이 발생할 수 있어, 구조 대상과 위협 대상의 판별을 지연시킨다.' },
-      { code: 'SPEC-003', name: 'Brood Drone', risk: 'H-TYPE / HIVE', tone: 'red', type: '군집형 하위 개체', rule: '핵 개체 분리 전까지 소모전 금지', desc: '독립 의지는 낮지만 군체 명령에 빠르게 반응한다. 분리 후 12시간 내 비활성화 사례가 있으나, 그 전까지는 봉쇄선을 소모시키는 역할을 한다.' },
-      { code: 'SPEC-008', name: 'Spore Phantom', risk: 'S-TYPE / AIRBORNE', tone: 'red', type: '포자·광반응형', rule: '환기 차단, 조명 통제, 흡입 노출 기록', desc: '광원 조건에서 분산되며 물리적 제거가 어렵다. 흡입 노출이 발생하면 감염 이력 기록과 격리 비용이 개인 단위에서 가족 단위로 확대된다.' },
-      { code: 'SPEC-011', name: 'Shell Talker', risk: 'VOICE MIMIC', tone: 'amber', type: '음성 모방형', rule: '피해자 음성 확인 시 단독 응답 금지', desc: '실종자나 가족의 목소리를 흉내내어 문을 열게 만든다. TIU에서 공포가 단순 공격이 아니라 관계의 비용으로 작동하는 대표 사례다.' },
-      { code: 'SPEC-012', name: 'Blood Pit', risk: 'ENVIRONMENTAL', tone: 'red', type: '환경 오염형', rule: '접촉 표면 소각, 회수품 반출 금지', desc: '붉은 점액질과 소화효소를 통해 유기물을 분해한다. 사건 현장이 곧 개체가 되는 유형이라, 구조와 증거 보존이 서로 충돌한다.' },
-      { code: 'PHASE 0', name: 'Latent Host', risk: 'CIVILIAN COST', tone: 'green', type: '무증상 감염 이력자', rule: '기록 삭제 금지, 접근권 제한으로 처리', desc: '겉으로는 일반 시민과 다르지 않다. 학교, 보험, 결혼, 병역, 면회권 같은 생활 제도가 먼저 흔들리기 때문에 사회적 긴장을 만드는 핵심 축이다.' }
+      { code: 'SPEC-001', name: '감염체 마네킹', risk: 'PHASE 1 / CLOSE RANGE', tone: 'amber', img: 'assets/img/specs/mannequin-cluster.webp', visual: 'MANNEQUIN CLUSTER', type: 'M-TYPE 인간형', rule: '정지 개체로 보여도 3m 내 단독 접근 금지', desc: '정지 시 인체와 구분하기 어렵다. 자극이 들어오면 0.3초 안에 공격 전환이 발생할 수 있어, 구조 대상과 위협 대상의 판별을 지연시킨다.' },
+      { code: 'SPEC-003', name: 'Brood Drone', risk: 'H-TYPE / HIVE', tone: 'red', img: 'assets/img/specs/brood-drone-closeup.webp', visual: 'BROOD CLOSEUP', type: '군집형 하위 개체', rule: '핵 개체 분리 전까지 소모전 금지', desc: '독립 의지는 낮지만 군체 명령에 빠르게 반응한다. 분리 후 12시간 내 비활성화 사례가 있으나, 그 전까지는 봉쇄선을 소모시키는 역할을 한다.' },
+      { code: 'SPEC-004', name: 'Seed Spreader', risk: 'S-TYPE / CRITICAL', tone: 'red', img: 'assets/img/specs/seed-spreader.webp', visual: 'SILENT BELT NODE', type: '고정형 확산 개체', rule: '접근 반경 통제, 소각 전 포자 역류 계산', desc: '움직이지 않지만 바람과 토양을 확산 수단으로 사용한다. 제거 시 포자 폭발 방출 위험이 있어, 단순 소각은 2차 확산으로 이어질 수 있다.' },
+      { code: 'SPEC-008', name: 'Spore Phantom', risk: 'S-TYPE / AIRBORNE', tone: 'red', img: 'assets/img/specs/spore-phantom.webp', visual: 'SPORE PHANTOM', type: '포자·광반응형', rule: '환기 차단, 조명 통제, 흡입 노출 기록', desc: '광원 조건에서 분산되며 물리적 제거가 어렵다. 흡입 노출이 발생하면 감염 이력 기록과 격리 비용이 개인 단위에서 가족 단위로 확대된다.' },
+      { code: 'SPEC-011', name: 'Shell Talker', risk: 'VOICE MIMIC', tone: 'amber', img: 'assets/img/specs/spec_011_shelltalker.jpg', visual: 'VOICE INCIDENT CCTV', type: '음성 모방형', rule: '피해자 음성 확인 시 단독 응답 금지', desc: '실종자나 가족의 목소리를 흉내내어 문을 열게 만든다. TIU에서 공포가 단순 공격이 아니라 관계의 비용으로 작동하는 대표 사례다.' },
+      { code: 'SPEC-012', name: 'Blood Pit', risk: 'ENVIRONMENTAL', tone: 'red', img: 'assets/img/specs/spec_012_bloodpit.jpg', visual: 'CONTAMINATED ZONE STILL', type: '환경 오염형', rule: '접촉 표면 소각, 회수품 반출 금지', desc: '붉은 점액질과 소화효소를 통해 유기물을 분해한다. 사건 현장이 곧 개체가 되는 유형이라, 구조와 증거 보존이 서로 충돌한다.' },
+      { code: 'SPEC-015', name: 'Brain Seeker', risk: 'H-TYPE / EXILED', tone: 'red', img: 'assets/img/specs/spec_015_brainseeker.jpg', visual: 'EXILED HIVE TRACE', type: '학습형 이탈 개체', rule: '정면 교전 금지, 흔적 추적과 민간 대피 우선', desc: '군체 연결에서 벗어난 뒤 학습 능력이 상승한 개체군으로 분류된다. 세부 명명 사건과 발생 좌표는 공개 색인에 포함하지 않는다.' },
+      { code: 'PHASE 0', name: 'Latent Host', risk: 'CIVILIAN COST', tone: 'green', img: 'assets/img/specs/infection-transition.webp', visual: 'INFECTION TRANSITION', type: '무증상 감염 이력자', rule: '기록 삭제 금지, 접근권 제한으로 처리', desc: '겉으로는 일반 시민과 다르지 않다. 학교, 보험, 결혼, 병역, 면회권 같은 생활 제도가 먼저 흔들리기 때문에 사회적 긴장을 만드는 핵심 축이다.' }
     ]
   },
   world: {
