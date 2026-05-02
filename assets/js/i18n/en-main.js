@@ -79,11 +79,11 @@
         msg: '> [REDACTED] :: This zone is not assigned a public coordinate.'
       },
       {
-        id: 'observer',
+        id: 'core',
         icon: '🔒',
         flag: '👁',
-        name: 'OBSERVATION-CLASS',
-        code: 'OBSERVATION-CLASS LOG',
+        name: 'BLACK-LEVEL CORE',
+        code: 'SEALED CORE LOG',
         sub: 'Restricted log · Corrupted',
         action: 'ACCESS DENIED',
         type: 'locked',
@@ -95,7 +95,7 @@
   window.TIU_EN.statusWall = {
     eyebrow: 'PA // WORLD STATUS',
     title: 'REAL-TIME METRICS',
-    desc: 'Public observation metrics. Values refresh from the PA-TERMINAL surface index.',
+    desc: 'Public metrics. Values refresh from the PA-TERMINAL surface index.',
     cells: [
       { label: 'CONTAMINATION', target: 47.2,  suffix: '%',   trend: 'up',   variant: 'amber' },
       { label: 'ACTIVE ZONES',  target: 8,     suffix: '/12', trend: 'flat', variant: 'red' },
@@ -109,12 +109,12 @@
   window.TIU_EN.threatGrid = {
     eyebrow: 'PA // FACTION SUMMARY',
     title: 'FACTION ACTIVITY',
-    desc: 'Current activity state of the four primary factions. Only observable actions recorded.',
+    desc: 'Current activity state of key factions and aligned state systems. Only surface-indexed actions are recorded.',
     factions: [
-      { id: 'observer',   name: 'OBSERVATION-CLASS', status: 'RESTRICTED', last: 'Surface index unavailable', threat: 100, variant: 'obs', logo: 'assets/img/logo-observer.webp' },
+      { id: 'core',       name: 'ORACLE CORE', status: 'RESTRICTED', last: 'Surface index limited', threat: 100, variant: 'obs', logo: 'assets/img/logo-oracle-core.webp' },
       { id: 'prometheus', name: 'PROMETHEUS', status: 'ACTIVE',     last: 'Intel operation (14:22)',      threat: 60,  variant: 'pro',  logo: 'assets/img/logo-prometheus.webp' },
       { id: 'shed',       name: 'SHED ORDER', status: 'EXPANDING',  last: 'Ashfall signal (14:18)',       threat: 85,  variant: 'shed', logo: 'assets/img/logo-shed.webp' },
-      { id: 'tsw',        name: 'TS-Ω',       status: 'DORMANT',    last: 'Philadelphia silence (12:45)', threat: 95,  variant: 'tsw',  logo: 'assets/img/logo-tsw.webp' }
+      { id: 'tsw',        name: 'TS-Ω',       status: 'ADVANCING',  last: 'Philadelphia inland vector (12:45)', threat: 95,  variant: 'tsw',  logo: 'assets/img/logo-tsw.webp' }
     ],
     labels: { status: 'STATUS', last: 'LAST ACTIVITY', threat: 'THREAT LEVEL' }
   };
@@ -126,7 +126,7 @@
     events: [
       { time: '14:32:18', type: 'warn',   text: 'RED_VEIL: mut_rate += 0.03' },
       { time: '14:30:02', type: 'ok',     text: 'KR.shield: integrity 99.7%' },
-      { time: '14:28:45', type: '',       text: 'PA.recv(TS_OMEGA) → weak' },
+      { time: '14:28:45', type: 'warn',   text: 'PA.recv(TS_OMEGA) → inland_vector' },
       { time: '14:25:10', type: 'warn',   text: 'ZONE.silent_belt: spore_count++' },
       { time: '14:22:33', type: 'ok',     text: 'NET.archive: 847 nodes online' },
       { time: '14:20:07', type: '',       text: 'System uptime: 14,227h' },

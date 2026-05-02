@@ -21,23 +21,52 @@ window.TIU_EntryRender = (function() {
     if (primary) {
       primary.innerHTML = dict.primary.map((f, i) => {
         const logo = f.logo ? '<img class="card-faction-logo" src="' + f.logo + '" alt="' + f.name + '" loading="lazy">' : '';
+        const meta = f.meta ? '<div class="card-meta">' + f.meta + '</div>' : '';
+        const detail = f.detail ? '<div class="card-detail">' + f.detail + '</div>' : '';
+        const access = f.access ? '<div class="card-access">' + f.access + '</div>' : '';
         return '<div class="card card--faction card--' + f.variant + '" data-reveal data-reveal-delay="' + (i * 60) + '" data-sound-hover>' +
           logo +
+          meta +
           '<div class="card-name">' + f.name + '</div>' +
           '<div class="card-tagline">' + f.tagline + '</div>' +
+          detail +
+          access +
         '</div>';
       }).join('');
     }
     if (irregular) {
       irregular.innerHTML = dict.irregular.map((f, i) => {
         const bg = f.img ? '<div class="card-faction-bg"><img src="' + f.img + '" alt="' + f.name + '" loading="lazy"></div>' : '';
+        const meta = f.meta ? '<div class="card-meta">' + f.meta + '</div>' : '';
+        const detail = f.detail ? '<div class="card-detail">' + f.detail + '</div>' : '';
+        const access = f.access ? '<div class="card-access">' + f.access + '</div>' : '';
         return '<div class="card card--faction card--irregular" data-reveal data-reveal-delay="' + (i * 60) + '" data-sound-hover>' +
           bg +
+          meta +
           '<div class="card-name">' + f.name + '</div>' +
           '<div class="card-tagline">' + f.tagline + '</div>' +
+          detail +
+          access +
         '</div>';
       }).join('');
     }
+  }
+
+  function _koreaArchive() {
+    const c = document.getElementById('koreaArchiveGrid');
+    if (!c) return;
+    const d = window.TIU_I18N.getDict().korea;
+    if (!d || !d.nodes) return;
+    c.innerHTML = d.nodes.map((node, i) =>
+      '<article class="korea-archive-card korea-archive-card--' + node.tone + '" data-reveal data-reveal-delay="' + (i * 50) + '">' +
+        '<div class="korea-archive-card-top">' +
+          '<span class="korea-archive-card-code">' + node.code + '</span>' +
+          '<span class="korea-archive-card-access">' + node.access + '</span>' +
+        '</div>' +
+        '<div class="korea-archive-card-name">' + node.name + '</div>' +
+        '<div class="korea-archive-card-text">' + node.text + '</div>' +
+      '</article>'
+    ).join('');
   }
 
   function _threatArchive() {
@@ -179,7 +208,7 @@ window.TIU_EntryRender = (function() {
     all: function() {
       _layers(); _factions(); _threatArchive(); _mystery();
       _footer(); _status(); _timeline(); _dbPreview();
-      _officers(); _gameCta(); _voices();
+      _officers(); _koreaArchive(); _gameCta(); _voices();
       if (window.TIU_EntryMap) window.TIU_EntryMap.render();
     },
     initCountUp: initCountUp

@@ -13,7 +13,7 @@
 |---|---|---|
 | `--color-green` | `#00e5a0` | PA-TERMINAL, 성공, 생존, 한국 방벽 |
 | `--color-amber` | `#ffc744` | 경고, 프로메테우스, 중립 |
-| `--color-red` | `#ff3b3b` | 위험, 쉐드 오더, OBSERVER, CLASSIFIED |
+| `--color-red` | `#ff3b3b` | 위험, 쉐드 오더, BLACK-LEVEL, CLASSIFIED |
 | `--color-blue` | `#4db8ff` | 정보, TS-Ω, 해양 |
 | `--color-purple` | `#b47aff` | 이상, Z-Ω, 비정상 |
 

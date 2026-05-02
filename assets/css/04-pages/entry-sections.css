@@ -27,6 +27,93 @@
   margin-bottom: var(--space-1);
 }
 
+.korea-archive-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.korea-archive-card {
+  border: 1px solid var(--color-border);
+  background: #080d09;
+  padding: var(--space-3);
+  min-height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+.korea-archive-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.75;
+}
+
+.korea-archive-card--green { color: var(--color-green); }
+.korea-archive-card--amber { color: var(--color-amber); }
+.korea-archive-card--red { color: var(--color-red); }
+
+.korea-archive-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+}
+
+.korea-archive-card-code {
+  color: currentColor;
+}
+
+.korea-archive-card-access {
+  color: var(--color-muted);
+  text-align: right;
+}
+
+.korea-archive-card-name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+  line-height: var(--leading-tight);
+}
+
+.korea-archive-card-text {
+  color: var(--color-light);
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+}
+
+.korea-archive-hint {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--alpha-green-20);
+  background: var(--alpha-green-05);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  line-height: var(--leading-normal);
+}
+
+@media (max-width: 900px) {
+  .korea-archive-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .korea-archive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ─── Section 7: Mystery Hook ─── */
 .mystery {
   max-width: var(--container-md);

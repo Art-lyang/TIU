@@ -123,12 +123,21 @@
   color: var(--color-text);
   background: rgba(0, 0, 0, 0.88);
   border: 1px solid rgba(0, 229, 160, 0.28);
-  padding: 3px var(--space-2);
+  padding: 4px var(--space-2);
   white-space: nowrap;
+  text-align: center;
+  line-height: 1.2;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--duration-fast);
   z-index: 7;
+}
+
+.map-hotspot-country {
+  margin-top: 2px;
+  color: var(--color-green);
+  font-size: 9px;
+  letter-spacing: var(--tracking-widest);
 }
 
 .map-hotspot:hover .map-hotspot-label { opacity: 1; }
