@@ -9,7 +9,7 @@
     acts: [
       { num: 'I',   state: 'PAST',    period: '2020 — 2023', label: 'THE COLLAPSE',  body: 'Worldwide breakdown began with Philadelphia\'s fall. EV-Σ shattered most nations\' containment. Killing meant spreading. Cities went silent, one by one.', variant: 'red' },
       { num: 'II',  state: 'PAST',    period: '2024 — 2025', label: 'THE PARTITION', body: 'Nations improvised survival. US ARES · China Red Dragon · Russia Permafrost · Japan JSDF · EU-JBDF. Only Korea held 97.3% containment.', variant: 'amber' },
-      { num: 'III', state: 'PRESENT', period: '2026 — NOW',  label: 'THE STALEMATE', body: 'Now. The four powers move within silence. TS-Ω dormant. Shed Order expanding. Prometheus running intel ops. Observation-class records remain sealed — and in the Korean branch, something has occurred.', variant: 'green' }
+      { num: 'III', state: 'PRESENT', period: '2026 — NOW',  label: 'THE STALEMATE', body: 'Now. Major factions and state apparatuses move inside a tense silence. TS-Ω is advancing inland from Philadelphia. Shed Order is expanding; Prometheus continues intel operations. Black-level records remain sealed — and in the Korean branch, something has occurred.', variant: 'green' }
     ],
     footnote: 'NEXT ARC — UNWRITTEN'
   };
@@ -37,11 +37,11 @@
     codeLabel: 'ACCESS CODE',
     codePlaceholder: 'Enter code...',
     submit: 'VERIFY',
-    hint: 'HINT: OBSERVATION ____________',
+    hint: 'HINT: KR-INIT ____________',
     denyMsg: 'ACCESS DENIED — INVALID CODE',
     successMsg: 'GRANT: VERIFIED — REDIRECTING...',
     v2Url: '../tiu-v2-complete/kr-branch.html',
-    validCode: 'OBSERVATION TERMINATE'
+    validCode: 'KR-INIT SHIELD'
   };
 
   window.TIU_EN.phaseDiagram = {
@@ -61,7 +61,7 @@
   window.TIU_EN.intel = {
     eyebrow: 'PA // FEATURED INTEL',
     title: 'LATEST SIGNALS',
-    desc: 'Curated signals from observation records. Updated: real-time.',
+    desc: 'Curated signals from the surface index. Updated: real-time.',
     items: [
       { code: 'INTEL #001', title: 'MODEL DEVIATION',       text: '"This region should have failed. Outcome does not match model."',          source: 'SEALED AUTO-LOG',  tone: 'red',   img: 'assets/img/korea-barrier.webp' },
       { code: 'INTEL #002', title: 'SELF-INACCESSIBLE',     text: '"There are logs the surface terminal cannot access."',                     source: 'INTERNAL ALERT',  tone: 'amber', img: 'assets/img/philadelphia-drone.webp' },

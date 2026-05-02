@@ -12,7 +12,7 @@
       { img: 'assets/img/kr-lee-jungchul.png', name: 'LEE JUNG-CHUL', code: 'PILEHEAD',   role: 'COMMANDER',   bg: 'Upper-level appointee · Former ROK Army Special Forces' },
       { img: 'assets/img/kr-seo-haeun.png',    name: 'SEO HA-EUN',    code: 'ANALYST-01', role: 'DEPUTY',      bg: 'Data stream analysis · Base operations' },
       { img: 'assets/img/kr-kang-doyun.png',   name: 'KANG DO-YUN',   code: 'FIELD-01',   role: 'FIELD AGENT', bg: 'Former ROK Marine NCO · Tactical command' },
-      { img: 'assets/img/kr-yoon-sejin.png',   name: 'YOON SE-JIN',   code: 'BIO-01',     role: 'RESEARCHER',  bg: 'Prion protein · Biological observation' },
+      { img: 'assets/img/kr-yoon-sejin.png',   name: 'YOON SE-JIN',   code: 'BIO-01',     role: 'RESEARCHER',  bg: 'Prion protein · Biological monitoring' },
       { img: 'assets/img/kr-lim-jaehyuk.png',  name: 'LIM JAE-HYUK',  code: 'SYS-01',     role: 'TECHNICIAN',  bg: 'Closed terminal · Systems' }
     ]
   };

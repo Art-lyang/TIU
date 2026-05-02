@@ -120,6 +120,21 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
+.card--faction .card-meta,
+.card--faction .card-access {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.card--faction .card-meta {
+  color: var(--color-muted);
+  margin-bottom: var(--space-2);
+}
+
 .card--faction .card-tagline {
   font-size: var(--text-xs);
   color: currentColor;
@@ -128,6 +143,27 @@
   position: relative;
   z-index: 2;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.card--faction .card-detail {
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-light);
+  opacity: 0.86;
+  line-height: var(--leading-snug);
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.card--faction .card-access {
+  display: inline-flex;
+  align-self: center;
+  margin-top: var(--space-3);
+  padding: 2px var(--space-2);
+  border: 1px solid currentColor;
+  color: var(--color-green);
+  background: rgba(0, 0, 0, 0.28);
 }
 
 /* Highlight Card (한국) */

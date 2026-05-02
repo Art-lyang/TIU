@@ -25,6 +25,7 @@ window.TIU_EntryMap = (function() {
     hotspotsEl.innerHTML = ZONES.map(z => {
       const zData = dict.zones[z.id] || {};
       const title = zData.title || z.id;
+      const country = zData.country ? '<div class="map-hotspot-country">' + zData.country + '</div>' : '';
       let extra = '';
       if (z.ring) {
         extra = '<div class="map-ring map-ring--' + z.color + '" style="left:' + z.x + '%;top:' + z.y + '%;"></div>';
@@ -37,7 +38,7 @@ window.TIU_EntryMap = (function() {
           ' data-zone="' + z.id + '"' +
           ' style="left:' + z.x + '%;top:' + z.y + '%;"' +
           ' aria-label="' + title + '" data-sound-hover>' +
-          '<div class="map-hotspot-label">' + title + '</div>' +
+          '<div class="map-hotspot-label"><div class="map-hotspot-title">' + title + '</div>' + country + '</div>' +
         '</button>';
     }).join('');
 
@@ -53,8 +54,10 @@ window.TIU_EntryMap = (function() {
     /* 메타 라벨 (언어별) */
     const tl = document.getElementById('mdThreatLabel');
     const rl = document.getElementById('mdResponseLabel');
+    const cl = document.getElementById('mdCountryLabel');
     if (tl) tl.textContent = dict.metaLabels.threat;
     if (rl) rl.textContent = dict.metaLabels.response;
+    if (cl) cl.textContent = dict.metaLabels.country;
 
     _bind();
   }
@@ -91,6 +94,17 @@ window.TIU_EntryMap = (function() {
     document.getElementById('mdDesc').textContent   = z.desc;
     document.getElementById('mdThreat').textContent = z.threat;
     document.getElementById('mdResponse').textContent = z.response;
+    const countryCell = document.getElementById('mdCountryCell');
+    const countryEl = document.getElementById('mdCountry');
+    if (countryCell && countryEl) {
+      if (z.country) {
+        countryEl.textContent = z.country;
+        countryCell.style.display = '';
+      } else {
+        countryEl.textContent = '';
+        countryCell.style.display = 'none';
+      }
+    }
 
     /* 이미지 (조건부) */
     const imgWrap = document.getElementById('mdImage');

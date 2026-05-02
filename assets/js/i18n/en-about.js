@@ -10,7 +10,7 @@
     timeline: [
       { year: '2015', text: 'First fragments — a student\'s notebook' },
       { year: '2018', text: 'First structured worldbuilding attempt' },
-      { year: '2020', text: 'Deep observation-system concept established' },
+      { year: '2020', text: 'Deep classification-system concept established' },
       { year: '2022', text: 'TIU-CARD prototype' },
       { year: '2024', text: 'Public site v1' },
       { year: '2025', text: 'Canon storyline locked' },

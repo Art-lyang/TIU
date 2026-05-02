@@ -51,7 +51,7 @@ window.TIU_KO = {
   map: {
     eyebrow: 'PA // GLOBAL VIEW',
     title: 'GLOBAL THREAT MAP',
-    desc: '공공 아카이브가 공개한 8개 관측 지점. 등급은 PA-TERMINAL 표면 색인 기준이며, 비공개 좌표는 표시되지 않는다. 핫스팟을 클릭하면 상세 정보가 표시된다.',
+    desc: '공공 아카이브가 공개한 8개 지점. 등급은 PA-TERMINAL 표면 색인 기준이며, 비공개 좌표는 표시되지 않는다. 핫스팟을 클릭하면 사건 지역과 국가 태그가 표시된다.',
     legend: [
       { label: 'Z-Ω ANOMALOUS', color: 'purple' },
       { label: 'Z-3 COLLAPSE',  color: 'red' },
@@ -62,27 +62,27 @@ window.TIU_KO = {
     dossierLabel: 'TACTICAL DOSSIER',
     selectHint: '핫스팟을 선택하여 상세 정보 열람',
     zones: {
-      philadelphia: { title: 'PHILADELPHIA ZONE',   status: 'Z-Ω ANOMALOUS', tone: 'purple', desc: '2022년 함락. 해역 군체 표면화 이후 도시 전역이 단일 TS-Ω 군체로 흡수됐다. 사살은 곧 확산 — 직접 개입은 봉쇄됐다.', threat: 'TS-Ω / 해양 군체',  response: '관측 · 회피', img: 'assets/img/philadelphia-drone.webp' },
-      ashfall:      { title: 'ASHFALL CITY',        status: 'Z-3 COLLAPSE',  tone: 'red',    desc: '2023년 쉐드 오더 변이 가속 실험의 실패작. 건물 자체가 생체 조직으로 전환됐다. 미군이 외곽 생존 구역을 40% 확장 중.', threat: 'Brood Core / 감염자', response: '봉쇄 · 회수', img: 'assets/img/ashfall-city.webp' },
-      silentbelt:   { title: 'SILENT BELT',         status: 'Z-2 DANGER',    tone: 'amber',  desc: '러시아 전역에 걸친 광역 침묵 지대. 시드 스프레더 확산으로 음향 감쇠 발생. 월 1.2km씩 외연이 자라난다.', threat: '광역 포자 확산',      response: '소각 · 감시', img: 'assets/img/silent-belt.webp' },
-      redveil:      { title: 'RED VEIL REGION',     status: 'Z-2 DANGER',    tone: 'red',    desc: '중국 도시 밀집권 감염 봉쇄선. 내부 통제는 사실상 실패, 외부 방벽만 유지된다. 누적 봉쇄 비용 1,665억 위안.', threat: '혼합 개체 / 침투',   response: '전담군 · 격리', img: 'assets/img/red-veil.webp' },
-      korea:        { title: 'KOREA CONTROLLED',    status: 'CONTAINMENT',    tone: 'green',  desc: '세계 유일 방역 성공 구역. White Shield 정밀 봉쇄 유지 중. 공개 예측 모델은 이 결과를 설명하지 못했다.',   threat: '산발 변이',           response: '조기 탐지 · 선택 격리', img: 'assets/img/korea-barrier.webp' },
-      japan:        { title: 'JAPAN DEFENSE LINE',  status: 'Z-1 CAUTIONARY', tone: 'amber',  desc: '2025년 9~12월 이시가키·미야코·오키나와 본섬·아마미·토카라·오가사와라 일부 상실. 류큐 탈환 작전 진행 중. 국내 감염 0건 유지.',              threat: '해양 변이',           response: '해군 · 도서 회수' },
+      philadelphia: { title: 'PHILADELPHIA ZONE',   country: 'USA',    status: 'Z-Ω ANOMALOUS', tone: 'purple', desc: '2022년 함락. 해역 군체 표면화 이후 도시 전역이 단일 TS-Ω 군체로 흡수됐다. 현재 군체 영향권은 내륙 방향으로 전진 중이다.', threat: 'TS-Ω / 해양 군체',  response: '감시 · 회피', img: 'assets/img/philadelphia-drone.webp' },
+      ashfall:      { title: 'ASHFALL CITY',        country: 'USA',    status: 'Z-3 COLLAPSE',  tone: 'red',    desc: '2023년 쉐드 오더 변이 가속 실험의 실패작. 건물 자체가 생체 조직으로 전환됐다. 미군이 외곽 생존 구역을 40% 확장 중.', threat: 'Brood Core / 감염자', response: '봉쇄 · 회수', img: 'assets/img/ashfall-city.webp' },
+      silentbelt:   { title: 'SILENT BELT',         country: 'RUSSIA', status: 'Z-2 DANGER',    tone: 'amber',  desc: '러시아 전역에 걸친 광역 침묵 지대. 시드 스프레더 확산으로 음향 감쇠 발생. 월 1.2km씩 외연이 자라난다.', threat: '광역 포자 확산',      response: '소각 · 감시', img: 'assets/img/silent-belt.webp' },
+      redveil:      { title: 'RED VEIL REGION',     country: 'CHINA',  status: 'Z-2 DANGER',    tone: 'red',    desc: '중국 도시 밀집권 감염 봉쇄선. 내부 통제는 사실상 실패, 외부 방벽만 유지된다. 누적 봉쇄 비용 1,665억 위안.', threat: '혼합 개체 / 침투',   response: '전담군 · 격리', img: 'assets/img/red-veil.webp' },
+      korea:        { title: 'KOREA CONTROLLED',    country: 'KOREA',  status: 'CONTAINMENT',    tone: 'green',  desc: '세계 유일 방역 성공 구역. White Shield 정밀 봉쇄 유지 중. 공개 예측 모델은 이 결과를 설명하지 못했다.',   threat: '산발 변이',           response: '조기 탐지 · 선택 격리', img: 'assets/img/korea-barrier.webp' },
+      japan:        { title: 'JAPAN DEFENSE LINE',  country: 'JAPAN',  status: 'Z-1 CAUTIONARY', tone: 'amber',  desc: '2025년 9~12월 이시가키·미야코·오키나와 본섬·아마미·토카라·오가사와라 일부 상실. 류큐 탈환 작전 진행 중. 국내 감염 0건 유지.',              threat: '해양 변이',           response: '해군 · 도서 회수' },
       unregisteredInland: { title: 'UNREGISTERED INLAND', status: 'DATA VOID', tone: 'muted', desc: 'PA-TERMINAL 공식 색인에 좌표가 부여되지 않은 내륙 구역. 관측 공백의 원인은 표면 자료에서 확인되지 않는다.', threat: '미확인', response: '관측 불가' },
       antarctic:    { title: 'ANTARCTIC GATE',      status: 'Z-Ω ANOMALOUS', tone: 'purple', desc: '완전 원형 구조. 깊이 측정 불가. 일부 자료는 지하 문명층(L3)으로 이어지는 관문으로 기록한다 — 공식 해석은 보류.',     threat: '공간 왜곡 / 심층',   response: '위성 감시 · 진입 금지' }
     },
-    metaLabels: { threat: 'PRIMARY THREAT', response: 'RESPONSE' }
+    metaLabels: { country: 'COUNTRY', threat: 'PRIMARY THREAT', response: 'RESPONSE' }
   },
 
   dbPreview: {
     label: 'PA-TERMINAL ARCHIVE PREVIEW',
     stats: [
-      { value: '4',   label: 'FACTIONS' },
+      { value: '20+', label: 'FACTIONS' },
       { value: '12',  label: 'ZONES' },
       { value: '847', label: 'PROXY NODES' },
       { value: '17',  label: 'SPECIMENS' },
       { value: '20+', label: 'PROFILES' },
-      { value: '10',  label: 'INCIDENTS' }
+      { value: '30+', label: 'AGENCIES' }
     ],
     hint: '공공 아카이브가 당신에게 공개한 기록들.'
   },
@@ -129,30 +129,30 @@ window.TIU_KO = {
   world: {
     eyebrow: 'WORLD STRUCTURE',
     title: '4-LAYER CIVILIZATION',
-    desc: '지표에서 시작해 아래로 내려갈수록 진실에 가까워진다. 은폐된 권력, 지하 문명, 그리고 모든 관측의 원천이 단계적으로 펼쳐진다.',
+    desc: '지표에서 시작해 아래로 내려갈수록 진실에 가까워진다. 은폐된 권력, 지하 문명, 그리고 표면 색인 너머의 코어가 단계적으로 펼쳐진다.',
     layers: [
       { code: 'L1 — SURFACE',        desc: '지표 세계. 인류가 살아가는 무대.' },
       { code: 'L2 — PROXY NETWORK',  desc: '847개 노드로 구성된 은폐 권력 네트워크.' },
       { code: 'L3 — SUBTERRANEAN',   desc: '지하에 존재하는 렙틸리언 문명. 두 종족이 대립한다.' },
-      { code: 'L4 — REDACTED CORE',  desc: '표면 색인에서는 설명되지 않는 관측 원천. 직접 명칭은 공개되지 않는다.' }
+      { code: 'L4 — ORACLE CORE',    desc: '표면 색인에서는 코어로만 표시되는 심층 분류 중추. 기원과 주체는 공개되지 않는다.' }
     ]
   },
   factions: {
     eyebrow: 'FACTIONS',
     title: 'POWERS IN CONFLICT',
-    desc: '이 세계는 네 개의 주요 세력이 충돌하는 전장이다. 그리고 네 개의 인간 비정규 세력이 그 틈에서 살아남고 있다.',
+    desc: '공개 아카이브는 세계의 충돌을 네 개의 큰 축으로 압축한다. 실제 현장에는 국가 대응 체계, 비공식 조직, 민간 브로커, 종교 집단이 그 아래에서 얽혀 움직인다.',
     primary: [
-      { name: 'OBSERVATION-CLASS', tagline: '관측한다. 기록한다. 예측한다.',        variant: 'obs',  logo: 'assets/img/logo-observer.webp' },
-      { name: '프로메테우스', tagline: '통제되지 않은 선택을 지킨다.',             variant: 'pro',  logo: 'assets/img/logo-prometheus.webp' },
-      { name: '쉐드 오더',    tagline: '껍질 너머, 다음 진화가 있다.',              variant: 'shed', logo: 'assets/img/logo-shed.webp' },
-      { name: 'TS-Ω',         tagline: '지능이 아니라 본능이다.',                    variant: 'tsw',  logo: 'assets/img/logo-tsw.webp' }
+      { name: 'ORACLE CORE', meta: 'L4 / CODE REQUIRED', tagline: '분류한다. 예측한다. 보류한다.', detail: '표면 색인에는 코어로만 남는 심층 분류 중추. 직접 열람은 제한된다.', access: 'BLACK-LEVEL', variant: 'obs',  logo: 'assets/img/logo-oracle-core.webp' },
+      { name: '프로메테우스', meta: 'HUMAN BLACK OPS', tagline: '통제되지 않은 선택을 지킨다.', detail: '공식 기록 밖에서 방벽 기술과 정보 작전을 흔든다. 한국 봉쇄율 31%의 그림자가 이들과 연결된다.', access: 'HINT', variant: 'pro',  logo: 'assets/img/logo-prometheus.webp' },
+      { name: '쉐드 오더',    meta: 'MUTATION CULT', tagline: '껍질 너머, 다음 진화가 있다.', detail: '감염을 재난이 아니라 진화로 해석하는 확장 세력. Ashfall 기록 이후 표면 활동이 감소했다.', access: 'PUBLIC / HINT', variant: 'shed', logo: 'assets/img/logo-shed.webp' },
+      { name: 'TS-Ω',         meta: 'Z-Ω / PHILADELPHIA', tagline: '지능이 아니라 본능이다.', detail: '필라델피아 해역에서 표면화한 군체 축. 현재 영향권은 내륙 방향으로 전진 중이다.', access: 'PUBLIC THREAT', variant: 'tsw',  logo: 'assets/img/logo-tsw.webp' }
     ],
-    irregularLabel: '인간 비정규 세력',
+    irregularLabel: '인간·국가·회색지대 세력',
     irregular: [
-      { name: 'Silent Wolves',    tagline: '감염을 두려워하지 않는다. 무기로 쓴다.',     img: 'assets/img/silent-wolves-raid.webp' },
-      { name: 'Ascension Choir',  tagline: '감염은 축복이지 저주가 아니다.',             img: 'assets/img/choir-worship.webp' },
-      { name: 'Meridian Group',   tagline: '도덕은 수요 곡선에 나타나지 않는다.',       img: 'assets/img/meridian-richter.webp' },
-      { name: 'Ember Corps',      tagline: '돌아온 34%. 그들은 복수를 선택했다.',         img: 'assets/img/ember-ash.webp' }
+      { name: 'Silent Wolves',    meta: 'MERCENARY CELL', tagline: '감염을 두려워하지 않는다. 무기로 쓴다.', detail: '러시아권 회색지대 정보원과 무장 계약망.', access: 'HINT', img: 'assets/img/silent-wolves-raid.webp' },
+      { name: 'Ascension Choir',  meta: 'RELIGIOUS EXTREMES', tagline: '감염은 축복이지 저주가 아니다.', detail: '재난 이후 확산된 종교적 해석과 감염 숭배 파편.', access: 'PUBLIC / HINT', img: 'assets/img/choir-worship.webp' },
+      { name: 'Meridian Group',   meta: 'PRIVATE ENTERPRISE', tagline: '도덕은 수요 곡선에 나타나지 않는다.', detail: '물류·의료·보험 시장을 통해 위기를 상품화하는 기업권.', access: 'PUBLIC FRONT', img: 'assets/img/meridian-richter.webp' },
+      { name: 'Ember Corps',      meta: 'SURVIVOR MILITIA', tagline: '돌아온 34%. 그들은 복수를 선택했다.', detail: 'Ashfall 이후 귀환자와 생존자들이 만든 보복 네트워크.', access: 'HINT', img: 'assets/img/ember-ash.webp' }
     ]
   },
   korea: {
@@ -160,7 +160,16 @@ window.TIU_KO = {
     title: 'THE LAST BARRIER',
     stat: '97.3%',
     statLabel: 'CONTAINMENT SUCCESS RATE',
-    text: '세계의 모든 예측 모델이 실패를 산출했다.<br>그러나 이 구역만 살아남았다. 이유는 — 불명.',
+    text: '세계의 모든 예측 모델이 실패를 산출했다.<br>그러나 이 구역만 살아남았다. 방벽, 군 체계, 기록 봉인, 비공식 협력망이 한 국가 안에서 겹쳐 작동한다.',
+    archiveHint: '한국 아카이브는 공개 기록과 잠긴 기록을 함께 배치한다. 세계관 문서나 카드게임에서 얻은 코드가 있으면 일부 제한 파일을 더 열람할 수 있다.',
+    nodes: [
+      { code: 'KR-INIT-001', name: '한국 지부', access: 'CODE REQUIRED', tone: 'green', text: '정론의 시작점. 이중철 부임 이후 공개본과 비공개본이 갈라지는 핵심 지부 기록.' },
+      { code: '0과', name: '0과', access: 'RESTRICTED', tone: 'amber', text: '문서와 현장 사이의 불일치를 다루는 한국 내부 특수 조직. 일부 기록은 표면 색인에서 누락된다.' },
+      { code: 'DG', name: 'DG', access: 'HINT', tone: 'green', text: '국가 생존 기능을 우선하는 심층 대응 라인. 방벽, 검역, 기록 봉인과 연결된다.' },
+      { code: '특재사', name: '특수재난 대응 라인', access: 'PUBLIC / HINT', tone: 'amber', text: '시민에게는 재난 행정으로 보이는 현장 대응 체계. 검문, 대피, 격리 명령의 표면 역할을 맡는다.' },
+      { code: 'WHITE SHIELD', name: 'White Shield', access: 'PUBLIC', tone: 'green', text: '대한민국 군 EV-Σ 대응 체계. 세계에서 유일하게 97.3% 봉쇄율을 유지한 공개 지표.' },
+      { code: 'COASTAL MIRROR', name: 'COASTAL MIRROR', access: 'HINT', tone: 'red', text: '해안 방벽 기술과 비공식 협력의 흔적. 공개 보고서는 이 이름을 직접 설명하지 않는다.' }
+    ],
     systemNote: '"This region should have failed. Outcome does not match model."',
     systemLabel: 'PA // SYSTEM NOTE'
   },

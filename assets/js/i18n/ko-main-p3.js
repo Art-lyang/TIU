@@ -10,7 +10,7 @@
     acts: [
       { num: 'I',   state: 'PAST',    period: '2020 — 2023', label: 'THE COLLAPSE',  body: 'Philadelphia 함락으로 시작된 전 세계적 붕괴. EV-Σ가 대부분의 국가의 봉쇄선을 무너뜨렸다. 사살은 곧 확산이었고, 도시는 하나씩 침묵했다.', variant: 'red' },
       { num: 'II',  state: 'PAST',    period: '2024 — 2025', label: 'THE PARTITION', body: '국가들이 각자의 방식으로 생존을 모색. 미국 ARES · 중국 Red Dragon · 러시아 Permafrost · 일본 JSDF · EU-JBDF. 한국만이 97.3% 봉쇄를 유지했다.', variant: 'amber' },
-      { num: 'III', state: 'PRESENT', period: '2026 — NOW',  label: 'THE STALEMATE', body: '현재. 4대 세력이 정적 속에서 움직인다. TS-Ω는 휴면. 쉐드 오더는 확장 중. 프로메테우스는 정보 작전. 관측자 계열 기록은 봉인 — 그리고 한국 지부에서 무언가가 일어났다.', variant: 'green' }
+      { num: 'III', state: 'PRESENT', period: '2026 — NOW',  label: 'THE STALEMATE', body: '현재. 주요 세력과 국가 기관이 정적 속에서 움직인다. TS-Ω는 필라델피아 내륙 방향으로 전진 중. 쉐드 오더는 확장 중이며, 프로메테우스는 정보 작전을 지속한다. 블랙 레벨 기록은 봉인 — 그리고 한국 지부에서 무언가가 일어났다.', variant: 'green' }
     ],
     footnote: 'NEXT ARC — UNWRITTEN'
   };
@@ -38,11 +38,11 @@
     codeLabel: 'ACCESS CODE',
     codePlaceholder: 'Enter code...',
     submit: 'VERIFY',
-    hint: 'HINT: OBSERVATION ____________',
+    hint: 'HINT: KR-INIT ____________',
     denyMsg: 'ACCESS DENIED — INVALID CODE',
     successMsg: 'GRANT: VERIFIED — REDIRECTING...',
     v2Url: '../tiu-v2-complete/kr-branch.html',
-    validCode: 'OBSERVATION TERMINATE'
+    validCode: 'KR-INIT SHIELD'
   };
 
   window.TIU_KO.phaseDiagram = {
@@ -62,7 +62,7 @@
   window.TIU_KO.intel = {
     eyebrow: 'PA // FEATURED INTEL',
     title: 'LATEST SIGNALS',
-    desc: '관측 기록에서 선별된 주요 신호. 갱신: 실시간.',
+    desc: '표면 색인에서 선별된 주요 신호. 갱신: 실시간.',
     items: [
       { code: 'INTEL #001', title: 'MODEL DEVIATION',      text: '"This region should have failed. Outcome does not match model."',  source: 'SEALED AUTO-LOG',  tone: 'red',   img: 'assets/img/korea-barrier.webp' },
       { code: 'INTEL #002', title: 'SELF-INACCESSIBLE',    text: '"표면 단말로는 열람할 수 없는 로그가 있다."',                       source: 'INTERNAL ALERT',  tone: 'amber', img: 'assets/img/philadelphia-drone.webp' },

@@ -79,11 +79,11 @@
         msg: '> [REDACTED] :: 본 구역은 공개 좌표가 부여되지 않습니다.'
       },
       {
-        id: 'observer',
+        id: 'core',
         icon: '🔒',
         flag: '👁',
-        name: 'BLACK-LEVEL SYSTEM',
-        code: 'OBSERVATION-CLASS LOG',
+        name: 'BLACK-LEVEL CORE',
+        code: 'SEALED CORE LOG',
         sub: '비공개 로그 · 손상됨',
         action: 'ACCESS DENIED',
         type: 'locked',
@@ -95,7 +95,7 @@
   window.TIU_KO.statusWall = {
     eyebrow: 'PA // WORLD STATUS',
     title: 'REAL-TIME METRICS',
-    desc: '공개 관측 지표. 수치는 PA-TERMINAL 표면 색인에서 자동 갱신된다.',
+    desc: '공개 지표. 수치는 PA-TERMINAL 표면 색인에서 자동 갱신된다.',
     cells: [
       { label: '오염률',      target: 47.2,  suffix: '%',   trend: 'up',   variant: 'amber' },
       { label: '활성 구역',    target: 8,     suffix: '/12', trend: 'flat', variant: 'red' },
@@ -109,12 +109,12 @@
   window.TIU_KO.threatGrid = {
     eyebrow: 'PA // FACTION SUMMARY',
     title: 'FACTION ACTIVITY',
-    desc: '4대 세력의 현재 활동 상태. 관측 가능한 활동만 기록됨.',
+    desc: '핵심 세력과 관련 국가 기관의 현재 활동 상태. 공개 색인이 포착한 활동만 기록됨.',
     factions: [
-      { id: 'observer',   name: 'OBSERVATION-CLASS', status: 'RESTRICTED', last: '표면 색인 없음',       threat: 100, variant: 'obs',  logo: 'assets/img/logo-observer.webp' },
+      { id: 'core',       name: 'ORACLE CORE', status: 'RESTRICTED', last: '표면 색인 제한',             threat: 100, variant: 'obs',  logo: 'assets/img/logo-oracle-core.webp' },
       { id: 'prometheus', name: 'PROMETHEUS', status: 'ACTIVE',     last: '정보 작전 감지 (14:22)',     threat: 60,  variant: 'pro',  logo: 'assets/img/logo-prometheus.webp' },
       { id: 'shed',       name: 'SHED ORDER', status: 'EXPANDING',  last: 'Ashfall 신호 (14:18)',       threat: 85,  variant: 'shed', logo: 'assets/img/logo-shed.webp' },
-      { id: 'tsw',        name: 'TS-Ω',       status: 'DORMANT',    last: 'Philadelphia 정적 (12:45)', threat: 95,  variant: 'tsw',  logo: 'assets/img/logo-tsw.webp' }
+      { id: 'tsw',        name: 'TS-Ω',       status: 'ADVANCING',  last: 'Philadelphia 내륙 전진 감지 (12:45)', threat: 95,  variant: 'tsw',  logo: 'assets/img/logo-tsw.webp' }
     ],
     labels: { status: 'STATUS', last: 'LAST ACTIVITY', threat: 'THREAT LEVEL' }
   };
@@ -126,7 +126,7 @@
     events: [
       { time: '14:32:18', type: 'warn',   text: 'RED_VEIL: mut_rate += 0.03' },
       { time: '14:30:02', type: 'ok',     text: 'KR.shield: integrity 99.7%' },
-      { time: '14:28:45', type: '',       text: 'PA.recv(TS_OMEGA) → weak' },
+      { time: '14:28:45', type: 'warn',   text: 'PA.recv(TS_OMEGA) → inland_vector' },
       { time: '14:25:10', type: 'warn',   text: 'ZONE.silent_belt: spore_count++' },
       { time: '14:22:33', type: 'ok',     text: 'NET.archive: 847 nodes online' },
       { time: '14:20:07', type: '',       text: 'System uptime: 14,227h' },
