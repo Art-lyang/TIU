@@ -10,7 +10,7 @@
     timeline: [
       { year: '2015', text: '첫 단편 — 고등학생의 공책' },
       { year: '2018', text: '세계관 구조화 시도' },
-      { year: '2020', text: 'ORACLE 컨셉 정립' },
+      { year: '2020', text: '심층 관측 시스템 컨셉 정립' },
       { year: '2022', text: 'TIU-CARD 프로토타입' },
       { year: '2024', text: '공개 사이트 v1' },
       { year: '2025', text: '정론(Canon) 스토리라인 확정' },
@@ -30,7 +30,7 @@
     thanks: '이 세계가 당신에게 무언가였다면, 기록 보관인은 이미 원하던 것을 받은 것입니다.',
     quote: '"모든 거대한 세계관은 단순한 개인 선호에서 시작한다."',
     signature: '— Art-lyang, Archivist',
-    backLink: '← RETURN TO ORACLE',
+    backLink: '← RETURN TO ARCHIVE',
     reach: {
       label: 'REACH',
       links: [

@@ -10,7 +10,7 @@
     timeline: [
       { year: '2015', text: 'First fragments — a student\'s notebook' },
       { year: '2018', text: 'First structured worldbuilding attempt' },
-      { year: '2020', text: 'ORACLE concept established' },
+      { year: '2020', text: 'Deep observation-system concept established' },
       { year: '2022', text: 'TIU-CARD prototype' },
       { year: '2024', text: 'Public site v1' },
       { year: '2025', text: 'Canon storyline locked' },
@@ -30,7 +30,7 @@
     thanks: 'If this world has meant something to you, the keeper has already received what they wanted.',
     quote: '"Every great worldbuilding begins from a simple personal preference."',
     signature: '— Art-lyang, Archivist',
-    backLink: '← RETURN TO ORACLE',
+    backLink: '← RETURN TO ARCHIVE',
     reach: {
       label: 'REACH',
       links: [

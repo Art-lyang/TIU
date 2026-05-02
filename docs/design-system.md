@@ -11,7 +11,7 @@
 
 | 변수 | HEX | 용도 |
 |---|---|---|
-| `--color-green` | `#00e5a0` | ORACLE, 성공, 생존, 한국 방벽 |
+| `--color-green` | `#00e5a0` | PA-TERMINAL, 성공, 생존, 한국 방벽 |
 | `--color-amber` | `#ffc744` | 경고, 프로메테우스, 중립 |
 | `--color-red` | `#ff3b3b` | 위험, 쉐드 오더, OBSERVER, CLASSIFIED |
 | `--color-blue` | `#4db8ff` | 정보, TS-Ω, 해양 |
@@ -175,7 +175,7 @@ assets/js/i18n/
 3. HTML에 `data-i18n="key.path"` 속성 추가
 
 ### ⚠ 번역 톤 가이드
-- **ORACLE 보고서**: 건조하고 군사적. 주어 생략 가능 (`"SECURE CHANNEL // ENCRYPTED"`)
+- **PA 공개 기록**: 건조하고 군사적. 주어 생략 가능 (`"PUBLIC CHANNEL // FILTERED"`)
 - **철학적 문장**: 문학적 무게 유지. 의역 허용
 - **수치/코드**: 원문 그대로 (`EV-Σ`, `97.3%`, `KR-INIT-001`)
 

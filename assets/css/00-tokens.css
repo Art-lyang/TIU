@@ -5,7 +5,7 @@
 
 :root {
   /* ─── Brand Colors ─── */
-  --color-green:   #00e5a0;  /* ORACLE, 성공, 생존 */
+  --color-green:   #00e5a0;  /* PA-TERMINAL, 성공, 생존 */
   --color-green-2: #00b87a;
   --color-green-3: #004d33;
   --color-amber:   #ffc744;  /* 경고, 중립, Prometheus */

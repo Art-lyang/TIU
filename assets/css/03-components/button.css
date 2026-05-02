@@ -22,7 +22,7 @@
   border-color: var(--color-light);
 }
 
-/* Variant: Primary (ORACLE 진입) */
+/* Variant: Primary (PA-TERMINAL 진입) */
 .btn--primary {
   border-color: var(--color-green);
   color: var(--color-green);

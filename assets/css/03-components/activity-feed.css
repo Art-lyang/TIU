@@ -64,7 +64,7 @@
 
 /* 상단 헤더 라인 */
 .activity-feed-frame::before {
-  content: 'LIVE STREAM // ORACLE SENSOR NETWORK';
+  content: 'LIVE STREAM // PA SURFACE INDEX';
   display: block;
   font-family: var(--font-mono);
   font-size: 8px;

@@ -10,7 +10,7 @@ window.TIU_EntryMap = (function() {
     { id: 'redveil',      x: 80.6, y: 25.6, color: 'red',    ring: false },
     { id: 'korea',        x: 85.3, y: 28.4, color: 'green',  reticle: true },
     { id: 'japan',        x: 87.9, y: 31,   color: 'amber',  ring: false },
-    { id: 'sovari',       x: 48,   y: 54,   color: 'muted',  ring: false },
+    { id: 'unregisteredInland', x: 48, y: 54, color: 'muted', ring: false },
     { id: 'antarctic',    x: 50,   y: 91,   color: 'purple', ring: true  }
   ];
 

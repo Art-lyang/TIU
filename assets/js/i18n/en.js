@@ -2,7 +2,7 @@
 window.TIU_EN = {
   meta: {
     title: 'TURTLE ISLE UNIVERSE',
-    description: 'ORACLE Intelligence System — A multilayered worldbuilding project'
+    description: 'PA-TERMINAL — A multilayered worldbuilding project'
   },
   topbar: {
     brand: 'TURTLE ISLE',
@@ -14,10 +14,10 @@ window.TIU_EN = {
     { type: '',       text: 'PROBE.heartbeat() → latency: 12ms' },
     { type: 'warn',   text: '⚠ ZONE.silent_belt: spore_count++' },
     { type: 'hi',     text: '✓ KR.shield: integrity 99.7%' },
-    { type: '',       text: 'ORACLE.recv(TS_OMEGA) → weak' },
+    { type: '',       text: 'PA.recv(TS_OMEGA) → weak' },
     { type: 'danger', text: '⚠ RED_VEIL: mut_rate += 0.03' },
     { type: '',       text: 'NET.proxy: 847 nodes online' },
-    { type: 'hi',     text: '✓ ORACLE.uptime: 14,227h' }
+    { type: 'hi',     text: '✓ PA.uptime: 14,227h' }
   ],
   hero: {
     tag: 'CLASSIFIED WORLDBUILDING PROJECT',
@@ -39,12 +39,12 @@ window.TIU_EN = {
     hint: '※ Click a year node to expand the record.',
     closeLabel: 'Close',
     events: [
-      { year: '2020', title: 'GENESIS BREAK',     note: 'Containment lost',         detail: 'TS-Ω experiment slips its leash. Through contact with TS-Ω, the incomplete EV-Σ evolves into its current full form. The Turtle faction\'s warnings were ignored. Every collapse that follows traces back to this moment.' },
-      { year: '2022', title: 'PHILADELPHIA',      note: 'First city falls',          detail: 'TS-Ω hive surfaces in Philadelphia waters. The entire city is absorbed into a single hive; direct intervention becomes impossible. From this point on, killing equals spreading. ORACLE classifies the zone as Z-Ω in perpetuity.' },
+      { year: '2020', title: 'GENESIS BREAK',     note: 'Containment lost',         detail: 'A TS-Ω-related experiment slips its leash. Through contact, incomplete EV-Σ evolves into its current full form. Early warnings were ignored. Every collapse that follows traces back to this moment.' },
+      { year: '2022', title: 'PHILADELPHIA',      note: 'First city falls',          detail: 'TS-Ω hive surfaces in Philadelphia waters. The entire city is absorbed into a single hive; direct intervention becomes impossible. From this point on, killing equals spreading. The zone is permanently classified Z-Ω.' },
       { year: '2023', title: 'ASHFALL CITY',      note: 'Shed Order experiment',     detail: 'A city where Shed Order forced mutation acceleration. The result: buildings converted into living biomass. The experiment was logged as failed and the city sealed under Z-3 COLLAPSE. Shed Order then reduces visible exposure and intensifies surface infiltration.' },
       { year: '2024', title: 'FIRST CONTACT',     note: 'TS-Ω Core encountered',     detail: 'EXUVIA approaches the TS-Ω core, attempting combat, dialogue, and absorption simultaneously. EXUVIA absorbs EV-Σ and enters runaway evolution. TS-Ω stays utterly indifferent — its uncontainable status is confirmed. The same year, Meridian Group accidentally recovers Dormant spores.' },
-      { year: '2025', title: 'BLACK DECLARATION', note: 'Prometheus declares autonomy', detail: 'Prometheus severs its informal cooperation with ORACLE and declares an autonomous line. The same year EU-JBDF is hastily founded; Japan abandons Okinawa\'s main island on the Ryukyu front. ORACLE reclassifies Prometheus as hostile — yet 31% of Korea\'s containment rate came from their unofficial support.' },
-      { year: '2026', title: 'NOW',               note: 'KR branch commander posted', detail: 'Lee Jung-chul takes office as the first commander of ORACLE Proxy Network branch KR-INIT-001. This moment is the canon\'s starting point; every If-route is a simulation under GRANT authority. The world\'s next branch — has not yet been written.' }
+      { year: '2025', title: 'BLACK DECLARATION', note: 'Prometheus declares autonomy', detail: 'Prometheus severs informal cooperation and declares an autonomous line. The same year EU-JBDF is hastily founded; Japan abandons Okinawa\'s main island on the Ryukyu front. Prometheus is treated as hostile — yet 31% of Korea\'s containment rate came from their unofficial support.' },
+      { year: '2026', title: 'NOW',               note: 'KR branch commander posted', detail: 'Lee Jung-chul takes office as the first commander of KR-INIT-001. This moment is the canon\'s starting point; some If-routes are disclosed only as limited simulation records. The world\'s next branch — has not yet been written.' }
     ]
   },
 
@@ -66,9 +66,9 @@ window.TIU_EN = {
       ashfall:      { title: 'ASHFALL CITY',        status: 'Z-3 COLLAPSE',  tone: 'red',    desc: '2023 Shed Order mutation-acceleration experiment, failed. Buildings converted into biomass. US forces are expanding the outer survival belt by 40%.',  threat: 'Brood Core / Infected', response: 'Contain · Recover', img: 'assets/img/ashfall-city.webp' },
       silentbelt:   { title: 'SILENT BELT',         status: 'Z-2 DANGER',    tone: 'amber',  desc: 'Wide silent zone spanning Russia. Acoustic damping from Seed Spreader diffusion. The perimeter advances 1.2 km per month.', threat: 'Wide Spore Diffusion',  response: 'Burn · Monitor', img: 'assets/img/silent-belt.webp' },
       redveil:      { title: 'RED VEIL REGION',     status: 'Z-2 DANGER',    tone: 'red',    desc: 'Chinese urban-density blockade line. Interior control effectively lost; only the outer wall holds. Cumulative containment cost: 166.5 billion yuan.', threat: 'Mixed Entities',        response: 'Task Force · Isolate', img: 'assets/img/red-veil.webp' },
-      korea:        { title: 'KOREA CONTROLLED',    status: 'CONTAINMENT',    tone: 'green',  desc: 'The only fully contained region in the world. White Shield holds a precision blockade. ORACLE\'s model failed to predict this outcome.',  threat: 'Sporadic Mutation',     response: 'Detect Early · Select Isolation', img: 'assets/img/korea-barrier.webp' },
+      korea:        { title: 'KOREA CONTROLLED',    status: 'CONTAINMENT',    tone: 'green',  desc: 'The only fully contained region in the world. White Shield holds a precision blockade. Public prediction models cannot explain this outcome.',  threat: 'Sporadic Mutation',     response: 'Detect Early · Select Isolation', img: 'assets/img/korea-barrier.webp' },
       japan:        { title: 'JAPAN DEFENSE LINE',  status: 'Z-1 CAUTIONARY', tone: 'amber',  desc: 'Sept~Dec 2025: lost Ishigaki, Miyako, Okinawa main island, Amami, Tokara, parts of Ogasawara. Ryukyu reclamation underway. Zero domestic infections.',              threat: 'Marine Mutation',       response: 'Naval · Island Recovery' },
-      sovari:       { title: 'UNREGISTERED INLAND', status: 'DATA VOID',     tone: 'muted',  desc: 'An inland sector with no coordinate assigned in the PA-TERMINAL public index. The cause of the observation blank is not stated in surface records.',                threat: 'Unknown',               response: 'Observation Impossible' },
+      unregisteredInland: { title: 'UNREGISTERED INLAND', status: 'DATA VOID', tone: 'muted', desc: 'An inland sector with no coordinate assigned in the PA-TERMINAL public index. The cause of the observation blank is not stated in surface records.', threat: 'Unknown', response: 'Observation Impossible' },
       antarctic:    { title: 'ANTARCTIC GATE',      status: 'Z-Ω ANOMALOUS', tone: 'purple', desc: 'A perfect circular structure. Depth is immeasurable. Some records describe it as a gate to a subterranean civilization layer (L3) — the official interpretation is held in reserve.', threat: 'Spatial Distortion',    response: 'Satellite Monitor · No Entry' }
     },
     metaLabels: { threat: 'PRIMARY THREAT', response: 'RESPONSE' }
@@ -134,7 +134,7 @@ window.TIU_EN = {
       { code: 'L1 — SURFACE',        desc: 'The visible world. The human stage.' },
       { code: 'L2 — PROXY NETWORK',  desc: '847 nodes of concealed power infrastructure.' },
       { code: 'L3 — SUBTERRANEAN',   desc: 'Underground reptilian civilization. Two species in conflict.' },
-      { code: 'L4 — ORACLE CORE',    desc: 'ORACLE main core. Where all observation data converges.' }
+      { code: 'L4 — REDACTED CORE',  desc: 'An observation source not explained by the surface index. Direct names are not disclosed.' }
     ]
   },
   factions: {
@@ -142,7 +142,7 @@ window.TIU_EN = {
     title: 'POWERS IN CONFLICT',
     desc: 'Four primary factions clash across this world. Four irregular human groups survive in the cracks between them.',
     primary: [
-      { name: 'ORACLE',      tagline: 'Observes. Records. Predicts.',              variant: 'obs',  logo: 'assets/img/logo-observer.webp' },
+      { name: 'OBSERVATION-CLASS', tagline: 'Observes. Records. Predicts.',        variant: 'obs',  logo: 'assets/img/logo-observer.webp' },
       { name: 'PROMETHEUS',  tagline: 'Preserves uncontrolled choice.',            variant: 'pro',  logo: 'assets/img/logo-prometheus.webp' },
       { name: 'SHED ORDER',  tagline: 'Beyond the shell, the next evolution waits.', variant: 'shed', logo: 'assets/img/logo-shed.webp' },
       { name: 'TS-Ω',        tagline: 'Not intelligence. Instinct.',               variant: 'tsw',  logo: 'assets/img/logo-tsw.webp' }
@@ -161,25 +161,25 @@ window.TIU_EN = {
     stat: '97.3%',
     statLabel: 'CONTAINMENT SUCCESS RATE',
     text: 'Every predictive model forecasted collapse.<br>Only this region survived. The reason — unknown.',
-    oracleNote: '"This region should have failed. Outcome does not match model."',
-    oracleLabel: '// SYSTEM NOTE'
+    systemNote: '"This region should have failed. Outcome does not match model."',
+    systemLabel: 'PA // SYSTEM NOTE'
   },
   mystery: {
     eyebrow: 'UNEXPLAINED OUTCOME',
     title: 'WHY?',
     items: [
-      { code: 'ANOMALY #001', quote: '"This region should have failed. Outcome does not match model." — ORACLE self-evaluation' },
-      { code: 'ANOMALY #002', quote: 'Logs exist that PA-TERMINAL does not surface. The system itself cannot query them directly.' },
+      { code: 'ANOMALY #001', quote: '"This region should have failed. Outcome does not match model." — sealed prediction report' },
+      { code: 'ANOMALY #002', quote: 'Logs exist that PA-TERMINAL does not surface. The public terminal cannot query them directly.' },
       { code: 'ANOMALY #003', quote: 'Of Korea\'s 97.3% — 31% came from hands nobody logged. The surface report does not answer.' }
     ],
     hint: 'The truth lies beyond the PA-TERMINAL index. If you can find it.'
   },
   cta: {
-    code: 'ORACLE INTELLIGENCE SYSTEM',
-    title: 'CONNECT TO ORACLE',
-    desc: 'ORACLE observes and records everything in this world.<br>Factions, threats, incidents, people — all that you need to know is here.',
-    button: 'ACCESS ORACLE SYSTEM',
-    footer: 'ORACLE OS v4.12 // SECURE CHANNEL // ENCRYPTED'
+    code: 'PA-TERMINAL PUBLIC ARCHIVE',
+    title: 'OPEN THE ARCHIVE',
+    desc: 'Disclosable records are available through this terminal.<br>Factions, threats, incidents, people — everything the surface index allows is here.',
+    button: 'ACCESS PA-TERMINAL',
+    footer: 'PA-TERMINAL v3.0 // PUBLIC CHANNEL // FILTERED'
   },
   footer: {
     copyright: '© 2026 TURTLE ISLE UNIVERSE',

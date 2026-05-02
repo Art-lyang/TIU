@@ -124,7 +124,7 @@ npx http-server . -p 8000
 5. **FACTIONS** — 4대 세력 + 4 인간 비정규 세력
 6. **KOREA** — 97.3% 하이라이트
 7. **MYSTERY** — 3개의 미스터리 훅
-8. **CTA** — ORACLE 시스템 접속
+8. **CTA** — PA-TERMINAL 공개 아카이브 접속
 9. **FOOTER** — 저작권, 링크
 
 ---
@@ -146,17 +146,19 @@ npx http-server . -p 8000
 
 ## 🔜 다음 작업 (로드맵)
 
-### v3 Phase B — 메인 ORACLE DB 페이지
-- [ ] `main.html` 재작성 (부팅 시퀀스 포함)
-- [ ] 위협 맵, 프로토콜 그리드, 대시보드
-- [ ] v2 보다 밀도 낮추고 UX 개선
+### v3 Phase B — 메인 PA-TERMINAL 페이지
+- [x] `main.html` 재작성 (부팅 시퀀스 포함)
+- [x] 위협 맵, 프로토콜 그리드, 대시보드
+- [x] v2 보다 밀도 낮추고 UX 개선
 
 ### v3 Phase C — 카테고리 페이지
-- [ ] factions.html
-- [ ] profiles.html
-- [ ] regions.html
-- [ ] incidents.html
-- [ ] records.html
+- [x] factions.html
+- [x] threats.html
+- [x] records.html
+- [x] incidents.html
+- [x] specimens.html
+- [x] profiles.html
+- [x] database.html
 
 ### v3 Phase D — 특수 페이지
 - [ ] kr-branch.html (한국 지부)
@@ -175,7 +177,7 @@ npx http-server . -p 8000
 모든 원본 설정 문서는 `../tiu-v2-complete/source-packs/` 에 보관됨.
 
 - `canon/` — 정론 스토리라인
-- `sovari/` — 소바리 + 카룬탈 팩
+- `restricted-inland/` — 비공개 내륙권 원본 팩 (공개 페이지에서는 직접명 노출 금지)
 - `worldbuilding/` — L3 문명, 인간 세력
 - `korea-gov/` — 한국 정부
 - `nations/` — 국가별 설정

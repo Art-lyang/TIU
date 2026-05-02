@@ -10,22 +10,22 @@
     acts: [
       { num: 'I',   state: 'PAST',    period: '2020 — 2023', label: 'THE COLLAPSE',  body: 'Philadelphia 함락으로 시작된 전 세계적 붕괴. EV-Σ가 대부분의 국가의 봉쇄선을 무너뜨렸다. 사살은 곧 확산이었고, 도시는 하나씩 침묵했다.', variant: 'red' },
       { num: 'II',  state: 'PAST',    period: '2024 — 2025', label: 'THE PARTITION', body: '국가들이 각자의 방식으로 생존을 모색. 미국 ARES · 중국 Red Dragon · 러시아 Permafrost · 일본 JSDF · EU-JBDF. 한국만이 97.3% 봉쇄를 유지했다.', variant: 'amber' },
-      { num: 'III', state: 'PRESENT', period: '2026 — NOW',  label: 'THE STALEMATE', body: '현재. 4대 세력이 정적 속에서 움직인다. TS-Ω는 휴면. 쉐드 오더는 확장 중. 프로메테우스는 정보 작전. ORACLE은 관측 중 — 그리고 한국 지부에서 무언가가 일어났다.', variant: 'green' }
+      { num: 'III', state: 'PRESENT', period: '2026 — NOW',  label: 'THE STALEMATE', body: '현재. 4대 세력이 정적 속에서 움직인다. TS-Ω는 휴면. 쉐드 오더는 확장 중. 프로메테우스는 정보 작전. 관측자 계열 기록은 봉인 — 그리고 한국 지부에서 무언가가 일어났다.', variant: 'green' }
     ],
     footnote: 'NEXT ARC — UNWRITTEN'
   };
 
   window.TIU_KO.philosophy = {
     quote: '자유의지라고 믿는 것이 설계된 것이라면,\n선택에 의미가 있는가.',
-    cite: 'ORACLE META-LOG // UNSIGNED'
+    cite: 'PA-TERMINAL FRAGMENT // UNSIGNED'
   };
 
   window.TIU_KO.queryTerminal = {
     eyebrow: 'ARCHIVE // QUERY',
-    title: 'SEARCH ORACLE',
+    title: 'SEARCH ARCHIVE',
     placeholder: '용어, 인물, 구역, 사건 검색...',
     suggestLabel: 'SUGGESTED QUERIES',
-    suggestions: ['EV-Σ', 'Philadelphia', 'Pilehead', 'COASTAL MIRROR', 'GRANT', 'Karuntal', 'Shed Order'],
+    suggestions: ['EV-Σ', 'Philadelphia', 'Pilehead', 'COASTAL MIRROR', 'KR-INIT-001', 'Unregistered Inland', 'Shed Order'],
     submit: '> EXECUTE',
     offlineMsg: 'QUERY PROCESSOR OFFLINE — DATABASE v3 MIGRATION IN PROGRESS'
   };
@@ -33,7 +33,7 @@
   window.TIU_KO.krClassified = {
     eyebrow: 'CLASSIFIED // LEVEL-OMEGA',
     title: 'BRANCH KR-INIT-001',
-    desc: 'ORACLE Proxy Network 한국 지부. 접근 등급 제한. 이 구역은 ORACLE 표면 색인에 존재하지 않습니다.',
+    desc: 'KR-INIT-001 관련 비공개 지부 기록. 접근 등급 제한. 이 구역은 PA-TERMINAL 표면 색인에 존재하지 않습니다.',
     redacted: '████████ ████ ██████████ ████ ████ ████████',
     codeLabel: 'ACCESS CODE',
     codePlaceholder: 'Enter code...',
@@ -64,8 +64,8 @@
     title: 'LATEST SIGNALS',
     desc: '관측 기록에서 선별된 주요 신호. 갱신: 실시간.',
     items: [
-      { code: 'INTEL #001', title: 'MODEL DEVIATION',      text: '"This region should have failed. Outcome does not match model."',  source: 'ORACLE AUTO-LOG',  tone: 'red',   img: 'assets/img/korea-barrier.webp' },
-      { code: 'INTEL #002', title: 'SELF-INACCESSIBLE',    text: '"ORACLE조차 열람할 수 없는 로그가 있다."',                         source: 'INTERNAL ALERT',  tone: 'amber', img: 'assets/img/philadelphia-drone.webp' },
+      { code: 'INTEL #001', title: 'MODEL DEVIATION',      text: '"This region should have failed. Outcome does not match model."',  source: 'SEALED AUTO-LOG',  tone: 'red',   img: 'assets/img/korea-barrier.webp' },
+      { code: 'INTEL #002', title: 'SELF-INACCESSIBLE',    text: '"표면 단말로는 열람할 수 없는 로그가 있다."',                       source: 'INTERNAL ALERT',  tone: 'amber', img: 'assets/img/philadelphia-drone.webp' },
       { code: 'INTEL #003', title: 'UNLOGGED CONTRIBUTORS', text: '"한국의 97.3% 중 31%는 누구의 손에서 나온 수치인가."',           source: 'FIELD ANALYSIS',  tone: 'green', img: 'assets/img/meridian-richter.webp' }
     ]
   };
