@@ -1,0 +1,148 @@
+/* ─── ACTIVITY FEED (실시간 이벤트 로그) ─── */
+.activity-feed {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+}
+
+.activity-feed-header {
+  margin-bottom: var(--space-4);
+}
+
+.activity-feed-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-muted);
+  margin-bottom: var(--space-2);
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-green);
+}
+
+.activity-feed-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-xl), 4vw, var(--text-3xl));
+  color: var(--color-text);
+  letter-spacing: var(--tracking-wider);
+  margin-bottom: var(--space-2);
+}
+
+.activity-feed-desc {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  line-height: var(--leading-normal);
+}
+
+/* 터미널 느낌 프레임 */
+.activity-feed-frame {
+  position: relative;
+  background: #050a07;
+  border: 1px solid var(--color-border);
+  padding: var(--space-3) var(--space-4);
+  max-height: 360px;
+  overflow-y: auto;
+  /* 스캔라인 */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 2px,
+      rgba(0, 229, 160, 0.015) 2px,
+      rgba(0, 229, 160, 0.015) 3px
+    );
+}
+
+.activity-feed-frame::-webkit-scrollbar {
+  width: 4px;
+}
+.activity-feed-frame::-webkit-scrollbar-track {
+  background: transparent;
+}
+.activity-feed-frame::-webkit-scrollbar-thumb {
+  background: var(--color-dim);
+}
+
+/* 상단 헤더 라인 */
+.activity-feed-frame::before {
+  content: 'LIVE STREAM // ORACLE SENSOR NETWORK';
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-green);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-dim);
+  margin-bottom: var(--space-2);
+  opacity: 0.6;
+}
+
+.activity-item {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+  padding: 3px 0;
+  display: flex;
+  gap: var(--space-3);
+  align-items: baseline;
+  color: var(--color-light);
+}
+
+.activity-item:nth-child(even) {
+  background: rgba(0, 229, 160, 0.02);
+}
+
+.activity-item-time {
+  font-size: 10px;
+  color: var(--color-muted);
+  flex-shrink: 0;
+  min-width: 64px;
+}
+
+.activity-item-marker {
+  flex-shrink: 0;
+  min-width: 14px;
+  text-align: center;
+}
+
+.activity-item-text {
+  flex: 1;
+  word-break: break-all;
+}
+
+/* 색상별 마커 */
+.activity-item--ok     .activity-item-marker { color: var(--color-green); }
+.activity-item--ok     .activity-item-text   { color: var(--color-light); }
+.activity-item--warn   .activity-item-marker { color: var(--color-amber); }
+.activity-item--warn   .activity-item-text   { color: var(--color-amber); }
+.activity-item--danger .activity-item-marker { color: var(--color-red); }
+.activity-item--danger .activity-item-text   { color: var(--color-red); }
+
+/* 깜빡이는 라이브 인디케이터 (첫 줄) */
+.activity-feed-live {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-red);
+  z-index: 1;
+}
+
+.activity-feed-live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-red);
+  box-shadow: 0 0 6px var(--color-red);
+  animation: activity-blink 1.2s ease-in-out infinite;
+}
+
+@keyframes activity-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}

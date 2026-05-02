@@ -1,0 +1,41 @@
+/* ─── SOUND TOGGLE (우하단 플로팅) ─── */
+.sound-toggle {
+  position: fixed;
+  bottom: calc(var(--ticker-height) + var(--space-3));
+  right: var(--space-3);
+  width: 44px;
+  height: 44px;
+  background: var(--color-card);
+  border: var(--border-thin);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: var(--z-sticky);
+  transition: all var(--duration-normal);
+  color: var(--color-muted);
+}
+
+.sound-toggle:hover {
+  border-color: var(--color-green);
+  color: var(--color-green);
+}
+
+.sound-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.sound-toggle[data-state="on"] {
+  color: var(--color-green);
+  border-color: var(--alpha-green-30);
+}
+
+.sound-toggle .sound-off-bar {
+  display: none;
+}
+
+.sound-toggle[data-state="off"] .sound-off-bar {
+  display: block;
+}

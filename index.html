@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ORACLE Intelligence System — 다층 세계관 입문 페이지">
+<meta property="og:title" content="TURTLE ISLE UNIVERSE">
+<meta property="og:description" content="이 세계는 당신이 알고 있는 것보다 깊다.">
+<meta property="og:type" content="website">
+<title>TURTLE ISLE UNIVERSE</title>
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<div class="page-loader" id="pageLoader" aria-hidden="true"><div class="page-loader-ring"></div><div class="page-loader-text">LOADING ORACLE INTERFACE</div></div>
+
+<!-- TOPBAR -->
+<header class="topbar" role="banner">
+  <div class="topbar-logo">
+    <div class="topbar-logo-box" aria-hidden="true">T</div>
+    <div class="topbar-name"><span data-i18n="topbar.brand">TURTLE ISLE</span><small data-i18n="topbar.sub">UNIVERSE</small></div>
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="lang-toggle" role="group" aria-label="Language"><button type="button" data-lang-btn="ko" data-sound-click>KO</button><button type="button" data-lang-btn="en" data-sound-click>EN</button></div>
+  <div class="topbar-status"><div class="topbar-status-dot" aria-hidden="true"></div><span data-i18n="topbar.status">SYSTEM ACTIVE</span></div>
+</header>
+
+<!-- HERO -->
+<section class="hero" aria-label="Intro">
+  <div class="hero-canvas" aria-hidden="true"><canvas id="heroCanvas"></canvas></div>
+  <div class="hero-atmo" aria-hidden="true"><div class="hero-glow-r"></div><div class="hero-glow-g"></div></div>
+  <div class="hero-scanlines" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-tag" data-i18n="hero.tag">CLASSIFIED WORLDBUILDING PROJECT</div>
+    <h1 class="hero-title"><span>TURTLE</span><br><span>ISLE</span><br><span class="hero-title-accent">UNIVERSE</span></h1>
+    <p class="hero-tagline" data-i18n="hero.tagline">이 세계는 당신이 알고 있는 것보다 깊다.</p>
+  </div>
+  <div class="hero-scroll" aria-hidden="true"><span data-i18n="hero.scroll">SCROLL</span><div class="hero-scroll-arrow"></div></div>
+</section>
+
+<!-- PITCH -->
+<section class="pitch" data-reveal>
+  <div class="t-eyebrow" data-i18n="pitch.eyebrow" style="display:inline-block;margin-bottom:var(--space-5);">SITUATION REPORT // 2026</div>
+  <div class="pitch-year">2026</div>
+  <h2 class="pitch-title" data-i18n="pitch.title">THE WORLD IS FALLING</h2>
+  <p class="pitch-body" data-i18n-html="pitch.body"></p>
+  <p class="pitch-sub" data-i18n="pitch.subbody">이 수치는 설명되지 않는다.</p>
+</section>
+
+<!-- STATUS DASHBOARD -->
+<section class="status-dashboard" data-reveal>
+  <div class="status-eyebrow" data-i18n="status.eyebrow">ORACLE // WORLD STATUS</div>
+  <div class="status-grid" id="statusGrid"></div>
+</section>
+
+<!-- THREAT + TIMELINE -->
+<section class="section section--bordered threat" data-reveal>
+  <header class="section-header"><div class="section-eyebrow" data-i18n="threat.eyebrow">THREAT BRIEFING</div><h2 class="section-title" data-i18n="threat.title">EV-Σ — 진화 가속 매개체</h2></header>
+  <blockquote class="quote"><p data-i18n="threat.quote"></p></blockquote>
+  <p class="section-desc" data-i18n-html="threat.body"></p>
+  <div class="archive-label" data-i18n="threat.archiveLabel">EV-Σ 확산 기록</div>
+  <div class="archive-grid" id="threatArchive"></div>
+  <div class="timeline-section"><div class="timeline-label" data-i18n="timeline.eyebrow">COLLAPSE TIMELINE</div><div class="timeline-track" data-drag-scroll><div class="timeline-inner" id="timelineEvents"></div></div><div class="timeline-hint" id="timelineHint">※ 연도 노드를 클릭하면 상세 기록이 표시됩니다.</div><div class="timeline-detail" id="timelineDetail" role="dialog" aria-live="polite"></div></div>
+</section>
+
+<!-- TACTICAL MAP -->
+<section class="section section--bordered tactical-map" data-reveal>
+  <header class="section-header"><div class="section-eyebrow" data-i18n="map.eyebrow">ORACLE // TACTICAL VIEW</div><h2 class="section-title" data-i18n="map.title">GLOBAL THREAT MAP</h2><p class="section-desc" data-i18n="map.desc"></p></header>
+  <div class="map-wrap" id="mapWrap">
+    <img class="map-base" src="assets/img/world-map.svg" alt="" onerror="this.style.display='none'">
+    <div class="map-scanline"></div>
+    <div class="map-hotspots" id="mapHotspots"></div>
+    <div class="map-select-hint" data-i18n="map.selectHint">핫스팟을 선택하여 상세 정보 열람</div>
+    <div class="map-detail-panel" id="mapDetailPanel" role="dialog" aria-live="polite">
+      <button class="map-detail-close" id="mapDetailClose" type="button" aria-label="Close">×</button>
+      <div class="map-detail-head"><div class="map-detail-kicker" data-i18n="map.dossierLabel">TACTICAL DOSSIER</div><div class="map-detail-status" id="mdStatus"></div></div>
+      <div class="map-detail-image" id="mdImage"></div>
+      <div class="map-detail-title" id="mdTitle"></div>
+      <div class="map-detail-desc" id="mdDesc"></div>
+      <div class="map-detail-meta"><div class="map-detail-meta-cell"><b id="mdThreatLabel">PRIMARY THREAT</b><span id="mdThreat"></span></div><div class="map-detail-meta-cell"><b id="mdResponseLabel">RESPONSE</b><span id="mdResponse"></span></div></div>
+    </div>
+  </div>
+  <div class="map-legend" id="mapLegend"></div>
+</section>
+
+<!-- WORLD LAYERS -->
+<section class="section section--bordered world" data-reveal>
+  <header class="section-header"><div class="section-eyebrow" data-i18n="world.eyebrow">WORLD STRUCTURE</div><h2 class="section-title" data-i18n="world.title">4-LAYER CIVILIZATION</h2><p class="section-desc" data-i18n="world.desc"></p></header>
+  <div class="layer-stack" id="layerStack"></div>
+</section>
+
+<!-- FACTIONS -->
+<section class="section section--bordered factions" data-reveal>
+  <header class="section-header"><div class="section-eyebrow" data-i18n="factions.eyebrow">FACTIONS</div><h2 class="section-title" data-i18n="factions.title">POWERS IN CONFLICT</h2><p class="section-desc" data-i18n="factions.desc"></p></header>
+  <div class="grid grid--4" id="factionsPrimary"></div>
+  <div class="factions-label" data-i18n="factions.irregularLabel">인간 비정규 세력</div>
+  <div class="grid grid--4" id="factionsIrregular"></div>
+</section>
+
+<!-- KOREA -->
+<section class="section section--bordered korea" data-reveal>
+  <header class="section-header"><div class="section-eyebrow" data-i18n="korea.eyebrow">EXCEPTION VARIABLE</div><h2 class="section-title" data-i18n="korea.title">THE LAST BARRIER</h2></header>
+  <div class="card card--highlight">
+    <div class="card-stat" data-i18n="korea.stat">97.3%</div>
+    <div class="card-label" data-i18n="korea.statLabel">CONTAINMENT SUCCESS RATE</div>
+    <p class="card-text" data-i18n-html="korea.text"></p>
+  </div>
+  <div class="korea-oracle-note"><span class="korea-oracle-note-label" data-i18n="korea.oracleLabel">ORACLE // TERMINAL NOTE</span><span data-i18n="korea.oracleNote"></span></div>
+</section>
+
+<!-- OFFICERS (KR Branch) -->
+<section class="section section--bordered officers" data-reveal>
+  <header class="section-header"><div class="section-eyebrow" data-i18n="officers.eyebrow">PERSONNEL // KR-INIT-001</div><h2 class="section-title" data-i18n="officers.title">BRANCH KOREA</h2><p class="section-desc" data-i18n="officers.desc"></p></header>
+  <div class="officers-grid" id="officersGrid"></div>
+  <div class="officers-caption">
+    <span class="officers-caption-dot" aria-hidden="true"></span>
+    <span class="officers-caption-status" data-i18n="officers.captionStatus">OPERATIONAL</span>
+    <span class="officers-caption-sep">·</span>
+    <span data-i18n="officers.captionSync">ORACLE SYNC: ACTIVE</span>
+  </div>
+</section>
+
+<!-- GAME CTA -->
+<section class="game-cta" data-reveal>
+  <div class="game-cta-eyebrow" data-i18n="gameCta.eyebrow">ORACLE // TERMINAL SESSION</div>
+  <h2 class="game-cta-title" data-i18n="gameCta.title">TERMINAL SESSION</h2>
+  <p class="game-cta-body" data-i18n-html="gameCta.body"></p>
+  <a class="game-cta-btn" id="gameCtaBtn" href="#" target="_blank" rel="noopener" data-sound-hover data-sound-click data-i18n="gameCta.button">▶ PLAY TERMINAL SESSION</a>
+  <div class="game-cta-footer" data-i18n="gameCta.footer">GRANT: ACTIVE — TEMPORARY ACCESS</div>
+</section>
+
+<!-- MYSTERY -->
+<section class="section section--bordered mystery" data-reveal>
+  <header class="section-header"><div class="section-eyebrow" data-i18n="mystery.eyebrow">UNEXPLAINED OUTCOME</div><h2 class="section-title" data-i18n="mystery.title">WHY?</h2></header>
+  <div class="mystery-grid" id="mysteryGrid"></div>
+  <p class="mystery-hint" data-i18n="mystery.hint"></p>
+</section>
+
+<!-- VOICES -->
+<section class="section section--bordered voices" data-reveal>
+  <header class="section-header"><div class="section-eyebrow" data-i18n="voices.eyebrow">FIELD VOICES</div><h2 class="section-title" data-i18n="voices.title">SIGNALS RECEIVED</h2></header>
+  <div class="voices-grid" id="voicesGrid"></div>
+</section>
+
+<!-- DATABASE PREVIEW -->
+<section class="db-preview" data-reveal>
+  <div class="db-preview-label" data-i18n="dbPreview.label">ORACLE ARCHIVE PREVIEW</div>
+  <div class="db-preview-grid" id="dbPreviewGrid"></div>
+  <div class="db-preview-hint" data-i18n="dbPreview.hint">당신을 기다리는 기록들.</div>
+</section>
+
+<!-- CTA -->
+<section class="cta" data-reveal>
+  <div class="cta-code" data-i18n="cta.code">ORACLE INTELLIGENCE SYSTEM</div>
+  <h2 class="cta-title" data-i18n="cta.title">CONNECT TO ORACLE</h2>
+  <p class="cta-desc" data-i18n-html="cta.desc"></p>
+  <a class="btn btn--primary btn--lg" href="main.html" data-sound-hover data-sound-click data-i18n="cta.button">ACCESS ORACLE SYSTEM</a>
+  <div class="cta-footer" data-i18n="cta.footer">ORACLE OS v4.12 // SECURE CHANNEL // ENCRYPTED</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-copyright" data-i18n="footer.copyright">© 2026 TURTLE ISLE UNIVERSE</div>
+  <div class="site-footer-tagline" data-i18n="footer.tagline">A worldbuilding project by Art-lyang</div>
+  <div class="site-footer-links" id="footerLinks"></div>
+</footer>
+
+<!-- TICKER -->
+<div class="ticker" role="status" aria-live="polite">
+  <div class="ticker-label">ORACLE</div>
+  <div class="ticker-content"><span class="ticker-inner" id="tickerInner"></span></div>
+</div>
+
+<!-- SOUND TOGGLE -->
+<button id="soundToggle" class="sound-toggle" type="button" aria-label="Toggle Sound" data-state="off">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+    <path class="sound-off-bar" d="M4 4l16 16" stroke="currentColor" stroke-width="2" fill="none"/>
+  </svg>
+</button>
+
+<!-- SCRIPTS -->
+<script src="assets/js/i18n/ko.js"></script>
+<script src="assets/js/i18n/en.js"></script>
+<script src="assets/js/i18n/ko-extra.js"></script>
+<script src="assets/js/i18n/en-extra.js"></script>
+<script src="assets/js/i18n/index.js"></script>
+<script src="assets/js/core/hero-canvas.js"></script>
+<script src="assets/js/core/ticker.js"></script>
+<script src="assets/js/core/reveal-on-scroll.js"></script>
+<script src="assets/js/core/sound-manager.js"></script>
+<script src="assets/js/core/drag-scroll.js"></script>
+<script src="assets/js/pages/entry-render.js"></script>
+<script src="assets/js/pages/entry-map.js"></script>
+<script src="assets/js/pages/entry-timeline.js"></script>
+<script src="assets/js/pages/entry.js"></script>
+</body>
+</html>

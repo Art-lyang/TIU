@@ -1,0 +1,148 @@
+/* ─── OFFICERS PREVIEW (KR 간부진 5명 카드) ─── */
+.officers {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+}
+
+.officers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+@media (min-width: 700px) {
+  .officers-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.officer-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--duration-normal) var(--ease-out),
+              border-color var(--duration-normal);
+  position: relative;
+}
+
+.officer-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--alpha-green-30);
+}
+
+.officer-card-img {
+  aspect-ratio: 3 / 4;
+  background: #050a07;
+  overflow: hidden;
+  position: relative;
+}
+
+.officer-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  filter: contrast(1.05);
+  transition: opacity var(--duration-normal);
+}
+
+.officer-card:hover .officer-card-img img {
+  opacity: 1;
+}
+
+/* 스캔라인 살짝 */
+.officer-card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 3px
+  );
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.officer-card-body {
+  padding: var(--space-3);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.officer-card-code {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-green);
+}
+
+.officer-card-name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text);
+  line-height: 1;
+  margin: 2px 0;
+}
+
+.officer-card-role {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-muted);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-dim);
+  margin-top: auto;
+}
+
+.officer-card-bg {
+  font-size: var(--text-xs);
+  color: var(--color-light);
+  line-height: var(--leading-snug);
+  margin-top: var(--space-1);
+}
+
+.officers-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-muted);
+  margin-top: var(--space-4);
+  padding: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.officers-caption-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-green);
+  box-shadow: 0 0 8px var(--color-green);
+  animation: officers-pulse 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.officers-caption-status {
+  color: var(--color-green);
+  letter-spacing: var(--tracking-widest);
+}
+
+.officers-caption-sep {
+  color: var(--color-dim);
+}
+
+@keyframes officers-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.85); }
+}

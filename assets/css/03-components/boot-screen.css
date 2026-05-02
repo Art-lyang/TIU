@@ -1,0 +1,171 @@
+/* ─── BOOT SCREEN (ORACLE 접속 연출) ─── */
+
+html.boot-active,
+html.boot-active body,
+body.boot-active {
+  overflow: hidden !important;
+  height: 100%;
+}
+
+/* 부팅 중 본 콘텐츠 숨김 (FOUC 방지) */
+html.boot-active .topbar,
+html.boot-active .command-hero,
+html.boot-active .category-hub,
+html.boot-active .ticker,
+html.boot-active .gnav,
+html.boot-active .sound-toggle {
+  visibility: hidden;
+}
+
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-boot);
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              visibility var(--duration-slow);
+}
+
+.boot-screen.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* 배경 스캔라인 */
+.boot-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 3px,
+    rgba(0, 229, 160, 0.025) 3px,
+    rgba(0, 229, 160, 0.025) 4px
+  );
+}
+
+.boot-corruption {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-red);
+  margin-bottom: var(--space-5);
+  opacity: 0.8;
+  animation: boot-glitch 3s infinite;
+}
+
+@keyframes boot-glitch {
+  0%, 100% { opacity: 0.8; transform: translateX(0); }
+  92%      { opacity: 1;   transform: translateX(-2px); }
+  94%      { opacity: 0.6; transform: translateX(2px); }
+  96%      { opacity: 0.9; transform: translateX(-1px); }
+}
+
+.boot-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-5xl), 16vw, 128px);
+  color: var(--color-green);
+  letter-spacing: var(--tracking-wider);
+  line-height: 1;
+  margin-bottom: var(--space-3);
+  animation: boot-title-glitch 8s infinite;
+}
+
+@keyframes boot-title-glitch {
+  0%, 90%, 100% { text-shadow: 0 0 20px rgba(0,229,160,0.3); }
+  92%           { text-shadow: 2px 0 var(--color-red), -2px 0 var(--color-green); }
+}
+
+.boot-subtitle {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-muted);
+  margin-bottom: var(--space-6);
+}
+
+.boot-line {
+  width: 200px;
+  height: 1px;
+  background: var(--color-green);
+  margin-bottom: var(--space-6);
+  transform-origin: center;
+  animation: boot-line-expand 1s var(--ease-out) forwards;
+}
+
+@keyframes boot-line-expand {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.boot-terminal {
+  width: 100%;
+  max-width: 480px;
+  min-height: 160px;
+  margin-bottom: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+  color: var(--color-light);
+}
+
+.boot-terminal-line {
+  opacity: 0;
+  animation: boot-line-in 0.2s forwards;
+}
+
+.boot-terminal-line.dim { color: var(--color-muted); }
+.boot-terminal-line.ok  { color: var(--color-green); }
+
+@keyframes boot-line-in {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.boot-btn {
+  padding: var(--space-3) var(--space-6);
+  background: transparent;
+  border: 1px solid var(--color-green);
+  color: var(--color-green);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-widest);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  opacity: 0;
+  animation: boot-btn-in 0.4s forwards;
+  animation-delay: 3s;
+}
+
+.boot-btn:hover {
+  background: var(--alpha-green-10);
+  box-shadow: var(--glow-green);
+  letter-spacing: 6px;
+}
+
+@keyframes boot-btn-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.boot-footer {
+  position: absolute;
+  bottom: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-muted);
+}
+
+.boot-footer span { color: var(--color-green); margin-left: var(--space-2); }

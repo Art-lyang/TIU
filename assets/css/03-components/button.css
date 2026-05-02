@@ -1,0 +1,86 @@
+/* ─── BUTTON ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  border-color: var(--color-light);
+}
+
+/* Variant: Primary (ORACLE 진입) */
+.btn--primary {
+  border-color: var(--color-green);
+  color: var(--color-green);
+}
+
+.btn--primary:hover {
+  background: var(--alpha-green-10);
+  box-shadow: var(--glow-green);
+  letter-spacing: 4px;
+}
+
+/* Variant: Danger (CLASSIFIED, Alert) */
+.btn--danger {
+  border-color: var(--color-red);
+  color: var(--color-red);
+}
+
+.btn--danger:hover {
+  background: var(--alpha-red-10);
+  box-shadow: var(--glow-red);
+}
+
+/* Variant: Ghost (보조 동작) */
+.btn--ghost {
+  border-color: var(--color-dim);
+  color: var(--color-muted);
+}
+
+.btn--ghost:hover {
+  color: var(--color-light);
+  border-color: var(--color-muted);
+}
+
+/* Size: Large (메인 CTA) */
+.btn--lg {
+  padding: var(--space-4) var(--space-7);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  letter-spacing: 4px;
+}
+
+/* Shimmer Effect on primary */
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--alpha-green-10),
+    transparent
+  );
+  transition: left var(--duration-slow);
+}
+
+.btn--primary:hover::after {
+  left: 100%;
+}

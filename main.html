@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PA-TERMINAL — 공공 아카이브 단말기. 7개 범주 공개 기록 열람.">
+<meta property="og:title" content="PA // ARCHIVE TERMINAL">
+<meta property="og:description" content="Public Archive Terminal — 7 categories of disclosable records.">
+<title>PA // ARCHIVE TERMINAL</title>
+<link rel="stylesheet" href="assets/css/main.css">
+<script>
+(function(){try{if(sessionStorage.getItem('tiu-boot-done')!=='1'){document.documentElement.classList.add('boot-active');}}catch(e){}})();
+</script>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div class="page-loader" id="pageLoader" aria-hidden="true">
+  <div class="page-loader-ring"></div>
+  <div class="page-loader-text">LOADING PA-TERMINAL</div>
+</div>
+
+<!-- BOOT SCREEN -->
+<div class="boot-screen" id="bootScreen">
+  <div class="boot-corruption" data-i18n="boot.preTitle">ORACLE ACCESS REQUESTED</div>
+  <div class="boot-line"></div>
+  <div class="boot-title" data-i18n="boot.title">ORACLE</div>
+  <div class="boot-subtitle" data-i18n="boot.subtitle">OBSERVER INTELLIGENCE SYSTEM</div>
+  <div class="boot-terminal" id="bootTerminal"></div>
+  <button class="boot-btn" id="bootBtn" type="button" data-i18n="boot.button">CONNECT TO ORACLE</button>
+  <div class="boot-footer">
+    <div><span data-i18n="boot.footerOs">ORACLE OS v4.12</span> · <span data-i18n="boot.footerOsSub">STANDBY</span></div>
+    <div><span data-i18n="boot.footerChannel">SECURE CHANNEL</span> · <span data-i18n="boot.footerChannelSub">ENCRYPTED</span></div>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<header class="topbar" role="banner">
+  <div class="topbar-logo"><div class="topbar-logo-box" aria-hidden="true">T</div><div class="topbar-name"><span data-i18n="topbar.brand">TURTLE ISLE</span><small data-i18n="topbar.sub">UNIVERSE</small></div></div>
+  <div class="topbar-spacer"></div>
+  <div class="lang-toggle"><button type="button" data-lang-btn="ko" data-sound-click>KO</button><button type="button" data-lang-btn="en" data-sound-click>EN</button></div>
+  <div class="topbar-status"><div class="topbar-status-dot" aria-hidden="true"></div><span data-i18n="topbar.status">SYSTEM ACTIVE</span></div>
+</header>
+
+<!-- GNAV -->
+<nav class="gnav" aria-label="Global navigation"><div class="gnav-inner" id="gnavInner"></div></nav>
+
+<!-- COMMAND HERO -->
+<section class="command-hero" data-reveal>
+  <div class="command-hero-eyebrow" data-i18n="commandHero.eyebrow">PA // ARCHIVE TERMINAL</div>
+  <h1 class="command-hero-title" data-i18n="commandHero.title">COMMAND CENTER</h1>
+  <div class="command-hero-welcome" data-i18n="commandHero.welcome">오퍼레이터. 접속을 확인했습니다.</div>
+  <div class="command-hero-meta">
+    <div class="command-hero-meta-cell"><div class="command-hero-meta-label" data-i18n="commandHero.sessionLabel">SESSION</div><div class="command-hero-meta-value command-hero-meta-value--time" id="sessionTime">00:00:00 UTC</div></div>
+    <div class="command-hero-meta-cell"><div class="command-hero-meta-label" data-i18n="commandHero.grantLabel">GRANT</div><div class="command-hero-meta-value" data-i18n="commandHero.grantValue">ACTIVE — TEMPORARY ACCESS</div></div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" data-reveal>
+  <div class="philosophy-quote" data-i18n="philosophy.quote"></div>
+  <div class="philosophy-cite" data-i18n="philosophy.cite"></div>
+</section>
+
+<!-- CURRENT SITUATION -->
+<section class="situation" data-reveal>
+  <header class="situation-header"><div class="situation-eyebrow" data-i18n="situation.eyebrow">PA // SITUATION REPORT</div><h2 class="situation-title" data-i18n="situation.title">CURRENT WORLD STATE</h2><p class="situation-desc" data-i18n="situation.desc"></p></header>
+  <div class="situation-acts" id="situationActs"></div>
+  <div class="situation-footnote" data-i18n="situation.footnote">NEXT ARC — UNWRITTEN</div>
+</section>
+
+<!-- STATUS WALL -->
+<section class="status-wall" data-reveal>
+  <header class="status-wall-header"><div class="status-wall-eyebrow" data-i18n="statusWall.eyebrow">PA // WORLD STATUS</div><h2 class="status-wall-title" data-i18n="statusWall.title">REAL-TIME METRICS</h2><p class="status-wall-desc" data-i18n="statusWall.desc"></p></header>
+  <div class="status-wall-grid" id="statusWallGrid"></div>
+</section>
+
+<!-- QUERY TERMINAL -->
+<section class="query-terminal" data-reveal>
+  <header class="query-terminal-header"><div class="query-terminal-eyebrow" data-i18n="queryTerminal.eyebrow">ARCHIVE // QUERY</div><h2 class="query-terminal-title" data-i18n="queryTerminal.title">SEARCH ARCHIVES</h2></header>
+  <div class="query-box"><span class="query-prompt">&gt;</span><input type="text" class="query-input" id="queryInput" placeholder="Search..."><button type="button" class="query-submit" id="querySubmit" data-i18n="queryTerminal.submit">&gt; EXECUTE</button></div>
+  <div class="query-suggestions"><div class="query-suggestions-label" data-i18n="queryTerminal.suggestLabel">SUGGESTED QUERIES</div><div class="query-suggestions-list" id="querySuggestions"></div></div>
+  <div class="query-response" id="queryResponse"></div>
+</section>
+
+<!-- TACTICAL MAP -->
+<section class="section section--bordered tactical-map" data-reveal>
+  <header class="section-header"><div class="section-eyebrow" data-i18n="map.eyebrow">PA // GLOBAL VIEW</div><h2 class="section-title" data-i18n="map.title">GLOBAL THREAT MAP</h2><p class="section-desc" data-i18n="map.desc"></p></header>
+  <div class="map-wrap" id="mapWrap">
+    <img class="map-base" src="assets/img/world-map.svg" alt="" onerror="this.style.display='none'">
+    <div class="map-scanline"></div>
+    <div class="map-hotspots" id="mapHotspots"></div>
+    <div class="map-select-hint" data-i18n="map.selectHint">핫스팟을 선택하여 상세 정보 열람</div>
+    <div class="map-detail-panel" id="mapDetailPanel" role="dialog" aria-live="polite">
+      <button class="map-detail-close" id="mapDetailClose" type="button" aria-label="Close">×</button>
+      <div class="map-detail-head"><div class="map-detail-kicker" data-i18n="map.dossierLabel">TACTICAL DOSSIER</div><div class="map-detail-status" id="mdStatus"></div></div>
+      <div class="map-detail-image" id="mdImage"></div>
+      <div class="map-detail-title" id="mdTitle"></div>
+      <div class="map-detail-desc" id="mdDesc"></div>
+      <div class="map-detail-meta"><div class="map-detail-meta-cell"><b id="mdThreatLabel">PRIMARY THREAT</b><span id="mdThreat"></span></div><div class="map-detail-meta-cell"><b id="mdResponseLabel">RESPONSE</b><span id="mdResponse"></span></div></div>
+    </div>
+  </div>
+  <div class="map-legend" id="mapLegend"></div>
+</section>
+
+<!-- RESTRICTED AREA -->
+<section class="restricted-area" data-reveal>
+  <header class="restricted-area-header"><div class="restricted-area-eyebrow" data-i18n="restricted.eyebrow">PA // RESTRICTED ENTRIES</div><h2 class="restricted-area-title" data-i18n="restricted.title">RESTRICTED</h2><p class="restricted-area-desc" data-i18n="restricted.desc"></p></header>
+  <div class="restricted-grid" id="restrictedGrid"></div>
+  <div class="restricted-modal-overlay" id="restrictedModal" role="dialog" aria-live="polite"><div class="restricted-modal">
+    <button class="restricted-modal-close" id="restrictedModalClose" type="button" aria-label="Close">×</button>
+    <div class="restricted-modal-eyebrow" data-i18n="krClassified.eyebrow">CLASSIFIED // LEVEL-OMEGA</div>
+    <h3 class="restricted-modal-title" data-i18n="krClassified.title">BRANCH KR-INIT-001</h3>
+    <p class="restricted-modal-desc" data-i18n="krClassified.desc"></p>
+    <div class="restricted-modal-redacted" data-i18n="krClassified.redacted"></div>
+    <div class="restricted-modal-form"><div class="restricted-modal-label" data-i18n="krClassified.codeLabel">ACCESS CODE</div>
+      <div class="restricted-modal-input-row"><input type="text" class="restricted-modal-input" id="krCodeInput" placeholder="Enter code..." autocomplete="off"><button type="button" class="restricted-modal-submit" id="krSubmit" data-i18n="krClassified.submit">VERIFY</button></div>
+      <div class="restricted-modal-hint" data-i18n="krClassified.hint"></div>
+      <div class="restricted-modal-response" id="krResponse"></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- PHASE DIAGRAM -->
+<section class="phase-diagram" data-reveal>
+  <header class="phase-diagram-header"><div class="phase-diagram-eyebrow" data-i18n="phaseDiagram.eyebrow">ARCHIVE // EV-Σ ANALYSIS</div><h2 class="phase-diagram-title" data-i18n="phaseDiagram.title">EVOLUTION PHASES</h2><p class="phase-diagram-desc" data-i18n="phaseDiagram.desc"></p></header>
+  <div class="phase-grid" id="phaseGrid"></div>
+  <div class="phase-critical" data-i18n="phaseDiagram.criticalNote"></div>
+</section>
+
+<!-- THREAT GRID -->
+<section class="threat-grid" data-reveal>
+  <header class="threat-grid-header"><div class="threat-grid-eyebrow" data-i18n="threatGrid.eyebrow">PA // FACTION SUMMARY</div><h2 class="threat-grid-title" data-i18n="threatGrid.title">FACTION ACTIVITY</h2><p class="threat-grid-desc" data-i18n="threatGrid.desc"></p></header>
+  <div class="threat-grid-cards" id="threatGridCards"></div>
+</section>
+
+<!-- LATEST INTEL -->
+<section class="intel" data-reveal>
+  <header class="intel-header"><div class="intel-eyebrow" data-i18n="intel.eyebrow">PA // FEATURED INTEL</div><h2 class="intel-title" data-i18n="intel.title">LATEST SIGNALS</h2><p class="intel-desc" data-i18n="intel.desc"></p></header>
+  <div class="intel-grid" id="intelGrid"></div>
+</section>
+
+<!-- ACTIVITY FEED -->
+<section class="activity-feed" data-reveal>
+  <header class="activity-feed-header"><div class="activity-feed-eyebrow" data-i18n="activityFeed.eyebrow">PA // LIVE FEED</div><h2 class="activity-feed-title" data-i18n="activityFeed.title">RECENT ACTIVITY</h2><p class="activity-feed-desc" data-i18n="activityFeed.desc"></p></header>
+  <div class="activity-feed-frame"><div class="activity-feed-live">LIVE</div><div id="activityFeedList"></div></div>
+</section>
+
+<!-- CATEGORY HUB -->
+<section class="category-hub" data-reveal>
+  <header class="category-hub-header"><div class="category-hub-eyebrow" data-i18n="categories.eyebrow">PA // PUBLIC ARCHIVES</div><h2 class="category-hub-title" data-i18n="categories.title">MAIN MENU</h2><p class="category-hub-desc" data-i18n="categories.desc"></p></header>
+  <div class="category-grid" id="categoryGrid"></div>
+</section>
+
+<!-- MAIN FOOTER -->
+<footer class="main-footer">
+  <div class="main-footer-copyright" data-i18n="footer.copyright">© 2026 TURTLE ISLE UNIVERSE</div>
+  <a class="main-footer-archivist" href="about.html" data-i18n="footer.archivist">ARCHIVIST // ABOUT THIS PROJECT →</a>
+</footer>
+
+<!-- TICKER -->
+<div class="ticker" role="status" aria-live="polite">
+  <div class="ticker-label">PA-FEED</div>
+  <div class="ticker-content"><span class="ticker-inner" id="tickerInner"></span></div>
+</div>
+
+<!-- SOUND TOGGLE -->
+<button id="soundToggle" class="sound-toggle" type="button" aria-label="Toggle Sound" data-state="off">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/><path class="sound-off-bar" d="M4 4l16 16" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+</button>
+
+<!-- COMING SOON MODAL -->
+<div class="cs-modal-overlay" id="csModal" role="dialog" aria-live="polite">
+  <div class="cs-modal">
+    <div class="cs-modal-label" data-i18n="categories.comingSoon">COMING SOON</div>
+    <div class="cs-modal-title" data-i18n="categories.title">MAIN MENU</div>
+    <p class="cs-modal-msg" data-i18n="categories.comingSoonMsg"></p>
+    <div class="cs-modal-actions"><button class="cs-modal-btn" id="csClose" type="button">CLOSE</button><button class="cs-modal-btn cs-modal-btn--primary" id="csV2" type="button">VIEW v2</button></div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="assets/js/i18n/ko.js"></script>
+<script src="assets/js/i18n/en.js"></script>
+<script src="assets/js/i18n/ko-main.js"></script>
+<script src="assets/js/i18n/en-main.js"></script>
+<script src="assets/js/i18n/ko-main-p3.js"></script>
+<script src="assets/js/i18n/en-main-p3.js"></script>
+<script src="assets/js/i18n/index.js"></script>
+<script src="assets/js/core/boot.js"></script>
+<script src="assets/js/core/ticker.js"></script>
+<script src="assets/js/core/reveal-on-scroll.js"></script>
+<script src="assets/js/core/sound-manager.js"></script>
+<script src="assets/js/pages/entry-map.js"></script>
+<script src="assets/js/pages/main-render.js"></script>
+<script src="assets/js/pages/main-phase3-render.js"></script>
+<script src="assets/js/pages/main.js"></script>
+</body>
+</html>

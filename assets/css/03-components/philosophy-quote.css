@@ -1,0 +1,76 @@
+/* ─── PHILOSOPHY QUOTE (히어로 밑 세계관 테마) ─── */
+.philosophy {
+  max-width: var(--container-md);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+  position: relative;
+}
+
+.philosophy::before,
+.philosophy::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-green), transparent);
+  opacity: 0.4;
+}
+
+.philosophy::before { top: 0; }
+.philosophy::after  { bottom: 0; }
+
+.philosophy-quote {
+  font-family: var(--font-body);
+  font-size: clamp(var(--text-lg), 3vw, var(--text-2xl));
+  font-style: italic;
+  color: var(--color-light);
+  line-height: var(--leading-loose);
+  font-weight: 300;
+  white-space: pre-line;
+  margin-bottom: var(--space-4);
+  letter-spacing: 0.5px;
+}
+
+.philosophy-cite {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-muted);
+  opacity: 0.8;
+}
+
+/* ─── MAIN FOOTER (푸터 ARCHIVIST 링크) ─── */
+.main-footer {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.main-footer-copyright {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-muted);
+}
+
+.main-footer-archivist {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color var(--duration-fast);
+}
+
+.main-footer-archivist:hover {
+  color: var(--color-green);
+}

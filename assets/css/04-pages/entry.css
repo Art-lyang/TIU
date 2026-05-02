@@ -1,0 +1,92 @@
+/* ============================================================
+ * TIU v3 — ENTRY PAGE (입문 페이지 공통 + 섹션 1~2)
+ * ============================================================ */
+
+/* ─── Reveal on Scroll Animation ─── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Section 2: Pitch (한 줄 승부) ─── */
+.pitch {
+  text-align: center;
+  padding: var(--space-9) var(--space-5);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(
+    180deg,
+    var(--alpha-red-05),
+    transparent 50%,
+    var(--alpha-red-05)
+  );
+}
+
+.pitch-year {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-5xl), 12vw, 144px);
+  color: var(--color-red);
+  letter-spacing: var(--tracking-wider);
+  line-height: 1;
+  margin-bottom: var(--space-3);
+  text-shadow: var(--glow-red);
+}
+
+.pitch-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 6vw, var(--text-4xl));
+  color: var(--color-text);
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-5);
+}
+
+.pitch-body {
+  font-size: clamp(var(--text-md), 3vw, var(--text-xl));
+  color: var(--color-light);
+  line-height: var(--leading-loose);
+  max-width: 600px;
+  margin: 0 auto var(--space-3);
+  font-weight: 300;
+}
+
+.pitch-sub {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-muted);
+}
+
+/* ─── Section 3: Threat ─── */
+.threat {
+  max-width: var(--container-md);
+  margin: 0 auto;
+}
+
+/* ─── Section 4: World Layers ─── */
+.world {
+  max-width: var(--container-md);
+  margin: 0 auto;
+}
+
+/* ─── Section 5: Factions ─── */
+.factions {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+}
+
+.factions-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-muted);
+  margin: var(--space-6) 0 var(--space-3);
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-light);
+}

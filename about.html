@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ARCHIVIST NOTE — TIU 세계관 프로젝트에 대하여.">
+<meta property="og:title" content="ARCHIVIST // TURTLE ISLE UNIVERSE">
+<meta property="og:description" content="From the keeper of this archive.">
+<title>ARCHIVIST NOTE</title>
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<!-- TOPBAR (최소 버전) -->
+<header class="topbar" role="banner">
+  <div class="topbar-logo"><div class="topbar-logo-box" aria-hidden="true">T</div><div class="topbar-name"><span data-i18n="topbar.brand">TURTLE ISLE</span><small data-i18n="topbar.sub">UNIVERSE</small></div></div>
+  <div class="topbar-spacer"></div>
+  <div class="lang-toggle"><button type="button" data-lang-btn="ko">KO</button><button type="button" data-lang-btn="en">EN</button></div>
+  <div class="topbar-status"><div class="topbar-status-dot" aria-hidden="true"></div><span data-i18n="topbar.status">SYSTEM ACTIVE</span></div>
+</header>
+
+<div class="about-wrap">
+  <a class="about-back" href="main.html" data-i18n="about.backLink">← RETURN TO ORACLE</a>
+
+  <header class="about-header">
+    <h1 class="about-title" data-i18n="about.title">ARCHIVIST NOTE</h1>
+    <div class="about-subtitle" data-i18n="about.subtitle">From the keeper of this archive.</div>
+  </header>
+
+  <p class="about-intro" data-i18n="about.intro"></p>
+
+  <section class="about-section">
+    <div class="about-section-label" data-i18n="about.timelineLabel">TIMELINE</div>
+    <div class="about-timeline" id="aboutTimeline"></div>
+  </section>
+
+  <section class="about-section">
+    <div class="about-section-label" data-i18n="about.creatorLabel">CREATOR</div>
+    <p class="about-text" data-i18n="about.creator"></p>
+  </section>
+
+  <section class="about-section">
+    <div class="about-section-label" data-i18n="about.toolsLabel">TOOLS</div>
+    <p class="about-text" data-i18n="about.tools"></p>
+  </section>
+
+  <section class="about-section">
+    <div class="about-section-label" data-i18n="about.mediaLabel">MEDIA</div>
+    <ul class="about-list" id="aboutMedia"></ul>
+  </section>
+
+  <section class="about-section">
+    <div class="about-section-label" data-i18n="about.thanksLabel">THANKS</div>
+    <p class="about-text" data-i18n="about.thanks"></p>
+  </section>
+
+  <blockquote class="about-quote" data-i18n="about.quote"></blockquote>
+  <div class="about-signature" data-i18n="about.signature"></div>
+
+  <section class="about-section" style="margin-top:var(--space-7);">
+    <div class="about-section-label" id="aboutReachLabel">REACH</div>
+    <div class="about-reach" id="aboutReach"></div>
+  </section>
+</div>
+
+<!-- TICKER -->
+<div class="ticker" role="status" aria-live="polite">
+  <div class="ticker-label">ORACLE</div>
+  <div class="ticker-content"><span class="ticker-inner" id="tickerInner"></span></div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="assets/js/i18n/ko.js"></script>
+<script src="assets/js/i18n/en.js"></script>
+<script src="assets/js/i18n/ko-about.js"></script>
+<script src="assets/js/i18n/en-about.js"></script>
+<script src="assets/js/i18n/index.js"></script>
+<script src="assets/js/core/ticker.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  window.TIU_I18N.init();
+  const d = window.TIU_I18N.getDict().about;
+
+  function render() {
+    const dict = window.TIU_I18N.getDict().about;
+    const tl = document.getElementById('aboutTimeline');
+    if (tl) tl.innerHTML = dict.timeline.map(t =>
+      '<div class="about-timeline-row"><div class="about-timeline-year">' + t.year + '</div><div class="about-timeline-text">' + t.text + '</div></div>'
+    ).join('');
+
+    const ml = document.getElementById('aboutMedia');
+    if (ml) ml.innerHTML = dict.media.map(m => '<li>' + m + '</li>').join('');
+
+    const rl = document.getElementById('aboutReachLabel');
+    if (rl) rl.textContent = dict.reach.label;
+
+    const rc = document.getElementById('aboutReach');
+    if (rc) rc.innerHTML = dict.reach.links.map(l =>
+      '<a href="' + l.url + '" target="_blank" rel="noopener">' + l.label + ' →</a>'
+    ).join('');
+  }
+
+  render();
+  window.TIU_Ticker.init();
+
+  new MutationObserver(() => render())
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+});
+</script>
+</body>
+</html>

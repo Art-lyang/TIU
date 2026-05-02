@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>SIGNAL LOST // TURTLE ISLE UNIVERSE</title>
+<link rel="stylesheet" href="assets/css/main.css">
+<style>
+  /* 404 페이지 전용 */
+  body.err-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--space-5);
+    text-align: center;
+  }
+  .err {
+    max-width: 520px;
+  }
+  .err-code {
+    font-family: var(--font-display);
+    font-size: clamp(96px, 25vw, 200px);
+    color: var(--color-red);
+    letter-spacing: var(--tracking-wider);
+    line-height: 0.9;
+    margin-bottom: var(--space-3);
+    animation: err-glitch 4s infinite;
+    text-shadow: 0 0 30px rgba(255, 59, 59, 0.3);
+  }
+  .err-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-red);
+    margin-bottom: var(--space-4);
+  }
+  .err-title {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
+    color: var(--color-text);
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+  .err-msg {
+    font-size: var(--text-sm);
+    color: var(--color-light);
+    line-height: var(--leading-loose);
+    margin-bottom: var(--space-6);
+  }
+  .err-actions {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .err-btn {
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wider);
+    background: transparent;
+    border: 1px solid var(--color-dim);
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: all var(--duration-fast);
+  }
+  .err-btn--primary {
+    border-color: var(--color-green);
+    color: var(--color-green);
+  }
+  .err-btn:hover {
+    color: var(--color-light);
+    border-color: var(--color-light);
+  }
+  .err-btn--primary:hover {
+    background: var(--alpha-green-10);
+  }
+  @keyframes err-glitch {
+    0%, 90%, 100% { transform: translate(0); opacity: 1; }
+    92% { transform: translate(-2px, 1px); opacity: 0.7; }
+    94% { transform: translate(2px, -1px); opacity: 1; }
+    96% { transform: translate(-1px, 0); opacity: 0.9; }
+  }
+</style>
+</head>
+<body class="err-page">
+
+<div class="err">
+  <div class="err-code">404</div>
+  <div class="err-label">SIGNAL LOST // UNKNOWN ADDRESS</div>
+  <h1 class="err-title">THIS PATH DOES NOT EXIST</h1>
+  <p class="err-msg">
+    ORACLE 색인에 이 주소가 없습니다.<br>
+    또는 — 있지만, 당신에게 보이지 않도록 설계되었습니다.
+  </p>
+  <div class="err-actions">
+    <a class="err-btn" href="index.html">← ENTRY</a>
+    <a class="err-btn err-btn--primary" href="main.html">ORACLE MAIN →</a>
+  </div>
+</div>
+
+</body>
+</html>

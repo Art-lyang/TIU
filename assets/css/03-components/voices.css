@@ -1,0 +1,62 @@
+/* ─── VOICES (현장 보이스 3개 인용구) ─── */
+.voices {
+  max-width: var(--container-md);
+  margin: 0 auto;
+}
+
+.voices-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.voice-card {
+  position: relative;
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-left: 2px solid var(--color-green);
+  transition: border-color var(--duration-normal);
+}
+
+.voice-card:nth-child(2) {
+  border-left-color: var(--color-amber);
+}
+
+.voice-card:nth-child(3) {
+  border-left-color: var(--color-red);
+}
+
+.voice-card::before {
+  content: '"';
+  position: absolute;
+  top: var(--space-1);
+  right: var(--space-3);
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 1;
+  color: var(--color-dim);
+  pointer-events: none;
+}
+
+.voice-quote {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-style: italic;
+  color: var(--color-light);
+  line-height: var(--leading-loose);
+  font-weight: 300;
+  margin-bottom: var(--space-2);
+  position: relative;
+  z-index: 1;
+}
+
+.voice-cite {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-muted);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-dim);
+}
+
