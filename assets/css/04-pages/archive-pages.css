@@ -21,12 +21,59 @@ body.archive-page.has-gnav {
 }
 
 .archive-page .archive-hero {
-  min-height: 48vh;
+  position: relative;
+  isolation: isolate;
+  min-height: 44vh;
   display: grid;
   align-content: end;
   gap: var(--space-5);
   padding: var(--space-8) 0;
   border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(0, 229, 160, 0.034), transparent 42%),
+    linear-gradient(180deg, transparent 0%, rgba(0, 229, 160, 0.018) 100%);
+}
+
+.archive-page .archive-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.archive-page .archive-hero::before {
+  content: '';
+  position: absolute;
+  top: var(--space-8);
+  right: 0;
+  width: min(460px, 42vw);
+  height: min(260px, 30vh);
+  border: 1px solid rgba(0, 229, 160, 0.12);
+  background:
+    radial-gradient(circle at 24% 30%, rgba(0, 229, 160, 0.16) 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 62%, rgba(255, 59, 59, 0.12) 0 2px, transparent 3px),
+    repeating-linear-gradient(90deg, rgba(0, 229, 160, 0.06) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 24px),
+    linear-gradient(135deg, rgba(0, 229, 160, 0.08), rgba(0, 0, 0, 0.2));
+  opacity: 0.68;
+  transform: skewX(-4deg);
+  transform-origin: right top;
+  z-index: 0;
+}
+
+.archive-page .archive-hero::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--space-8) + 24px);
+  right: var(--space-5);
+  width: min(310px, 28vw);
+  height: 110px;
+  border-top: 1px solid rgba(0, 229, 160, 0.22);
+  border-bottom: 1px solid rgba(0, 229, 160, 0.08);
+  background:
+    linear-gradient(90deg, rgba(0, 229, 160, 0.38) 0 18%, transparent 18% 27%, rgba(0, 229, 160, 0.18) 27% 46%, transparent 46% 100%),
+    linear-gradient(180deg, transparent 0 22px, rgba(255, 255, 255, 0.045) 22px 23px, transparent 23px 44px, rgba(255, 59, 59, 0.08) 44px 45px, transparent 45px 100%);
+  opacity: 0.42;
+  z-index: 0;
 }
 
 .archive-page .archive-kicker,
@@ -99,15 +146,38 @@ body.archive-page.has-gnav {
 }
 
 .archive-page .archive-card {
+  position: relative;
+  isolation: isolate;
   min-height: 240px;
   padding: 0;
-  background: rgba(10, 10, 10, 0.76);
+  background:
+    linear-gradient(135deg, rgba(0, 229, 160, 0.025), transparent 52%),
+    rgba(10, 10, 10, 0.76);
   border: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
   transition: border-color var(--duration-fast), transform var(--duration-fast);
+}
+
+.archive-page .archive-card::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 44%;
+  background:
+    radial-gradient(circle at 72% 24%, rgba(0, 229, 160, 0.12) 0 2px, transparent 3px),
+    repeating-linear-gradient(0deg, transparent 0 12px, rgba(255, 255, 255, 0.024) 12px 13px),
+    linear-gradient(90deg, transparent, rgba(0, 229, 160, 0.035));
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.archive-page .archive-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .archive-page .archive-card:hover {
@@ -258,6 +328,21 @@ body.archive-page.has-gnav {
 }
 
 @media (max-width: 800px) {
+  .archive-page .archive-hero {
+    min-height: 40vh;
+  }
+
+  .archive-page .archive-hero::before {
+    right: -64px;
+    width: 72vw;
+    height: 180px;
+    opacity: 0.38;
+  }
+
+  .archive-page .archive-hero::after {
+    display: none;
+  }
+
   .archive-page .archive-grid { grid-template-columns: 1fr; }
   .archive-page .archive-section-head { display: block; }
   .archive-page .archive-section-note { margin-top: var(--space-3); }
@@ -270,9 +355,26 @@ body.archive-page.has-gnav {
     padding-bottom: var(--space-8);
   }
 
+  .archive-page .archive-hero {
+    min-height: 34vh;
+    gap: var(--space-4);
+    padding: var(--space-6) 0;
+  }
+
+  .archive-page .archive-hero::before {
+    top: var(--space-5);
+    right: -42px;
+    width: 86vw;
+    height: 132px;
+  }
+
   .archive-page .archive-card,
   .archive-page .archive-card > div:not([class]) {
     min-height: auto;
+  }
+
+  .archive-page .archive-card::after {
+    width: 58%;
   }
 
   .archive-page .archive-card-body,
