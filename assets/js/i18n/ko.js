@@ -51,7 +51,7 @@ window.TIU_KO = {
   map: {
     eyebrow: 'PA // GLOBAL VIEW',
     title: 'GLOBAL THREAT MAP',
-    desc: '공공 아카이브가 공개한 8개 지점. 등급은 PA-TERMINAL 표면 색인 기준이며, 비공개 좌표는 표시되지 않는다. 핫스팟을 클릭하면 사건 지역과 국가 태그가 표시된다.',
+    desc: '공공 아카이브가 공개한 사건 구역과 국가권역. 등급은 PA-TERMINAL 표면 색인 기준이며, 비공개 좌표는 표시되지 않는다. 핫스팟을 클릭하면 각 지역의 대응 체계와 공개 위험 정보가 표시된다.',
     legend: [
       { label: 'Z-Ω ANOMALOUS', color: 'purple' },
       { label: 'Z-3 COLLAPSE',  color: 'red' },
@@ -65,9 +65,13 @@ window.TIU_KO = {
       philadelphia: { title: 'PHILADELPHIA ZONE',   country: 'USA',    status: 'Z-Ω ANOMALOUS', tone: 'purple', desc: '2022년 함락. 해역 군체 표면화 이후 도시 전역이 단일 TS-Ω 군체로 흡수됐다. 현재 군체 영향권은 내륙 방향으로 전진 중이다.', threat: 'TS-Ω / 해양 군체',  response: '감시 · 회피', img: 'assets/img/philadelphia-drone.webp' },
       ashfall:      { title: 'ASHFALL CITY',        country: 'USA',    status: 'Z-3 COLLAPSE',  tone: 'red',    desc: '2023년 쉐드 오더 변이 가속 실험의 실패작. 건물 자체가 생체 조직으로 전환됐다. 미군이 외곽 생존 구역을 40% 확장 중.', threat: 'Brood Core / 감염자', response: '봉쇄 · 회수', img: 'assets/img/ashfall-city.webp' },
       silentbelt:   { title: 'SILENT BELT',         country: 'RUSSIA', status: 'Z-2 DANGER',    tone: 'amber',  desc: '러시아 전역에 걸친 광역 침묵 지대. 시드 스프레더 확산으로 음향 감쇠 발생. 월 1.2km씩 외연이 자라난다.', threat: '광역 포자 확산',      response: '소각 · 감시', img: 'assets/img/silent-belt.webp' },
+      euBorder:     { title: 'EU BORDER COURTS',    country: 'EU',     status: 'LEGAL FRONT',   tone: 'green',  desc: '국경 검역, 난민 보호, 감염자 권리 소송이 동시에 발생하는 유럽권 방어선. 느린 합의가 생존과 인권 사이에서 흔들린다.', threat: '법적 지연 / 월경 감염', response: '다국어 고지 · 법원 명령 · 공동 대응군' },
+      germany:      { title: 'GERMAN BIOETHICS LINE', country: 'GERMANY', status: 'RECORD ETHICS', tone: 'green', desc: '독일권은 감염 기록과 생명윤리 기준을 엄격하게 다룬다. 정확한 문장이 때로 사람의 사회적 지위를 지우는 문제가 반복된다.', threat: '기록 오판 / 권리 충돌', response: '윤리위원회 · 법정 심사 · 의료 기록 감사' },
       redveil:      { title: 'RED VEIL REGION',     country: 'CHINA',  status: 'Z-2 DANGER',    tone: 'red',    desc: '중국 도시 밀집권 감염 봉쇄선. 내부 통제는 사실상 실패, 외부 방벽만 유지된다. 누적 봉쇄 비용 1,665억 위안.', threat: '혼합 개체 / 침투',   response: '전담군 · 격리', img: 'assets/img/red-veil.webp' },
       korea:        { title: 'KOREA CONTROLLED',    country: 'KOREA',  status: 'CONTAINMENT',    tone: 'green',  desc: '세계 유일 방역 성공 구역. White Shield 정밀 봉쇄 유지 중. 공개 예측 모델은 이 결과를 설명하지 못했다.',   threat: '산발 변이',           response: '조기 탐지 · 선택 격리', img: 'assets/img/korea-barrier.webp' },
       japan:        { title: 'JAPAN DEFENSE LINE',  country: 'JAPAN',  status: 'Z-1 CAUTIONARY', tone: 'amber',  desc: '2025년 9~12월 이시가키·미야코·오키나와 본섬·아마미·토카라·오가사와라 일부 상실. 류큐 탈환 작전 진행 중. 국내 감염 0건 유지.',              threat: '해양 변이',           response: '해군 · 도서 회수' },
+      australia:    { title: 'AUSTRALIA BIOSAFE GRID', country: 'AUSTRALIA', status: 'FORTRESS PROTOCOL', tone: 'green', desc: '대륙 봉쇄, 자율 신고 앱, 내륙 광산 검역이 결합된 호주권 대응 체계. 시민은 서로를 감시하면서도 서로를 보호한다.', threat: '장거리 노출 / 내륙 통신 공백', response: 'BIOSAFE-AU · 장거리 허가 · 좌표 검역' },
+      meridian:     { title: 'MERIDIAN LOGISTICS BELT', country: 'PRIVATE ENTERPRISE', status: 'PUBLIC FRONT', tone: 'amber', desc: '의료, 보험, 물류, 회수품 시장을 연결하는 기업 영향권. 공개본은 계약과 대피 우선순위만 보여주며 상위 구조는 설명하지 않는다.', threat: '계약 차별 / 회색시장', response: '감사 · 제한 거래 · 기업 보호권' },
       unregisteredInland: { title: 'UNREGISTERED INLAND', status: 'DATA VOID', tone: 'muted', desc: 'PA-TERMINAL 공식 색인에 좌표가 부여되지 않은 내륙 구역. 관측 공백의 원인은 표면 자료에서 확인되지 않는다.', threat: '미확인', response: '관측 불가' },
       antarctic:    { title: 'ANTARCTIC GATE',      status: 'Z-Ω ANOMALOUS', tone: 'purple', desc: '완전 원형 구조. 깊이 측정 불가. 일부 자료는 지하 문명층(L3)으로 이어지는 관문으로 기록한다 — 공식 해석은 보류.',     threat: '공간 왜곡 / 심층',   response: '위성 감시 · 진입 금지' }
     },
@@ -126,6 +130,21 @@ window.TIU_KO = {
       }
     ]
   },
+  specIndex: {
+    eyebrow: 'PUBLIC SPEC INDEX',
+    title: 'SPECIMEN CATALOG',
+    desc: '공개 SPEC 색인은 변이체를 괴물 도감처럼 모두 폭로하지 않는다. 대신 현장 요원이 실제로 판단해야 하는 행동 패턴, 접근 금지선, 민간 피해 비용을 우선 보여준다.',
+    labels: { type: 'TYPE', rule: 'FIELD RULE' },
+    note: '완전 계보, 발생 원인, 상위 분류 코드는 공개 색인에서 제외된다. 하지만 플레이어는 이 정도 정보만으로도 작전 선택을 시작할 수 있다.',
+    items: [
+      { code: 'SPEC-001', name: '감염체 마네킹', risk: 'PHASE 1 / CLOSE RANGE', tone: 'amber', type: 'M-TYPE 인간형', rule: '정지 개체로 보여도 3m 내 단독 접근 금지', desc: '정지 시 인체와 구분하기 어렵다. 자극이 들어오면 0.3초 안에 공격 전환이 발생할 수 있어, 구조 대상과 위협 대상의 판별을 지연시킨다.' },
+      { code: 'SPEC-003', name: 'Brood Drone', risk: 'H-TYPE / HIVE', tone: 'red', type: '군집형 하위 개체', rule: '핵 개체 분리 전까지 소모전 금지', desc: '독립 의지는 낮지만 군체 명령에 빠르게 반응한다. 분리 후 12시간 내 비활성화 사례가 있으나, 그 전까지는 봉쇄선을 소모시키는 역할을 한다.' },
+      { code: 'SPEC-008', name: 'Spore Phantom', risk: 'S-TYPE / AIRBORNE', tone: 'red', type: '포자·광반응형', rule: '환기 차단, 조명 통제, 흡입 노출 기록', desc: '광원 조건에서 분산되며 물리적 제거가 어렵다. 흡입 노출이 발생하면 감염 이력 기록과 격리 비용이 개인 단위에서 가족 단위로 확대된다.' },
+      { code: 'SPEC-011', name: 'Shell Talker', risk: 'VOICE MIMIC', tone: 'amber', type: '음성 모방형', rule: '피해자 음성 확인 시 단독 응답 금지', desc: '실종자나 가족의 목소리를 흉내내어 문을 열게 만든다. TIU에서 공포가 단순 공격이 아니라 관계의 비용으로 작동하는 대표 사례다.' },
+      { code: 'SPEC-012', name: 'Blood Pit', risk: 'ENVIRONMENTAL', tone: 'red', type: '환경 오염형', rule: '접촉 표면 소각, 회수품 반출 금지', desc: '붉은 점액질과 소화효소를 통해 유기물을 분해한다. 사건 현장이 곧 개체가 되는 유형이라, 구조와 증거 보존이 서로 충돌한다.' },
+      { code: 'PHASE 0', name: 'Latent Host', risk: 'CIVILIAN COST', tone: 'green', type: '무증상 감염 이력자', rule: '기록 삭제 금지, 접근권 제한으로 처리', desc: '겉으로는 일반 시민과 다르지 않다. 학교, 보험, 결혼, 병역, 면회권 같은 생활 제도가 먼저 흔들리기 때문에 사회적 긴장을 만드는 핵심 축이다.' }
+    ]
+  },
   world: {
     eyebrow: 'WORLD STRUCTURE',
     title: '4-LAYER CIVILIZATION',
@@ -163,15 +182,31 @@ window.TIU_KO = {
     text: '세계의 모든 예측 모델이 실패를 산출했다.<br>그러나 이 구역만 살아남았다. 방벽, 군 체계, 기록 봉인, 비공식 협력망이 한 국가 안에서 겹쳐 작동한다.',
     archiveHint: '한국 아카이브는 공개 기록과 잠긴 기록을 함께 배치한다. 세계관 문서나 카드게임에서 얻은 코드가 있으면 일부 제한 파일을 더 열람할 수 있다.',
     nodes: [
-      { code: 'KR-INIT-001', name: '한국 지부', access: 'CODE REQUIRED', tone: 'green', text: '정론의 시작점. 이중철 부임 이후 공개본과 비공개본이 갈라지는 핵심 지부 기록.' },
-      { code: '0과', name: '0과', access: 'RESTRICTED', tone: 'amber', text: '문서와 현장 사이의 불일치를 다루는 한국 내부 특수 조직. 일부 기록은 표면 색인에서 누락된다.' },
-      { code: 'DG', name: 'DG', access: 'HINT', tone: 'green', text: '국가 생존 기능을 우선하는 심층 대응 라인. 방벽, 검역, 기록 봉인과 연결된다.' },
-      { code: '특재사', name: '특수재난 대응 라인', access: 'PUBLIC / HINT', tone: 'amber', text: '시민에게는 재난 행정으로 보이는 현장 대응 체계. 검문, 대피, 격리 명령의 표면 역할을 맡는다.' },
-      { code: 'WHITE SHIELD', name: 'White Shield', access: 'PUBLIC', tone: 'green', text: '대한민국 군 EV-Σ 대응 체계. 세계에서 유일하게 97.3% 봉쇄율을 유지한 공개 지표.' },
-      { code: 'COASTAL MIRROR', name: 'COASTAL MIRROR', access: 'HINT', tone: 'red', text: '해안 방벽 기술과 비공식 협력의 흔적. 공개 보고서는 이 이름을 직접 설명하지 않는다.' }
+      { code: 'KR-INIT-001', name: '한국 지부', access: 'CODE REQUIRED', tone: 'green', text: '정론의 시작점. 지휘, 분석, 현장, 생물학, 시스템 관리가 한 거점에 묶이며 카드게임의 첫 작전 기록과 직접 연결된다.' },
+      { code: '0과', name: '0과', access: 'RESTRICTED', tone: 'amber', text: '문서와 현장 사이의 불일치를 다루는 한국 내부 특수 조직. 삭제가 아니라 누락, 마스킹, 접근권 차이를 추적한다.' },
+      { code: 'DG', name: 'DG', access: 'HINT', tone: 'green', text: '국가 생존 기능을 우선하는 심층 대응 라인. 방벽, 검역, 기록 봉인, 민간 피해 보상 기준과 연결된다.' },
+      { code: '특재사', name: '특수재난 대응 라인', access: 'PUBLIC / HINT', tone: 'amber', text: '시민에게는 재난 행정으로 보이는 현장 대응 체계. 검문, 대피, 격리 명령, 병원 이송, 통행 패스를 담당한다.' },
+      { code: 'WHITE SHIELD', name: 'White Shield', access: 'PUBLIC', tone: 'green', text: '대한민국 군 EV-Σ 대응 체계. 세계에서 유일하게 97.3% 봉쇄율을 유지한 공개 지표이며 방벽 무결성과 연결된다.' },
+      { code: 'COASTAL MIRROR', name: 'COASTAL MIRROR', access: 'HINT', tone: 'red', text: '해안 방벽 기술과 비공식 협력의 흔적. 공개 보고서는 이름만 남기고, 실제 기여율과 협력 주체는 설명하지 않는다.' }
     ],
     systemNote: '"This region should have failed. Outcome does not match model."',
     systemLabel: 'PA // SYSTEM NOTE'
+  },
+  regions: {
+    eyebrow: 'GLOBAL CIVILIAN INDEX',
+    title: 'NATIONAL RESPONSE LAYERS',
+    desc: 'TIU의 세계는 한 나라의 재난으로 끝나지 않는다. 같은 EV-Σ라도 한국은 방벽과 기록, 미국은 보험과 종교, EU는 권리와 국경, 호주는 앱과 좌표로 다르게 반응한다.',
+    note: '이 권역 정보는 공개 페이지에서 바로 읽을 수 있는 표면 자료다. 비공개 심층권과 고대 문명 관련 정보는 여기서 직접명으로 다루지 않는다.',
+    items: [
+      { code: 'KR', name: '한국', status: '97.3% CONTAINED', tone: 'green', line: '안전하다고 기록되는 나라. 방벽, 가족 신고, 격리 병동, 기록 봉인이 한 사회 안에서 작동한다.', tags: ['방벽', '0과', 'DG', '특재사'] },
+      { code: 'US', name: '미국', status: 'DIVIDED BLOCKADE', tone: 'amber', line: '정부 발표보다 보험 코드가 먼저 움직인다. 봉쇄선, 종교 부흥, 음모론 시장이 재난을 해석한다.', tags: ['보험', 'FEMA', 'PARCHMENT', '봉쇄선'] },
+      { code: 'JP', name: '일본', status: 'ISLAND DEFENSE', tone: 'amber', line: '매뉴얼에 없는 재난은 괴담이 된다. 해안 상실, 신사 기록, 괴담 채널이 방어선과 겹친다.', tags: ['류큐', '괴담TV', '매뉴얼', '신사'] },
+      { code: 'CN', name: '중국', status: 'OUTER WALL ONLY', tone: 'red', line: '글은 사라져도 목소리는 남는다. 검열, 사회신용, 음성 메시지, 외곽 방벽이 서로 충돌한다.', tags: ['검열', 'Red Veil', '음성 메시지', '사회신용'] },
+      { code: 'RU', name: '러시아', status: 'SILENT FRONTIER', tone: 'amber', line: '지도에 없어도 신호는 온다. 혹한, 사라진 마을, 단파 라디오, 회색지대 무장망이 핵심이다.', tags: ['Silent Belt', '단파', '철도', 'Silent Wolves'] },
+      { code: 'EU', name: 'EU', status: 'LEGAL FRONT', tone: 'green', line: '서류는 가족을 인정하지만 게이트는 멈춘다. 느린 합의와 감염자 권리 소송이 방어선이 된다.', tags: ['국경', '권리', '통역', '소송'] },
+      { code: 'DE', name: '독일', status: 'BIOETHICS LINE', tone: 'green', line: '정확한 문장은 때로 사람을 지운다. 감염 이력, 생명윤리, 기록 감사가 사건의 중심이 된다.', tags: ['기록 윤리', '법정', '의료위원회', '베를린'] },
+      { code: 'AU', name: '호주', status: 'FORTRESS PROTOCOL', tone: 'green', line: '사람보다 먼저 좌표가 거절된다. 시민 신고 앱, 내륙 광산, 대륙 봉쇄가 생활을 바꾼다.', tags: ['BIOSAFE-AU', 'Outback', '광산', '좌표 검역'] }
+    ]
   },
   mystery: {
     eyebrow: 'UNEXPLAINED OUTCOME',
