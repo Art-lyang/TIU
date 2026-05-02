@@ -3,239 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ORACLE // 인물 프로파일</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base-core.css">
-<link rel="stylesheet" href="css/base-modal.css">
-<link rel="stylesheet" href="css/pages-core.css">
-<link rel="stylesheet" href="css/pages-map.css">
-<link rel="stylesheet" href="css/pages-hero-fx.css">
-<link rel="stylesheet" href="css/pages-profiles.css">
-<link rel="stylesheet" href="css/pages-timeline.css">
-<link rel="stylesheet" href="css/pages-world.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/profiles.css">
+<meta name="description" content="TIU Public Archive — 주요 인물 공개 프로필">
+<title>PROFILES // PA-TERMINAL</title>
+<link rel="stylesheet" href="assets/css/main.css">
 </head>
-<body>
-
-<div id="topbar">
-  <div class="topbar-logo">
-    <div class="topbar-logo-box" style="clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%);">T</div>
-    <div class="topbar-name">TURTLE ISLE<small>UNIVERSE</small></div>
-  </div>
-  <div class="topbar-spacer"></div>
-  <div class="topbar-status"><div class="t-dot"></div>SYSTEM ACTIVE</div>
-</div>
-<div id="ticker"><div class="tick-label">ORACLE</div><div class="tick-content"><span class="tick-inner" id="ticker-inner"></span></div></div>
-
-<div class="page-wrap">
+<body class="archive-page has-gnav">
+<header class="topbar" role="banner">
+  <a class="topbar-logo" href="main.html"><div class="topbar-logo-box" aria-hidden="true">T</div><div class="topbar-name"><span>TURTLE ISLE</span><small>UNIVERSE</small></div></a>
+  <div class="topbar-spacer"></div><div class="topbar-status"><div class="topbar-status-dot" aria-hidden="true"></div><span>PA PUBLIC INDEX</span></div>
+</header>
+<nav class="gnav" aria-label="Global navigation"><div class="gnav-inner">
+  <a class="gnav-item" href="main.html"><span class="gnav-icon">⌂</span><span class="gnav-label">MAIN</span></a><a class="gnav-item" href="factions.html"><span class="gnav-icon">⚡</span><span class="gnav-label">FACTIONS</span></a><a class="gnav-item" href="threats.html"><span class="gnav-icon">🧬</span><span class="gnav-label">THREATS</span></a><a class="gnav-item" href="records.html"><span class="gnav-icon">📡</span><span class="gnav-label">RECORDS</span></a><a class="gnav-item" href="incidents.html"><span class="gnav-icon">📋</span><span class="gnav-label">INCIDENTS</span></a><a class="gnav-item" href="specimens.html"><span class="gnav-icon">🧪</span><span class="gnav-label">SPECIMENS</span></a><a class="gnav-item is-active" href="profiles.html"><span class="gnav-icon">👤</span><span class="gnav-label">PROFILES</span></a><a class="gnav-item" href="database.html"><span class="gnav-icon">▦</span><span class="gnav-label">DATABASE</span></a>
+</div></nav>
+<main class="archive-page-main">
+  <section class="archive-hero">
+    <div class="archive-kicker">PA // PERSONNEL DOSSIERS</div><h1 class="archive-title">PROFILES</h1>
+    <p class="archive-desc">인물 프로필은 “연애 대상”이나 단순 NPC가 아니라 세계관의 윤리적 질문을 운반하는 장치다. 공개본은 역할, 위험, 관계 비용만 보여준다.</p>
+    <div class="archive-meta"><span>DISCLOSURE: PUBLIC/HINT</span><span>NO NON-CANON PERSONNEL</span></div>
+  </section>
+  <section class="archive-section">
+    <div class="archive-section-head"><h2 class="archive-section-title">KR-INIT-001</h2><p class="archive-section-note">한국 지부 공개 프로필. 지휘 체계와 세부 임명 경로는 일부 마스킹된다.</p></div>
+    <div class="archive-grid">
+      <article class="archive-card archive-card--green"><div><div class="archive-card-code">PILEHEAD</div><h3 class="archive-card-title">이중철</h3><p class="archive-card-text">KR-INIT-001 지휘관. 군 출신의 판단력과 기록 보존 책임 사이에서 선택을 요구받는다.</p></div></article>
+      <article class="archive-card"><div><div class="archive-card-code">ANALYST-01</div><h3 class="archive-card-title">서하은</h3><p class="archive-card-text">데이터 스트림 분석과 기지 운영 담당. 누락된 기록과 사람 사이의 간극을 가장 먼저 본다.</p></div></article>
+      <article class="archive-card"><div><div class="archive-card-code">FIELD-01</div><h3 class="archive-card-title">강도윤</h3><p class="archive-card-text">전술 지휘와 현장 대응. 보고서보다 생존자를 먼저 보는 순간, 작전은 흔들린다.</p></div></article>
     </div>
-
-  <div class="page-hero">
-    <div class="page-hero-eyebrow">SECTION 04 // PERSONNEL</div>
-    <div class="page-hero-title">PERSONNEL</div>
-    <div class="page-hero-desc">등록된 인물 및 존재 목록. 세력별 분류. 일부 항목은 보안 등급에 의해 편집됨.</div>
-    <a href="incidents.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:8px 14px;border:1px solid var(--amber);color:var(--amber);font-size:10px;letter-spacing:2px;text-decoration:none;font-family:'Share Tech Mono',monospace;transition:background 0.15s;">
-      <span>📋</span> 관련 사건 보고서 열람
-    </a>
-  </div>
-
-  <!-- PROFILES -->
-  <div style="padding:20px;">
-    <div class="pf-row" id="pf-filters"></div>
-    <div class="prof-grid" id="prof-grid"></div>
-  </div>
-
-<!-- Profile Detail Modal Overlay -->
-<div class="prof-detail-overlay" id="prof-overlay">
-  <div class="prof-detail-modal" id="prof-detail"></div>
-</div>
-
-</div>
-
-  <div style="padding:0 20px 20px;"><a href="database.html" style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--green);color:var(--green);font-size:10px;letter-spacing:2px;text-decoration:none;font-family:'Share Tech Mono',monospace;transition:background 0.15s;"><span>→</span> ORACLE DATABASE — 전체 용어 · 구역 · 시스템 색인</a></div>
-
-</div>
-
-<script src="js/common-core.js"></script>
-<script src="js/hero-canvas.js"></script>
-<script>
-
-
-// ── PROFILE DATA ──
-const PROFILES = [
-  {id:'seraph',icon:'👁',name:'SERAPH-NULL',code:'OBSERVER OUTPUT FORM',faction:'obs',fLabel:'OBSERVER',bg:'#001a0d',desc:'██████████ 물리 공간에 직접 개입할 때 사용하는 형태. ██████████ 가능한 유일한 출력체. PROTOCOL: ██████████에서 최초 출현.',threat:'극도 위험',status:'활성',loc:'불명',notes:'인간과의 접촉 시 대상의 인지 구조가 ██████████ 가능성이 있음. [OBSERVER — 자체 보안 검열]'},
-  {id:'oracle',icon:'<img src="img/oracle-core.webp" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'ORACLE AI',code:'EXECUTION LOGIC',faction:'obs',fLabel:'OBSERVER',bg:'#0a1a0a',desc:'감정이 없는 ██████████ 시스템. ██████████ 의도를 ██████████ 명령으로 변환. 개입 조건이 ██████. [자체 보안 검열]',threat:'시스템',status:'항시 가동',loc:'전역',notes:'██████████는 도구이지 의지를 가진 존재가 아님. [자체 검열]'},
-  {id:'voss',icon:'<img src="img/voss-portrait.webp" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'VOSS',code:'COMMANDER VOSS — PROMETHEUS FIELD COMMANDER',faction:'pro',fLabel:'PROMETHEUS',bg:'#1a1200',desc:'프로메테우스의 현장 지휘관. 인간의 선택과 자유 의지를 지키기 위해 ██████████ 시스템에 대항하는 초국가 조직의 핵심 인물.',threat:'아군',status:'활동 중',loc:'유럽 거점',notes:'캐릭터 디자인 완성 시 상세 정보 업데이트 예정.'},
-  {id:'kang',icon:'<img src="img/agent-kang.webp" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'AGENT KANG (강지현)',code:'PROMETHEUS KOREA LIAISON',faction:'pro',fLabel:'PROMETHEUS',bg:'#1a1500',desc:'한국 White Shield와 프로메테우스의 비공식 연결 고리. 한국이 유일한 방역 성공 국가로 유지되는 데 핵심적 역할.',threat:'아군',status:'활동 중',loc:'한국',notes:'캐릭터 디자인 완성 시 상세 정보 업데이트 예정.'},
-  {id:'exuvia',icon:'<img src="img/exuvia-form.webp" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'EXUVIA',code:'SHED ORDER LEADER',faction:'she',fLabel:'SHED ORDER',bg:'#1a0505',desc:'도마뱀 계열 렙틸리언 급진파의 리더. 탈피 기반 진화를 통해 기존 껍질(한계)을 벗어나는 것을 철학적 목표로 삼는 존재.',threat:'극도 위험',status:'불명',loc:'불명',notes:'CONVERGENCE: NULL SHELL에서 TS-Ω와 충돌. 결과 미확인.'},
-  {id:'ws',icon:'🎖',name:'White Shield 사령관',code:'KR MILITARY — CLASSIFIED',faction:'gov',fLabel:'GOVERNMENT',bg:'#0a1510',desc:'한국군 특수 대응 부대 White Shield의 총 사령관. 정밀 봉쇄 전략으로 세계 유일의 확산 차단을 달성.',threat:'아군',status:'활동 중',loc:'한국',notes:'캐릭터 디자인 완성 시 상세 정보 업데이트 예정.'},
-  {id:'ares',icon:'🦅',name:'ARES Division 국장',code:'US MILITARY — CLASSIFIED',faction:'gov',fLabel:'GOVERNMENT',bg:'#0d0d14',desc:'미국 ARES Division의 최고 지휘관. 기술 우위와 위성 전쟁 능력을 기반으로 글로벌 군사 대응을 주도.',threat:'아군',status:'활동 중',loc:'미국',notes:'캐릭터 디자인 완성 시 상세 정보 업데이트 예정.'},
-  {id:'civ1',icon:'👤',name:'미공개 인물',code:'FIRST INTERFACE PARTICIPANT',faction:'civ',fLabel:'CIVILIAN',bg:'#111',desc:'██████████ ↔ 인간 최초 대화 (FIRST INTERFACE)에 참여한 민간인. 정체는 미공개.',threat:'없음',status:'생존',loc:'한국 추정',notes:'PROJECT: FIRST CHOICE의 핵심 변수. 캐릭터 공개 예정.'},
-  {id:'civ2',icon:'👤',name:'미공개 인물',code:'ASHFALL CITY SURVIVOR',faction:'civ',fLabel:'CIVILIAN',bg:'#111',desc:'Ashfall City 붕괴 사건의 생존자. EV-Σ Phase 1 감염 후 자연 회복한 극히 드문 사례.',threat:'관찰 대상',status:'격리 중',loc:'미공개',notes:'캐릭터 공개 예정.'},
-  {id:'wei',icon:'<img src="img/choir-wei-liang.webp" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'Wei Liang',code:'THE WITNESS — ASCENSION CHOIR',faction:'vil',fLabel:'HOSTILE',bg:'#1a0a0a',desc:'Ascension Choir 교주. 전직 생물학자. CLASS II 감염자 — 의도적 자가 노출 후 생존. 하이브 마인드 인터페이스 가설.',threat:'극도 위험',status:'활동 중',loc:'Red Veil 경계',notes:'RDF 제거 작전 실패. 집중 포화에도 생존. ORACLE ANOMALY FLAG.'},
-  {id:'richter',icon:'<img src="img/meridian-richter.webp" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'Elena Richter',code:'MERIDIAN GROUP COO',faction:'vil',fLabel:'HOSTILE',bg:'#0a0a14',desc:'Meridian Group 실질적 운영 책임자. 전직 제약회사 부사장. EV-Σ 사업화를 72시간 내 설계한 인물.',threat:'위험',status:'활동 중',loc:'유럽',notes:'도덕은 수요 곡선에 나타나지 않는다.'},
-  {id:'ash',icon:'<img src="img/ember-ash.webp" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'Marcus Cole',code:'ASH — EMBER CORPS LEADER',faction:'vil',fLabel:'HOSTILE',bg:'#1a0f05',desc:'Ember Corps 리더. 전직 소방관. Ashfall City 대피 작전에서 가족 구출 실패. 복수와 탈환이 목적.',threat:'중간 → 증가',status:'활동 중',loc:'Ashfall 외곽',notes:'되찾을 때까지 멈추지 않는다.'},
-  {id:'sarahkim',icon:'<img src="img/ember-sarah-kim.webp" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'Sarah Kim',code:'EMBER CORPS — OPERATIONS',faction:'vil',fLabel:'HOSTILE',bg:'#1a0f05',desc:'Ember Corps 작전 담당. 한국계 미국인. 전직 간호사. Ashfall City 내부 지도 작성 핵심 인물.',threat:'중간',status:'활동 중',loc:'Ashfall 외곽',notes:'버티는 인간에서 방향을 만드는 인간으로.'},
-  {id:'volkov',icon:'🐺',name:'Arkady Volkov',code:'OLD WOLF — SILENT WOLVES',faction:'vil',fLabel:'HOSTILE',bg:'#0f0f14',desc:'Silent Wolves 보스. 전직 러시아 특수부대. Silent Belt 초기 생존자. 감염체를 무기로 이용하는 약탈 집단 지휘.',threat:'위험',status:'활동 중',loc:'Silent Belt',notes:'총은 마지막에 쓴다. 환경이 죽인다.'},
-  {id:'tieshan',icon:'<img src="img/rdf-liang-wei.webp" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'Xu Tieshan',code:'GATEKEEPER — RED DRAGON FORCE',faction:'gov',fLabel:'GOVERNMENT',bg:'#1a0505',desc:'Red Dragon Force 전방 격리선 지휘관. Ascension Choir와의 이중 전선 상태에서 봉쇄선 유지.',threat:'아군',status:'활동 중',loc:'Red Veil 봉쇄선',notes:'철의 산. 뚫을 수 없는 봉쇄.'},
-  // ── EU / PROJECT CRUCIBLE ──
-  {id:'kweber',icon:'🎖',name:'Klaus Weber',code:'EU-JBDF COMMANDER',faction:'gov',fLabel:'GOVERNMENT',bg:'#0d0d14',desc:'EU 통합 생물학적 위기 대응군(EU-JBDF) 사령관. NATO 출신. 27개국 45,000명 통합군을 지휘. EU 성공률 54%의 핵심 — 그러나 독일군 참여 작전(91%)과 비참여 작전(41%)의 편차에 대해서는 설명하지 않는다.',threat:'아군',status:'활동 중',loc:'베를린',notes:'편차의 원인은 본인만 알고 있을 수 있다.'},
-  {id:'rivera',icon:'👤',name:'Dr. Alex Rivera',code:'THE BEHAVIORIST — PROJECT CRUCIBLE',faction:'gov',fLabel:'GOVERNMENT',bg:'#0d0d14',desc:'Project CRUCIBLE 연구팀 행동·신경학 전문가. Ashfall City 출신 — 형이 Ember Corps 소속. EV-Σ 감염체 행동 예측 모델을 개발, 정확도 73% → 89%로 향상시킨 핵심 연구원.',threat:'아군',status:'활동 중',loc:'미국',notes:'가족이 양쪽에 나뉘어 있다.'},
-  // ── L3 UNDERGROUND ──
-  {id:'vraeth',icon:'🦎',name:'VRAETH',code:'SHED ORDER — EXECUTOR',faction:'she',fLabel:'SHED ORDER',bg:'#1a0505',desc:'고대 도마뱀형. 수백 년 생존. 극소 언어. EXUVIA에 대한 절대 충성 — 1947년 남극 위반 사건 이후 부채를 넘어 신념이 된 추종.',threat:'극도 위험',status:'불명',loc:'케스아룬 추정',notes:'말을 하지 않는다. 행동으로 답한다.'},
-  {id:'solvek',icon:'🦎',name:'SOLVEK',code:'SHED ORDER — INFORMATION',faction:'she',fLabel:'SHED ORDER',bg:'#1a0505',desc:'카멜레온형. 정보 흐름 통제 전문. EV-Σ와 TS-Ω에 대한 이해가 EXUVIA 다음 수준. 생존 계산에 기반한 충성 — 쉐드 오더 실패 시 대안 경로를 이미 산출.',threat:'위험',status:'불명',loc:'케스아룬 추정',notes:'많이 말하나, 적게 전달한다.'},
-  {id:'cathari',icon:'🐢',name:'CATHARI',code:'SHED ORDER — POLITICAL OPERATIONS',faction:'she',fLabel:'SHED ORDER',bg:'#1a0505',desc:'거북형 고령 개체. Infiltrator Scale 작전 총괄 및 L3 내부 정치 조율. 서약 시대를 기억하는 세대. 쉐드 오더 내 유일한 비도마뱀 계열 고위직.',threat:'위험',status:'불명',loc:'케스아룬 추정',notes:'이력에 설명되지 않는 공백이 존재한다.'},
-  {id:'varek',icon:'🐢',name:'VAREK',code:'VRETH\'OL — TURTLE FACTION ELDER',faction:'she',fLabel:'SHED ORDER',bg:'#0a1510',desc:'거북 종파(VRETH\'OL) 장로. EXUVIA와 같은 세대 — 추방 전쟁과 마지막 드래곤의 죽음을 목격. 고대 서약(Covenant)의 수호자. 지표 비접촉 원칙을 유지하는 L3 내 유일한 의미 있는 반대 세력.',threat:'불명',status:'활동 중',loc:'케스아룬 거주구',notes:'기록을 남긴다. 무엇을 위해, 누구를 위해 — 미확인.'},
-  // ── PROMETHEUS ──
-  {id:'weber',icon:'👤',name:'Marcus Weber',code:'PROMETHEUS — COASTAL MIRROR CONTACT',faction:'pro',fLabel:'PROMETHEUS',bg:'#1a1200',desc:'프로메테우스 현장 접촉자. COASTAL MIRROR 작전에서 한국 측 인터페이스 담당. 한국 지부 Act 3에서 이중철과 직접 대면하여 ORACLE의 실체를 폭로하는 핵심 증거를 전달.',threat:'아군',status:'불명',loc:'불명',notes:'봉쇄 성공률 97.3% 중 31%의 진실을 아는 자.'},
-  // ── KOREA GOV ──
-  {id:'choi',icon:'🏛',name:'최우진',code:'PRESIDENT OF REPUBLIC OF KOREA',faction:'gov',fLabel:'GOVERNMENT',bg:'#0a1510',desc:'대한민국 현직 대통령. 친DG 성향이나 개인적 갈등을 안고 있다 — 아버지가 광원 사건의 민간 피해자. 취임 후 의식 흔적 데이터를 열람하고 내적 위기에 직면.',threat:'아군',status:'재임 중',loc:'한국',notes:'아버지가 정말로 "사라진" 것인지, 흔적이 남아 있는 것인지.'},
-  // ── KR BRANCH ──
-  {id:'kr-lee',icon:'<img src="img/kr-lee-jungchul.png" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'이중철',code:'CODENAME: PILEHEAD — KR BRANCH COMMANDER',faction:'kr',fLabel:'KR BRANCH',bg:'#0a1a0a',desc:'한국 지부 초대 지휘관. 전직 육군 특수부대 장교. 프로메테우스 관계자와의 물리적 충돌로 불명예전역. Observer 승인, ORACLE 지명.',threat:'직위 박탈',status:'조우 시 제거 권고',loc:'한국 지부',notes:'ORACLE에의 동조는 설계된 것인가, 선택인가.'},
-  {id:'kr-seo',icon:'<img src="img/kr-seo-haeun.png" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'서하은',code:'CALLSIGN: ANALYST-01 — KR BRANCH DEPUTY',faction:'kr',fLabel:'KR BRANCH',bg:'#0a1a0a',desc:'부지휘관 겸 데이터 분석. 지휘관 부임 전 3개월간 단독 기지 운영. ORACLE 데이터 스트림 불일치를 최초 감지.',threat:'직위 박탈',status:'조우 시 제거 권고',loc:'한국 지부',notes:'전출 명령 이력 — ERROR: RECORD NOT FOUND'},
-  {id:'kr-kang',icon:'<img src="img/kr-kang-doyun.png" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'강도윤',code:'CALLSIGN: FIELD-01 — KR BRANCH FIELD AGENT',faction:'kr',fLabel:'KR BRANCH',bg:'#0a1510',desc:'현장요원 겸 전술 지휘. 전직 해병대 부사관. 지휘관의 현장 파트너. 봉쇄선 순찰 및 이변체 대응 작전 담당.',threat:'직위 박탈',status:'조우 시 제거 권고',loc:'한국 지부',notes:'필라델피아 봉쇄가 뚫리면 여기도 끝입니다.'},
-  {id:'kr-yoon',icon:'<img src="img/kr-yoon-sejin.png" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'윤세진',code:'CALLSIGN: BIO-01 — KR BRANCH RESEARCHER',faction:'kr',fLabel:'KR BRANCH',bg:'#0a1510',desc:'연구원. 프리온 단백질 연구자. Phase 0 전환 40% 지연 화합물 발견. ORACLE 생물학 예측 데이터에 현장 관측값을 결합한 보완 분석 기법 개발.',threat:'직위 박탈',status:'조우 시 제거 권고',loc:'한국 지부',notes:'비공식 관찰 일지 유지 중 — ORACLE 미보고.'},
-  {id:'kr-lim',icon:'<img src="img/kr-lim-jaehyuk.png" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">',name:'임재혁',code:'CALLSIGN: SYS-01 — KR BRANCH TECHNICIAN',faction:'kr',fLabel:'KR BRANCH',bg:'#0a1510',desc:'기술관. ORACLE 단말기, 통신 보안, 시스템 관리 담당. ORACLE 아키텍처 비공개 레이어(5계층 이상)를 발견.',threat:'직위 박탈',status:'조우 시 제거 권고',loc:'한국 지부',notes:'ORACLE 아키텍처 외부에서 작동하는 프로세스를 포착. ORACLE 자신은 이 프로세스를 인식하지 못합니다.'},
-];
-
-const FACTIONS = [
-  {key:'all',label:'ALL'},
-  {key:'obs',label:'관측자'},
-  {key:'pro',label:'프로메테우스'},
-  {key:'she',label:'쉐드 오더'},
-  {key:'kr',label:'한국 지부'},
-  {key:'gov',label:'정부 · 군'},
-  {key:'vil',label:'적대 세력'},
-  {key:'civ',label:'민간인'},
-];
-
-function initProfiles(){
-  // filters
-  const filterRow = document.getElementById('pf-filters');
-  filterRow.innerHTML = FACTIONS.map(f=>`<div class="pf-btn ${f.key==='all'?'active':''}" data-f="${f.key}">${f.label}</div>`).join('');
-  filterRow.querySelectorAll('.pf-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      filterRow.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      const f=btn.dataset.f;
-      document.querySelectorAll('.prof-card').forEach(c=>{
-        c.classList.toggle('hidden',f!=='all'&&c.dataset.faction!==f);
-      });
-      closeDetail();
-    });
-  });
-  // grid
-  const grid = document.getElementById('prof-grid');
-  grid.innerHTML = PROFILES.map((p,i)=>`
-    <div class="prof-card" data-faction="${p.faction}" data-idx="${i}">
-      <div class="prof-avatar" style="background:linear-gradient(135deg,${p.bg},#000);">
-        <span style="position:relative;z-index:1">${p.icon}</span>
-      </div>
-      <div class="prof-body">
-        <div class="prof-name">${p.name}</div>
-        <div class="prof-code">${p.code}</div>
-        <div class="prof-badge ${p.faction}">${p.fLabel}</div>
-      </div>
-    </div>
-  `).join('');
-  grid.querySelectorAll('.prof-card').forEach(card=>{
-    card.addEventListener('click',()=>openDetail(parseInt(card.dataset.idx)));
-  });
-}
-
-function openDetail(idx){
-  const p = PROFILES[idx];
-  const d = document.getElementById('prof-detail');
-  const overlay = document.getElementById('prof-overlay');
-  // check if icon is an img tag or emoji
-  const isImg = p.icon.startsWith('<img');
-  const heroContent = isImg
-    ? p.icon.replace(/style="[^"]*"/,'style="width:100%;height:100%;object-fit:cover;object-position:center 20%;"')
-    : `<div class="pd-hero-emoji" style="background:linear-gradient(135deg,${p.bg},#000);">${p.icon}</div>`;
-  d.innerHTML = `
-    <div class="pd-close">
-      <div class="pd-close-label">PERSONNEL PROFILE</div>
-      <div class="pd-close-btn" onclick="closeDetail()">✕</div>
-    </div>
-    <div class="pd-hero" style="background:linear-gradient(135deg,${p.bg},#000);">
-      ${heroContent}
-      <div class="pd-hero-info">
-        <div class="pd-name">${p.name}</div>
-        <div class="pd-codename">${p.code}</div>
-      </div>
-    </div>
-    <div class="pd-inner">
-      <div class="pd-section">
-        <div class="pd-label">FACTION</div>
-        <span class="prof-badge ${p.faction}">${p.fLabel}</span>
-      </div>
-      <div class="pd-section">
-        <div class="pd-label">DESCRIPTION</div>
-        <div class="pd-text">${p.desc}</div>
-      </div>
-      <div class="pd-section">
-        <div class="pd-label">STATUS</div>
-        <div class="pd-stats">
-          <div class="pd-stat"><b>THREAT</b><span>${p.threat}</span></div>
-          <div class="pd-stat"><b>STATUS</b><span>${p.status}</span></div>
-          <div class="pd-stat"><b>LOCATION</b><span>${p.loc}</span></div>
-        </div>
-      </div>
-      <div class="pd-section">
-        <div class="pd-label">NOTES</div>
-        <div class="pd-text">${p.notes}</div>
-      </div>
-    </div>
-  `;
-  overlay.classList.add('open');
-  document.body.style.overflow='hidden';
-}
-
-function closeDetail(){
-  document.getElementById('prof-overlay').classList.remove('open');
-  document.getElementById('prof-detail').innerHTML='';
-  document.body.style.overflow='';
-}
-
-// close on overlay background click
-document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('prof-overlay').addEventListener('click',(e)=>{
-    if(e.target === document.getElementById('prof-overlay')) closeDetail();
-  });
-});
-
-// ── INIT ──
-document.addEventListener('DOMContentLoaded',()=>{
-  initProfiles();
-  
-});
-</script>
-
-<!-- GLOBAL NAV -->
-<nav class="gnav">
-  <div class="gnav-inner">
-    <a class="gnav-item" href="main.html" data-page="main"><div class="gnav-icon">🏠</div><div class="gnav-label">MAIN</div></a>
-    <a class="gnav-item" href="factions.html" data-page="factions"><div class="gnav-icon">⚡</div><div class="gnav-label">세력</div></a>
-    <a class="gnav-item" href="protocols.html" data-page="protocols"><div class="gnav-icon">🧬</div><div class="gnav-label">위협</div></a>
-    <a class="gnav-item" href="records.html" data-page="records"><div class="gnav-icon">📡</div><div class="gnav-label">기록</div></a>
-    <a class="gnav-item" href="incidents.html" data-page="incidents"><div class="gnav-icon">📋</div><div class="gnav-label">사건</div></a>
-    <a class="gnav-item" href="specimens.html" data-page="specimens"><div class="gnav-icon">🧪</div><div class="gnav-label">개체</div></a>
-    <a class="gnav-item" href="profiles.html" data-page="profiles"><div class="gnav-icon">👤</div><div class="gnav-label">인물</div></a>
-    <a class="gnav-item" href="regions.html" data-page="regions"><div class="gnav-icon">🌐</div><div class="gnav-label">지역</div></a>
-    <a class="gnav-item" href="database.html" data-page="database"><div class="gnav-icon">🗄</div><div class="gnav-label">DB</div></a>
-  </div>
-</nav>
-
-<script>
-// Highlight active gnav item
-(function(){
-  const page = location.pathname.split('/').pop().replace('.html','') || 'index';
-  document.querySelectorAll('.gnav-item').forEach(el=>{
-    if(el.dataset.page === page) el.classList.add('active');
-  });
-  document.body.classList.add('has-gnav');
-})();
-</script>
+  </section>
+  <section class="archive-section">
+    <div class="archive-section-head"><h2 class="archive-section-title">GLOBAL CONTACTS</h2><p class="archive-section-note">세계 각지의 시작 시나리오에 연결 가능한 인물 축.</p></div>
+    <table class="archive-table"><thead><tr><th>NAME</th><th>ANCHOR</th><th>USE IN PLAY</th></tr></thead><tbody>
+      <tr><td>VOSS</td><td>PROMETHEUS 관련 고위 접점.</td><td>정보전, 신뢰 시험, 장기 선택의 비용.</td></tr>
+      <tr><td>Elena Richter</td><td>Meridian Group 의료·거래 라인.</td><td>치료와 상품화 사이의 윤리 갈등.</td></tr>
+      <tr><td>Xu Tieshan</td><td>중국 봉쇄권 군정 라인.</td><td>질서 유지와 민간 은폐 비용.</td></tr>
+      <tr><td>Wei Liang</td><td>중국 정보·민간 네트워크 접점.</td><td>검열 우회, 음성 메시지, 가족 위험.</td></tr>
+    </tbody></table>
+    <div class="archive-lock">정본 캐릭터가 아닌 임시 예시 인물은 공개 프로필에 포함하지 않습니다.</div>
+  </section>
+  <div class="archive-actions"><a class="archive-btn" href="database.html">NEXT // DATABASE</a><a class="archive-btn" href="factions.html">VIEW FACTIONS</a></div>
+</main>
+<div class="ticker" role="status"><div class="ticker-label">PA-FEED</div><div class="ticker-content"><span class="ticker-inner">PROFILES::CANON_ONLY — SAMPLE DOSSIERS ACTIVE</span></div></div>
 </body>
 </html>

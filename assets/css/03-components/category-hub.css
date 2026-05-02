@@ -1,0 +1,137 @@
+/* ─── CATEGORY HUB (8 대형 카테고리 카드) ─── */
+.category-hub {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+}
+
+.category-hub-header {
+  margin-bottom: var(--space-5);
+}
+
+.category-hub-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-muted);
+  margin-bottom: var(--space-2);
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-green);
+}
+
+.category-hub-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 5vw, var(--text-3xl));
+  color: var(--color-text);
+  letter-spacing: var(--tracking-wider);
+  margin-bottom: var(--space-2);
+}
+
+.category-hub-desc {
+  font-size: var(--text-sm);
+  color: var(--color-light);
+  line-height: var(--leading-loose);
+  max-width: 640px;
+}
+
+/* 그리드 */
+.category-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+
+@media (min-width: 600px) { .category-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .category-grid { grid-template-columns: 1fr 1fr 1fr 1fr; } }
+
+/* 카드 */
+.category-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-4);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--duration-normal) var(--ease-out);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--color-green);
+  transition: height var(--duration-normal) var(--ease-out);
+}
+
+.category-card:hover {
+  background: var(--color-card-2);
+  border-color: var(--alpha-green-30);
+  transform: translateY(-2px);
+}
+
+.category-card:hover::before {
+  height: 100%;
+}
+
+.category-card-icon {
+  font-size: 28px;
+  opacity: 0.85;
+}
+
+.category-card-name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.category-card-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  line-height: var(--leading-snug);
+  font-weight: 300;
+}
+
+.category-card-arrow {
+  position: absolute;
+  right: var(--space-4);
+  top: var(--space-4);
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+  opacity: 0.5;
+  transition: all var(--duration-normal);
+}
+
+.category-card:hover .category-card-arrow {
+  color: var(--color-green);
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* Coming Soon 배지 */
+.category-card[data-ready="false"] .category-card-badge {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-amber);
+  padding: 2px 6px;
+  border: 1px solid var(--alpha-amber-10);
+  background: rgba(255, 199, 68, 0.06);
+}
+
+.category-card[data-ready="false"] {
+  opacity: 0.75;
+}

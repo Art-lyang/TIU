@@ -1,0 +1,10 @@
+# TURTLE ISLE UNIVERSE — robots.txt
+# https://art-lyang.github.io/TIU/
+
+User-agent: *
+Allow: /
+
+# Respect crawl budget
+Crawl-delay: 1
+
+Sitemap: https://art-lyang.github.io/TIU/sitemap.xml

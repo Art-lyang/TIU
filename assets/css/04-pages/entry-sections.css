@@ -1,0 +1,128 @@
+/* ============================================================
+ * TIU v3 — ENTRY PAGE (섹션 6~8 + Footer)
+ * ============================================================ */
+
+/* ─── Section 6: Korea Highlight ─── */
+.korea {
+  max-width: var(--container-md);
+  margin: 0 auto;
+}
+
+.korea-system-note {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-left: 2px solid var(--alpha-red-20);
+  background: var(--alpha-red-05);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-dark);
+  line-height: var(--leading-normal);
+}
+
+.korea-system-note-label {
+  color: var(--color-red);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+/* ─── Section 7: Mystery Hook ─── */
+.mystery {
+  max-width: var(--container-md);
+  margin: 0 auto;
+}
+
+.mystery-grid {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.mystery-hint {
+  margin-top: var(--space-5);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--leading-loose);
+}
+
+/* ─── Section 8: CTA ─── */
+.cta {
+  text-align: center;
+  padding: var(--space-10) var(--space-5);
+  max-width: var(--container-md);
+  margin: 0 auto;
+}
+
+.cta-code {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-muted);
+  margin-bottom: var(--space-3);
+}
+
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 5vw, var(--text-3xl));
+  color: var(--color-green);
+  letter-spacing: var(--tracking-wider);
+  margin-bottom: var(--space-3);
+}
+
+.cta-desc {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: var(--leading-loose);
+  margin-bottom: var(--space-6);
+}
+
+.cta-footer {
+  margin-top: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-dark);
+}
+
+/* ─── Footer (미니) ─── */
+.site-footer {
+  padding: var(--space-6) var(--space-5);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  margin-bottom: var(--ticker-height);
+}
+
+.site-footer-copyright {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-muted);
+  margin-bottom: var(--space-1);
+}
+
+.site-footer-tagline {
+  font-size: var(--text-xs);
+  color: var(--color-dark);
+  margin-bottom: var(--space-3);
+}
+
+.site-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.site-footer-links a {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-muted);
+  transition: color var(--duration-fast);
+}
+
+.site-footer-links a:hover {
+  color: var(--color-green);
+}

@@ -3,627 +3,197 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ORACLE // TIU INTELLIGENCE DATABASE</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base-core.css">
-<link rel="stylesheet" href="css/base-modal.css">
-<link rel="stylesheet" href="css/pages-core.css">
-<link rel="stylesheet" href="css/pages-map.css">
-<link rel="stylesheet" href="css/pages-hero-fx.css">
-<link rel="stylesheet" href="css/pages-profiles.css">
-<link rel="stylesheet" href="css/pages-timeline.css">
-<link rel="stylesheet" href="css/pages-world.css">
-<link rel="stylesheet" href="css/layout.css">
-<style>
-/* Boot: hide everything behind boot screen */
-body.boot-active #topbar,
-body.boot-active #ticker,
-body.boot-active #main,
-body.boot-active .gnav,
-body.boot-active .hero,
-body.boot-active .world-zones{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;}
-body.boot-active{overflow:hidden!important;position:fixed!important;width:100%!important;height:100%!important;}
-html.boot-active{overflow:hidden!important;}
-</style>
+<meta name="description" content="PA-TERMINAL — 공공 아카이브 단말기. 7개 범주 공개 기록 열람.">
+<meta property="og:title" content="PA // ARCHIVE TERMINAL">
+<meta property="og:description" content="Public Archive Terminal — 7 categories of disclosable records.">
+<title>PA // ARCHIVE TERMINAL</title>
+<link rel="stylesheet" href="assets/css/main.css">
 <script>
-var _bootDone = sessionStorage.getItem('tiu-boot-done');
-if(!_bootDone){
-  // Write class onto <html> immediately so CSS applies before first paint
-  document.documentElement.classList.add('boot-active');
-}
+(function(){try{if(sessionStorage.getItem('tiu-boot-done')!=='1'){document.documentElement.classList.add('boot-active');}}catch(e){}})();
 </script>
 </head>
-<body class="boot-active">
-<script>
-if(_bootDone){
-  // Returning user: skip boot, remove boot-active
-  document.body.classList.remove('boot-active');
-  document.documentElement.classList.remove('boot-active');
-  document.addEventListener('DOMContentLoaded',function(){
-    var b=document.getElementById('boot');
-    if(b)b.style.display='none';
-  });
-}
-</script>
-<!-- ═══════════════════════════════════
-     BOOT SCREEN
-═══════════════════════════════════ -->
-<div id="boot">
-  <div class="boot-corruption">ORACLE ACCESS REQUESTED</div>
-  <div class="boot-inner">
-    <div class="boot-line"></div>
-    <div class="boot-title">ORACLE</div>
-    <div class="boot-sub-line">
-      <div class="boot-sub">OBSERVER INTELLIGENCE SYSTEM</div>
-    </div>
-    <button class="boot-btn" onclick="sessionStorage.setItem('tiu-boot-done','1');initInterface()">CONNECT TO ORACLE SYSTEM</button>
-  </div>
-    <div id="boot-terminal" class="boot-terminal"></div>
+<body>
+
+<!-- PAGE LOADER -->
+<div class="page-loader" id="pageLoader" aria-hidden="true">
+  <div class="page-loader-ring"></div>
+  <div class="page-loader-text">LOADING PA-TERMINAL</div>
+</div>
+
+<!-- BOOT SCREEN -->
+<div class="boot-screen" id="bootScreen">
+  <div class="boot-corruption" data-i18n="boot.preTitle">PA ACCESS REQUESTED</div>
+  <div class="boot-line"></div>
+  <div class="boot-title" data-i18n="boot.title">PA-TERMINAL</div>
+  <div class="boot-subtitle" data-i18n="boot.subtitle">PUBLIC ARCHIVE SYSTEM</div>
+  <div class="boot-terminal" id="bootTerminal"></div>
+  <button class="boot-btn" id="bootBtn" type="button" data-i18n="boot.button">OPEN ARCHIVE</button>
   <div class="boot-footer">
-    <div>ORACLE OS v4.12 &nbsp;<span>STANDBY</span></div>
-    <div>SECURE CHANNEL &nbsp;<span>ENCRYPTED</span></div>
+    <div><span data-i18n="boot.footerOs">PA-TERMINAL v3.0</span> · <span data-i18n="boot.footerOsSub">STANDBY</span></div>
+    <div><span data-i18n="boot.footerChannel">SECURE CHANNEL</span> · <span data-i18n="boot.footerChannelSub">ENCRYPTED</span></div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════
-     TOPBAR
-═══════════════════════════════════ -->
-<div id="topbar">
-  <div class="topbar-logo">
-    <div class="topbar-logo-box">T</div>
-    <div class="topbar-name">
-      TURTLE ISLE
-      <small>UNIVERSE</small>
-    </div>
-  </div>
+<!-- TOPBAR -->
+<header class="topbar" role="banner">
+  <div class="topbar-logo"><div class="topbar-logo-box" aria-hidden="true">T</div><div class="topbar-name"><span data-i18n="topbar.brand">TURTLE ISLE</span><small data-i18n="topbar.sub">UNIVERSE</small></div></div>
   <div class="topbar-spacer"></div>
-  <div class="topbar-status">
-    <div class="t-dot"></div>
-    SYSTEM ACTIVE
+  <div class="lang-toggle"><button type="button" data-lang-btn="ko" data-sound-click>KO</button><button type="button" data-lang-btn="en" data-sound-click>EN</button></div>
+  <div class="topbar-status"><div class="topbar-status-dot" aria-hidden="true"></div><span data-i18n="topbar.status">SYSTEM ACTIVE</span></div>
+</header>
+
+<!-- GNAV -->
+<nav class="gnav" aria-label="Global navigation"><div class="gnav-inner" id="gnavInner"></div></nav>
+
+<!-- COMMAND HERO -->
+<section class="command-hero" data-reveal>
+  <div class="command-hero-eyebrow" data-i18n="commandHero.eyebrow">PA // ARCHIVE TERMINAL</div>
+  <h1 class="command-hero-title" data-i18n="commandHero.title">COMMAND CENTER</h1>
+  <div class="command-hero-welcome" data-i18n="commandHero.welcome">오퍼레이터. 접속을 확인했습니다.</div>
+  <div class="command-hero-meta">
+    <div class="command-hero-meta-cell"><div class="command-hero-meta-label" data-i18n="commandHero.sessionLabel">SESSION</div><div class="command-hero-meta-value command-hero-meta-value--time" id="sessionTime">00:00:00 UTC</div></div>
+    <div class="command-hero-meta-cell"><div class="command-hero-meta-label" data-i18n="commandHero.grantLabel">GRANT</div><div class="command-hero-meta-value" data-i18n="commandHero.grantValue">ACTIVE — TEMPORARY ACCESS</div></div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" data-reveal>
+  <div class="philosophy-quote" data-i18n="philosophy.quote"></div>
+  <div class="philosophy-cite" data-i18n="philosophy.cite"></div>
+</section>
+
+<!-- CURRENT SITUATION -->
+<section class="situation" data-reveal>
+  <header class="situation-header"><div class="situation-eyebrow" data-i18n="situation.eyebrow">PA // SITUATION REPORT</div><h2 class="situation-title" data-i18n="situation.title">CURRENT WORLD STATE</h2><p class="situation-desc" data-i18n="situation.desc"></p></header>
+  <div class="situation-acts" id="situationActs"></div>
+  <div class="situation-footnote" data-i18n="situation.footnote">NEXT ARC — UNWRITTEN</div>
+</section>
+
+<!-- STATUS WALL -->
+<section class="status-wall" data-reveal>
+  <header class="status-wall-header"><div class="status-wall-eyebrow" data-i18n="statusWall.eyebrow">PA // WORLD STATUS</div><h2 class="status-wall-title" data-i18n="statusWall.title">REAL-TIME METRICS</h2><p class="status-wall-desc" data-i18n="statusWall.desc"></p></header>
+  <div class="status-wall-grid" id="statusWallGrid"></div>
+</section>
+
+<!-- QUERY TERMINAL -->
+<section class="query-terminal" data-reveal>
+  <header class="query-terminal-header"><div class="query-terminal-eyebrow" data-i18n="queryTerminal.eyebrow">ARCHIVE // QUERY</div><h2 class="query-terminal-title" data-i18n="queryTerminal.title">SEARCH ARCHIVES</h2></header>
+  <div class="query-box"><span class="query-prompt">&gt;</span><input type="text" class="query-input" id="queryInput" placeholder="Search..."><button type="button" class="query-submit" id="querySubmit" data-i18n="queryTerminal.submit">&gt; EXECUTE</button></div>
+  <div class="query-suggestions"><div class="query-suggestions-label" data-i18n="queryTerminal.suggestLabel">SUGGESTED QUERIES</div><div class="query-suggestions-list" id="querySuggestions"></div></div>
+  <div class="query-response" id="queryResponse"></div>
+</section>
+
+<!-- TACTICAL MAP -->
+<section class="section section--bordered tactical-map" data-reveal>
+  <header class="section-header"><div class="section-eyebrow" data-i18n="map.eyebrow">PA // GLOBAL VIEW</div><h2 class="section-title" data-i18n="map.title">GLOBAL THREAT MAP</h2><p class="section-desc" data-i18n="map.desc"></p></header>
+  <div class="map-wrap" id="mapWrap">
+    <img class="map-base" src="assets/img/world-map.svg" alt="" onerror="this.style.display='none'">
+    <div class="map-scanline"></div>
+    <div class="map-hotspots" id="mapHotspots"></div>
+    <div class="map-select-hint" data-i18n="map.selectHint">핫스팟을 선택하여 상세 정보 열람</div>
+    <div class="map-detail-panel" id="mapDetailPanel" role="dialog" aria-live="polite">
+      <button class="map-detail-close" id="mapDetailClose" type="button" aria-label="Close">×</button>
+      <div class="map-detail-head"><div class="map-detail-kicker" data-i18n="map.dossierLabel">TACTICAL DOSSIER</div><div class="map-detail-status" id="mdStatus"></div></div>
+      <div class="map-detail-image" id="mdImage"></div>
+      <div class="map-detail-title" id="mdTitle"></div>
+      <div class="map-detail-desc" id="mdDesc"></div>
+      <div class="map-detail-meta"><div class="map-detail-meta-cell"><b id="mdThreatLabel">PRIMARY THREAT</b><span id="mdThreat"></span></div><div class="map-detail-meta-cell"><b id="mdResponseLabel">RESPONSE</b><span id="mdResponse"></span></div></div>
+    </div>
+  </div>
+  <div class="map-legend" id="mapLegend"></div>
+</section>
+
+<!-- RESTRICTED AREA -->
+<section class="restricted-area" data-reveal>
+  <header class="restricted-area-header"><div class="restricted-area-eyebrow" data-i18n="restricted.eyebrow">PA // RESTRICTED ENTRIES</div><h2 class="restricted-area-title" data-i18n="restricted.title">RESTRICTED</h2><p class="restricted-area-desc" data-i18n="restricted.desc"></p></header>
+  <div class="restricted-grid" id="restrictedGrid"></div>
+  <div class="restricted-modal-overlay" id="restrictedModal" role="dialog" aria-live="polite"><div class="restricted-modal">
+    <button class="restricted-modal-close" id="restrictedModalClose" type="button" aria-label="Close">×</button>
+    <div class="restricted-modal-eyebrow" data-i18n="krClassified.eyebrow">CLASSIFIED // LEVEL-OMEGA</div>
+    <h3 class="restricted-modal-title" data-i18n="krClassified.title">BRANCH KR-INIT-001</h3>
+    <p class="restricted-modal-desc" data-i18n="krClassified.desc"></p>
+    <div class="restricted-modal-redacted" data-i18n="krClassified.redacted"></div>
+    <div class="restricted-modal-form"><div class="restricted-modal-label" data-i18n="krClassified.codeLabel">ACCESS CODE</div>
+      <div class="restricted-modal-input-row"><input type="text" class="restricted-modal-input" id="krCodeInput" placeholder="Enter code..." autocomplete="off"><button type="button" class="restricted-modal-submit" id="krSubmit" data-i18n="krClassified.submit">VERIFY</button></div>
+      <div class="restricted-modal-hint" data-i18n="krClassified.hint"></div>
+      <div class="restricted-modal-response" id="krResponse"></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- PHASE DIAGRAM -->
+<section class="phase-diagram" data-reveal>
+  <header class="phase-diagram-header"><div class="phase-diagram-eyebrow" data-i18n="phaseDiagram.eyebrow">ARCHIVE // EV-Σ ANALYSIS</div><h2 class="phase-diagram-title" data-i18n="phaseDiagram.title">EVOLUTION PHASES</h2><p class="phase-diagram-desc" data-i18n="phaseDiagram.desc"></p></header>
+  <div class="phase-grid" id="phaseGrid"></div>
+  <div class="phase-critical" data-i18n="phaseDiagram.criticalNote"></div>
+</section>
+
+<!-- THREAT GRID -->
+<section class="threat-grid" data-reveal>
+  <header class="threat-grid-header"><div class="threat-grid-eyebrow" data-i18n="threatGrid.eyebrow">PA // FACTION SUMMARY</div><h2 class="threat-grid-title" data-i18n="threatGrid.title">FACTION ACTIVITY</h2><p class="threat-grid-desc" data-i18n="threatGrid.desc"></p></header>
+  <div class="threat-grid-cards" id="threatGridCards"></div>
+</section>
+
+<!-- LATEST INTEL -->
+<section class="intel" data-reveal>
+  <header class="intel-header"><div class="intel-eyebrow" data-i18n="intel.eyebrow">PA // FEATURED INTEL</div><h2 class="intel-title" data-i18n="intel.title">LATEST SIGNALS</h2><p class="intel-desc" data-i18n="intel.desc"></p></header>
+  <div class="intel-grid" id="intelGrid"></div>
+</section>
+
+<!-- ACTIVITY FEED -->
+<section class="activity-feed" data-reveal>
+  <header class="activity-feed-header"><div class="activity-feed-eyebrow" data-i18n="activityFeed.eyebrow">PA // LIVE FEED</div><h2 class="activity-feed-title" data-i18n="activityFeed.title">RECENT ACTIVITY</h2><p class="activity-feed-desc" data-i18n="activityFeed.desc"></p></header>
+  <div class="activity-feed-frame"><div class="activity-feed-live">LIVE</div><div id="activityFeedList"></div></div>
+</section>
+
+<!-- CATEGORY HUB -->
+<section class="category-hub" data-reveal>
+  <header class="category-hub-header"><div class="category-hub-eyebrow" data-i18n="categories.eyebrow">PA // PUBLIC ARCHIVES</div><h2 class="category-hub-title" data-i18n="categories.title">MAIN MENU</h2><p class="category-hub-desc" data-i18n="categories.desc"></p></header>
+  <div class="category-grid" id="categoryGrid"></div>
+</section>
+
+<!-- MAIN FOOTER -->
+<footer class="main-footer">
+  <div class="main-footer-copyright" data-i18n="footer.copyright">© 2026 TURTLE ISLE UNIVERSE</div>
+  <a class="main-footer-archivist" href="about.html" data-i18n="footer.archivist">ARCHIVIST // ABOUT THIS PROJECT →</a>
+</footer>
+
+<!-- TICKER -->
+<div class="ticker" role="status" aria-live="polite">
+  <div class="ticker-label">PA-FEED</div>
+  <div class="ticker-content"><span class="ticker-inner" id="tickerInner"></span></div>
+</div>
+
+<!-- SOUND TOGGLE -->
+<button id="soundToggle" class="sound-toggle" type="button" aria-label="Toggle Sound" data-state="off">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/><path class="sound-off-bar" d="M4 4l16 16" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+</button>
+
+<!-- COMING SOON MODAL -->
+<div class="cs-modal-overlay" id="csModal" role="dialog" aria-live="polite">
+  <div class="cs-modal">
+    <div class="cs-modal-label" data-i18n="categories.comingSoon">COMING SOON</div>
+    <div class="cs-modal-title" data-i18n="categories.title">MAIN MENU</div>
+    <p class="cs-modal-msg" data-i18n="categories.comingSoonMsg"></p>
+    <div class="cs-modal-actions"><button class="cs-modal-btn" id="csClose" type="button">CLOSE</button><button class="cs-modal-btn cs-modal-btn--primary" id="csV2" type="button">VIEW v2</button></div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════
-     TICKER
-═══════════════════════════════════ -->
-<div id="ticker">
-  <div class="tick-label">ORACLE</div>
-  <div class="tick-content">
-    <span class="tick-inner" id="ticker-inner"></span>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════
-     MAIN
-═══════════════════════════════════ -->
-<div id="main">
-
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-bg-text">TIU</div>
-    <!-- canvas: code rain + DNA helix -->
-    <div class="hero-canvas-wrap">
-      <canvas id="heroCanvas"></canvas>
-    </div>
-    <!-- atmosphere layers -->
-    <div class="hero-atmo">
-      <div class="hero-glow-red"></div>
-      <div class="hero-glow-green"></div>
-    </div>
-    <div class="hero-scanlines"></div>
-    <!-- animated yellow bands -->
-    <div class="hero-bands">
-      <div class="hero-band hero-band-1"></div>
-      <div class="hero-band hero-band-2"></div>
-    </div>
-    <div class="crime-tape">
-      <span class="tape-text">ORACLE ADMIN SESSION ACTIVE &nbsp;///&nbsp; OBSERVER MONITORING IN PROGRESS &nbsp;///&nbsp; ALL NODES SYNCHRONIZED &nbsp;///&nbsp; STRUCTURAL CORRECTION MODE: ON &nbsp;///&nbsp; PROXY NETWORK ONLINE &nbsp;///&nbsp; ORACLE ADMIN SESSION ACTIVE &nbsp;///&nbsp; OBSERVER MONITORING IN PROGRESS &nbsp;///&nbsp; ALL NODES SYNCHRONIZED &nbsp;///&nbsp; STRUCTURAL CORRECTION MODE: ON &nbsp;///&nbsp; PROXY NETWORK ONLINE &nbsp;///&nbsp; </span>
-    </div>
-    <div class="hero-content">
-      <div class="hero-tags">
-        <span class="hero-tag active">위협 등급: 위기</span>
-        <span class="hero-tag">EV-Σ: 확산 중</span>
-      </div>
-      <div class="hero-title">TURTLE<br>ISLE<br><span>UNIVERSE</span></div>
-      <div class="hero-desc">
-        <b>EVOLUTION · CONTROL · CONNECTION · TRANSCENDENCE</b><br>
-        시간, 진화, 통제를 중심으로 충돌하는 다층 세계관
-      </div>
-            <div class="hero-nav">
-        <a class="hero-nav-item" href="factions.html">
-          <div class="hero-nav-icon">⚡</div>
-          <div class="hero-nav-info">
-            <div class="hero-nav-title">세력</div>
-            <div class="hero-nav-sub">4대 세력 · 관계도 · 철학</div>
-          </div>
-          <div class="hero-nav-arrow">›</div>
-        </a>
-        <a class="hero-nav-item" href="protocols.html">
-          <div class="hero-nav-icon">🧬</div>
-          <div class="hero-nav-info">
-            <div class="hero-nav-title">위협</div>
-            <div class="hero-nav-sub">EV-Σ · 변이체 · 구역 · 군사 대응</div>
-          </div>
-          <div class="hero-nav-badge"></div>
-          <div class="hero-nav-arrow">›</div>
-        </a>
-        <a class="hero-nav-item" href="records.html">
-          <div class="hero-nav-icon">📡</div>
-          <div class="hero-nav-info">
-            <div class="hero-nav-title">기록</div>
-            <div class="hero-nav-sub">사건 타임라인 · 기밀 문서 · 교신</div>
-          </div>
-          <div class="hero-nav-arrow">›</div>
-        </a>
-        <a class="hero-nav-item" href="incidents.html">
-          <div class="hero-nav-icon">📋</div>
-          <div class="hero-nav-info">
-            <div class="hero-nav-title">사건 기록</div>
-            <div class="hero-nav-sub">기밀 해제 보고서 · 서브스토리</div>
-          </div>
-          <div class="hero-nav-badge"></div>
-          <div class="hero-nav-arrow">›</div>
-        </a>
-        <a class="hero-nav-item" href="specimens.html">
-          <div class="hero-nav-icon">🧪</div>
-          <div class="hero-nav-info">
-            <div class="hero-nav-title">개체</div>
-            <div class="hero-nav-sub">변이체 색인 · SPEC 문서</div>
-          </div>
-          <div class="hero-nav-arrow">›</div>
-        </a>
-        <a class="hero-nav-item" href="profiles.html">
-          <div class="hero-nav-icon">👤</div>
-          <div class="hero-nav-info">
-            <div class="hero-nav-title">인물</div>
-            <div class="hero-nav-sub">등장인물 · 세력별 분류</div>
-          </div>
-          <div class="hero-nav-arrow">›</div>
-        </a>
-        <div class="hero-nav-item" id="kr-locked-nav" style="border:1px solid rgba(255,59,59,0.2);background:rgba(255,59,59,0.02);position:relative;overflow:hidden;cursor:pointer;" onclick="document.getElementById('kr-pw-prompt').style.display=document.getElementById('kr-pw-prompt').style.display==='flex'?'none':'flex'">
-          <div class="hero-nav-icon" style="opacity:0.5;">🇰🇷</div>
-          <div class="hero-nav-info">
-            <div class="hero-nav-title" style="color:var(--red);opacity:0.7;">한국 지부 <span style="font-size:9px;letter-spacing:2px;color:var(--red);font-family:'Share Tech Mono',monospace;opacity:0.6;margin-left:6px;">RESTRICTED</span></div>
-            <div class="hero-nav-sub" style="color:#553333;">BRANCH KR-INIT-001 · 접근 제한 · ORACLE 비공개</div>
-          </div>
-          <div style="font-size:14px;opacity:0.4;">🔒</div>
-          <div class="hero-nav-arrow" style="color:var(--red);opacity:0.5;">›</div>
-        </div>
-        <div id="kr-pw-prompt" style="display:none;align-items:center;gap:6px;padding:8px 12px;border:1px solid #1a0000;background:#060000;margin-top:-1px;">
-          <input id="kr-pw-input" type="text" placeholder="ACCESS CODE..." style="flex:1;background:#050000;border:1px solid #2a0000;color:var(--red);font-family:'Share Tech Mono',monospace;font-size:11px;padding:8px 10px;outline:none;" autocomplete="off" onkeydown="if(event.key==='Enter'){if(this.value.trim().toUpperCase()==='OBSERVATION TERMINATE'){location.href='kr-branch.html'}else{this.value='';this.placeholder='ACCESS DENIED'}}">
-          <button onclick="if(document.getElementById('kr-pw-input').value.trim().toUpperCase()==='OBSERVATION TERMINATE'){location.href='kr-branch.html'}else{document.getElementById('kr-pw-input').value='';document.getElementById('kr-pw-input').placeholder='ACCESS DENIED'}" style="background:transparent;border:1px solid var(--red);color:var(--red);font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;padding:8px 14px;cursor:pointer;">VERIFY</button>
-        </div>
-        <a class="hero-nav-item" href="database.html">
-          <div class="hero-nav-icon">🗄</div>
-          <div class="hero-nav-info">
-            <div class="hero-nav-title">데이터베이스</div>
-            <div class="hero-nav-sub">전체 색인 · ORACLE 터미널</div>
-          </div>
-          <div class="hero-nav-arrow">›</div>
-        </a>
-      </div>
-    </div>
-  </div>
-    </div>
-  </div>
-
-
-  <!-- STATUS DASHBOARD -->
-  <div class="status-bar">
-    <div class="status-cell"><div class="status-label">CONTAMINATION</div><div class="status-value amber" data-target="47.2" data-suffix="%">0%</div></div>
-    <div class="status-cell"><div class="status-label">ACTIVE ZONES</div><div class="status-value red" data-target="8" data-suffix=" / 12">0</div></div>
-    <div class="status-cell"><div class="status-label">KOREA</div><div class="status-value green" data-target="99.7" data-suffix="%">0%</div></div>
-    <div class="status-cell"><div class="status-label">ORACLE</div><div class="status-value white" data-target="100" data-suffix="%">0%</div></div>
-  </div>
-
-
-  <!-- WORLD OVERVIEW -->
-  <div class="world-overview">
-    <div class="world-header">
-      <div class="section-eyebrow">ORACLE // WORLD STATUS</div>
-      <div class="section-title">현재 세계 상태</div>
-    </div>
-    <div class="world-body">
-      <div class="world-text">
-        <p class="world-quote">"이 세계는 당신이 알고 있는 것보다 깊다."</p>
-        <p>지표 위에서 인류는 평범한 일상을 이어간다. 그러나 그 아래 — 지하 문명의 두 종족이 수천 년간 대립하고, 인간에서 승천한 존재가 모든 것을 설계하고 있다.</p>
-        <p>EV-Σ 바이러스의 확산으로 세계의 경계가 무너지기 시작했다. 대부분의 국가는 봉쇄에 실패했고, 오직 한국만이 방벽을 유지하고 있다.</p>
-        <p class="world-stat-line"><span class="ws-dot red"></span> 오염 구역: 8개 활성 <span class="ws-dot green"></span> 차단 성공: 한국 1개국 <span class="ws-dot amber"></span> ██████ 개입: ██████ 단계</p>
-      </div>
-      <div class="world-visual">
-        <div class="world-layer">
-          <div class="world-layer-bar l4"></div>
-          <div class="world-layer-info"><span class="wl-name">L4 — 관측자</span><span class="wl-tag">OBSERVER CORE</span></div>
-        </div>
-        <div class="world-layer">
-          <div class="world-layer-bar l3"></div>
-          <div class="world-layer-info"><span class="wl-name">L3 — 지하 문명</span><span class="wl-tag">REPTILIAN CIV</span></div>
-        </div>
-        <div class="world-layer">
-          <div class="world-layer-bar l2"></div>
-          <div class="world-layer-info"><span class="wl-name">L2 — 은폐된 권력</span><span class="wl-tag">PROXY NETWORK</span></div>
-        </div>
-        <div class="world-layer">
-          <div class="world-layer-bar l1"></div>
-          <div class="world-layer-info"><span class="wl-name">L1 — 지표 세계</span><span class="wl-tag">HUMAN SOCIETY</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="world-zones">
-      <div class="wzone-card">
-        <div class="wzone-visual" style="background:url('img/philadelphia-drone.webp') center/cover;"><span style="font-size:36px;position:relative;z-index:1;"></span></div>
-        <div class="wzone-body">
-          <div class="wzone-tag purple">Z-Ω ANOMALOUS</div>
-          <div class="wzone-name">Philadelphia Zone</div>
-          <div class="wzone-desc">최초 오염 해역. TS-Ω가 잠든 심해. 접근하는 모든 것은 군체에 흡수된다.</div>
-        </div>
-      </div>
-      <div class="wzone-card">
-        <div class="wzone-visual" style="background:url('img/ashfall-city.webp') center/cover;"><span style="font-size:36px;position:relative;z-index:1;"></span></div>
-        <div class="wzone-body">
-          <div class="wzone-tag red">Z-3 COLLAPSE</div>
-          <div class="wzone-name">Ashfall City <span style="font-size:10px;color:var(--muted);font-weight:300;">[CAMDEN, NJ]</span></div>
-          <div class="wzone-desc">쉐드 오더의 실패한 군체 도시. 건물이 살아 숨쉬는 생체 실험장.</div>
-        </div>
-      </div>
-      <div class="wzone-card">
-        <div class="wzone-visual" style="background:url('img/silent-belt.webp') center/cover;"><span style="font-size:36px;position:relative;z-index:1;"></span></div>
-        <div class="wzone-body">
-          <div class="wzone-tag amber">Z-2 DANGER</div>
-          <div class="wzone-name">Silent Belt</div>
-          <div class="wzone-desc">포자가 만든 침묵의 대륙. 러시아 전역의 소리를 삼킨 오염 지대.</div>
-        </div>
-      </div>
-      <div class="wzone-card">
-        <div class="wzone-visual" style="background:url('img/red-veil.webp') center/cover;"><span style="font-size:36px;position:relative;z-index:1;"></span></div>
-        <div class="wzone-body">
-          <div class="wzone-tag red">Z-2 DANGER</div>
-          <div class="wzone-name">Red Veil</div>
-          <div class="wzone-desc">중국·북한 밀집권 대규모 감염 지대. 군사 봉쇄 중, 내부 통제 불가.</div>
-        </div>
-      </div>
-      <div class="wzone-card" style="border-color:rgba(0,229,160,0.3);">
-        <div class="wzone-visual" style="background:url('img/korea-barrier.webp') center/cover;"><span style="font-size:36px;position:relative;z-index:1;"></span></div>
-        <div class="wzone-body">
-          <div class="wzone-tag green">K-01 CONTAINED</div>
-          <div class="wzone-name">한국 — 방벽 구역</div>
-          <div class="wzone-desc">유일한 확산 차단 성공 국가. White Shield와 프로메테우스의 비공식 협력.</div>
-        </div>
-      </div>
-      <div class="wzone-card locked-zone">
-        <div class="locked-zone-inner">
-          <div class="locked-icon">🔒</div>
-          <div class="locked-label">CLASSIFIED ZONE</div>
-          <div class="locked-sub">열람 등급 부족 — 접근이 거부되었습니다</div>
-          <div class="locked-bar"><div class="locked-bar-fill"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TACTICAL MAP -->
-  <div class="map-section">
-    <div class="section-header">
-      <div class="section-eyebrow">ORACLE // GLOBAL TACTICAL VIEW</div>
-      <div class="section-title">THREAT MAP — LIVE</div>
-    </div>
-    <div class="map-wrap">
-      <!-- Base world map image (filtered green-tinted tactical look) -->
-      <img class="map-base" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/2000px-World_map_-_low_resolution.svg.png" alt="" aria-hidden="true" onerror="this.style.display='none'"/>
-      <div class="map-mask"></div>
-
-      <!-- Interactive hotspot buttons -->
-      <div class="map-hotspots">
-        <button class="map-hotspot purple active" style="left:27.9%;top:29.4%;" data-zone="philadelphia" aria-label="Philadelphia Zone"></button>
-        <button class="map-hotspot red"    style="left:25.3%;top:35%;"  data-zone="ashfall"      aria-label="Ashfall City"></button>
-        <button class="map-hotspot redacted" style="left:51.4%;top:21.6%;" data-zone="vatican"      aria-label="Vatican"></button>
-        <button class="map-hotspot amber"  style="left:62.8%;top:11.6%;" data-zone="silentbelt"   aria-label="Silent Belt"></button>
-        <button class="map-hotspot red"    style="left:80.6%;top:25.6%;" data-zone="redveil"      aria-label="Red Veil"></button>
-        <button class="map-hotspot green"  style="left:85.3%;top:28.4%;" data-zone="korea"        aria-label="Korea"></button>
-        <button class="map-hotspot amber"  style="left:83.9%;top:31%;"   data-zone="japan"        aria-label="Japan Fleet"></button>
-        <button class="map-hotspot purple" style="left:50%;top:97%;"     data-zone="antarctic"    aria-label="Antarctic Gate"></button>
-      </div>
-
-      <!-- Tooltip -->
-      <div class="map-tooltip" id="map-tooltip" aria-hidden="true">
-        <div class="map-tooltip-title" id="map-tt-title">PHILADELPHIA ZONE</div>
-        <div class="map-tooltip-sub"   id="map-tt-sub">Z-Ω / TS-Ω / 군체 중심</div>
-      </div>
-
-      <!-- Scrolling data feed -->
-      <div class="map-datafeed"><div class="map-datafeed-inner">
-        <div class="fd h">// EV-Σ::SCAN — NODE_SYNC 0xA3F7</div>
-        <div class="fd">PROBE.heartbeat() → latency: 12ms</div>
-        <div class="fd a">⚠ ZONE.silent_belt: spore_count++</div>
-        <div class="fd g">✓ KR.shield: integrity 99.7%</div>
-        <div class="fd">ORACLE.recv(TS_OMEGA) → weak</div>
-        <div class="fd h">// THREAT_MATRIX::recalculate</div>
-        <div class="fd">NET.proxy: 847 nodes online</div>
-        <div class="fd a">⚠ RED_VEIL: mut_rate += 0.03</div>
-        <div class="fd">SERAPH.null → [REDACTED]</div>
-        <div class="fd g">✓ ORACLE.uptime: 14,227h</div>
-        <div class="fd h">// EV-Σ::SCAN — NODE_SYNC 0xA3F7</div>
-        <div class="fd">PROBE.heartbeat() → latency: 12ms</div>
-        <div class="fd a">⚠ ZONE.silent_belt: spore_count++</div>
-        <div class="fd g">✓ KR.shield: integrity 99.7%</div>
-        <div class="fd">ORACLE.recv(TS_OMEGA) → weak</div>
-        <div class="fd h">// THREAT_MATRIX::recalculate</div>
-        <div class="fd">NET.proxy: 847 nodes online</div>
-        <div class="fd a">⚠ RED_VEIL: mut_rate += 0.03</div>
-        <div class="fd">SERAPH.null → [REDACTED]</div>
-        <div class="fd g">✓ ORACLE.uptime: 14,227h</div>
-      </div></div>
-
-      <!-- Detail panel -->
-      <div class="map-detail-panel" id="map-detail-panel">
-        <div class="map-detail-head">
-          <div class="map-detail-kicker">TACTICAL DOSSIER</div>
-          <div class="map-detail-status purple" id="map-detail-status">Z-Ω ANOMALOUS</div>
-        </div>
-        <div class="map-detail-title" id="map-detail-title">PHILADELPHIA ZONE</div>
-        <div class="map-detail-desc"  id="map-detail-desc">최초 오염 해역. TS-Ω 존재가 확인된 군체 중심 구역. 직접 침투보다 장기 관측과 외곽 데이터 회수가 우선된다.</div>
-        <div class="map-detail-meta">
-          <div><b>PRIMARY THREAT</b><span id="map-detail-threat">TS-Ω / 해양 군체</span></div>
-          <div><b>CONTROL</b><span id="map-detail-control">직접 통제 불가</span></div>
-          <div><b>TACTICAL VALUE</b><span id="map-detail-value">세계 기준점 수준</span></div>
-          <div><b>RESPONSE</b><span id="map-detail-response">관측 / 회피 / 제한 접촉</span></div>
-        </div>
-      </div>
-
-      <!-- SVG overlay: grid + zone markers + attack lines + korea reticle -->
-      <svg class="map-svg" viewBox="0 0 1000 562" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="1000" height="562" fill="transparent"/>
-
-        <!-- Grid -->
-        <g stroke="#0d1f14" stroke-width="0.5" opacity="0.7">
-          <line x1="0" y1="94"  x2="1000" y2="94"/>
-          <line x1="0" y1="188" x2="1000" y2="188"/>
-          <line x1="0" y1="281" x2="1000" y2="281"/>
-          <line x1="0" y1="375" x2="1000" y2="375"/>
-          <line x1="0" y1="469" x2="1000" y2="469"/>
-          <line x1="83"  y1="0" x2="83"  y2="562"/>
-          <line x1="167" y1="0" x2="167" y2="562"/>
-          <line x1="250" y1="0" x2="250" y2="562"/>
-          <line x1="333" y1="0" x2="333" y2="562"/>
-          <line x1="417" y1="0" x2="417" y2="562"/>
-          <line x1="500" y1="0" x2="500" y2="562"/>
-          <line x1="583" y1="0" x2="583" y2="562"/>
-          <line x1="667" y1="0" x2="667" y2="562"/>
-          <line x1="750" y1="0" x2="750" y2="562"/>
-          <line x1="833" y1="0" x2="833" y2="562"/>
-          <line x1="917" y1="0" x2="917" y2="562"/>
-        </g>
-
-        <!-- Lat labels -->
-        <g font-family="monospace" font-size="7.5" fill="#1c4c30" opacity="0.9">
-          <text x="6" y="11">90°N</text>
-          <text x="6" y="97">60°N</text>
-          <text x="6" y="191">30°N</text>
-          <text x="6" y="284">EQ</text>
-          <text x="6" y="378">30°S</text>
-          <text x="6" y="472">60°S</text>
-          <text x="820" y="14">ORACLE TACTICAL GRID</text>
-        </g>
-
-        <!-- ══ ZONE CIRCLES ══ -->
-        <!-- Philadelphia Z-Ω -->
-        <circle cx="279" cy="165" r="26" fill="rgba(180,122,255,0.13)" stroke="rgba(180,122,255,0.65)" stroke-width="1.2"/>
-        <circle cx="279" cy="165" r="38" fill="none" stroke="rgba(180,122,255,0.18)" stroke-width="0.6" stroke-dasharray="3,4">
-          <animateTransform attributeName="transform" type="rotate" from="0 279 165" to="360 279 165" dur="22s" repeatCount="indefinite"/>
-        </circle>
-        <text x="279" y="200" font-family="monospace" font-size="6" fill="#b47aff" text-anchor="middle" letter-spacing="1.5">Z-Ω PHILADELPHIA</text>
-
-        <!-- Ashfall City Z-3 -->
-        <circle cx="253" cy="197" r="14" fill="rgba(255,59,59,0.16)" stroke="rgba(255,59,59,0.65)" stroke-width="1"/>
-        <text x="253" y="218" font-family="monospace" font-size="5.5" fill="#ff5f5f" text-anchor="middle" letter-spacing="1.2">Z-3 ASHFALL</text>
-
-        <!-- Vatican Z-Ω [REDACTED] -->
-        <circle cx="514" cy="121" r="9" fill="rgba(180,122,255,0.18)" stroke="rgba(180,122,255,0.65)" stroke-width="1"/>
-        <text x="514" y="138" font-family="monospace" font-size="5" fill="#b47aff" text-anchor="middle">Z-Ω VATICAN</text>
-
-        <!-- Silent Belt Z-2 -->
-        <ellipse cx="628" cy="65" rx="110" ry="19" fill="rgba(255,199,68,0.09)" stroke="rgba(255,199,68,0.38)" stroke-width="1" stroke-dasharray="5,4"/>
-        <text x="628" y="52" font-family="monospace" font-size="6" fill="#ffc744" text-anchor="middle" letter-spacing="1.5">Z-2 SILENT BELT</text>
-
-        <!-- Red Veil Z-2 -->
-        <ellipse cx="806" cy="144" rx="58" ry="26" fill="rgba(255,59,59,0.1)" stroke="rgba(255,59,59,0.42)" stroke-width="1" stroke-dasharray="4,3"/>
-        <text x="806" y="177" font-family="monospace" font-size="6" fill="#ff6060" text-anchor="middle" letter-spacing="1.5">Z-2 RED VEIL</text>
-
-        <!-- Antarctic Gate -->
-        <ellipse cx="500" cy="545" rx="65" ry="9" fill="rgba(77,184,255,0.1)" stroke="rgba(77,184,255,0.42)" stroke-width="0.8"/>
-        <text x="500" y="541" font-family="monospace" font-size="6" fill="#5bc8ff" text-anchor="middle" letter-spacing="1.2">ANTARCTIC GATE</text>
-
-        <!-- ══ ATTACK LINES → KOREA ══ -->
-        <!-- Philadelphia → Korea -->
-        <line x1="279" y1="165" x2="848" y2="159" stroke="rgba(255,59,59,0.38)" stroke-width="0.7" stroke-dasharray="7,5">
-          <animate attributeName="stroke-opacity" values="0.3;0.65;0.3" dur="3.5s" repeatCount="indefinite"/>
-        </line>
-        <!-- Red Veil → Korea -->
-        <line x1="806" y1="144" x2="851" y2="158" stroke="rgba(255,59,59,0.55)" stroke-width="0.9" stroke-dasharray="3,3">
-          <animate attributeName="stroke-opacity" values="0.45;0.9;0.45" dur="2s" repeatCount="indefinite"/>
-        </line>
-        <!-- Silent Belt → Korea -->
-        <line x1="628" y1="75" x2="852" y2="157" stroke="rgba(255,199,68,0.28)" stroke-width="0.6" stroke-dasharray="6,5">
-          <animate attributeName="stroke-opacity" values="0.2;0.5;0.2" dur="4.5s" repeatCount="indefinite"/>
-        </line>
-
-        <!-- ══ KOREA RETICLE ══ -->
-        <g transform="translate(853,160)">
-          <circle r="11"  fill="none" stroke="#00e5a0" stroke-width="1.3"/>
-          <circle r="18"  fill="none" stroke="rgba(0,229,160,0.28)" stroke-width="0.7"/>
-          <line x1="-22" y1="0" x2="22" y2="0" stroke="#00e5a0" stroke-width="0.9"/>
-          <line x1="0" y1="-22" x2="0" y2="22" stroke="#00e5a0" stroke-width="0.9"/>
-          <!-- corner ticks -->
-          <line x1="-5" y1="-5" x2="-11" y2="-11" stroke="#00e5a0" stroke-width="0.7"/>
-          <line x1="5"  y1="-5" x2="11"  y2="-11" stroke="#00e5a0" stroke-width="0.7"/>
-          <line x1="-5" y1="5"  x2="-11" y2="11"  stroke="#00e5a0" stroke-width="0.7"/>
-          <line x1="5"  y1="5"  x2="11"  y2="11"  stroke="#00e5a0" stroke-width="0.7"/>
-          <circle r="2.5" fill="#00e5a0"/>
-          <!-- pulse ring -->
-          <circle r="22" fill="none" stroke="rgba(0,229,160,0.38)" stroke-width="0.6">
-            <animate attributeName="r"       values="18;30;18" dur="2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.7;0;0.7" dur="2s" repeatCount="indefinite"/>
-          </circle>
-          <text y="-26" font-family="monospace" font-size="6.5" fill="#00e5a0" text-anchor="middle" letter-spacing="1.5">KOREA</text>
-          <text y="33"  font-family="monospace" font-size="5.5" fill="#00e5a0" text-anchor="middle">WHITE SHIELD ACTIVE</text>
-        </g>
-
-        <!-- scan line -->
-        <rect x="0" y="0" width="1000" height="2" fill="rgba(0,229,160,0.04)">
-          <animateTransform attributeName="transform" type="translate" values="0,0;0,562;0,0" dur="7s" repeatCount="indefinite"/>
-        </rect>
-
-        <!-- corner brackets -->
-        <g stroke="#00e5a0" stroke-width="1" fill="none" opacity="0.32">
-          <polyline points="0,20 0,0 20,0"/>
-          <polyline points="980,0 1000,0 1000,20"/>
-          <polyline points="0,542 0,562 20,562"/>
-          <polyline points="980,562 1000,562 1000,542"/>
-        </g>
-
-        <text x="8"   y="556" font-family="monospace" font-size="7" fill="#163025" letter-spacing="1">ORACLE // GLOBAL THREAT MATRIX v4.12</text>
-        <text x="992" y="556" font-family="monospace" font-size="7" fill="#163025" text-anchor="end" letter-spacing="1">LIVE FEED</text>
-
-        <!-- Observer facility dots -->
-        <g class="observer-dots">
-          <circle cx="320" cy="180" r="2" fill="rgba(0,229,160,0.3)" class="obs-dot"/>
-          <circle cx="480" cy="250" r="1.5" fill="rgba(0,229,160,0.25)" class="obs-dot"/>
-          <circle cx="610" cy="310" r="2" fill="rgba(0,229,160,0.3)" class="obs-dot"/>
-          <circle cx="180" cy="220" r="1.5" fill="rgba(0,229,160,0.2)" class="obs-dot"/>
-          <circle cx="720" cy="190" r="2" fill="rgba(0,229,160,0.28)" class="obs-dot"/>
-          <circle cx="550" cy="380" r="1.5" fill="rgba(0,229,160,0.22)" class="obs-dot"/>
-          <circle cx="400" cy="140" r="1.8" fill="rgba(0,229,160,0.26)" class="obs-dot"/>
-          <circle cx="260" cy="350" r="1.5" fill="rgba(0,229,160,0.2)" class="obs-dot"/>
-          <circle cx="830" cy="260" r="2" fill="rgba(0,229,160,0.3)" class="obs-dot"/>
-          <circle cx="680" cy="420" r="1.5" fill="rgba(0,229,160,0.22)" class="obs-dot"/>
-          <circle cx="150" cy="310" r="1.8" fill="rgba(0,229,160,0.24)" class="obs-dot"/>
-          <circle cx="900" cy="350" r="1.5" fill="rgba(0,229,160,0.2)" class="obs-dot"/>
-        </g>
-      </svg>
-
-      <div class="map-legend-blocker" aria-hidden="true"></div>
-    </div>
-    <div class="map-legend">
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(180,122,255,0.6);border:1px solid #b47aff;"></div><span style="color:#b47aff;">Z-Ω ANOMALOUS</span></div>
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(255,59,59,0.6);border:1px solid #ff3b3b;"></div><span style="color:#ff3b3b;">Z-3 COLLAPSE</span></div>
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(255,199,68,0.6);border:1px solid #ffc744;"></div><span style="color:#ffc744;">Z-2 DANGER</span></div>
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(0,229,160,0.4);border:1px solid #00e5a0;width:5px;height:5px;"></div><span style="color:rgba(0,229,160,0.5);">OBSERVER FACILITY</span></div>
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(0,229,160,0.6);border:1px solid #00e5a0;"></div><span style="color:#00e5a0;">KOREA — CONTAINMENT ACTIVE</span></div>
-    </div>
-  </div>
-
-  <!-- PROTOCOL GRID -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-eyebrow">SECTION 03 // DATABASE</div>
-      <div class="section-title">SYSTEM PROTOCOLS</div>
-    </div>
-    <div class="protocol-grid">
-      <div class="protocol-card" onclick="location.href='protocols.html#infection'">
-        <div class="pc-icon">🧬</div>
-        <div class="pc-name">EV-Σ 바이러스</div>
-        <div class="pc-divider"></div>
-        <div class="pc-count">4 ENTRIES</div>
-      </div>
-      <div class="protocol-card" onclick="location.href='protocols.html#zones'">
-        <div class="pc-icon">🗺</div>
-        <div class="pc-name">구역 분류 시스템</div>
-        <div class="pc-divider"></div>
-        <div class="pc-count">5 ENTRIES</div>
-      </div>
-      <div class="protocol-card" onclick="location.href='protocols.html#military'">
-        <div class="pc-icon" style="color:var(--amber)">🛡</div>
-        <div class="pc-name">글로벌 군사 대응</div>
-        <div class="pc-divider"></div>
-        <div class="pc-count">5 ENTRIES</div>
-      </div>
-      <div class="protocol-card" onclick="location.href='protocols.html#anomaly'">
-        <div class="pc-icon" style="color:var(--purple)">👁</div>
-        <div class="pc-name">이상 현상 기록</div>
-        <div class="pc-divider"></div>
-        <div class="pc-count">6 ENTRIES</div>
-      </div>
-      <div class="protocol-card" onclick="location.href='incidents.html'" style="border-color:rgba(255,199,68,0.2);">
-        <div class="pc-icon" style="color:var(--amber)">📋</div>
-        <div class="pc-name">사건 보고서</div>
-        <div class="pc-divider"></div>
-        <div class="pc-count">9 INCIDENTS</div>
-      </div>
-      <div class="protocol-card" onclick="location.href='specimens.html'" style="border-color:rgba(255,59,59,0.2);">
-        <div class="pc-icon" style="color:var(--red)">🧪</div>
-        <div class="pc-name">변이체 색인</div>
-        <div class="pc-divider"></div>
-        <div class="pc-count">10 SPECIMENS</div>
-      </div>
-
-    </div>
-
-    <!-- Stats + Alerts panel (outside protocol-grid) -->
-    <div class="proto-dashboard">
-      <div class="proto-stats">
-        <div class="proto-stat-card">
-          <div class="proto-stat-icon" style="color:var(--red);">⚠</div>
-          <div class="proto-stat-value red">3</div>
-          <div class="proto-stat-label">ACTIVE PROTOCOLS</div>
-          <div class="proto-stat-names">DOMINION · SHEPHERD · ABSOLUTION</div>
-        </div>
-        <div class="proto-stat-card">
-          <div class="proto-stat-icon" style="color:var(--amber);">🧬</div>
-          <div class="proto-stat-value amber">47.2%</div>
-          <div class="proto-stat-label">GLOBAL CONTAMINATION</div>
-          <div class="proto-stat-names">8개 구역 활성 · 확산 진행 중</div>
-        </div>
-        <div class="proto-stat-card">
-          <div class="proto-stat-icon" style="color:var(--green);">🛡</div>
-          <div class="proto-stat-value green">1</div>
-          <div class="proto-stat-label">CONTAINED NATION</div>
-          <div class="proto-stat-names">KOREA — White Shield 가동 중</div>
-        </div>
-      </div>
-      <div class="proto-alerts">
-        <div class="proto-alerts-header">
-          <span style="font-size:10px;letter-spacing:4px;color:var(--muted);">RECENT THREAT ALERTS</span>
-          <span style="font-size:9px;color:var(--red);animation:tdot 1.5s ease-in-out infinite;">● LIVE</span>
-        </div>
-        <div class="proto-alert-item"><span class="pa-time">14:22:07</span><span class="pa-level red">CRIT</span><span class="pa-text">Ashfall City — 새로운 Brood Drone 집단 감지</span></div>
-        <div class="proto-alert-item"><span class="pa-time">13:58:31</span><span class="pa-level amber">WARN</span><span class="pa-text">Silent Belt — 포자 밀도 12% 증가</span></div>
-        <div class="proto-alert-item"><span class="pa-time">13:41:09</span><span class="pa-level green">INFO</span><span class="pa-text">Korea — White Shield 일일 점검 완료</span></div>
-        <div class="proto-alert-item"><span class="pa-time">12:17:44</span><span class="pa-level red">CRIT</span><span class="pa-text">Red Veil — 봉쇄선 구간 C-7 접촉 보고</span></div>
-        <div class="proto-alert-item"><span class="pa-time">11:33:22</span><span class="pa-level amber">WARN</span><span class="pa-text">Philadelphia Zone — TS-Ω 활동 파동 감지</span></div>
-      </div>
-    </div>
-
-  </div>
-
-</div><!-- /main -->
-
-<script src="js/common-core.js"></script>
-<script src="js/hero-canvas.js"></script>
-
-<!-- GLOBAL NAV -->
-<nav class="gnav">
-  <div class="gnav-inner">
-    <a class="gnav-item" href="main.html" data-page="main"><div class="gnav-icon">🏠</div><div class="gnav-label">MAIN</div></a>
-    <a class="gnav-item" href="factions.html" data-page="factions"><div class="gnav-icon">⚡</div><div class="gnav-label">세력</div></a>
-    <a class="gnav-item" href="protocols.html" data-page="protocols"><div class="gnav-icon">🧬</div><div class="gnav-label">위협</div></a>
-    <a class="gnav-item" href="records.html" data-page="records"><div class="gnav-icon">📡</div><div class="gnav-label">기록</div></a>
-    <a class="gnav-item" href="incidents.html" data-page="incidents"><div class="gnav-icon">📋</div><div class="gnav-label">사건</div></a>
-    <a class="gnav-item" href="specimens.html" data-page="specimens"><div class="gnav-icon">🧪</div><div class="gnav-label">개체</div></a>
-    <a class="gnav-item" href="profiles.html" data-page="profiles"><div class="gnav-icon">👤</div><div class="gnav-label">인물</div></a>
-    <a class="gnav-item" href="regions.html" data-page="regions"><div class="gnav-icon">🌐</div><div class="gnav-label">지역</div></a>
-    <a class="gnav-item" href="database.html" data-page="database"><div class="gnav-icon">🗄</div><div class="gnav-label">DB</div></a>
-  </div>
-</nav>
-
-<script>
-// Highlight active gnav item
-(function(){
-  const page = location.pathname.split('/').pop().replace('.html','') || 'index';
-  document.querySelectorAll('.gnav-item').forEach(el=>{
-    if(el.dataset.page === page) el.classList.add('active');
-  });
-  document.body.classList.add('has-gnav');
-})();
-</script>
+<!-- SCRIPTS -->
+<script src="assets/js/i18n/ko.js"></script>
+<script src="assets/js/i18n/en.js"></script>
+<script src="assets/js/i18n/ko-main.js"></script>
+<script src="assets/js/i18n/en-main.js"></script>
+<script src="assets/js/i18n/ko-main-p3.js"></script>
+<script src="assets/js/i18n/en-main-p3.js"></script>
+<script src="assets/js/i18n/index.js"></script>
+<script src="assets/js/core/boot.js"></script>
+<script src="assets/js/core/ticker.js"></script>
+<script src="assets/js/core/reveal-on-scroll.js"></script>
+<script src="assets/js/core/sound-manager.js"></script>
+<script src="assets/js/pages/entry-map.js"></script>
+<script src="assets/js/pages/main-render.js"></script>
+<script src="assets/js/pages/main-phase3-render.js"></script>
+<script src="assets/js/pages/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,96 @@
+/* ─── COMING SOON MODAL (미구현 카테고리 알림) ─── */
+.cs-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.cs-modal-overlay.is-open {
+  display: flex;
+  animation: cs-fade 0.2s var(--ease-out);
+}
+
+@keyframes cs-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.cs-modal {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-card);
+  border: 1px solid var(--alpha-amber-10);
+  padding: var(--space-5);
+  position: relative;
+  animation: cs-slide 0.25s var(--ease-out);
+}
+
+@keyframes cs-slide {
+  from { transform: translateY(10px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.cs-modal-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-amber);
+  margin-bottom: var(--space-3);
+  padding-left: var(--space-2);
+  border-left: 2px solid var(--color-amber);
+}
+
+.cs-modal-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.cs-modal-msg {
+  font-size: var(--text-sm);
+  color: var(--color-light);
+  line-height: var(--leading-loose);
+  white-space: pre-line;
+  margin-bottom: var(--space-5);
+}
+
+.cs-modal-actions {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: flex-end;
+}
+
+.cs-modal-btn {
+  padding: var(--space-2) var(--space-4);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+
+.cs-modal-btn:hover {
+  color: var(--color-light);
+  border-color: var(--color-light);
+}
+
+.cs-modal-btn--primary {
+  border-color: var(--color-green);
+  color: var(--color-green);
+}
+
+.cs-modal-btn--primary:hover {
+  background: var(--alpha-green-10);
+}

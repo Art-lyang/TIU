@@ -1,0 +1,46 @@
+/* ─── LOADING SPINNER (페이지 초기 로드용) ─── */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              visibility var(--duration-slow);
+  pointer-events: none;
+}
+
+body.is-loaded .page-loader {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.page-loader-ring {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-dim);
+  border-top-color: var(--color-green);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.page-loader-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-muted);
+  animation: pulse-text 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}

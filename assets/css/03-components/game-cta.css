@@ -1,0 +1,91 @@
+/* ─── GAME CTA (TERMINAL SESSION) ─── */
+.game-cta {
+  max-width: var(--container-md);
+  margin: 0 auto;
+  padding: var(--space-7) var(--space-5);
+  text-align: center;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--alpha-green-05),
+    transparent
+  );
+  border-top: 1px solid var(--alpha-green-20);
+  border-bottom: 1px solid var(--alpha-green-20);
+  position: relative;
+}
+
+/* 터미널 프레임 느낌 */
+.game-cta::before,
+.game-cta::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-green);
+  opacity: 0.35;
+}
+
+.game-cta::before {
+  top: var(--space-3);
+  left: var(--space-3);
+  border-right: none;
+  border-bottom: none;
+}
+
+.game-cta::after {
+  bottom: var(--space-3);
+  right: var(--space-3);
+  border-left: none;
+  border-top: none;
+}
+
+.game-cta-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-green);
+  margin-bottom: var(--space-3);
+}
+
+.game-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
+  color: var(--color-text);
+  letter-spacing: var(--tracking-wider);
+  margin-bottom: var(--space-4);
+}
+
+.game-cta-body {
+  font-size: var(--text-md);
+  color: var(--color-light);
+  line-height: var(--leading-loose);
+  margin-bottom: var(--space-5);
+}
+
+.game-cta-btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  border: 1px solid var(--color-green);
+  color: var(--color-green);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wider);
+  text-decoration: none;
+  transition: all var(--duration-normal) var(--ease-out);
+  background: transparent;
+}
+
+.game-cta-btn:hover {
+  background: var(--alpha-green-10);
+  box-shadow: var(--glow-green);
+  letter-spacing: 4px;
+}
+
+.game-cta-footer {
+  margin-top: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-muted);
+}

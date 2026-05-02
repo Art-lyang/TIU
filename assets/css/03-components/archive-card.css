@@ -1,0 +1,117 @@
+/* ─── ARCHIVE CARD (사건 기록 카드) ─── */
+.archive-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-muted);
+  margin: var(--space-6) 0 var(--space-3);
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-red);
+}
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+
+@media (min-width: 600px) {
+  .archive-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .archive-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.archive-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: transform var(--duration-normal) var(--ease-out),
+              border-color var(--duration-normal);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.archive-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--alpha-red-30);
+}
+
+.archive-card-img {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(0.4) contrast(1.1);
+  transition: filter var(--duration-normal);
+}
+
+.archive-card:hover .archive-card-img {
+  filter: grayscale(0) contrast(1.15);
+}
+
+.archive-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(17, 17, 17, 0.95) 100%
+  );
+}
+
+.archive-card-code {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-red);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2px var(--space-2);
+  border-left: 2px solid var(--color-red);
+  z-index: 2;
+}
+
+.archive-card-body {
+  padding: var(--space-3) var(--space-3) var(--space-4);
+}
+
+.archive-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+  line-height: var(--leading-tight);
+}
+
+.archive-card-note {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  line-height: var(--leading-snug);
+}
+
+/* 스캔라인 효과 (이미지 위) */
+.archive-card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 3px
+  );
+  pointer-events: none;
+  opacity: 0.4;
+}

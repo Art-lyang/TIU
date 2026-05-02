@@ -1,0 +1,62 @@
+/* ─── LAYER STACK (4계층 세계 구조 시각화) ─── */
+.layer-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.layer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-card);
+  border: var(--border-thin);
+  transition: transform var(--duration-normal) var(--ease-out),
+              border-color var(--duration-normal);
+}
+
+.layer:hover {
+  transform: translateX(var(--space-2));
+  border-color: var(--alpha-green-30);
+}
+
+.layer-bar {
+  width: 4px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.layer-bar--l4 { background: var(--color-purple); }
+.layer-bar--l3 { background: var(--color-blue); }
+.layer-bar--l2 { background: var(--color-green); }
+.layer-bar--l1 { background: var(--color-amber); }
+
+.layer-code {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text);
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.layer-desc {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: var(--leading-snug);
+}
+
+@media (max-width: 500px) {
+  .layer {
+    flex-wrap: wrap;
+  }
+  .layer-code {
+    min-width: auto;
+  }
+  .layer-desc {
+    width: 100%;
+    padding-left: calc(4px + var(--space-3));
+  }
+}

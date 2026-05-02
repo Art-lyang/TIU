@@ -1,0 +1,143 @@
+/* ─── PA QUERY TERMINAL (검색 바) ─── */
+.query-terminal {
+  max-width: var(--container-md);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+}
+
+.query-terminal-header {
+  margin-bottom: var(--space-4);
+}
+
+.query-terminal-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-muted);
+  margin-bottom: var(--space-2);
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-green);
+}
+
+.query-terminal-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-xl), 4vw, var(--text-3xl));
+  color: var(--color-text);
+  letter-spacing: var(--tracking-wider);
+}
+
+/* 터미널 입력 박스 */
+.query-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: #050a07;
+  border: 1px solid var(--color-border);
+  transition: border-color var(--duration-normal);
+}
+
+.query-box:focus-within {
+  border-color: var(--color-green);
+  box-shadow: 0 0 0 1px var(--color-green);
+}
+
+.query-prompt {
+  font-family: var(--font-mono);
+  color: var(--color-green);
+  font-size: var(--text-sm);
+  flex-shrink: 0;
+}
+
+.query-input {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  background: transparent;
+  border: none;
+  outline: none;
+  caret-color: var(--color-green);
+  min-width: 0;
+}
+
+.query-input::placeholder {
+  color: var(--color-muted);
+  opacity: 0.7;
+}
+
+.query-submit {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-green);
+  background: transparent;
+  border: 1px solid var(--color-green);
+  padding: var(--space-1) var(--space-2);
+  cursor: pointer;
+  transition: background var(--duration-fast);
+  flex-shrink: 0;
+}
+
+.query-submit:hover {
+  background: var(--alpha-green-10);
+}
+
+/* 제안 쿼리 */
+.query-suggestions {
+  margin-top: var(--space-3);
+}
+
+.query-suggestions-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-muted);
+  margin-bottom: var(--space-2);
+}
+
+.query-suggestions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.query-chip {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-normal);
+  padding: 3px var(--space-2);
+  background: transparent;
+  border: 1px solid var(--color-dim);
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+
+.query-chip:hover {
+  border-color: var(--color-green);
+  color: var(--color-green);
+  background: rgba(0, 229, 160, 0.05);
+}
+
+/* 결과 메시지 */
+.query-response {
+  margin-top: var(--space-3);
+  padding: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-amber);
+  border-left: 2px solid var(--color-amber);
+  background: rgba(255, 199, 68, 0.04);
+  display: none;
+}
+
+.query-response.is-visible {
+  display: block;
+  animation: query-slide 0.2s var(--ease-out);
+}
+
+@keyframes query-slide {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

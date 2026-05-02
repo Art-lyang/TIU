@@ -1,0 +1,97 @@
+/* ─── GNAV (글로벌 네비 — 하단 고정) ─── */
+
+body.has-gnav {
+  padding-top: calc(var(--topbar-height) + var(--gnav-height));
+  padding-bottom: var(--ticker-height);
+}
+
+.gnav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--topbar-height);
+  height: var(--gnav-height);
+  background: rgba(0, 0, 0, 0.96);
+  border-bottom: 1px solid var(--color-border);
+  z-index: var(--z-topbar);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.gnav-inner {
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gnav-inner::-webkit-scrollbar { display: none; }
+
+.gnav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 72px;
+  padding: var(--space-2) var(--space-3);
+  flex: 1;
+  text-decoration: none;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  border-bottom: 2px solid transparent;
+  transition: all var(--duration-fast);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.gnav-item:hover {
+  color: var(--color-light);
+  background: rgba(0, 229, 160, 0.03);
+}
+
+.gnav-item.is-active {
+  color: var(--color-green);
+  border-bottom-color: var(--color-green);
+}
+
+.gnav-icon {
+  font-size: 18px;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.gnav-item.is-active .gnav-icon {
+  opacity: 1;
+}
+
+.gnav-label {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+
+/* 모바일: 라벨 숨김, 아이콘만 */
+@media (max-width: 599px) {
+  .gnav-item {
+    min-width: 48px;
+    padding: var(--space-2);
+  }
+  .gnav-label {
+    display: none;
+  }
+}
+
+/* 데스크탑: 넓게 */
+@media (min-width: 900px) {
+  .gnav-item {
+    flex-direction: row;
+    gap: var(--space-2);
+    min-width: auto;
+  }
+  .gnav-icon { font-size: 14px; }
+  .gnav-label { font-size: var(--text-2xs); }
+}
