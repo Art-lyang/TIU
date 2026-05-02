@@ -6,10 +6,18 @@
     linear-gradient(180deg, #020302 0%, #000 48%, #050505 100%);
 }
 
+body.archive-page.has-gnav {
+  padding-bottom: 0;
+}
+
 .archive-page .archive-page-main {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
   padding: var(--space-8) 0 var(--space-10);
+}
+
+.archive-page .ticker {
+  position: static;
 }
 
 .archive-page .archive-hero {
@@ -81,22 +89,24 @@
   max-width: 420px;
   color: var(--color-muted);
   font-size: var(--text-sm);
+  line-height: var(--leading-normal);
 }
 
 .archive-page .archive-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
 .archive-page .archive-card {
-  min-height: 220px;
+  min-height: 240px;
   padding: 0;
   background: rgba(10, 10, 10, 0.76);
   border: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
   transition: border-color var(--duration-fast), transform var(--duration-fast);
 }
 
@@ -106,7 +116,14 @@
 }
 
 .archive-page .archive-card-body {
-  padding: var(--space-5);
+  padding: var(--space-6) var(--space-5);
+}
+
+.archive-page .archive-card > div:not([class]) {
+  min-height: 100%;
+  padding: var(--space-6) var(--space-5);
+  display: flex;
+  flex-direction: column;
 }
 
 .archive-page .archive-card-media {
@@ -157,17 +174,20 @@
   background: transparent;
   border-left: 0;
   padding: 0;
+  display: block;
+  line-height: var(--leading-snug);
+  margin-bottom: var(--space-4);
 }
 
 .archive-page .archive-card-title {
-  margin-top: var(--space-4);
   font-family: var(--font-display);
   font-size: var(--text-3xl);
   letter-spacing: var(--tracking-wide);
+  line-height: var(--leading-tight);
 }
 
 .archive-page .archive-card-text {
-  margin-top: var(--space-3);
+  margin-top: var(--space-4);
   color: var(--color-light);
   font-size: var(--text-sm);
   line-height: var(--leading-loose);
@@ -186,7 +206,7 @@
 
 .archive-page .archive-table th,
 .archive-page .archive-table td {
-  padding: var(--space-4);
+  padding: var(--space-5);
   border-bottom: 1px solid var(--color-border);
   vertical-align: top;
   text-align: left;
@@ -205,10 +225,11 @@
 
 .archive-page .archive-lock {
   margin-top: var(--space-5);
-  padding: var(--space-4);
+  padding: var(--space-5);
   border: 1px dashed var(--color-dim);
   color: var(--color-muted);
   font-size: var(--text-xs);
+  line-height: var(--leading-normal);
 }
 
 .archive-page .archive-actions {
@@ -241,4 +262,26 @@
   .archive-page .archive-section-head { display: block; }
   .archive-page .archive-section-note { margin-top: var(--space-3); }
   .archive-page .archive-table { display: block; overflow-x: auto; }
+}
+
+@media (max-width: 620px) {
+  .archive-page .archive-page-main {
+    width: min(100% - 24px, 1120px);
+    padding-bottom: var(--space-8);
+  }
+
+  .archive-page .archive-card,
+  .archive-page .archive-card > div:not([class]) {
+    min-height: auto;
+  }
+
+  .archive-page .archive-card-body,
+  .archive-page .archive-card > div:not([class]) {
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .archive-page .archive-table th,
+  .archive-page .archive-table td {
+    padding: var(--space-4);
+  }
 }
