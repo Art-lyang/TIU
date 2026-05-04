@@ -70,6 +70,118 @@
     ]
   };
 
+  window.TIU_KO.publicDossier = {
+    eyebrow: 'PA // SURFACE DOSSIER',
+    title: 'PUBLIC DOSSIER LAYER',
+    desc: '기밀 핵심을 제외하고도 세계가 어떻게 작동하는지 확인할 수 있는 공개 색인입니다. 국가별 대응, 민간 생활, 회색경제, 공개 SPEC, 사건 표면 기록만 표시됩니다.',
+    queryLabel: 'VISIBLE INDEX',
+    queryValue: 'country / faction / incident / specimen / civil system',
+    filters: [
+      { label: 'PUBLIC', variant: 'green' },
+      { label: 'HINT', variant: 'default' },
+      { label: 'COUNTRY', variant: 'default' },
+      { label: 'SPEC', variant: 'red' },
+      { label: 'INCIDENT', variant: 'amber' },
+      { label: 'CIVIL', variant: 'green' },
+      { label: 'BLACK EXCLUDED', variant: 'red' }
+    ],
+    counters: [
+      { label: 'OPEN RECORDS', value: '100+', variant: 'green' },
+      { label: 'COUNTRY PACKS', value: '8+1', variant: 'amber' },
+      { label: 'SPEC SAMPLES', value: '7', variant: 'red' },
+      { label: 'CIVIL SYSTEMS', value: '12', variant: 'green' },
+      { label: 'START ROUTES', value: '30+', variant: 'amber' },
+      { label: 'SEALED CORES', value: 'LOCK', variant: 'red' }
+    ],
+    cards: [
+      {
+        code: 'STATE / KOREA',
+        title: 'WHITE SHIELD',
+        text: '한국은 방벽, 검문, 의료 기록, 가족 신고, 감염 이력 권리 문제로 세계관의 사회적 밀도를 보여주는 핵심 공개 구역입니다.',
+        variant: 'green',
+        meta: [
+          { k: 'VISIBLE', v: '방벽, 병동, 검문, 허가증' },
+          { k: 'CONFLICT', v: '안전 기록과 시민 권리의 충돌' },
+          { k: 'LINK', v: 'KR-INIT-001 표면 기록만 공개' }
+        ]
+      },
+      {
+        code: 'GLOBAL CIVIL',
+        title: 'NATION RESPONSES',
+        text: '미국은 보험과 봉쇄선, 일본은 매뉴얼과 괴담, 중국은 검열과 음성 메시지, EU는 국경과 권리 소송, 호주는 좌표 앱과 외곽 통제로 갈라집니다.',
+        variant: 'amber',
+        meta: [
+          { k: 'VISIBLE', v: '국가별 생활감과 행정 반응' },
+          { k: 'SCOPE', v: '미국 / 일본 / 중국 / 러시아 / EU / 호주' },
+          { k: 'LIMIT', v: '비공개 내륙권과 고대 진상 제외' }
+        ]
+      },
+      {
+        code: 'SPEC / PUBLIC SAMPLE',
+        title: 'ABERRANT CATALOG',
+        text: 'SPEC-001, 003, 008, 011, 012 등 일부 샘플은 외형, 대응 방식, 민간 피해 수준만 공개됩니다. 기원과 완전한 계보는 봉인됩니다.',
+        variant: 'red',
+        meta: [
+          { k: 'VISIBLE', v: '식별명, 피해 양상, 대응 주의' },
+          { k: 'RISK', v: '음성 모방, 포자, 환경 오염' },
+          { k: 'SEALED', v: '발생 원인과 상위 계보' }
+        ]
+      },
+      {
+        code: 'GRAY ECONOMY',
+        title: 'MARKETS AND BROKERS',
+        text: '검역 브로커, 회수품 거래, 위조 허가증, 보험 코드, 의료 물자 부족은 세계관을 전쟁터 밖의 생활 비용으로 확장합니다.',
+        variant: 'amber',
+        meta: [
+          { k: 'VISIBLE', v: 'Meridian 표면 거래 / Silent Wolves 흔적' },
+          { k: 'CONFLICT', v: '생존 비용과 윤리의 균열' },
+          { k: 'LIMIT', v: '최상위 구조와 공급선 세부 제외' }
+        ]
+      },
+      {
+        code: 'INCIDENT LINE',
+        title: 'PHILADELPHIA / ASHFALL',
+        text: '필라델피아 계열 사건과 Ashfall 이후 신호는 세계의 균형이 아직 끝나지 않았음을 보여줍니다. TS-Ω는 내륙 방향 전진 상태로만 공개됩니다.',
+        variant: 'red',
+        meta: [
+          { k: 'VISIBLE', v: '내륙 전진, 봉쇄선, 표면 신호' },
+          { k: 'STATUS', v: 'active hostile vector' },
+          { k: 'SEALED', v: '기원, 상위 연결, 블랙 로그' }
+        ]
+      },
+      {
+        code: 'PLAYABLE ENTRY',
+        title: 'START ROUTES',
+        text: '플레이어는 조직 인물, 연구원, 현장요원, 회색지대 정보원, 일반 시민으로 진입할 수 있습니다. 선택지는 보고서와 IF 기록으로 누적됩니다.',
+        variant: 'green',
+        meta: [
+          { k: 'VISIBLE', v: '소속 선택, 첫 사건, 자유 입력' },
+          { k: 'OUTPUT', v: '세션 보고서 / IF 기록 / 캐논 후보' },
+          { k: 'LIMIT', v: '기밀 진상은 권한 상승 전 차단' }
+        ]
+      }
+    ],
+    relationTitle: 'RELATION LAYER',
+    relationNote: '공개 가능한 관계만 요약합니다. 적대, 협력, 회색 거래, 민간 피해 흐름을 보여주되 블랙 레벨 원인은 제외됩니다.',
+    relations: [
+      { from: 'White Shield', type: 'protects / restricts', to: 'Korean civilians', variant: 'green' },
+      { from: 'PROMETHEUS', type: 'uneasy contact', to: 'state systems', variant: 'amber' },
+      { from: 'SHED ORDER', type: 'ideological threat', to: 'infected communities', variant: 'red' },
+      { from: 'Meridian Group', type: 'market pressure', to: 'medical networks', variant: 'amber' },
+      { from: 'Silent Wolves', type: 'gray logistics', to: 'closed routes', variant: 'amber' },
+      { from: 'TS-Ω', type: 'hostile vector', to: 'Philadelphia inland line', variant: 'red' }
+    ],
+    recordsTitle: 'RECENTLY INDEXED',
+    records: [
+      { code: 'KR-CIVIL-REG-012', title: '격리 병동 면회 제한', text: '가족 신고 의무와 감염 이력 권리 충돌 사례.', level: 'PUBLIC', variant: 'default' },
+      { code: 'US-INS-LOCK-044', title: '보험 코드 선행 차단', text: '공식 발표보다 먼저 갱신된 위험 산정 코드.', level: 'PUBLIC', variant: 'default' },
+      { code: 'JP-MANUAL-REV-19', title: '재난 매뉴얼 개정', text: '괴담으로 번진 사건이 행정 절차에 편입된 사례.', level: 'PUBLIC', variant: 'default' },
+      { code: 'CN-VOICE-RELAY-07', title: '삭제 이후 남은 음성', text: '검열 이후 음성 메시지 체인으로 남은 지역 보고.', level: 'HINT', variant: 'default' },
+      { code: 'EU-BORDER-CASE-31', title: '국경 게이트 가족 지위 소송', text: '서류상 가족과 검역상 위험자의 지위 충돌.', level: 'PUBLIC', variant: 'default' },
+      { code: 'PHL-INLAND-LINE', title: '필라델피아 내륙 전진선', text: 'TS-Ω 이동 상태만 공개. 기원 및 블랙 로그 봉인.', level: 'SEALED', variant: 'sealed' }
+    ]
+  };
+
   window.TIU_KO.footer = {
     copyright: '© 2026 TURTLE ISLE UNIVERSE',
     archivist: 'ARCHIVIST // ABOUT THIS PROJECT →'

@@ -63,6 +63,67 @@ window.TIU_MainPhase3 = (function() {
     }
   }
 
+  function _publicDossier() {
+    const d = window.TIU_I18N.getDict().publicDossier;
+    if (!d) return;
+
+    const filters = document.getElementById('publicDossierFilters');
+    if (filters) {
+      filters.innerHTML = d.filters.map(f =>
+        '<span class="public-dossier-filter public-dossier-filter--' + (f.variant || 'default') + '">' + f.label + '</span>'
+      ).join('');
+    }
+
+    const counters = document.getElementById('publicDossierCounters');
+    if (counters) {
+      counters.innerHTML = d.counters.map(c =>
+        '<div class="public-dossier-counter public-dossier-counter--' + (c.variant || 'default') + '">' +
+          '<div class="public-dossier-counter-value">' + c.value + '</div>' +
+          '<div class="public-dossier-counter-label">' + c.label + '</div>' +
+        '</div>'
+      ).join('');
+    }
+
+    const cards = document.getElementById('publicDossierCards');
+    if (cards) {
+      cards.innerHTML = d.cards.map(card =>
+        '<article class="public-dossier-card public-dossier-card--' + (card.variant || 'default') + '" data-sound-hover>' +
+          '<div class="public-dossier-card-code">' + card.code + '</div>' +
+          '<h3 class="public-dossier-card-title">' + card.title + '</h3>' +
+          '<p class="public-dossier-card-text">' + card.text + '</p>' +
+          '<dl class="public-dossier-meta">' + card.meta.map(row =>
+            '<div><dt>' + row.k + '</dt><dd>' + row.v + '</dd></div>'
+          ).join('') + '</dl>' +
+        '</article>'
+      ).join('');
+    }
+
+    const relations = document.getElementById('publicDossierRelations');
+    if (relations) {
+      relations.innerHTML = d.relations.map(r =>
+        '<div class="public-dossier-rel public-dossier-rel--' + (r.variant || 'default') + '">' +
+          '<span class="public-dossier-rel-from">' + r.from + '</span>' +
+          '<span class="public-dossier-rel-type">' + r.type + '</span>' +
+          '<span class="public-dossier-rel-to">' + r.to + '</span>' +
+        '</div>'
+      ).join('');
+    }
+
+    const records = document.getElementById('publicDossierRecords');
+    if (records) {
+      records.innerHTML = d.records.map(rec =>
+        '<article class="public-dossier-record public-dossier-record--' + (rec.variant || 'default') + '">' +
+          '<div class="public-dossier-record-code">' + rec.code + '</div>' +
+          '<div class="public-dossier-record-main">' +
+            '<div class="public-dossier-record-title">' + rec.title + '</div>' +
+            '<div class="public-dossier-record-text">' + rec.text + '</div>' +
+          '</div>' +
+          '<div class="public-dossier-record-level">' + rec.level + '</div>' +
+        '</article>'
+      ).join('');
+    }
+  }
+
   function _restricted() {
     const grid = document.getElementById('restrictedGrid');
     if (!grid) return;
@@ -173,6 +234,7 @@ window.TIU_MainPhase3 = (function() {
       _philosophy();
       _situation();
       _queryTerminal();
+      _publicDossier();
       _restricted();
       _phaseDiagram();
       _intel();
