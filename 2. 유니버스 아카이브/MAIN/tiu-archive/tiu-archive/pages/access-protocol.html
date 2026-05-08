@@ -2,7 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B0B0C" />
   <title>접속 프로토콜 — TIU UNIVERSE ARCHIVE</title>
   <link rel="stylesheet" href="../css/design-tokens.css" />
   <link rel="stylesheet" href="../css/base.css" />
@@ -15,14 +16,12 @@
   <link rel="stylesheet" href="../css/mobile-overrides.css" />
 </head>
 <body class="ap-page">
-
   <div class="grid-backdrop" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
-  <div class="ap-edge ap-edge--left" aria-hidden="true"><span>SYS::ACCESS_GATE_v1.4 / NODE::KR-PZ-10 / SESSION::GUEST</span></div>
-  <div class="ap-edge ap-edge--right" aria-hidden="true"><span>KR-INIT-001 / A-1 / PUBLIC_LAYER_PASSIVE</span></div>
+  <div class="ap-edge ap-edge--left" aria-hidden="true"><span>SYS::ACCESS_GATE_v1.4 / NODE::MASKED / SESSION::PUBLIC</span></div>
+  <div class="ap-edge ap-edge--right" aria-hidden="true"><span>PUBLIC_LAYER_PASSIVE / ROUTE::MASKED / OPERATIONAL</span></div>
 
-  <!-- ===== HEADER ===== -->
   <header class="ap-header">
     <div class="ap-brand">
       <span class="ap-brand__mark" aria-hidden="true">
@@ -35,10 +34,10 @@
     </div>
 
     <div class="ap-meta-strip">
-      <div class="ap-meta"><span class="ap-meta__label">ARCHIVE ID</span><span class="ap-meta__value">KR-INIT-001</span></div>
+      <div class="ap-meta"><span class="ap-meta__label">ARCHIVE ID</span><span class="ap-meta__value">PUBLIC-GATE-2032</span></div>
       <div class="ap-meta"><span class="ap-meta__label">CLASSIFICATION</span><span class="ap-meta__value" data-i18n="classification_value">A-1 / 공개</span></div>
       <div class="ap-meta"><span class="ap-meta__label">LAST UPDATED</span><span class="ap-meta__value">2032.05.12</span></div>
-      <div class="ap-meta"><span class="ap-meta__label">SERVER NODE</span><span class="ap-meta__value">KR-PZ-10 NODE</span></div>
+      <div class="ap-meta"><span class="ap-meta__label">SERVER NODE</span><span class="ap-meta__value">비공개</span></div>
     </div>
 
     <div class="ap-header__right">
@@ -57,59 +56,54 @@
     </div>
   </header>
 
-  <!-- ===== MAIN ===== -->
   <main class="ap-main">
-
-    <!-- LEFT — 카피 + 게스트 박스 -->
     <section class="ap-left">
       <h1 class="display-heading ap-title" data-i18n="title">접속 프로토콜</h1>
-      <p class="subtitle-en ap-subtitle" data-i18n="subtitle">ARCHIVE NETWORK GATEWAY</p>
-      <p class="ap-lede" data-i18n-html="lede">TIU 기록 보관망 접속 절차 개시.<br/>승인 사용자 한정 내부 기록 접근.</p>
+      <p class="subtitle-en ap-subtitle" data-i18n="subtitle">기록망 접근 게이트웨이</p>
+      <p class="ap-lede" data-i18n-html="lede">TIU 공개 기록망 접근 절차 개시.<br/>승인된 공개 색인만 열람 가능합니다.</p>
 
       <div class="panel corner-marks ap-guest">
         <header class="ap-guest__head">
-          <span class="ap-guest__icon" aria-hidden="true">⌬</span>
-          <span class="ap-guest__title" data-i18n="guest_mode">게스트 접근 모드</span>
+          <span class="ap-guest__icon" aria-hidden="true">◇</span>
+          <span class="ap-guest__title" data-i18n="guest_mode">공개 접근 모드</span>
         </header>
 
         <div class="ap-guest__row">
           <div class="ap-field">
             <span class="ap-field__label" data-i18n="username">사용자명</span>
-            <span class="ap-field__value mono">GUEST</span>
+            <span class="ap-field__value mono">PUBLIC USER</span>
           </div>
-          <span class="ap-pill" data-i18n="guest_session_pill">GUEST SESSION</span>
+          <span class="ap-pill" data-i18n="guest_session_pill">공개 세션</span>
         </div>
 
         <div class="ap-guest__row">
           <div class="ap-field">
             <span class="ap-field__label" data-i18n="session_status">세션 상태</span>
-            <span class="ap-field__value ap-field__value--accent" data-i18n="session_active">게스트 세션 활성화</span>
+            <span class="ap-field__value ap-field__value--accent" data-i18n="session_active">비공개</span>
           </div>
-          <span class="ap-status"><span data-i18n="session_issued">자동 발급 완료</span><i class="dot dot--ok" aria-hidden="true"></i></span>
+          <span class="ap-status"><span data-i18n="session_issued">공개 열람 대기</span><i class="dot dot--ok" aria-hidden="true"></i></span>
         </div>
 
         <div class="ap-guest__grid">
-          <div class="ap-stat"><span class="ap-stat__label">NODE</span><span class="ap-stat__value mono">KR-PZ-10</span></div>
+          <div class="ap-stat"><span class="ap-stat__label">ROUTE</span><span class="ap-stat__value mono">비공개</span></div>
           <div class="ap-stat"><span class="ap-stat__label">CLEARANCE</span><span class="ap-stat__value mono ap-stat__value--accent">LIMITED</span></div>
           <div class="ap-stat"><span class="ap-stat__label">ARCHIVE STATUS</span><span class="ap-stat__value mono ap-stat__value--ok">ONLINE</span></div>
         </div>
 
         <ul class="ap-perms">
-          <li><i class="check" aria-hidden="true"></i><span data-i18n="perm_system">시스템 열람 권한</span><em data-i18n="perm_limited">한정</em></li>
-          <li><i class="check" aria-hidden="true"></i><span data-i18n="perm_index">기록 색인 열람</span><em data-i18n="perm_limited">한정</em></li>
-          <li><i class="check" aria-hidden="true"></i><span data-i18n="perm_public">일반 프로젝트 공개본</span><em data-i18n="perm_limited">한정</em></li>
-          <li><i class="check" aria-hidden="true"></i><span data-i18n="perm_expiry">게스트 세션 만료</span><em class="accent">SYSTEM BOOT +30MIN</em></li>
+          <li><i class="check" aria-hidden="true"></i><span data-i18n="perm_system">공개 색인 열람</span><em data-i18n="perm_limited">한정</em></li>
+          <li><i class="check" aria-hidden="true"></i><span data-i18n="perm_index">한국권 공개 기록</span><em data-i18n="perm_limited">한정</em></li>
+          <li><i class="check" aria-hidden="true"></i><span data-i18n="perm_public">사건 요약 열람</span><em data-i18n="perm_limited">한정</em></li>
+          <li><i class="check" aria-hidden="true"></i><span data-i18n="perm_expiry">심화 기록</span><em class="accent">별도 인증</em></li>
         </ul>
 
-        <a class="ap-btn ap-btn--primary" href="landing.html#archive-hub"><span data-i18n="btn_enter">아카이브 입장</span><span aria-hidden="true">→</span></a>
-        <a class="ap-btn ap-btn--ghost" href="public-records.html#public-records" data-i18n="btn_public">공개 기록관 보기</a>
+        <a class="ap-btn ap-btn--primary" href="public-records.html#public-records"><span data-i18n="btn_public">공개 기록관 열람</span><span aria-hidden="true">→</span></a>
       </div>
     </section>
 
-    <!-- RIGHT — 시네마틱 비주얼 (실제 이미지 배경) -->
     <section class="ap-right" aria-hidden="true">
       <div class="ap-scene-marker">
-        <span class="ap-scene-marker__id">VAULT-N07 // INTERIOR</span>
+        <span class="ap-scene-marker__id">PUBLIC ACCESS // INTERIOR</span>
         <span>UPLINK STABLE / SCENE LIVE</span>
       </div>
 
@@ -119,22 +113,21 @@
       </div>
 
       <aside class="ap-warning">
-        <span class="ap-warning__icon" aria-hidden="true">⚠</span>
-        <p data-i18n-html="warning">무단 접근 및 사용 기록은 법령 위반 증거로 보존.</p>
+        <span class="ap-warning__icon" aria-hidden="true">!</span>
+        <p data-i18n-html="warning">공개 기록망은 위치 코드, 내부 노드, 상세 좌표를 표시하지 않습니다.</p>
       </aside>
     </section>
   </main>
 
-  <!-- ===== HUD INFO STRIP ===== -->
   <div class="ap-hud-strip">
     <div class="ap-hud-cell">
       <span class="ap-hud-cell__label">SECTOR ANALYSIS</span>
       <span class="ap-hud-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
     </div>
-    <div class="ap-hud-cell"><span class="ap-hud-cell__label">GRID</span><span class="ap-hud-cell__value">KR-A1-N07</span></div>
-    <div class="ap-hud-cell"><span class="ap-hud-cell__label">LAT</span><span class="ap-hud-cell__value">37.6° N</span></div>
-    <div class="ap-hud-cell"><span class="ap-hud-cell__label">LONG</span><span class="ap-hud-cell__value">128.5° E</span></div>
-    <div class="ap-hud-cell"><span class="ap-hud-cell__label">SESSION ID</span><span class="ap-hud-cell__value">GST-7B2A-EE19</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">GRID</span><span class="ap-hud-cell__value">MASKED</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">REGION</span><span class="ap-hud-cell__value">PUBLIC</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">COORD</span><span class="ap-hud-cell__value">비공개</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">SESSION</span><span class="ap-hud-cell__value">PUBLIC-2032</span></div>
     <div class="ap-hud-cell"><span class="ap-hud-cell__label">UPLINK</span><span class="ap-hud-cell__value">2032.05.12 23:45:31</span></div>
     <div class="ap-hud-cell ap-hud-cell--right">
       <span class="ap-hud-cell__label">SYSTEM STATUS</span>
@@ -143,27 +136,25 @@
     </div>
   </div>
 
-  <!-- ===== BOOT SEQUENCE BAR ===== -->
   <footer class="ap-boot">
     <div class="ap-boot__seq">
-      <span class="ap-boot__label">SYSTEM BOOT SEQUENCE</span>
+      <span class="ap-boot__label">ACCESS ROUTE</span>
       <ol class="ap-boot__steps">
-        <li class="done">INIT</li><li class="done">CHK</li><li class="done">LINK</li><li class="done">SYNC</li><li class="active">ACCESS</li>
+        <li class="done">INIT</li><li class="done">CHK</li><li class="done">MASK</li><li class="done">SYNC</li><li class="active">PUBLIC</li>
       </ol>
     </div>
     <div class="ap-boot__progress">
-      <span class="ap-boot__label">BOOT PROGRESS</span>
+      <span class="ap-boot__label">PUBLIC INDEX</span>
       <div class="ap-progress" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><i style="--pct:92%"></i></div>
       <span class="ap-boot__pct mono">92%</span>
     </div>
     <div class="ap-boot__eta">
-      <span class="ap-boot__label">ESTIMATED TIME</span>
-      <span class="mono ap-boot__time">00:00:02</span>
+      <span class="ap-boot__label">ROUTE</span>
+      <span class="mono ap-boot__time">MASKED</span>
     </div>
   </footer>
 
   <script src="../js/i18n.js"></script>
   <script src="../js/archive-menu.js"></script>
-
 </body>
 </html>

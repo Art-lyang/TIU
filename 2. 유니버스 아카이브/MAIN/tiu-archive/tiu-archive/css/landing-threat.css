@@ -14,6 +14,8 @@
   grid-template-columns: minmax(0, 0.62fr) minmax(22rem, 0.38fr);
   gap: var(--space-6);
   align-items: end;
+  width: min(100%, 1320px);
+  margin-inline: auto;
   margin-bottom: var(--space-5);
 }
 
@@ -54,12 +56,14 @@
 .lp-threat__body {
   display: grid;
   gap: var(--space-3);
+  width: min(100%, 1320px);
+  margin-inline: auto;
 }
 
 .lp-threat-map {
   position: relative;
-  min-height: min(34rem, 72vw);
-  aspect-ratio: 16 / 9;
+  min-height: clamp(18rem, 38vw, 30rem);
+  aspect-ratio: 16 / 7.4;
   border: var(--bw-thin) solid var(--border-default);
   background:
     radial-gradient(circle at 73% 42%, rgba(0,255,168,0.075), transparent 22%),
@@ -358,11 +362,7 @@
   }
 
   .lp-threat-map__slot {
-    left: var(--space-3);
-    right: var(--space-3);
-    top: auto;
-    bottom: var(--space-3);
-    width: auto;
+    width: min(18rem, calc(100% - 1rem));
   }
 
   .lp-map-intel__meta {

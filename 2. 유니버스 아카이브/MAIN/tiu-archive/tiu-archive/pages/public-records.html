@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
@@ -17,20 +17,15 @@
   <link rel="stylesheet" href="../css/landing-cards.css" />
   <link rel="stylesheet" href="../css/landing-archive.css" />
   <link rel="stylesheet" href="../css/landing-record-images.css" />
-  <link rel="stylesheet" href="../css/landing-threat.css" />
-  <link rel="stylesheet" href="../css/landing-map-sites.css" />
-  <link rel="stylesheet" href="../css/landing-dossiers.css" />
   <link rel="stylesheet" href="../css/mobile-overrides.css" />
 </head>
 <body class="lp-page public-records-page">
-
   <div class="grid-backdrop" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
-  <div class="ap-edge ap-edge--left" aria-hidden="true"><span>SYS::LANDING_v1.0 / NODE::PUBLIC_MIRROR / PUBLIC_INDEX_PASSIVE</span></div>
-  <div class="ap-edge ap-edge--right" aria-hidden="true"><span>GLOBAL-ARCHIVE / WORLD_INDEX_SLOT / OPERATIONAL</span></div>
+  <div class="ap-edge ap-edge--left" aria-hidden="true"><span>SYS::PUBLIC_RECORDS_v1.0 / NODE::MASKED / PUBLIC_INDEX_PASSIVE</span></div>
+  <div class="ap-edge ap-edge--right" aria-hidden="true"><span>TIU-ARCHIVE / KOREA_ARC_PUBLIC / OPERATIONAL</span></div>
 
-  <!-- ===== HEADER ===== -->
   <header class="ap-header">
     <div class="ap-brand">
       <span class="ap-brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4 L12 20 L21 4 M7 4 L12 14 L17 4" stroke-linejoin="miter"/></svg></span>
@@ -40,146 +35,190 @@
       <div class="ap-meta"><span class="ap-meta__label">ARCHIVE ID</span><span class="ap-meta__value">PUBLIC-HUB-2032</span></div>
       <div class="ap-meta"><span class="ap-meta__label">CLASSIFICATION</span><span class="ap-meta__value" data-i18n="classification_value">A-1 / 공개</span></div>
       <div class="ap-meta"><span class="ap-meta__label">LAST UPDATED</span><span class="ap-meta__value">2032.05.12</span></div>
-      <div class="ap-meta"><span class="ap-meta__label">SERVER NODE</span><span class="ap-meta__value">WORLD MIRROR 00</span></div>
+      <div class="ap-meta"><span class="ap-meta__label">SERVER NODE</span><span class="ap-meta__value" data-i18n="private_value">비공개</span></div>
     </div>
     <div class="ap-header__right">
-      <div class="ap-clearance"><span class="ap-clearance__label">CLEARANCE LEVEL</span><span class="ap-clearance__bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="ap-clearance__tag">ORANGE</span><span class="ap-clearance__dot" aria-hidden="true"></span></div>
+      <div class="ap-clearance"><span class="ap-clearance__label">CLEARANCE LEVEL</span><span class="ap-clearance__bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="ap-clearance__tag">PUBLIC</span><span class="ap-clearance__dot" aria-hidden="true"></span></div>
       <div class="ap-lang-switch"><button type="button" data-lang-btn="ko">한</button><button type="button" data-lang-btn="en">EN</button><button type="button" data-lang-btn="ja">日</button></div>
       <button class="ap-menu" aria-label="메뉴 열기" data-i18n-aria="menu_aria"><span></span><span></span><span></span></button>
     </div>
   </header>
 
-  <!-- ===== MAIN — 좌 카피 / 우 세계지도 슬롯 ===== -->
-  <main class="lp-main" id="archive-hub">
-
-    <!-- LEFT — Hero -->
+  <main class="lp-main lp-main--public" id="archive-hub">
     <section class="lp-hero">
       <h1 class="display-heading lp-title" data-i18n="public_main_title">공개 기록관</h1>
-      <p class="lp-subtitle" data-i18n="public_main_subtitle">빠른 공개 색인 노드</p>
-      <p class="lp-lede" data-i18n-html="public_main_lede">2032년 5월 12일 기준 공개 기록망 호출.<br/>사건 연표, 주요 권역, KR-INIT-001 단말 기록 빠른 색인.</p>
+      <p class="lp-subtitle" data-i18n="public_main_subtitle">TIU 공개 색인</p>
+      <p class="lp-lede" data-i18n-html="public_main_lede">처음 접속한 사용자를 위한 공개 기록관입니다.<br/>필라델피아에서 시작된 변이 바이러스 확산, 국가별 봉쇄, 한국권 사건, 주요 조직 단서를 빠르게 확인합니다.</p>
 
-      <!-- INFO STRIP -->
       <div class="lp-info">
-        <div class="lp-info__cell"><span class="lp-info__label">ARCHIVE SCOPE</span><span class="lp-info__value">GLOBAL</span></div>
-        <div class="lp-info__cell"><span class="lp-info__label">ACTIVE INDEX</span><span class="lp-info__value">PUBLIC LAYER</span></div>
-        <div class="lp-info__cell lp-info__cell--rate"><span class="lp-info__label">MAP ASSET</span><span class="lp-info__value">LINKED</span></div>
+        <div class="lp-info__cell"><span class="lp-info__label">ARCHIVE SCOPE</span><span class="lp-info__value">TIU WORLD</span></div>
+        <div class="lp-info__cell"><span class="lp-info__label">PUBLIC FOCUS</span><span class="lp-info__value">KOREA ARC</span></div>
+        <div class="lp-info__cell lp-info__cell--rate"><span class="lp-info__label">DETAILS</span><span class="lp-info__value">SORTED</span></div>
       </div>
 
-      <!-- 3 CTA BUTTONS -->
-      <div class="lp-cta-row">
-        <a class="lp-cta" href="#public-records">
-          <span class="lp-cta__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7 v5 l3 2"/></svg></span>
-          <span class="lp-cta__body"><span class="lp-cta__label">PUBLIC INDEX</span><span class="lp-cta__sub" data-i18n="cta1_title">공개 기록관 열람</span></span>
-          <span class="lp-cta__arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="lp-cta" href="landing.html#threat-map">
-          <span class="lp-cta__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4 v16 M5 4 L17 4 L14 8 L17 12 L5 12"/></svg></span>
-          <span class="lp-cta__body"><span class="lp-cta__label">THREAT INDEX</span><span class="lp-cta__sub" data-i18n="cta2_title">공개 위협 지도 확인</span></span>
-          <span class="lp-cta__arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="lp-cta" href="access-protocol.html">
-          <span class="lp-cta__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 H17 M13 7 L18 12 L13 17 M3 4 v16"/></svg></span>
-          <span class="lp-cta__body"><span class="lp-cta__label">ACCESS GATE</span><span class="lp-cta__sub" data-i18n="cta3_title">게스트 세션 관리</span></span>
-          <span class="lp-cta__arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
+      <nav class="lp-category-nav" aria-label="공개 기록관 카테고리" data-i18n-aria="public_category_nav_aria">
+        <a href="#primer"><span>01</span><strong data-i18n="public_nav_primer">세계관 입문</strong></a>
+        <a href="#timeline"><span>02</span><strong data-i18n="public_nav_timeline">발생 연표</strong></a>
+        <a href="#containment"><span>03</span><strong data-i18n="public_nav_containment">국가별 봉쇄도</strong></a>
+        <a href="#response-units"><span>04</span><strong data-i18n="public_nav_units">특수 대응 단위</strong></a>
+        <a href="#korea-incidents"><span>05</span><strong data-i18n="public_nav_incidents">한국권 사건</strong></a>
+        <a href="#faction-briefs"><span>06</span><strong data-i18n="public_nav_factions">세력 단서</strong></a>
+      </nav>
     </section>
 
-    <!-- RIGHT — Global Archive Map -->
-    <aside class="lp-map-panel">
+    <aside class="lp-map-panel lp-map-panel--brief">
       <div class="lp-map-panel__head">
-        <span class="lp-map-panel__title">GLOBAL ARCHIVE MAP</span>
-        <span class="lp-map-panel__sub">WORLD THREAT OVERLAY</span>
+        <span class="lp-map-panel__title">PUBLIC BRIEF</span>
+        <span class="lp-map-panel__sub">2032 ENTRY ROUTE</span>
       </div>
-      <div class="lp-map-panel__viewport lp-map-panel__viewport--status" aria-label="공개 기록망 상태">
-        <div class="lp-map-panel__summary">
-          <span class="lp-map-panel__summary-kicker">PUBLIC INDEX STATUS</span>
-          <strong data-i18n="map_panel_status_title">GLOBAL MAP MOVED TO ENTRY 002</strong>
-          <p data-i18n="map_panel_status_desc">세계지도 중복 제거. 글로벌 위협 지도에서 지점별 핵심 요약 갱신.</p>
-          <a class="lp-map-panel__jump" href="landing.html#threat-map" data-i18n="map_panel_status_link">OPEN THREAT MAP</a>
+      <div class="lp-map-panel__viewport lp-map-panel__viewport--brief" aria-label="공개 색인 요약" data-i18n-aria="public_brief_aria">
+        <div class="lp-brief-scope">
+          <span>START</span>
+          <strong>PHILADELPHIA</strong>
+          <p data-i18n="public_brief_start">필라델피아 붕괴 이후 변이 바이러스가 전 세계 봉쇄 체계를 흔들기 시작합니다.</p>
+        </div>
+        <div class="lp-brief-scope lp-brief-scope--mid">
+          <span>RESPONSE</span>
+          <strong>WALLS / UNITS</strong>
+          <p data-i18n="public_brief_response">국가별 방벽, 군·의료·민간 조직, 기업 물류권이 서로 다른 방식으로 대응합니다.</p>
+        </div>
+        <div class="lp-brief-scope lp-brief-scope--end">
+          <span>KOREA ARC</span>
+          <strong>RUMOR / INCIDENT</strong>
+          <p data-i18n="public_brief_korea">한국권 기록은 도시전설, 강원 산간 사건, 민간 갈취망, 특수 대응 기록으로 이어집니다.</p>
         </div>
       </div>
       <div class="lp-map-panel__status">
-        <div class="lp-map-panel__status-row"><span class="lp-map-panel__status-label">MAP ASSET STATUS</span><span class="lp-map-panel__status-rate">LINKED</span></div>
-        <div class="lp-map-panel__progress" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><i style="--pct:100%"></i></div>
-        <span class="lp-map-panel__last-update">LAST UPDATED 2032.05.12 23:45:31 KST</span>
+        <div class="lp-map-panel__status-row"><span class="lp-map-panel__status-label">READING ROUTE</span><span class="lp-map-panel__status-rate">OPEN</span></div>
+        <div class="lp-map-panel__progress" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"><i style="--pct:66%"></i></div>
+        <span class="lp-map-panel__last-update">PUBLIC INDEX / 2032.05.12 KST</span>
       </div>
     </aside>
   </main>
 
-  <!-- ===== 4 SECTOR CARDS ===== -->
-  <section class="lp-cards">
-    <a class="lp-card lp-card--01" href="landing.html#timeline-dossier"><span class="lp-card__num">01</span>
-      <div class="lp-card__body"><h3 class="lp-card__title" data-i18n="card1_title">발생 연표</h3>
-        <p class="lp-card__desc" data-i18n="card1_desc">1900년대 초부터 2032년까지의 주요 사건 기록</p>
-        <div class="lp-card__meta"><span>YEARS</span><span class="lp-card__meta-value">1908 — 2032</span></div></div></a>
-    <a class="lp-card lp-card--02" href="landing.html#threat-map"><span class="lp-card__num">02</span>
-      <div class="lp-card__body"><h3 class="lp-card__title" data-i18n="card2_title">글로벌 위협 지도</h3>
-        <p class="lp-card__desc" data-i18n="card2_desc">전 세계 감염 확산 현황과 위협 등급 분석</p>
-        <div class="lp-card__meta"><span>THREAT LEVEL</span><span class="lp-card__meta-value lp-card__meta-value--warn">SEVERE</span></div></div></a>
-    <a class="lp-card lp-card--03" href="landing.html#branch-dossier"><span class="lp-card__num">03</span>
-      <div class="lp-card__body"><h3 class="lp-card__title" data-i18n="card3_title">지부 · 대한민국</h3>
-        <p class="lp-card__desc" data-i18n="card3_desc">한국 내 거점, 도시, 생존 구역 및 주요 인프라</p>
-        <div class="lp-card__meta"><span>STATUS</span><span class="lp-card__meta-value lp-card__meta-value--ok">CONTAINED</span></div></div></a>
-    <a class="lp-card lp-card--04" href="landing.html#public-dossiers"><span class="lp-card__num">04</span>
-      <div class="lp-card__body"><h3 class="lp-card__title" data-i18n="card4_title">아카이브 상세 기록</h3>
-        <p class="lp-card__desc" data-i18n="card4_desc">세력, 지역, 사건 기록을 이어 보는 상세 색인</p>
-        <div class="lp-card__meta"><span>DEPTH</span><span class="lp-card__meta-value">DETAIL</span></div></div></a>
+  <section class="lp-cards lp-cards--public">
+    <a class="lp-card lp-card--01" href="#timeline"><span class="lp-card__num">01</span>
+      <div class="lp-card__body"><h3 class="lp-card__title" data-i18n="public_card_timeline_title">발생 연표</h3><p class="lp-card__desc" data-i18n="public_card_timeline_desc">필라델피아 붕괴를 중심축으로 변이 바이러스 확산 순서를 확인합니다.</p><div class="lp-card__meta"><span>PUBLIC</span><span class="lp-card__meta-value">SUMMARY</span></div></div></a>
+    <a class="lp-card lp-card--02" href="#containment"><span class="lp-card__num">02</span>
+      <div class="lp-card__body"><h3 class="lp-card__title" data-i18n="public_card_containment_title">국가별 봉쇄도</h3><p class="lp-card__desc" data-i18n="public_card_containment_desc">국가와 권역별 방벽 유지 상태를 그래프형 공개 지표로 확인합니다.</p><div class="lp-card__meta"><span>VIEW</span><span class="lp-card__meta-value">GRAPH</span></div></div></a>
+    <a class="lp-card lp-card--03" href="#response-units"><span class="lp-card__num">03</span>
+      <div class="lp-card__body"><h3 class="lp-card__title" data-i18n="public_card_units_title">특수 대응 단위</h3><p class="lp-card__desc" data-i18n="public_card_units_desc">White Shield, BMA, DG, 0과처럼 사건 현장에 걸린 대응 축을 구분합니다.</p><div class="lp-card__meta"><span>INDEX</span><span class="lp-card__meta-value lp-card__meta-value--ok">UNITS</span></div></div></a>
+    <a class="lp-card lp-card--04" href="#faction-briefs"><span class="lp-card__num">04</span>
+      <div class="lp-card__body"><h3 class="lp-card__title" data-i18n="public_card_factions_title">세력 단서</h3><p class="lp-card__desc" data-i18n="public_card_factions_desc">메리디언, DG, 0과, 해진회 등 한국권에서 먼저 마주칠 이름을 짧게 확인합니다.</p><div class="lp-card__meta"><span>DEPTH</span><span class="lp-card__meta-value">BRIEF</span></div></div></a>
   </section>
 
   <section class="lp-archive" id="public-records">
     <div class="lp-archive__head">
       <div>
-        <span class="lp-archive__kicker" data-i18n="archive_kicker">PUBLIC RECORDS / QUICK INDEX</span>
+        <span class="lp-archive__kicker" data-i18n="archive_kicker">PUBLIC RECORDS / ENTRY INDEX</span>
         <h2 class="lp-archive__title" data-i18n="archive_title">공개 기록관</h2>
       </div>
-      <p class="lp-archive__lede" data-i18n="archive_lede">2032 기준 사건 연표, 지역 현황, 주요 세력, 한국 지부 단말 기록 공개 색인.</p>
+      <p class="lp-archive__lede" data-i18n="archive_lede">전체 자료를 한 번에 펼치지 않고, 입문자가 먼저 알아야 할 기록만 분류해 보여주는 공개 색인입니다.</p>
     </div>
+
+    <div class="lp-public-primer" id="primer">
+      <article><span>WHAT HAPPENED</span><h3 data-i18n="public_primer_1_title">필라델피아에서 시작된 붕괴</h3><p data-i18n="public_primer_1_desc">TIU 세계관의 현재 재난은 EV-Σ로 분류되는 변이 바이러스성 매개체 확산에서 시작됩니다. 일반 독감처럼 퍼지는 병이 아니라, 감염 대상의 몸과 행동 양식을 변형시키는 사건으로 기록됩니다.</p></article>
+      <article><span>WHY WALLS MATTER</span><h3 data-i18n="public_primer_2_title">봉쇄선과 방벽</h3><p data-i18n="public_primer_2_desc">각 국가는 도시 봉쇄, 군사 방벽, 검역선, 의료 통제망을 서로 다른 속도로 운용합니다. 그래서 같은 사건도 지역에 따라 전쟁, 재난, 실종, 괴담으로 다르게 남습니다.</p></article>
+      <article><span>KOREA ENTRY</span><h3 data-i18n="public_primer_3_title">한국권 공개 단서</h3><p data-i18n="public_primer_3_desc">한국권 기록은 방벽 운용, 강원 산간 사건, 피해자 가족 갈취망, 기업·의료·군사 대응 축이 겹쳐 보입니다. 정확한 위치 코드와 지부 코드는 공개 색인에서 표시하지 않습니다.</p></article>
+    </div>
+
     <div class="lp-archive__grid">
-      <a class="lp-record lp-record--timeline" id="timeline" href="landing.html#timeline-dossier"><span class="lp-record__tag">ENTRY 001 / TIMELINE</span><span><h3 class="lp-record__title" data-i18n="record_timeline_title">발생 연표</h3><p class="lp-record__desc" data-i18n="record_timeline_desc">1908-2032 주요 사건 시간순 색인.</p></span><span class="lp-record__meta"><span>YEARS</span><strong>1908-2032</strong></span></a>
-      <a class="lp-record lp-record--threat" id="threat-map-record" href="landing.html#threat-map"><span class="lp-record__tag">ENTRY 002 / THREAT MAP</span><span><h3 class="lp-record__title" data-i18n="record_threat_title">글로벌 위협 지도</h3><p class="lp-record__desc" data-i18n="record_threat_desc">한국, 러시아, 중국, 필라델피아 등 주요 사건권 지도 표시.</p></span><span class="lp-record__meta"><span>VIEW</span><strong>GLOBAL</strong></span></a>
-      <a class="lp-record lp-record--branch" id="korea-branch" href="landing.html#branch-dossier"><span class="lp-record__tag">ENTRY 003 / KOREA BRANCH</span><span><h3 class="lp-record__title" data-i18n="record_branch_title">지부 · 대한민국</h3><p class="lp-record__desc" data-i18n="record_branch_desc">한국 방벽, KR-INIT-001, 강원 폐쇄 거점, 권한 불일치 로그.</p></span><span class="lp-record__meta"><span>NODE</span><strong>KR-PZ-10</strong></span></a>
-      <a class="lp-record lp-record--restricted" id="factions" href="landing.html#factions-dossier"><span class="lp-record__tag">ENTRY 004 / FACTIONS</span><span><h3 class="lp-record__title" data-i18n="record_factions_title">주요 세력</h3><p class="lp-record__desc" data-i18n="record_factions_desc">세력, 생활권, 물류권, 지역별 대응 분기 기록.</p></span><span class="lp-record__meta"><span>VIEW</span><strong>FACTIONS</strong></span></a>
+      <a class="lp-record lp-record--timeline" href="#timeline"><span class="lp-record__tag">ENTRY 001 / CHRONOLOGY</span><span><h3 class="lp-record__title" data-i18n="record_timeline_title">발생 연표</h3><p class="lp-record__desc" data-i18n="public_record_timeline_desc">필라델피아 붕괴, Ashfall City, 류큐 전선, 한국권 사건의 기본 순서를 빠르게 확인합니다.</p></span><span class="lp-record__meta"><span>YEARS</span><strong>2024-2032</strong></span></a>
+      <a class="lp-record lp-record--threat" href="#containment"><span class="lp-record__tag">ENTRY 002 / CONTAINMENT</span><span><h3 class="lp-record__title" data-i18n="public_record_containment_title">국가별 봉쇄도</h3><p class="lp-record__desc" data-i18n="public_record_containment_desc">대한민국, 일본, 미국, EU, 러시아, 중국의 공개 관측 봉쇄 상태를 비교합니다.</p></span><span class="lp-record__meta"><span>VIEW</span><strong>GRAPH</strong></span></a>
+      <a class="lp-record lp-record--branch" id="korea-incidents" href="#gangwon-case"><span class="lp-record__tag">ENTRY 003 / KOREA INCIDENT</span><span><h3 class="lp-record__title" data-i18n="public_record_gangwon_title">강원 산간 사건</h3><p class="lp-record__desc" data-i18n="public_record_gangwon_desc">정확 좌표와 지부 코드는 표시하지 않고, 사건이 남긴 공개 단서만 분리합니다.</p></span><span class="lp-record__meta"><span>ACCESS</span><strong>CODE</strong></span></a>
+      <a class="lp-record lp-record--restricted" href="#faction-briefs"><span class="lp-record__tag">ENTRY 004 / FACTION BRIEF</span><span><h3 class="lp-record__title" data-i18n="public_record_factions_title">주요 세력 단서</h3><p class="lp-record__desc" data-i18n="public_record_factions_desc">메리디언, DG, 0과, 해진회의 표면 활동을 처음 보는 사람이 이해할 수 있게 압축합니다.</p></span><span class="lp-record__meta"><span>VIEW</span><strong>BRIEF</strong></span></a>
     </div>
-    <div class="lp-signals" aria-label="Public records scope">
-      <article class="lp-signal"><span class="lp-signal__label" data-i18n="public_signal_1_label">PUBLIC SCOPE</span><p data-i18n="public_signal_1_desc">즉시 열람 가능한 사건, 권역, 지부, 세력 표면 기록.</p></article>
-      <article class="lp-signal"><span class="lp-signal__label" data-i18n="public_signal_2_label">DETAIL ROUTE</span><p data-i18n="public_signal_2_desc">각 항목은 아카이브 상세 기록의 원문 요약과 연결.</p></article>
-      <article class="lp-signal"><span class="lp-signal__label" data-i18n="public_signal_3_label">2032 INDEX</span><p data-i18n="public_signal_3_desc">현재 공개 색인은 2032년 재정렬본 기준.</p></article>
-    </div>
+
+    <section class="lp-public-panel" id="timeline" aria-labelledby="public-timeline-title">
+      <div class="lp-public-panel__head"><span>PUBLIC TIMELINE / QUICK READ</span><h3 id="public-timeline-title" data-i18n="public_timeline_title">발생 연표</h3><p data-i18n="public_timeline_desc">처음 읽는 사용자를 위한 공개용 요약입니다. 상세 원문과 사건 간 인과는 아카이브 상세에서 이어집니다.</p></div>
+      <div class="lp-public-timeline">
+        <article><time>2020</time><strong>GENESIS BREAK</strong><p data-i18n="public_timeline_2020">TS-Ω 관련 실험 통제 이탈. 불안정했던 EV-Σ가 접촉 과정에서 현재의 완전한 형태로 진화합니다.</p></article>
+        <article><time>2022</time><strong>PHILADELPHIA</strong><p data-i18n="public_timeline_2022">필라델피아에서 최초의 도시 붕괴가 기록됩니다. 변이 바이러스가 단일 사건을 넘어 권역 재난으로 확장되는 기점입니다.</p></article>
+        <article><time>2023</time><strong>ASHFALL CITY</strong><p data-i18n="public_timeline_2023">SHED ORDER 군체 실험 실패. 도시 인프라와 생체 조직이 뒤섞이는 사례가 확인됩니다.</p></article>
+        <article><time>2024</time><strong>FIRST CONTACT</strong><p data-i18n="public_timeline_2024_contact">TS-Ω Core 접촉권과 지배권 변동이 기록됩니다. 이후 각 국가와 조직은 서로 다른 방식으로 사건을 은폐하거나 대응합니다.</p></article>
+        <article><time>2024-2025</time><strong>THE EXODUS / RYUKYU LINE</strong><p data-i18n="public_timeline_2024_2025">미국 동부 해안 대피 물결, 일본 류큐 작전, CIPHER-MIRROR 가동이 겹치며 세계 대응 체계가 재편됩니다.</p></article>
+        <article><time>2025</time><strong>KOREA ARC</strong><p data-i18n="public_timeline_2025">한국권 방벽이 안정 운용 단계에 들어가고, 강원 산간 사건과 사후 처리 라인의 흔적이 공개 색인에 남습니다.</p></article>
+        <article><time>2032</time><strong>PUBLIC ARCHIVE</strong><p data-i18n="public_timeline_2032">2032 공개 기록관은 확인 가능한 사건과 세력 단서를 입문용 색인으로 재정렬한 상태입니다.</p></article>
+      </div>
+    </section>
+
+    <section class="lp-public-panel" id="containment" aria-labelledby="containment-title">
+      <div class="lp-public-panel__head"><span>PUBLIC METRICS / CONTAINMENT</span><h3 id="containment-title" data-i18n="public_containment_title">국가별 봉쇄도</h3><p data-i18n="public_containment_desc">숫자는 공개 기록관용 체감 지표입니다. 정확한 작전 좌표, 내부 코드, 실시간 방벽 값은 표시하지 않습니다.</p></div>
+      <div class="lp-meter-grid">
+        <article class="lp-meter" style="--pct:97%"><span data-i18n="country_korea">대한민국</span><strong>97.3%</strong><i></i><p data-i18n="public_meter_korea">White Shield 기반 정밀 방벽. 공개 기록상 가장 높은 유지율.</p></article>
+        <article class="lp-meter" style="--pct:71%"><span data-i18n="country_japan">일본</span><strong>71%</strong><i></i><p data-i18n="public_meter_japan">류큐 전선과 해상 검역선 중심. 지역별 편차 큼.</p></article>
+        <article class="lp-meter" style="--pct:44%"><span data-i18n="country_usa">미국</span><strong>44%</strong><i></i><p data-i18n="public_meter_usa">필라델피아 이후 동부 해안 난민 물결과 도시별 부분 봉쇄.</p></article>
+        <article class="lp-meter" style="--pct:58%"><span data-i18n="country_eu">EU 권역</span><strong>58%</strong><i></i><p data-i18n="public_meter_eu">국경·민간 순송로·연합군 대응이 겹쳐 안정과 충돌이 반복.</p></article>
+        <article class="lp-meter" style="--pct:36%"><span data-i18n="country_russia">러시아</span><strong>36%</strong><i></i><p data-i18n="public_meter_russia">Silent Belt 권역 확장. 통신·소리·이동 경로 손실 보고 다수.</p></article>
+        <article class="lp-meter" style="--pct:52%"><span data-i18n="country_china">중국</span><strong>52%</strong><i></i><p data-i18n="public_meter_china">Red Veil 권역 외부 방벽 유지. 내부 통제 실패 기록이 병존.</p></article>
+      </div>
+    </section>
+
+    <section class="lp-public-panel" id="response-units" aria-labelledby="units-title">
+      <div class="lp-public-panel__head"><span>PUBLIC INDEX / RESPONSE UNITS</span><h3 id="units-title" data-i18n="public_units_title">특수 대응 단위</h3><p data-i18n="public_units_desc">세계관을 처음 접하는 사용자가 사건 기록에서 반복적으로 보게 될 대응 축입니다.</p></div>
+      <div class="lp-brief-grid">
+        <article class="lp-brief-card"><span>WHITE SHIELD</span><h4 data-i18n="public_unit_white_title">대한민국 군 대응 체계</h4><p data-i18n="public_unit_white_desc">변이 바이러스 확산을 막기 위한 한국형 방벽·봉쇄 운용 축. 공개 기록에서는 봉쇄율과 현장 대응 흔적으로 등장합니다.</p></article>
+        <article class="lp-brief-card"><span>BMA</span><h4 data-i18n="public_unit_bma_title">무경계의료연맹</h4><p data-i18n="public_unit_bma_desc">봉쇄선과 검역선 사이에서 환자 기록, 응급 선별, 가족 통보 절차를 담당하는 국제 의료 협력망입니다.</p></article>
+        <article class="lp-brief-card"><span>DG</span><h4 data-i18n="public_unit_dg_title">방벽 장비와 정화 기술</h4><p data-i18n="public_unit_dg_desc">한국권 대응에서 정화면, 방호 장비, 방벽 기술과 연결되는 기업·기술 축입니다. 공개 페이지에서는 기능만 요약합니다.</p></article>
+        <article class="lp-brief-card"><span>0과</span><h4 data-i18n="public_unit_zero_title">기록 외 사후 처리 단서</h4><p data-i18n="public_unit_zero_desc">강원 산간 사건 이후 언급되는 회수·격리·기록 정리 라인. 정확한 편제와 위치는 표시하지 않습니다.</p></article>
+      </div>
+    </section>
+
+    <section class="lp-public-panel" id="gangwon-case" aria-labelledby="gangwon-title">
+      <div class="lp-public-panel__head"><span>CASE CHECK / KOREA ARC</span><h3 id="gangwon-title" data-i18n="public_gangwon_title">강원 산간 사건</h3><p data-i18n="public_gangwon_desc">공개 기록관에서는 사건의 의미만 확인합니다. 상세 좌표, 지부 코드, 내부 노드명은 표시하지 않습니다.</p></div>
+      <div class="lp-case-strip"><p data-i18n="public_gangwon_strip">방벽 운용 중 산간 권역에서 민간 감염자 처리, 시설 격리, 기록 회수 업무가 비정상적으로 누적된 사건군입니다. 이후 한국권 사후 처리 체계가 별도 라인으로 정리되는 계기가 됩니다.</p><button class="lp-record__action" type="button" data-case-open data-i18n="public_gangwon_button">사건번호 입력</button></div>
+    </section>
+
+    <section class="lp-public-panel" id="faction-briefs" aria-labelledby="factions-title">
+      <div class="lp-public-panel__head"><span>PUBLIC INDEX / FACTION BRIEFS</span><h3 id="factions-title" data-i18n="public_factions_title">주요 세력 단서</h3><p data-i18n="public_factions_desc">디테일한 조직 구조는 아카이브 상세 페이지에서 다루고, 여기서는 이름을 처음 보는 사람이 길을 잃지 않을 정도만 표시합니다.</p></div>
+      <div class="lp-brief-grid lp-brief-grid--factions">
+        <article class="lp-brief-card"><span>MERIDIAN</span><h4>메리디언</h4><p data-i18n="public_faction_meridian_desc">봉쇄 구역 물자, PMC, 저온 물류, 생물소재 거래와 연결되는 글로벌 기업권. 한국권에서는 물류와 회색경제의 흔적으로 먼저 보입니다.</p></article>
+        <article class="lp-brief-card"><span>DG</span><h4>DG</h4><p data-i18n="public_faction_dg_desc">한국 방벽과 정화 장비, 산업보안 외피, 의료·방산 기술 축에 걸친 이름입니다. 공식 조직 하나로 단순화해 읽으면 안 됩니다.</p></article>
+        <article class="lp-brief-card"><span>SECTION ZERO</span><h4>0과</h4><p data-i18n="public_faction_zero_desc">공식 편제에서 잘 드러나지 않는 사후 처리 단서. 강원 산간 사건, 회수 기록, 사라진 증언에서 간접적으로만 확인됩니다.</p></article>
+        <article class="lp-brief-card"><span>HAEJIN NETWORK</span><h4>해진회</h4><p data-i18n="public_faction_haejin_desc">피해자 가족에게 격리 정보와 생존 여부를 빌미로 접근하는 국내 범죄 네트워크. 세계의 진실보다 절망의 가격을 먼저 압니다.</p></article>
+      </div>
+    </section>
+
     <div class="lp-archive-route">
       <div>
         <span class="lp-archive-route__kicker" data-i18n="archive_route_kicker">NEXT / ARCHIVE DETAILS</span>
-        <strong data-i18n="archive_route_title">세부 기록은 아래 아카이브 상세 기록으로 연결.</strong>
-        <p data-i18n="archive_route_desc">공개 기록관은 빠른 색인. 연표, 한국 지부, 주요 세력, KR-INIT-001 단말 기록은 상세 기록에서 확장.</p>
+        <strong data-i18n="archive_route_title">더 깊은 기록은 아카이브 상세에서 이어집니다.</strong>
+        <p data-i18n="archive_route_desc">공개 기록관은 입문용 분류 허브입니다. 연표 원문, 전술 지도, 세력 구조, 단말 기록은 상세 아카이브에서 별도 페이지 단위로 확장합니다.</p>
       </div>
       <a class="lp-archive-route__link" href="landing.html#public-dossiers" data-i18n="archive_route_link">상세 기록 보기</a>
     </div>
-  </section><section class="lp-threat" id="threat-map">
-    <div class="lp-threat__head"><div><span class="lp-threat__kicker" data-i18n="threat_kicker">PUBLIC THREAT OVERLAY / 2032</span><h2 class="lp-threat__title" data-i18n="threat_title">글로벌 위협 지도</h2></div><p class="lp-threat__lede" data-i18n="threat_lede">2032 기준 사건권과 권역 흐름. 마커 선택 시 사건명, 위협 유형, 대응 기록 갱신.</p></div>
-    <div class="lp-threat__body"><div class="lp-threat-map" aria-label="2032 공개 글로벌 위협 지도" data-map-scope><img class="lp-threat-map__image" src="../assets/world_tactical_map_clean.svg" alt="" /><div class="lp-threat-map__grid" aria-hidden="true"></div><div class="lp-threat-map__slot lp-map-intel" data-map-intel><span data-map-intel-status>KOREA / CONTROLLED</span><strong data-map-intel-title>KOREA CONTROLLED</strong><em data-map-intel-desc>97.3% 봉쇄 성공률. White Shield 정밀 봉쇄, KR-INIT-001 권한 불일치 로그, 중앙 분류 경로.</em></div><button type="button" class="lp-threat-map__pin lp-threat-map__pin--kr lp-map-site" data-map-site data-map-status="KOREA / CONTROLLED" data-map-title="KOREA CONTROLLED" data-map-desc="97.3% 봉쇄 성공률. White Shield 정밀 봉쇄, KR-INIT-001 권한 불일치 로그, 중앙 분류 경로." data-map-status-en="KOREA / CONTROLLED" data-map-title-en="KOREA CONTROLLED" data-map-desc-en="97.3% containment success. White Shield precision walls, KR-INIT-001 permission-conflict logs, and the central classification route." data-map-status-ja="KOREA / CONTROLLED" data-map-title-ja="KOREA CONTROLLED" data-map-desc-ja="封鎖成功率97.3%。White Shield精密防壁、KR-INIT-001権限不一致ログ、中央分類経路。" aria-pressed="false">KR</button><button type="button" class="lp-threat-map__pin lp-threat-map__pin--phi lp-threat-map__pin--hot lp-map-site" data-map-site data-map-status="PHILADELPHIA / Z-Ω" data-map-title="PHILADELPHIA ZONE" data-map-desc="2024. Philadelphia Z-Ω 지정. 대규모 봉쇄 실패, THE EXODUS 동부 해안 난민 물결, TS-Ω 영향권 내륙 전진 기록." data-map-status-en="PHILADELPHIA / Z-Ω" data-map-title-en="PHILADELPHIA ZONE" data-map-desc-en="2024. Philadelphia Z-Ω designation. Large containment failure, THE EXODUS east-coast refugee wave, and TS-Ω inland influence record." data-map-status-ja="PHILADELPHIA / Z-Ω" data-map-title-ja="PHILADELPHIA ZONE" data-map-desc-ja="2024年。Philadelphia Z-Ω指定。大規模封鎖失敗、THE EXODUS東海岸難民波、TS-Ω影響圏の内陸進行記録。" aria-pressed="false">PHI</button><button type="button" class="lp-threat-map__pin lp-threat-map__pin--ash lp-map-site" data-map-site data-map-status="ASHFALL / Z-3" data-map-title="ASHFALL CITY" data-map-desc="2024. Ashfall City Z-3 지정. SHED ORDER 군체 실험 실패, 도시 구조 생체 조직 전환, Ember Corps 발생권." data-map-status-en="ASHFALL / Z-3" data-map-title-en="ASHFALL CITY" data-map-desc-en="2024. Ashfall City Z-3 designation. SHED ORDER colony-experiment failure, urban-structure biomass conversion, and Ember Corps origin zone recorded." data-map-status-ja="ASHFALL / Z-3" data-map-title-ja="ASHFALL CITY" data-map-desc-ja="2024年。Ashfall City Z-3指定。SHED ORDER群体実験失敗、都市構造の生体組織転換、Ember Corps発生圏。" aria-pressed="false">ASH</button><button type="button" class="lp-threat-map__pin lp-threat-map__pin--ru lp-map-site" data-map-site data-map-status="RUSSIA / SILENT BELT" data-map-title="SILENT BELT" data-map-desc="러시아 광역 침묵 지대. 시드 스프레더 확산, 음향 감쇠, 월 1.2km 외연 성장 기록." data-map-status-en="RUSSIA / SILENT BELT" data-map-title-en="SILENT BELT" data-map-desc-en="A broad Russian silence zone. Seed Spreader expansion, acoustic dampening, and a 1.2 km monthly edge-growth record." data-map-status-ja="RUSSIA / SILENT BELT" data-map-title-ja="SILENT BELT" data-map-desc-ja="ロシア広域沈黙地帯。Seed Spreader拡散、音響減衰、月1.2kmの外縁成長記録。" aria-pressed="false">SB</button><button type="button" class="lp-threat-map__pin lp-threat-map__pin--cn lp-map-site" data-map-site data-map-status="CHINA / RED VEIL" data-map-title="RED VEIL REGION" data-map-desc="도시 밀집권 봉쇄선. 내부 통제 실패 기록, 외부 방벽 유지, 혼합 개체 침투 보고." data-map-status-en="CHINA / RED VEIL" data-map-title-en="RED VEIL REGION" data-map-desc-en="Urban-density blockade line. Internal control failure records, exterior wall maintenance, and mixed-entity infiltration reports." data-map-status-ja="CHINA / RED VEIL" data-map-title-ja="RED VEIL REGION" data-map-desc-ja="都市密集圏の封鎖線。内部統制失敗記録、外部防壁維持、混合個体侵入報告。" aria-pressed="false">RV</button></div>
-      <div class="lp-threat__list lp-threat__list--summary"><article class="lp-threat-region lp-threat-region--summary"><span data-i18n="threat_note_label">MAP INDEX</span><strong data-i18n="threat_note_title">WORLD REFERENCE LAYER</strong><p data-i18n="threat_note_desc">주요 권역과 사건 위치를 빠르게 찾는 공개 지도 레이어.</p></article></div></div>
-  </section><section class="lp-dossiers" id="public-dossiers">
-    <div class="lp-dossiers__head"><span data-i18n="dossiers_kicker">ARCHIVE DETAILS / WORLD INDEX</span><h2 data-i18n="dossiers_title">아카이브 상세 기록</h2><p data-i18n="dossiers_lede">공개 색인 확장. 발생 연표, EV-Σ 확산, 세력 구도, KR-INIT-001 단말 기록.</p></div>
-    <nav class="lp-dossier-nav" aria-label="Archive detail categories"><a href="landing.html#timeline-dossier"><span>01</span><strong data-i18n="dossier_nav_timeline">Chronology</strong><em data-i18n="dossier_nav_timeline_desc">연도순 사건 기록</em></a><a href="landing.html#threat-map"><span>02</span><strong data-i18n="dossier_nav_map">Threat Map</strong><em data-i18n="dossier_nav_map_desc">세계 권역 지도</em></a><a href="landing.html#ev-spread-dossier"><span>03</span><strong data-i18n="dossier_nav_spread">EV-Σ Spread</strong><em data-i18n="dossier_nav_spread_desc">대표 확산 사건</em></a><a href="landing.html#factions-dossier"><span>04</span><strong data-i18n="dossier_nav_factions">Factions</strong><em data-i18n="dossier_nav_factions_desc">표면 세력 구도</em></a><a href="landing.html#branch-dossier"><span>05</span><strong data-i18n="dossier_nav_branch">KR-INIT-001</strong><em data-i18n="dossier_nav_branch_desc">한국 지부 기록</em></a></nav>
-    <div class="lp-dossiers__grid"><article class="lp-dossier" id="timeline-dossier"><span class="lp-dossier__tag">ENTRY 001</span><h3 data-i18n="dossier_timeline_title">발생 연표</h3><ol><li><strong>1908</strong><span data-i18n="timeline_1908">Tunguska Event. 시베리아 대폭발, 충돌구 부재, 공간 재작성 계열 이상 사건으로 재분류.</span></li><li><strong>1945</strong><span data-i18n="timeline_1945">Operation Paperclip. 전후 연구자 이송, 생체·군의료 연구 계열 재편.</span></li><li><strong>1980</strong><span data-i18n="timeline_1980">Rendlesham Forest. 발광체 접촉, 기호 수기, 48시간 기억 손실 기록.</span></li><li><strong>2020-2024</strong><span data-i18n="timeline_2020_genesis">GENESIS BREAK 전조기. EV-Σ 관련 징후와 통제 실패 가능성이 누적된 시기.</span></li><li><strong>2024</strong><span data-i18n="timeline_2024_phi">PHILADELPHIA Z-Ω 지정. 대규모 봉쇄 실패. THE EXODUS 동부 해안 난민 물결의 직접 기점.</span></li><li><strong>2024</strong><span data-i18n="timeline_2024_ash">ASHFALL CITY Z-3. SHED ORDER 군체 실험 실패. 도시 구조 생체 조직 전환 기록.</span></li><li><strong>2024</strong><span data-i18n="timeline_2024_contact">FIRST CONTACT / DOMINION. TS-Ω Core 접촉권과 이후 지배권 변동 기록.</span></li><li><strong>2024-2025</strong><span data-i18n="timeline_2024_2025_exodus">THE EXODUS와 류큐 전선 재편. 미국 동부 해안 대피 물결, 일본 류큐 작전, CIPHER-MIRROR 가동.</span></li><li><strong>2025</strong><span data-i18n="timeline_2025_kr">KR-INIT-001. NADL 4계층 방벽 안정 운용, 이중철 부임, 지부 함락과 5인 비상 탈출 기록.</span></li><li><strong>2032</strong><span data-i18n="timeline_2032">PUBLIC ARCHIVE 2032. 확인 사건권, 국가 대응, 세력 구도, KR-INIT-001 단말 기록 통합 색인.</span></li></ol></article>
-      <article class="lp-dossier" id="ev-spread-dossier"><span class="lp-dossier__tag">ENTRY 002</span><h3 data-i18n="dossier_spread_title">EV-Σ 확산 기록</h3><p data-i18n="dossier_spread_desc">도시 단위 붕괴와 권역별 봉쇄선. 공개 아카이브 기준 대표 사건 네 건.</p><div class="lp-dossier__meta"><span>AXIS</span><strong>PHI / ASH / SB / RV</strong></div></article>
-      <article class="lp-dossier" id="factions-dossier"><span class="lp-dossier__tag">ENTRY 003</span><h3 data-i18n="dossier_factions_title">주요 세력과 생활권</h3><p data-i18n="dossier_factions_desc">국가 대응 체계, 비공식 조직, 민간 물류권, 생존 공동체. 공개 색인은 현장 기록에 드러난 표면 활동만 연결.</p><div class="lp-dossier__meta"><span>VIEW</span><strong>FACTION+LIFE</strong></div></article>
-      <article class="lp-dossier" id="branch-dossier"><span class="lp-dossier__tag">ENTRY 004</span><h3 data-i18n="dossier_branch_title">한국 지부 KR-INIT-001</h3><p data-i18n="dossier_branch_desc">강원 폐쇄 거점 배치 운용진. 한국 방벽, 산간 변종체 기록, 대피소 행정, 복원 단말 로그.</p><div class="lp-dossier__meta"><span>FOCUS</span><strong>KR-PZ-10</strong></div></article></div>
-  </section><!-- ===== HUD INFO STRIP ===== -->
+  </section>
+
+  <div class="case-modal" data-case-modal hidden role="dialog" aria-modal="true" aria-labelledby="case-modal-title">
+    <div class="case-modal__scrim" data-case-close></div>
+    <section class="case-modal__panel">
+      <button class="case-modal__close" type="button" data-case-close aria-label="닫기" data-i18n-aria="close_aria"></button>
+      <span class="case-modal__kicker">CASE CHECK / GANGWON</span>
+      <h2 id="case-modal-title" data-i18n="case_modal_title">강원 산간 사건 기록</h2>
+      <div class="case-modal__gate" data-case-gate>
+        <p data-i18n="case_modal_gate">사건번호를 입력하면 공개 가능한 요약 기록을 표시합니다.</p>
+        <label class="case-modal__field"><span>CASE CODE</span><input type="text" data-case-code placeholder="GANGWON" autocomplete="off" /></label>
+        <button type="button" data-case-submit data-i18n="case_modal_submit">확인</button>
+        <em data-case-error hidden data-i18n="case_modal_error">사건번호가 일치하지 않습니다.</em>
+        <small data-i18n="case_modal_hint">힌트: 강원 권역의 영문 표기.</small>
+      </div>
+      <div class="case-modal__content" data-case-content hidden>
+        <p data-i18n="case_modal_summary">공개 요약: 강원 산간 권역에서 방벽 운용 중 민간 감염자 처리, 시설 격리, 기록 회수 업무가 집중 발생했습니다. 해당 사건 이후 한국권 사후 처리 라인이 별도로 정리되었다는 흔적이 남아 있습니다.</p>
+        <p data-i18n="case_modal_omitted">표시 제외: 정확 좌표, 지부 코드, 내부 노드명, 현장 인원 실명 전체 목록.</p>
+      </div>
+    </section>
+  </div>
+
   <div class="ap-hud-strip">
-    <div class="ap-hud-cell">
-      <span class="ap-hud-cell__label">SECTOR ANALYSIS</span>
-      <span class="ap-hud-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-    </div>
-    <div class="ap-hud-cell"><span class="ap-hud-cell__label">GRID</span><span class="ap-hud-cell__value">WTH-34A</span></div>
-    <div class="ap-hud-cell"><span class="ap-hud-cell__label">SCOPE</span><span class="ap-hud-cell__value">GLOBAL</span></div>
-    <div class="ap-hud-cell"><span class="ap-hud-cell__label">LAYER</span><span class="ap-hud-cell__value">PUBLIC</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">SECTOR ANALYSIS</span><span class="ap-hud-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">GRID</span><span class="ap-hud-cell__value">MASKED</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">SCOPE</span><span class="ap-hud-cell__value">PUBLIC</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">LAYER</span><span class="ap-hud-cell__value">KOREA ARC</span></div>
     <div class="ap-hud-cell"><span class="ap-hud-cell__label">RECORD ID</span><span class="ap-hud-cell__value">PUB-LP-2032</span></div>
     <div class="ap-hud-cell"><span class="ap-hud-cell__label">UPLINK</span><span class="ap-hud-cell__value">2032.05.12 23:45:31</span></div>
     <div class="ap-hud-cell ap-hud-cell--right"><span class="ap-hud-cell__label">SYSTEM STATUS</span><span class="ap-hud-cell__value ap-hud-cell__value--ok">OPERATIONAL</span><i class="dot dot--ok" aria-hidden="true"></i></div>
   </div>
 
-  <!-- ===== FOOTER ===== -->
   <footer class="lp-footer">
     <span>TIU UNIVERSE ARCHIVE PROJECT © 2032</span>
     <nav class="lp-footer__links"><a href="#">TERMS</a><a href="#">PRIVACY</a><a href="#">CONTACT</a></nav>
@@ -187,8 +226,6 @@
 
   <script src="../js/i18n.js"></script>
   <script src="../js/archive-menu.js"></script>
-  <script src="../js/landing-map-sites.js"></script>
+  <script src="../js/public-records.js"></script>
 </body>
 </html>
-
-

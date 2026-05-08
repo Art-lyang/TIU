@@ -8,13 +8,15 @@
 
 /* ===== PAGE SHELL ===================================================== */
 .ap-page {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
-  grid-template-rows: var(--header-height) 1fr var(--hud-strip-height) var(--footer-height);
+  grid-template-rows: var(--header-height) auto var(--hud-strip-height) auto;
   background:
     radial-gradient(ellipse at 70% 60%, rgba(255, 90, 0, 0.06) 0%, transparent 50%),
     var(--bg-base);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: max(0px, env(safe-area-inset-bottom));
 }
 
 /* ===== MAIN LAYOUT ==================================================== */
@@ -22,9 +24,9 @@
   display: grid;
   grid-template-columns: 5fr 7fr;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   min-width: 0;
-  min-height: 0;
+  min-height: calc(100dvh - var(--header-height) - var(--hud-strip-height) - var(--footer-height));
 }
 
 /* ===== LEFT COLUMN — 카피 + 게스트 박스 컨테이너 ===================== */
@@ -34,9 +36,9 @@
   gap: var(--space-4);
   position: relative;
   z-index: var(--z-raised);
-  overflow-y: auto;
+  overflow: visible;
   min-width: 0;
-  min-height: 0;
+  min-height: auto;
 }
 
 .ap-title {

@@ -1,8 +1,12 @@
 .archive-menu {
   position: fixed;
-  inset: 0;
+  top: calc(var(--header-height) + 0.45rem);
+  right: clamp(0.5rem, 1.6vw, 1.25rem);
   z-index: var(--z-modal);
+  width: min(24rem, calc(100vw - 1rem));
+  max-height: calc(100dvh - var(--header-height) - 1rem);
   color: var(--text-primary);
+  pointer-events: none;
 }
 
 .archive-menu[hidden] {
@@ -10,37 +14,39 @@
 }
 
 body.archive-menu-open {
-  overflow: hidden;
+  overflow: auto;
 }
 
 .archive-menu__scrim {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  background:
-    linear-gradient(90deg, rgba(5, 5, 6, 0.94), rgba(8, 8, 9, 0.82)),
-    radial-gradient(circle at 82% 18%, rgba(255, 106, 0, 0.14), transparent 34%);
-  backdrop-filter: blur(10px);
+  z-index: -1;
+  background: transparent;
+  pointer-events: auto;
 }
 
 .archive-menu__panel {
   position: relative;
-  min-height: 100%;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
-  padding:
-    max(5.75rem, env(safe-area-inset-top))
-    clamp(1.25rem, 7vw, 6rem)
-    max(1.5rem, env(safe-area-inset-bottom));
+  gap: 0.55rem;
+  max-height: inherit;
+  overflow-y: auto;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 106, 0, 0.32);
+  background:
+    linear-gradient(180deg, rgba(15, 15, 17, 0.98), rgba(8, 8, 10, 0.96)),
+    var(--bg-surface);
+  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.52), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  pointer-events: auto;
 }
 
 .archive-menu__head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1.5rem;
-  border-bottom: 1px solid rgba(255, 106, 0, 0.24);
-  padding-bottom: 1rem;
+  gap: 1rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(255, 106, 0, 0.2);
 }
 
 .archive-menu__kicker,
@@ -54,32 +60,35 @@ body.archive-menu-open {
 
 .archive-menu__kicker {
   display: block;
+  margin-bottom: 0.2rem;
   color: var(--accent);
-  font-size: var(--fs-micro);
-  margin-bottom: 0.55rem;
+  font-size: var(--fs-nano);
 }
 
 .archive-menu__title {
   margin: 0;
-  font-size: clamp(2.4rem, 7vw, 6rem);
-  line-height: 0.95;
+  color: var(--text-primary);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  line-height: 1.05;
   font-weight: 900;
   word-break: keep-all;
 }
 
 .archive-menu__status {
+  display: block;
+  margin-top: 0.35rem;
   color: var(--text-muted);
   font-size: var(--fs-nano);
 }
 
 .archive-menu__close {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 1.9rem;
+  height: 1.9rem;
   display: grid;
   place-items: center;
   flex: 0 0 auto;
   border: 1px solid var(--panel-border);
-  background: rgba(13, 13, 14, 0.86);
+  background: rgba(8, 8, 10, 0.92);
   color: var(--text-secondary);
   cursor: pointer;
 }
@@ -95,7 +104,7 @@ body.archive-menu-open {
 .archive-menu__close::after {
   content: "";
   grid-area: 1 / 1;
-  width: 1.1rem;
+  width: 1rem;
   height: 1px;
   background: currentColor;
 }
@@ -109,35 +118,34 @@ body.archive-menu-open {
 }
 
 .archive-menu__links {
-  align-self: center;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  width: min(100%, 980px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.08);
+  grid-template-columns: 1fr;
+  gap: 0.35rem;
 }
 
 .archive-menu__link {
   min-width: 0;
-  min-height: 8.5rem;
+  min-height: 3.1rem;
   display: grid;
-  align-content: space-between;
-  gap: 1.5rem;
-  padding: clamp(1rem, 3vw, 1.75rem);
-  background: rgba(9, 9, 10, 0.84);
+  align-content: center;
+  gap: 0.25rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.035);
   color: inherit;
   text-decoration: none;
 }
 
 .archive-menu__link:hover,
 .archive-menu__link:focus-visible {
-  background: rgba(255, 106, 0, 0.11);
-  outline: 1px solid rgba(255, 106, 0, 0.72);
-  outline-offset: -1px;
+  border-color: rgba(255, 106, 0, 0.74);
+  background: rgba(255, 106, 0, 0.1);
+  outline: none;
 }
 
 .archive-menu__link[aria-current="page"] {
   background: rgba(255, 106, 0, 0.16);
+  border-color: rgba(255, 106, 0, 0.52);
 }
 
 .archive-menu__code {
@@ -147,16 +155,19 @@ body.archive-menu-open {
 
 .archive-menu__label {
   display: block;
-  font-size: clamp(1.25rem, 3.2vw, 2.45rem);
+  color: var(--text-primary);
+  font-size: 0.92rem;
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.15;
   word-break: keep-all;
 }
 
 .archive-menu__desc {
+  display: block;
+  margin-top: 0.25rem;
   color: var(--text-muted);
   font-size: var(--fs-nano);
-  line-height: 1.7;
+  line-height: 1.55;
 }
 
 html[lang="ko"] .archive-menu__desc,
@@ -169,7 +180,9 @@ html[lang="ja"] .archive-menu__desc {
 .archive-menu__foot {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: var(--fs-nano);
@@ -178,29 +191,14 @@ html[lang="ja"] .archive-menu__desc {
 }
 
 @media (max-width: 760px) {
-  .archive-menu__panel {
-    padding: 5.25rem 1rem 1rem;
-    gap: 1.25rem;
-  }
-
-  .archive-menu__head,
-  .archive-menu__foot {
-    gap: 0.75rem;
-  }
-
-  .archive-menu__title {
-    font-size: clamp(2rem, 14vw, 3.5rem);
-    line-height: 1;
-  }
-
-  .archive-menu__links {
-    grid-template-columns: 1fr;
-    align-self: stretch;
+  .archive-menu {
+    left: auto;
+    right: 0.5rem;
+    width: min(23rem, calc(100vw - 1rem));
   }
 
   .archive-menu__link {
-    min-height: 6.25rem;
-    gap: 0.9rem;
+    min-height: 3rem;
   }
 
   .archive-menu__foot {

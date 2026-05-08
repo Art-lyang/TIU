@@ -136,7 +136,8 @@
   /* ===== LANDING PAGE — 모바일 stack ================================== */
   .lp-page {
     grid-template-rows: var(--header-height) auto auto auto auto auto var(--hud-strip-height) auto;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
   .lp-main {
     grid-template-columns: 1fr;

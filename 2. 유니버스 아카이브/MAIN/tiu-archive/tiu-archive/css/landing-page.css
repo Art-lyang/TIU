@@ -8,7 +8,7 @@
 
 /* ===== PAGE SHELL ===================================================== */
 .lp-page {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   grid-template-rows:
     var(--header-height)        /* 헤더 */
@@ -19,7 +19,8 @@
   background:
     radial-gradient(ellipse at 75% 35%, rgba(255, 90, 0, 0.05) 0%, transparent 55%),
     var(--bg-base);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .archive-page .lp-archive,
@@ -36,7 +37,7 @@
   padding: var(--space-8) var(--space-10) var(--space-6);
   position: relative;
   z-index: var(--z-raised);
-  overflow: hidden;
+  overflow: visible;
   min-height: 0;            /* grid 자식 overflow 방지 */
 }
 
@@ -75,3 +76,25 @@
 
 @keyframes lp-rise { from { opacity: 0; transform: translateY(14px); } }
 @keyframes lp-fade { from { opacity: 0; } }
+
+.lp-main {
+  min-height: auto;
+}
+
+#archive-hub,
+#public-records,
+#primer,
+#timeline,
+#containment,
+#response-units,
+#korea-incidents,
+#gangwon-case,
+#faction-briefs,
+#threat-map,
+#timeline-dossier,
+#ev-spread-dossier,
+#factions-dossier,
+#branch-dossier,
+#public-dossiers {
+  scroll-margin-top: calc(var(--header-height) + 1rem);
+}

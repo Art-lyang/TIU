@@ -7,7 +7,7 @@
   flex-direction: column;
   gap: var(--space-5);
   min-width: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* ===== TITLE BLOCK =================================================== */
@@ -26,6 +26,16 @@
     -1px -1px 0 rgba(207, 207, 207, 0.05);
   filter: contrast(1.08);
   word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+html[lang="en"] .lp-title {
+  overflow-wrap: anywhere;
+}
+
+html[lang="ja"] .lp-title {
+  word-break: normal;
+  line-break: strict;
 }
 
 .lp-subtitle {
@@ -43,7 +53,14 @@
   line-height: var(--leading-relaxed);
   color: var(--text-secondary);
   margin: 0;
-  max-width: 620px;
+  max-width: min(620px, 100%);
+  overflow-wrap: break-word;
+}
+
+html[lang="ja"] .lp-lede {
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  line-break: strict;
 }
 
 /* ===== INFO STRIP (큰 정보 박스) ===================================== */
