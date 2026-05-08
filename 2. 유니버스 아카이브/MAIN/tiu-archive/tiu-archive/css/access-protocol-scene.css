@@ -1,0 +1,181 @@
+/* ==========================================================================
+   ACCESS PROTOCOL — Right Cinematic Scene
+   --------------------------------------------------------------------------
+   진짜 시네마틱 이미지 배경 + 위에 layer로 올린 우측 위젯/경고 박스.
+   기존 CSS mock(게이트, 천장 라이트, 모니터 클러스터)은 이미지에 이미
+   포함되어 있으므로 모두 제거.
+   ========================================================================== */
+
+.ap-right {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-void);
+  background-image:
+    linear-gradient(90deg,
+      rgba(8, 8, 10, 0.68) 0%,
+      rgba(8, 8, 10, 0.38) 20%,
+      rgba(8, 8, 10, 0.08) 48%,
+      rgba(8, 8, 10, 0.18) 100%),
+    url('../assets/scene-archive-vault.jpg');
+  background-size: 100% 100%, cover;
+  background-position: center, 58% center;
+  background-repeat: no-repeat;
+}
+
+/* ===== 좌측 페이드 (좌측 카피 영역으로 자연스럽게 이어지게) =========== */
+.ap-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      var(--bg-base) 0%,
+      rgba(11, 11, 12, 0.78) 8%,
+      rgba(11, 11, 12, 0.44) 20%,
+      rgba(11, 11, 12, 0.08) 40%,
+      transparent 62%),
+    radial-gradient(ellipse at 54% 42%,
+      rgba(232, 230, 225, 0.09) 0%,
+      transparent 34%),
+    radial-gradient(ellipse at 36% 78%,
+      rgba(255, 90, 0, 0.10) 0%,
+      transparent 46%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===== 미세 오렌지 글로우 오버레이 (게이트 부근 강조) ================ */
+.ap-right::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 62% 55%,
+    rgba(255, 90, 0, 0.10) 0%,
+    transparent 45%);
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+/* ===== ARCHIVE NETWORK STATUS 위젯 (우측 중간, 이미지 위 layer) ====== */
+.ap-net-status {
+  position: absolute;
+  top: 50%;
+  right: var(--space-8);
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 6px;
+  padding: var(--space-3) var(--space-4);
+  border: var(--bw-thin) solid var(--border-default);
+  background: rgba(11, 11, 12, 0.78);
+  backdrop-filter: blur(6px);
+  z-index: 3;
+  min-width: 200px;
+}
+.ap-net-status__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+}
+.ap-net-status__value {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  letter-spacing: var(--tracking-wider);
+  color: var(--status-online);
+}
+
+/* ===== 보안 경고 (우하단) =========================================== */
+.ap-warning {
+  position: absolute;
+  bottom: var(--space-8); right: var(--space-8);
+  max-width: 260px;
+  padding: var(--space-2) var(--space-3);
+  display: grid; grid-template-columns: auto 1fr;
+  gap: var(--space-2);
+  background: rgba(11, 11, 12, 0.78);
+  backdrop-filter: blur(8px);
+  border: var(--bw-thin) solid var(--border-default);
+  z-index: 3;
+  opacity: 0.82;
+  width: auto;
+}
+.ap-warning__icon {
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.ap-warning p {
+  margin: 0;
+  font-size: var(--fs-nano);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+  min-width: 0;
+  word-break: keep-all;
+}
+
+/* ===== TIU 시네마틱 코너 마커 (좌상단, 분위기 강화 데코) ============= */
+.ap-scene-marker {
+  position: absolute;
+  top: var(--space-6); left: var(--space-6);
+  display: flex; flex-direction: column; gap: 2px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  z-index: 3;
+}
+.ap-scene-marker__id { color: var(--accent); }
+
+@media (max-width: 1180px) {
+  .ap-right {
+    order: 1;
+    min-height: 220px;
+    background-position: center 38%;
+  }
+
+  .ap-right::before {
+    background: linear-gradient(to bottom,
+      transparent 45%,
+      rgba(11, 11, 12, 0.84) 100%);
+  }
+
+  .ap-scene-marker {
+    top: var(--space-3);
+    left: var(--space-3);
+    font-size: 9px;
+  }
+
+  .ap-net-status {
+    top: auto;
+    bottom: var(--space-3);
+    right: var(--space-3);
+    transform: none;
+    min-width: auto;
+    padding: 6px var(--space-3);
+  }
+
+  .ap-warning {
+    left: var(--space-3);
+    right: auto;
+    bottom: var(--space-3);
+    max-width: min(460px, calc(100% - 260px));
+    padding: 6px var(--space-3);
+  }
+
+  .ap-warning p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 620px) {
+  .ap-warning {
+    right: auto;
+    bottom: 76px;
+    max-width: calc(100% - 24px);
+    background: rgba(11, 11, 12, 0.86);
+    opacity: 0.96;
+  }
+}

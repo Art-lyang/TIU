@@ -1,0 +1,209 @@
+.archive-menu {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  color: var(--text-primary);
+}
+
+.archive-menu[hidden] {
+  display: none;
+}
+
+body.archive-menu-open {
+  overflow: hidden;
+}
+
+.archive-menu__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 5, 6, 0.94), rgba(8, 8, 9, 0.82)),
+    radial-gradient(circle at 82% 18%, rgba(255, 106, 0, 0.14), transparent 34%);
+  backdrop-filter: blur(10px);
+}
+
+.archive-menu__panel {
+  position: relative;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding:
+    max(5.75rem, env(safe-area-inset-top))
+    clamp(1.25rem, 7vw, 6rem)
+    max(1.5rem, env(safe-area-inset-bottom));
+}
+
+.archive-menu__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-bottom: 1px solid rgba(255, 106, 0, 0.24);
+  padding-bottom: 1rem;
+}
+
+.archive-menu__kicker,
+.archive-menu__status,
+.archive-menu__code,
+.archive-menu__desc {
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.archive-menu__kicker {
+  display: block;
+  color: var(--accent);
+  font-size: var(--fs-micro);
+  margin-bottom: 0.55rem;
+}
+
+.archive-menu__title {
+  margin: 0;
+  font-size: clamp(2.4rem, 7vw, 6rem);
+  line-height: 0.95;
+  font-weight: 900;
+  word-break: keep-all;
+}
+
+.archive-menu__status {
+  color: var(--text-muted);
+  font-size: var(--fs-nano);
+}
+
+.archive-menu__close {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid var(--panel-border);
+  background: rgba(13, 13, 14, 0.86);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.archive-menu__close:hover,
+.archive-menu__close:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  outline: none;
+}
+
+.archive-menu__close::before,
+.archive-menu__close::after {
+  content: "";
+  grid-area: 1 / 1;
+  width: 1.1rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.archive-menu__close::before {
+  transform: rotate(45deg);
+}
+
+.archive-menu__close::after {
+  transform: rotate(-45deg);
+}
+
+.archive-menu__links {
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100%, 980px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.archive-menu__link {
+  min-width: 0;
+  min-height: 8.5rem;
+  display: grid;
+  align-content: space-between;
+  gap: 1.5rem;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  background: rgba(9, 9, 10, 0.84);
+  color: inherit;
+  text-decoration: none;
+}
+
+.archive-menu__link:hover,
+.archive-menu__link:focus-visible {
+  background: rgba(255, 106, 0, 0.11);
+  outline: 1px solid rgba(255, 106, 0, 0.72);
+  outline-offset: -1px;
+}
+
+.archive-menu__link[aria-current="page"] {
+  background: rgba(255, 106, 0, 0.16);
+}
+
+.archive-menu__code {
+  color: var(--accent);
+  font-size: var(--fs-nano);
+}
+
+.archive-menu__label {
+  display: block;
+  font-size: clamp(1.25rem, 3.2vw, 2.45rem);
+  font-weight: 800;
+  line-height: 1.05;
+  word-break: keep-all;
+}
+
+.archive-menu__desc {
+  color: var(--text-muted);
+  font-size: var(--fs-nano);
+  line-height: 1.7;
+}
+
+html[lang="ko"] .archive-menu__desc,
+html[lang="ja"] .archive-menu__desc {
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.archive-menu__foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .archive-menu__panel {
+    padding: 5.25rem 1rem 1rem;
+    gap: 1.25rem;
+  }
+
+  .archive-menu__head,
+  .archive-menu__foot {
+    gap: 0.75rem;
+  }
+
+  .archive-menu__title {
+    font-size: clamp(2rem, 14vw, 3.5rem);
+    line-height: 1;
+  }
+
+  .archive-menu__links {
+    grid-template-columns: 1fr;
+    align-self: stretch;
+  }
+
+  .archive-menu__link {
+    min-height: 6.25rem;
+    gap: 0.9rem;
+  }
+
+  .archive-menu__foot {
+    flex-direction: column;
+  }
+}

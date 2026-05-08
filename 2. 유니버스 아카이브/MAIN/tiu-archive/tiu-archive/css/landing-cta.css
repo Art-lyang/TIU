@@ -1,0 +1,95 @@
+/* ==========================================================================
+   LANDING — 3 Primary CTA Buttons
+   --------------------------------------------------------------------------
+   PUBLIC INDEX / THREAT INDEX / ACCESS GATE.
+   각 버튼: 아이콘 + 라벨(영어, 모노) + 부설명(한/영/일 i18n) + → 화살표
+   ========================================================================== */
+
+.lp-cta-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.lp-cta {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-4);
+  background: var(--bg-surface);
+  border: var(--bw-thin) solid var(--border-default);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 좌측 액센트 라인 (DEFAULT) */
+.lp-cta::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--accent-deep);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.lp-cta:hover {
+  border-color: var(--accent);
+  background: var(--bg-surface-2);
+  box-shadow: var(--glow-accent-sm);
+}
+.lp-cta:hover::before { background: var(--accent); }
+
+.lp-cta:active {
+  background: rgba(255, 90, 0, 0.08);
+}
+
+/* === ICON === */
+.lp-cta__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* === BODY (label + sub) === */
+.lp-cta__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.lp-cta__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+.lp-cta__sub {
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* === ARROW === */
+.lp-cta__arrow {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  color: var(--accent);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.lp-cta:hover .lp-cta__arrow {
+  transform: translateX(4px);
+}

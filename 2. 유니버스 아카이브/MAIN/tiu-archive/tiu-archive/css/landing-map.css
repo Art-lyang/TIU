@@ -1,0 +1,184 @@
+/* ==========================================================================
+   LANDING — Global Archive Map Panel
+   --------------------------------------------------------------------------
+   메인 아카이브는 세계 기록망을 먼저 보여준다.
+   세계지도 에셋이 준비되기 전까지 이 영역은 빈 슬롯으로 유지한다.
+   ========================================================================== */
+
+.lp-map-panel {
+  display: flex;
+  flex-direction: column;
+  border: var(--bw-thin) solid var(--border-default);
+  background: var(--bg-surface);
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ===== HEADER (GLOBAL ARCHIVE MAP / WORLD THREAT OVERLAY) ============= */
+.lp-map-panel__head {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--bw-thin) solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.lp-map-panel__title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+.lp-map-panel__sub {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+/* ===== MAP ASSET SLOT 영역 =========================================== */
+.lp-map-panel__viewport {
+  flex: 1;
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    radial-gradient(circle at 50% 45%, rgba(255,90,0,0.12), transparent 48%),
+    var(--bg-void);
+  background-size: 42px 42px, 42px 42px, auto, auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.lp-map-panel__viewport::before,
+.lp-map-panel__viewport::after {
+  content: "";
+  position: absolute;
+  inset: var(--space-5);
+  pointer-events: none;
+}
+
+.lp-map-panel__viewport::before {
+  border: var(--bw-thin) dashed rgba(255, 90, 0, 0.36);
+}
+
+.lp-map-panel__viewport::after {
+  background:
+    linear-gradient(90deg, transparent 0 49%, rgba(255,90,0,0.32) 49% 51%, transparent 51%),
+    linear-gradient(180deg, transparent 0 49%, rgba(255,90,0,0.22) 49% 51%, transparent 51%);
+  opacity: 0.45;
+}
+
+.lp-map-panel__viewport::before,
+.lp-map-panel__viewport::after {
+  z-index: 2;
+}
+
+.lp-map-panel__image {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding: var(--space-3);
+  object-fit: contain;
+  box-sizing: border-box;
+  opacity: 0.9;
+  filter: contrast(1.12) saturate(0.92);
+}
+
+.lp-map-panel__beacon {
+  position: absolute;
+  z-index: 3;
+  width: clamp(2.1rem, 4.8vw, 4.2rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.82;
+  animation: lp-map-beacon-pulse 3.4s ease-in-out infinite;
+}
+
+.lp-map-panel__beacon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(255, 90, 0, 0.56));
+}
+
+.lp-map-panel__beacon--na { left: 27%; top: 45%; }
+.lp-map-panel__beacon--eu { left: 51%; top: 39%; animation-delay: -1.2s; }
+.lp-map-panel__beacon--ea { left: 71%; top: 46%; animation-delay: -2.1s; }
+
+@keyframes lp-map-beacon-pulse {
+  50% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+/* ===== STATUS BLOCK (MAP SLOT 상태 + 타임스탬프) ====================== */
+.lp-map-panel__status {
+  padding: var(--space-3) var(--space-4);
+  border-top: var(--bw-thin) solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.lp-map-panel__status-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.lp-map-panel__status-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.lp-map-panel__status-rate {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* ===== 진행바 (점선 패턴) ============================================ */
+.lp-map-panel__progress {
+  height: 8px;
+  border: var(--bw-thin) solid var(--border-default);
+  background: var(--bg-surface);
+  position: relative;
+}
+.lp-map-panel__progress i {
+  display: block;
+  height: 100%;
+  width: var(--pct);
+  background: repeating-linear-gradient(90deg,
+    var(--accent) 0 6px,
+    transparent 6px 8px);
+  box-shadow: 0 0 6px var(--accent-glow);
+}
+
+/* ===== LAST UPDATED 라인 ============================================= */
+.lp-map-panel__last-update {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-muted);
+  text-transform: uppercase;
+}

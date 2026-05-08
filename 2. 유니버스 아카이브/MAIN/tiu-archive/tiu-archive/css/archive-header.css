@@ -1,0 +1,163 @@
+/* ==========================================================================
+   ARCHIVE HEADER — 모든 페이지 공통 헤더 컴포넌트
+   --------------------------------------------------------------------------
+   브랜드 / 메타스트립 / Clearance Level / 햄버거.
+   .ap-header 클래스명은 모든 페이지에서 동일하게 사용.
+   ========================================================================== */
+
+.ap-header {
+  display: grid;
+  grid-template-columns: 320px 1fr auto;
+  align-items: center;
+  gap: var(--space-8);
+  padding: 0 var(--space-8) 0 var(--space-10);
+  border-bottom: var(--bw-thin) solid var(--border-subtle);
+  background: rgba(10, 10, 13, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: var(--z-sticky);
+}
+
+/* ===== BRAND ========================================================== */
+.ap-brand { display: flex; align-items: center; gap: var(--space-3); color: var(--accent); }
+.ap-brand__mark { display: flex; }
+.ap-brand__text { display: flex; flex-direction: column; line-height: 1.2; }
+.ap-brand__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-body-sm);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-primary);
+}
+.ap-brand__tagline {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+/* ===== META STRIP ===================================================== */
+.ap-meta-strip { display: flex; gap: var(--space-3); justify-self: center; }
+.ap-meta {
+  display: flex; flex-direction: column; gap: 2px;
+  min-width: 0;
+  padding: 6px var(--space-3);
+  border: var(--bw-thin) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--bg-void);
+}
+.ap-meta__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+}
+.ap-meta__value {
+  font-size: var(--fs-caption);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ===== HEADER RIGHT (Clearance + Menu) ================================ */
+.ap-header__right { display: flex; align-items: center; gap: var(--space-6); }
+
+.ap-clearance {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  border: var(--bw-thin) solid var(--border-default);
+  border-radius: var(--radius-sm);
+}
+.ap-clearance__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+}
+.ap-clearance__bars { display: inline-flex; gap: 2px; }
+.ap-clearance__bars i {
+  width: 10px; height: 12px;
+  background: var(--border-strong);
+  display: inline-block;
+}
+.ap-clearance__bars i.on { background: var(--accent); }
+.ap-clearance__tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent);
+  font-weight: var(--fw-bold);
+}
+.ap-clearance__dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: ap-pulse 2s ease-in-out infinite;
+}
+@keyframes ap-pulse { 50% { opacity: 0.4; } }
+
+/* ===== LANGUAGE SWITCH (헤더 우측, 햄버거 옆) ========================= */
+.ap-lang-switch {
+  display: flex;
+  border: var(--bw-thin) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-void);
+}
+.ap-lang-switch button {
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-tertiary);
+  background: transparent;
+  border: 0;
+  border-right: var(--bw-thin) solid var(--border-default);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out);
+  min-width: 36px;
+}
+.ap-lang-switch button:last-child { border-right: 0; }
+.ap-lang-switch button:hover { color: var(--text-primary); }
+.ap-lang-switch button.is-active {
+  color: var(--accent);
+  background: rgba(255, 90, 0, 0.06);
+}
+
+/* ===== HAMBURGER ====================================================== */
+.ap-menu {
+  width: 36px; height: 36px;
+  background: transparent;
+  border: var(--bw-thin) solid var(--border-default);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 4px;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+.ap-menu:hover { border-color: var(--accent); }
+.ap-menu span { width: 16px; height: 1px; background: var(--text-secondary); }
+.ap-menu:hover span { background: var(--accent); }
+
+/* ===== EDGE DECO TEXT (좌우 가장자리 세로 코드 텍스트) ================ */
+.ap-edge {
+  position: fixed;
+  top: 0; bottom: 0;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-muted);
+  pointer-events: none;
+  z-index: var(--z-sticky);
+}
+.ap-edge--left  { left: 0;  }
+.ap-edge--right { right: 0; }
+.ap-edge span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+.ap-edge--right span { transform: none; }

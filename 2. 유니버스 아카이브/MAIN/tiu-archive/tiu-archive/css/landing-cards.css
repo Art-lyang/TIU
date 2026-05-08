@@ -1,0 +1,135 @@
+/* ==========================================================================
+   LANDING — Archive Sector Cards (4 variants)
+   --------------------------------------------------------------------------
+   01 발생 연표  /  02 글로벌 위협 지도  /  03 지부 · 대한민국  /  04 아카이브 접근
+   각 카드: 번호 + 공개용 프리뷰 이미지 + 제목 + 부설명 + 메타 라벨
+   ========================================================================== */
+
+.lp-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  padding: 0 var(--space-10) var(--space-5);
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+.lp-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  border: var(--bw-thin) solid var(--border-default);
+  background: var(--bg-surface);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+/* 호버 — 살짝 들어 올림 */
+.lp-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md), var(--glow-accent-sm);
+}
+
+/* === 시네마틱 배경 (세계관 이미지 에셋 기반) === */
+.lp-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  transition: opacity var(--dur-fast) var(--ease-out);
+  z-index: 0;
+}
+.lp-card:hover::before { opacity: 0.55; }
+
+.lp-card--01::before {
+  background:
+    linear-gradient(135deg, rgba(11,11,12,0.12) 0%, rgba(255,90,0,0.18) 100%),
+    url('../assets/archive-card-timeline.jpg');
+}
+.lp-card--02::before {
+  background:
+    radial-gradient(circle at 70% 40%, rgba(255,90,0,0.25) 0%, transparent 50%),
+    radial-gradient(circle at 30% 60%, rgba(208,69,69,0.18) 0%, transparent 45%),
+    url('../assets/archive-card-threat.jpg');
+}
+.lp-card--03::before {
+  background:
+    linear-gradient(180deg, rgba(26,26,26,0.28) 0%, rgba(10,10,10,0.52) 72%),
+    url('../assets/archive-card-branch.jpg');
+}
+.lp-card--04::before {
+  background:
+    linear-gradient(45deg, rgba(22,22,24,0.46) 0%, rgba(10,10,10,0.74) 80%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 8px),
+    url('../assets/archive-card-restricted.jpg');
+}
+
+/* === 카드 내부 컨텐츠 === */
+.lp-card__num {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  color: var(--accent);
+  background: var(--bg-void);
+  padding: 2px var(--space-2);
+  border: var(--bw-thin) solid var(--accent-deep);
+  z-index: 2;
+}
+
+.lp-card__body {
+  margin-top: auto;
+  padding: var(--space-4);
+  background: linear-gradient(to top, rgba(11,11,12,0.95) 0%, transparent 100%);
+  position: relative;
+  z-index: 1;
+}
+
+.lp-card__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+  line-height: 1.2;
+}
+
+.lp-card__desc {
+  font-size: var(--fs-caption);
+  line-height: var(--leading-snug);
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-2);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lp-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-2);
+  border-top: var(--bw-thin) solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.lp-card__meta-value {
+  color: var(--accent);
+  font-weight: 700;
+}
+.lp-card__meta-value--warn { color: var(--threat-high); }
+.lp-card__meta-value--ok   { color: var(--status-online); }

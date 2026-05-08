@@ -1,0 +1,1685 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B0B0C" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>접속 프로토콜 — TIU UNIVERSE ARCHIVE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <style>
+/* ==========================================================================
+   TIU UNIVERSE ARCHIVE — DESIGN TOKENS (variables only)
+   --------------------------------------------------------------------------
+   모든 페이지 공통 변수의 단일 진실 공급원(SSOT).
+   글로벌 리셋·유틸리티는 base.css 참조.
+   ========================================================================== */
+
+
+:root {
+  /* === COLORS — BASE LAYER (정밀 시안 캐논) ============================= */
+  --bg-void:        #050507;
+  --bg-base:        #0B0B0C;
+  --bg-surface:     #121214;
+  --bg-surface-2:   #1A1A1C;
+  --bg-elevated:    #2A2A2C;
+
+  /* === COLORS — BORDERS ================================================= */
+  --border-subtle:  #1f1f23;
+  --border-default: #2a2a2f;
+  --border-strong:  #3a3a40;
+  --border-accent:  #5c2818;
+
+  /* === COLORS — TEXT (정밀 시안 캐논) =================================== */
+  --text-primary:   #CFCFCF;
+  --text-secondary: #A7A7A7;
+  --text-tertiary:  #6B6B6B;
+  --text-muted:     #444444;
+  --text-inverse:   #0B0B0C;
+
+  /* === COLORS — ACCENT (정밀 시안 캐논) ================================= */
+  --accent:           #FF5A00;     /* PRIMARY — 강한 오렌지-레드 */
+  --accent-secondary: #FFC266;     /* SECONDARY — 라이트 오렌지 */
+  --accent-bright:    #FF7A33;     /* 호버 강화 */
+  --accent-dim:       #C74800;     /* 차분한 어두운 오렌지 */
+  --accent-deep:      #5A2200;     /* 가장 어두운 — 보더, 비활성 */
+  --accent-glow:      rgba(255, 90, 0, 0.28);
+  --accent-faint:     rgba(255, 90, 0, 0.08);
+
+  /* === COLORS — STATUS ================================================== */
+  --status-online:    #3AB26B;     /* 그린 (정밀 시안 캐논) */
+  --status-warning:   #c8a04a;
+  --status-danger:    #FF3B30;
+  --status-offline:   #555555;
+
+  --threat-low:       #3AB26B;
+  --threat-moderate:  #c8a04a;
+  --threat-high:      #FF7A33;
+  --threat-critical:  #FF3B30;
+
+  --clearance-green:  #3AB26B;
+  --clearance-yellow: #c8a04a;
+  --clearance-orange: #FF5A00;
+  --clearance-red:    #d04545;
+
+  /* === COLORS — FACTION / CONTROL (에셋 시트 캐논) ====================== */
+  --faction-friendly:  #2D7BFF;    /* 우호 (블루) */
+  --faction-neutral:   #A0A0A0;    /* 중립 (그레이) */
+  --faction-contested: #FFB000;    /* 분쟁 (황색-오렌지) */
+  --faction-hostile:   #D12A2A;    /* 적대 (적색) */
+
+  /* === TYPOGRAPHY (Pretendard 단일 패밀리 — 정밀 시안 캐논) ============ */
+  --font-display:   'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:      'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:      'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  --fs-mega:        clamp(4rem, 9vw, 9rem);
+  --fs-display:     clamp(3rem, 6vw, 6rem);
+  --fs-display-sm:  clamp(2rem, 4vw, 3.5rem);
+  --fs-h1:    2rem;
+  --fs-h2:    1.5rem;
+  --fs-h3:    1.25rem;
+  --fs-h4:    1.125rem;
+  --fs-body:        1rem;
+  --fs-body-sm:     0.875rem;
+  --fs-caption:     0.75rem;
+  --fs-micro:       0.6875rem;
+  --fs-nano:        0.625rem;
+
+  --fw-regular:   400;
+  --fw-medium:    500;
+  --fw-bold:      700;
+
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.05em;
+  --tracking-wider:   0.12em;
+  --tracking-widest:  0.25em;
+
+  --leading-tight:    1.1;
+  --leading-snug:     1.3;
+  --leading-normal:   1.5;
+  --leading-relaxed:  1.7;
+
+  /* === SPACING (4px 베이스) ============================================= */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32:  128px;
+
+  /* === BORDERS ========================================================== */
+  --bw-thin:    1px;
+  --bw-medium:  2px;
+  --bw-thick:   3px;
+  --radius-none:  0;
+  --radius-sm:    2px;
+  --radius-md:    4px;
+
+  /* === LAYOUT =========================================================== */
+  --header-height:    64px;
+  --footer-height:    44px;
+  --hud-strip-height: 28px;
+  --sidebar-width:    320px;
+  --content-max:      1680px;
+  --content-narrow:   1280px;
+  --reading-max:      72ch;
+
+  /* === SHADOWS / GLOWS ================================================== */
+  --shadow-sm:      0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md:      0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg:      0 8px 32px rgba(0,0,0,0.6);
+  --glow-accent:    0 0 24px var(--accent-glow);
+  --glow-accent-sm: 0 0 8px var(--accent-glow);
+
+  /* === MOTION =========================================================== */
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-snap:    cubic-bezier(0.85, 0, 0.15, 1);
+  --dur-instant:   80ms;
+  --dur-fast:      160ms;
+  --dur-base:      280ms;
+  --dur-slow:      480ms;
+  --dur-slower:    800ms;
+
+  /* === Z-INDEX SCALE ==================================================== */
+  --z-base:      1;
+  --z-raised:    10;
+  --z-sticky:    100;
+  --z-overlay:   500;
+  --z-modal:     1000;
+  --z-toast:     2000;
+}
+/* ==========================================================================
+   TIU UNIVERSE ARCHIVE — BASE
+   --------------------------------------------------------------------------
+   글로벌 리셋, 기본 스타일, 재사용 유틸리티 클래스.
+   design-tokens.css 다음에 import.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img, picture, svg, video { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+::selection { background: var(--accent); color: var(--text-inverse); }
+
+::-webkit-scrollbar           { width: 8px; height: 8px; }
+::-webkit-scrollbar-track     { background: var(--bg-base); }
+::-webkit-scrollbar-thumb     { background: var(--border-default); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+
+/* ===== UTILITY: 라벨 (모노 + UPPERCASE + 와이드 트래킹) ============== */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.label--accent  { color: var(--accent); }
+.label--success { color: var(--status-online); }
+
+/* ===== UTILITY: 모노 데이터 텍스트 =================================== */
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ===== UTILITY: 디스플레이 헤딩 (Pretendard Black 900) =============== */
+.display-heading {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  text-shadow:
+    0 0 1px rgba(207, 207, 207, 0.3),
+    1px 1px 0 rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+/* ===== UTILITY: 영문 부제 (Pretendard Bold 700, 320 tracking) ======== */
+.subtitle-en {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ===== UTILITY: 패널 (카드/박스 베이스) ============================== */
+.panel {
+  background: var(--bg-surface);
+  border: var(--bw-thin) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  position: relative;
+}
+.panel--accent { border-color: var(--accent-deep); }
+.panel--strong { border-color: var(--border-strong); }
+
+/* ===== UTILITY: 코너 마커 ============================================ */
+.corner-marks::before,
+.corner-marks::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: var(--bw-thin) solid var(--accent);
+  pointer-events: none;
+}
+.corner-marks::before {
+  top: -1px; left: -1px;
+  border-right: 0; border-bottom: 0;
+}
+.corner-marks::after {
+  bottom: -1px; right: -1px;
+  border-left: 0; border-top: 0;
+}
+
+/* ===== UTILITY: 그리드 백드롭 (희미한 격자) ========================== */
+.grid-backdrop {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.012) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: var(--z-base);
+}
+
+/* ===== UTILITY: 노이즈 텍스처 오버레이 (필름 그레인) ================= */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-overlay);
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+}
+
+/* ===== UTILITY: 시각적으로만 숨김 (a11y) ============================ */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== UTILITY: 상태 닷 ============================================== */
+.dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+.dot--ok      { background: var(--status-online); box-shadow: 0 0 6px var(--status-online); }
+.dot--warn    { background: var(--status-warning); box-shadow: 0 0 6px var(--status-warning); }
+.dot--danger  { background: var(--status-danger); box-shadow: 0 0 6px var(--status-danger); }
+.dot--offline { background: var(--status-offline); }
+/* ==========================================================================
+   ARCHIVE HEADER — 모든 페이지 공통 헤더 컴포넌트
+   --------------------------------------------------------------------------
+   브랜드 / 메타스트립 / Clearance Level / 햄버거.
+   .ap-header 클래스명은 모든 페이지에서 동일하게 사용.
+   ========================================================================== */
+
+.ap-header {
+  display: grid;
+  grid-template-columns: 320px 1fr auto;
+  align-items: center;
+  gap: var(--space-8);
+  padding: 0 var(--space-8) 0 var(--space-10);
+  border-bottom: var(--bw-thin) solid var(--border-subtle);
+  background: rgba(10, 10, 13, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: var(--z-sticky);
+}
+
+/* ===== BRAND ========================================================== */
+.ap-brand { display: flex; align-items: center; gap: var(--space-3); color: var(--accent); }
+.ap-brand__mark { display: flex; }
+.ap-brand__text { display: flex; flex-direction: column; line-height: 1.2; }
+.ap-brand__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-body-sm);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-primary);
+}
+.ap-brand__tagline {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+/* ===== META STRIP ===================================================== */
+.ap-meta-strip { display: flex; gap: var(--space-3); justify-self: center; }
+.ap-meta {
+  display: flex; flex-direction: column; gap: 2px;
+  min-width: 0;
+  padding: 6px var(--space-3);
+  border: var(--bw-thin) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--bg-void);
+}
+.ap-meta__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+}
+.ap-meta__value {
+  font-size: var(--fs-caption);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ===== HEADER RIGHT (Clearance + Menu) ================================ */
+.ap-header__right { display: flex; align-items: center; gap: var(--space-6); }
+
+.ap-clearance {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  border: var(--bw-thin) solid var(--border-default);
+  border-radius: var(--radius-sm);
+}
+.ap-clearance__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+}
+.ap-clearance__bars { display: inline-flex; gap: 2px; }
+.ap-clearance__bars i {
+  width: 10px; height: 12px;
+  background: var(--border-strong);
+  display: inline-block;
+}
+.ap-clearance__bars i.on { background: var(--accent); }
+.ap-clearance__tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent);
+  font-weight: var(--fw-bold);
+}
+.ap-clearance__dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: ap-pulse 2s ease-in-out infinite;
+}
+@keyframes ap-pulse { 50% { opacity: 0.4; } }
+
+/* ===== LANGUAGE SWITCH (헤더 우측, 햄버거 옆) ========================= */
+.ap-lang-switch {
+  display: flex;
+  border: var(--bw-thin) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-void);
+}
+.ap-lang-switch button {
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-tertiary);
+  background: transparent;
+  border: 0;
+  border-right: var(--bw-thin) solid var(--border-default);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out);
+  min-width: 36px;
+}
+.ap-lang-switch button:last-child { border-right: 0; }
+.ap-lang-switch button:hover { color: var(--text-primary); }
+.ap-lang-switch button.is-active {
+  color: var(--accent);
+  background: rgba(255, 90, 0, 0.06);
+}
+
+/* ===== HAMBURGER ====================================================== */
+.ap-menu {
+  width: 36px; height: 36px;
+  background: transparent;
+  border: var(--bw-thin) solid var(--border-default);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 4px;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+.ap-menu:hover { border-color: var(--accent); }
+.ap-menu span { width: 16px; height: 1px; background: var(--text-secondary); }
+.ap-menu:hover span { background: var(--accent); }
+
+/* ===== EDGE DECO TEXT (좌우 가장자리 세로 코드 텍스트) ================ */
+.ap-edge {
+  position: fixed;
+  top: 0; bottom: 0;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-muted);
+  pointer-events: none;
+  z-index: var(--z-sticky);
+}
+.ap-edge--left  { left: 0;  }
+.ap-edge--right { right: 0; }
+.ap-edge span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+.ap-edge--right span { transform: none; }
+/* ==========================================================================
+   ARCHIVE HUD INFO STRIP
+   --------------------------------------------------------------------------
+   페이지 하단의 얇은 정보 스트립. 헤더와 짝을 이룸.
+   - 헤더: 이 아카이브가 무엇인가 (ID/Classification/Last Updated/Server)
+   - HUD 스트립: 지금 시스템이 어떻게 돌아가는가 (Grid/Lat-Long/Record/Time/Status)
+   ========================================================================== */
+
+.ap-hud-strip {
+  height: var(--hud-strip-height);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: 0 var(--space-10);
+  background: var(--bg-void);
+  border-top: var(--bw-thin) solid var(--border-subtle);
+  border-bottom: var(--bw-thin) solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-wider);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* ===== CELL ===== */
+.ap-hud-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  position: relative;
+}
+.ap-hud-cell + .ap-hud-cell::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--space-3) * -1);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background: var(--border-default);
+}
+.ap-hud-cell--right {
+  margin-left: auto;
+  padding-left: var(--space-4);
+}
+
+.ap-hud-cell__label {
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+}
+
+.ap-hud-cell__value {
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-wider);
+}
+.ap-hud-cell__value--accent { color: var(--accent); }
+.ap-hud-cell__value--ok     { color: var(--status-online); }
+.ap-hud-cell__value--warn   { color: var(--status-warning); }
+.ap-hud-cell__value--danger { color: var(--status-danger); }
+
+/* ===== SECTOR ANALYSIS BARS (실시간 시그널 시각화) ==================== */
+.ap-hud-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+  margin-left: var(--space-1);
+}
+.ap-hud-bars i {
+  display: block;
+  width: 2px;
+  background: var(--accent);
+  opacity: 0.7;
+  animation: ap-hud-bars 1.4s ease-in-out infinite;
+}
+.ap-hud-bars i:nth-child(1) { height: 30%; animation-delay: 0.0s; }
+.ap-hud-bars i:nth-child(2) { height: 60%; animation-delay: 0.1s; }
+.ap-hud-bars i:nth-child(3) { height: 80%; animation-delay: 0.2s; }
+.ap-hud-bars i:nth-child(4) { height: 50%; animation-delay: 0.3s; }
+.ap-hud-bars i:nth-child(5) { height: 90%; animation-delay: 0.4s; }
+.ap-hud-bars i:nth-child(6) { height: 70%; animation-delay: 0.5s; }
+.ap-hud-bars i:nth-child(7) { height: 40%; animation-delay: 0.6s; }
+.ap-hud-bars i:nth-child(8) { height: 60%; animation-delay: 0.7s; }
+
+@keyframes ap-hud-bars {
+  0%, 100% { transform: scaleY(0.6); }
+  50%      { transform: scaleY(1.0); }
+}
+
+/* ===== STATUS DOT (right cell의 종 모양 인디케이터) =================== */
+.ap-hud-strip .dot {
+  margin-left: var(--space-1);
+}
+/* ==========================================================================
+   ACCESS PROTOCOL — Page Shell, Layout, Copy, Boot Bar
+   --------------------------------------------------------------------------
+   import 순서: design-tokens.css → base.css → archive-header.css
+                → access-protocol.css → access-protocol-guest.css
+                → access-protocol-scene.css
+   ========================================================================== */
+
+/* ===== PAGE SHELL ===================================================== */
+.ap-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: var(--header-height) 1fr var(--hud-strip-height) var(--footer-height);
+  background:
+    radial-gradient(ellipse at 70% 60%, rgba(255, 90, 0, 0.06) 0%, transparent 50%),
+    var(--bg-base);
+  overflow: hidden;
+}
+
+/* ===== MAIN LAYOUT ==================================================== */
+.ap-main {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* ===== LEFT COLUMN — 카피 + 게스트 박스 컨테이너 ===================== */
+.ap-left {
+  padding: var(--space-12) var(--space-10) var(--space-8) var(--space-12);
+  display: flex; flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+  z-index: var(--z-raised);
+  overflow-y: auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+.ap-title {
+  font-size: var(--fs-display);
+  margin: 0;
+  word-break: keep-all;
+  /* 그런지 효과 — 이중 텍스트 셰도우로 페인트 마감 */
+  text-shadow:
+    0 0 1px rgba(232, 230, 225, 0.4),
+    2px 2px 0 rgba(0, 0, 0, 0.9),
+    -1px -1px 0 rgba(232, 230, 225, 0.05);
+  filter: contrast(1.1);
+}
+
+.ap-subtitle {
+  margin: 0 0 var(--space-2);
+  font-size: 1.125rem;
+}
+
+.ap-lede {
+  margin: 0 0 var(--space-6);
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* ===== BOOT SEQUENCE BAR (하단) ====================================== */
+.ap-boot {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-10);
+  padding: 0 var(--space-10);
+  border-top: var(--bw-thin) solid var(--border-subtle);
+  background: var(--bg-void);
+}
+
+.ap-boot__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.ap-boot__seq { display: flex; align-items: center; gap: var(--space-4); }
+.ap-boot__steps {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; gap: var(--space-2); align-items: center;
+}
+.ap-boot__steps li {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-widest);
+  padding: 4px var(--space-3);
+  border: var(--bw-thin) solid var(--border-subtle);
+  color: var(--text-tertiary);
+  position: relative;
+}
+.ap-boot__steps li.done {
+  color: var(--text-secondary);
+  border-color: var(--border-default);
+}
+.ap-boot__steps li.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(255, 90, 0, 0.08);
+  box-shadow: var(--glow-accent-sm);
+}
+.ap-boot__steps li + li::before {
+  content: '»';
+  position: absolute; left: -14px; top: 50%; transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.ap-boot__progress { display: flex; align-items: center; gap: var(--space-4); }
+.ap-progress {
+  flex: 1;
+  height: 8px;
+  border: var(--bw-thin) solid var(--border-default);
+  position: relative;
+  background: var(--bg-surface);
+}
+.ap-progress i {
+  display: block;
+  height: 100%;
+  width: var(--pct);
+  background: repeating-linear-gradient(90deg,
+    var(--accent) 0 6px, transparent 6px 8px);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+.ap-boot__pct, .ap-boot__time {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-wider);
+  color: var(--accent);
+}
+.ap-boot__eta { display: flex; align-items: center; gap: var(--space-3); }
+
+/* ===== ENTRY ANIMATIONS ============================================== */
+.ap-title       { animation: ap-rise 0.8s var(--ease-out) both; }
+.ap-subtitle    { animation: ap-rise 0.8s var(--ease-out) 0.15s both; }
+.ap-lede        { animation: ap-rise 0.8s var(--ease-out) 0.3s both; }
+.ap-guest       { animation: ap-rise 0.8s var(--ease-out) 0.45s both; }
+.ap-right       { animation: ap-fade 1.2s var(--ease-out) 0.2s both; }
+.ap-warning     { animation: ap-rise 0.8s var(--ease-out) 0.7s both; }
+@keyframes ap-rise { from { opacity: 0; transform: translateY(12px); } }
+@keyframes ap-fade { from { opacity: 0; } }
+
+/* ===== COMPACT DESKTOP =============================================== */
+@media (max-width: 1440px) {
+  .ap-main {
+    grid-template-columns: minmax(25rem, 0.46fr) minmax(0, 0.54fr);
+  }
+
+  .ap-left {
+    padding: var(--space-8) var(--space-6) var(--space-6) var(--space-10);
+  }
+
+  .ap-title {
+    font-size: clamp(3.5rem, 5.2vw, 5.75rem);
+  }
+
+  html[lang="ja"] .ap-title {
+    font-size: clamp(3.1rem, 4.4vw, 4.6rem);
+    line-height: 1.08;
+  }
+}
+
+/* ===== TABLET / SMALL DESKTOP ======================================== */
+@media (max-width: 1180px) {
+  .ap-page {
+    grid-template-rows: var(--header-height) auto var(--hud-strip-height) auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .ap-page .ap-meta-strip { display: none; }
+  .ap-page .ap-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 0 var(--space-6);
+  }
+
+  .ap-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(220px, 34vh) auto;
+    overflow: visible;
+  }
+
+  .ap-left {
+    order: 2;
+    padding: var(--space-8) var(--space-6);
+    overflow: visible;
+  }
+
+  .ap-title { font-size: clamp(3rem, 9vw, 5rem); }
+  html[lang="ja"] .ap-title { font-size: clamp(2.8rem, 7vw, 4.25rem); }
+  .ap-page .ap-guest { max-width: none; }
+
+  .ap-boot {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    height: auto;
+    min-height: var(--footer-height);
+    padding: var(--space-3) var(--space-6);
+  }
+  .ap-boot__seq { flex-wrap: wrap; }
+}
+/* ==========================================================================
+   ACCESS PROTOCOL — Guest Access Box
+   --------------------------------------------------------------------------
+   로그인/접속 박스 영역. 헤더 + 사용자 정보 + 권한 + 입장 버튼.
+   ========================================================================== */
+
+.ap-guest {
+  padding: var(--space-6) var(--space-6) var(--space-5);
+  max-width: 520px;
+}
+
+/* ===== HEAD =========================================================== */
+.ap-guest__head {
+  display: flex; align-items: center; gap: var(--space-2);
+  padding-bottom: var(--space-4);
+  border-bottom: var(--bw-thin) solid var(--border-subtle);
+  margin-bottom: var(--space-4);
+}
+.ap-guest__icon {
+  color: var(--accent);
+  font-size: 1.125rem;
+}
+.ap-guest__title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  letter-spacing: var(--tracking-wider);
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+/* ===== ROWS =========================================================== */
+.ap-guest__row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-3) 0;
+  border-bottom: var(--bw-thin) solid var(--border-subtle);
+}
+
+.ap-field { display: flex; flex-direction: column; gap: 2px; }
+.ap-field__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+.ap-field__value {
+  font-size: var(--fs-body-sm);
+  color: var(--text-primary);
+}
+.ap-field__value--accent { color: var(--accent); }
+
+.ap-pill {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  padding: 4px var(--space-3);
+  border: var(--bw-thin) solid var(--accent-deep);
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.ap-status {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--fs-caption);
+  color: var(--text-secondary);
+}
+
+/* ===== 3-COLUMN STAT GRID ============================================ */
+.ap-guest__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: var(--bw-thin) solid var(--border-subtle);
+}
+.ap-stat { display: flex; flex-direction: column; gap: 4px; }
+.ap-stat__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+}
+.ap-stat__value {
+  font-size: var(--fs-body-sm);
+  color: var(--text-primary);
+}
+.ap-stat__value--accent { color: var(--accent); }
+.ap-stat__value--ok     { color: var(--status-online); }
+
+/* ===== PERMISSIONS LIST ============================================== */
+.ap-perms {
+  list-style: none;
+  padding: var(--space-4) 0;
+  margin: 0;
+  display: grid; gap: var(--space-3);
+}
+.ap-perms li {
+  display: grid; grid-template-columns: 18px 1fr auto; align-items: center;
+  gap: var(--space-3);
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+}
+.ap-perms .check {
+  width: 14px; height: 14px;
+  border: var(--bw-thin) solid var(--accent);
+  position: relative;
+}
+.ap-perms .check::after {
+  content: '';
+  position: absolute; top: 2px; left: 4px;
+  width: 4px; height: 7px;
+  border-right: 1.5px solid var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  transform: rotate(45deg);
+}
+.ap-perms em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-tertiary);
+}
+.ap-perms em.accent { color: var(--accent); }
+
+/* ===== BUTTONS — 4-STATE SPEC (정밀 시안 캐논) ======================
+   DEFAULT  : outline + transparent + accent text
+   HOVER    : outline 강화 + 미세 fade-in 배경 + 글로우
+   ACTIVE   : 풀 fill + 검정 텍스트 + 강한 글로우 (눌렸을 때)
+   DISABLED : dim outline + dim 텍스트
+   ===================================================================== */
+.ap-btn {
+  display: flex; align-items: center; justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  margin-top: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  border: var(--bw-thin) solid;
+  background: transparent;
+  transition: all var(--dur-fast) var(--ease-out);
+  cursor: pointer;
+}
+
+/* PRIMARY ─ default */
+.ap-btn--primary {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+/* PRIMARY ─ hover */
+.ap-btn--primary:hover {
+  border-color: var(--accent-bright);
+  color: var(--accent-bright);
+  background: var(--accent-faint);
+  box-shadow: var(--glow-accent-sm);
+}
+/* PRIMARY ─ active (눌렸을 때) */
+.ap-btn--primary:active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--text-inverse);
+  box-shadow: var(--glow-accent);
+}
+/* PRIMARY ─ disabled */
+.ap-btn--primary:disabled,
+.ap-btn--primary.is-disabled {
+  border-color: var(--border-default);
+  color: var(--text-muted);
+  background: transparent;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* SECONDARY (GHOST) ─ default */
+.ap-btn--ghost {
+  border-color: var(--border-default);
+  color: var(--text-secondary);
+}
+.ap-btn--ghost:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.02);
+}
+.ap-btn--ghost:active {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+.ap-btn--ghost:disabled,
+.ap-btn--ghost.is-disabled {
+  border-color: var(--border-subtle);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+/* ==========================================================================
+   ACCESS PROTOCOL — Right Cinematic Scene
+   --------------------------------------------------------------------------
+   진짜 시네마틱 이미지 배경 + 위에 layer로 올린 우측 위젯/경고 박스.
+   기존 CSS mock(게이트, 천장 라이트, 모니터 클러스터)은 이미지에 이미
+   포함되어 있으므로 모두 제거.
+   ========================================================================== */
+
+.ap-right {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-void);
+  background-image:
+    linear-gradient(90deg,
+      rgba(8, 8, 10, 0.68) 0%,
+      rgba(8, 8, 10, 0.38) 20%,
+      rgba(8, 8, 10, 0.08) 48%,
+      rgba(8, 8, 10, 0.18) 100%),
+    url('assets/scene-archive-vault.jpg');
+  background-size: 100% 100%, cover;
+  background-position: center, 58% center;
+  background-repeat: no-repeat;
+}
+
+/* ===== 좌측 페이드 (좌측 카피 영역으로 자연스럽게 이어지게) =========== */
+.ap-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      var(--bg-base) 0%,
+      rgba(11, 11, 12, 0.78) 8%,
+      rgba(11, 11, 12, 0.44) 20%,
+      rgba(11, 11, 12, 0.08) 40%,
+      transparent 62%),
+    radial-gradient(ellipse at 54% 42%,
+      rgba(232, 230, 225, 0.09) 0%,
+      transparent 34%),
+    radial-gradient(ellipse at 36% 78%,
+      rgba(255, 90, 0, 0.10) 0%,
+      transparent 46%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===== 미세 오렌지 글로우 오버레이 (게이트 부근 강조) ================ */
+.ap-right::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 62% 55%,
+    rgba(255, 90, 0, 0.10) 0%,
+    transparent 45%);
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+/* ===== ARCHIVE NETWORK STATUS 위젯 (우측 중간, 이미지 위 layer) ====== */
+.ap-net-status {
+  position: absolute;
+  top: 50%;
+  right: var(--space-8);
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 6px;
+  padding: var(--space-3) var(--space-4);
+  border: var(--bw-thin) solid var(--border-default);
+  background: rgba(11, 11, 12, 0.78);
+  backdrop-filter: blur(6px);
+  z-index: 3;
+  min-width: 200px;
+}
+.ap-net-status__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+}
+.ap-net-status__value {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  letter-spacing: var(--tracking-wider);
+  color: var(--status-online);
+}
+
+/* ===== 보안 경고 (우하단) =========================================== */
+.ap-warning {
+  position: absolute;
+  bottom: var(--space-8); right: var(--space-8);
+  max-width: 260px;
+  padding: var(--space-2) var(--space-3);
+  display: grid; grid-template-columns: auto 1fr;
+  gap: var(--space-2);
+  background: rgba(11, 11, 12, 0.78);
+  backdrop-filter: blur(8px);
+  border: var(--bw-thin) solid var(--border-default);
+  z-index: 3;
+  opacity: 0.82;
+  width: auto;
+}
+.ap-warning__icon {
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.ap-warning p {
+  margin: 0;
+  font-size: var(--fs-nano);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+  min-width: 0;
+  word-break: keep-all;
+}
+
+/* ===== TIU 시네마틱 코너 마커 (좌상단, 분위기 강화 데코) ============= */
+.ap-scene-marker {
+  position: absolute;
+  top: var(--space-6); left: var(--space-6);
+  display: flex; flex-direction: column; gap: 2px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  z-index: 3;
+}
+.ap-scene-marker__id { color: var(--accent); }
+
+@media (max-width: 1180px) {
+  .ap-right {
+    order: 1;
+    min-height: 220px;
+    background-position: center 38%;
+  }
+
+  .ap-right::before {
+    background: linear-gradient(to bottom,
+      transparent 45%,
+      rgba(11, 11, 12, 0.84) 100%);
+  }
+
+  .ap-scene-marker {
+    top: var(--space-3);
+    left: var(--space-3);
+    font-size: 9px;
+  }
+
+  .ap-net-status {
+    top: auto;
+    bottom: var(--space-3);
+    right: var(--space-3);
+    transform: none;
+    min-width: auto;
+    padding: 6px var(--space-3);
+  }
+
+  .ap-warning {
+    left: var(--space-3);
+    right: auto;
+    bottom: var(--space-3);
+    max-width: min(460px, calc(100% - 260px));
+    padding: 6px var(--space-3);
+  }
+
+  .ap-warning p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 620px) {
+  .ap-warning {
+    right: auto;
+    bottom: 76px;
+    max-width: calc(100% - 24px);
+    background: rgba(11, 11, 12, 0.86);
+    opacity: 0.96;
+  }
+}
+/* ==========================================================================
+   MOBILE OVERRIDES — 모바일/태블릿 반응형 규칙
+   --------------------------------------------------------------------------
+   브레이크포인트: 768px 이하 (폰 + 작은 태블릿).
+   모든 페이지의 마지막에 import. 데스크탑 룰을 오버라이드.
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== PAGE SHELL — 100vh 고정 해제, 자연스러운 세로 스크롤 ========= */
+  .ap-page {
+    grid-template-rows: var(--header-height) auto auto var(--hud-strip-height) auto;
+    overflow: visible;
+    min-height: 100vh;
+  }
+
+  /* ===== EDGE TEXT — 모바일에선 공간 부족, 숨김 ====================== */
+  .ap-edge { display: none; }
+
+  /* ===== HEADER — 브랜드 + 햄버거만 유지, 메타/Clearance는 단순화 ==== */
+  .ap-header {
+    grid-template-columns: 1fr auto;
+    gap: var(--space-3);
+    padding: 0 var(--space-4);
+  }
+  .ap-meta-strip { display: none; }            /* 메타스트립 숨김 (햄버거 메뉴로 이동 가정) */
+  .ap-header__right { gap: var(--space-2); }
+  .ap-clearance {
+    padding: 4px var(--space-2);
+    gap: var(--space-2);
+  }
+  .ap-clearance__label { display: none; }      /* 라벨 텍스트 생략, 바+태그만 */
+  .ap-brand__tagline { display: none; }
+  .ap-brand__title { font-size: var(--fs-caption); }
+
+  /* 언어 토글 — 폰에선 더 컴팩트 */
+  .ap-lang-switch button { padding: 4px 6px; min-width: 28px; font-size: 10px; }
+
+  /* ===== MAIN — 좌/우 분할 → 세로 stack ============================== */
+  .ap-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 220px auto;            /* 시네마틱 banner 위 / 카피 아래 */
+    overflow: visible;
+  }
+
+  /* ===== RIGHT — 짧은 시네마틱 banner로 변환 ========================= */
+  .ap-right {
+    order: 1;                                   /* 위로 */
+    background-position: center 38%;           /* 게이트 잘 보이게 */
+    min-height: 220px;
+  }
+  .ap-right::before {                           /* 좌측 페이드 → 하단 페이드로 변경 */
+    background: linear-gradient(to bottom,
+      transparent 50%,
+      rgba(11, 11, 12, 0.85) 100%);
+  }
+  .ap-scene-marker {
+    top: var(--space-3);
+    left: var(--space-3);
+    font-size: 9px;
+  }
+  .ap-net-status {
+    top: auto;
+    bottom: var(--space-3);
+    right: var(--space-3);
+    transform: none;
+    min-width: auto;
+    padding: 6px var(--space-3);
+  }
+  .ap-net-status__label { font-size: 9px; }
+  .ap-net-status__value { font-size: var(--fs-caption); }
+  .ap-warning {
+    position: absolute;
+    left: var(--space-3);
+    right: auto;
+    bottom: var(--space-3);
+    margin: 0;
+    max-width: calc(100% - 260px);
+    padding: 6px var(--space-3);
+  }
+  .ap-warning p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* ===== LEFT — 카피 + 게스트 박스 ================================== */
+  .ap-left {
+    order: 2;
+    padding: var(--space-6) var(--space-4);
+    overflow: visible;
+  }
+  .ap-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    text-shadow:
+      0 0 1px rgba(207, 207, 207, 0.4),
+      1px 1px 0 rgba(0, 0, 0, 0.9);
+  }
+  html[lang="ja"] .ap-title { font-size: clamp(2.35rem, 8.5vw, 3.25rem); line-height: 1.12; }
+  .ap-subtitle { font-size: 0.875rem; letter-spacing: 0.24em; }
+  .ap-lede { font-size: var(--fs-body-sm); }
+
+  /* ===== GUEST BOX ================================================== */
+  .ap-guest { padding: var(--space-4); max-width: none; }
+  .ap-guest__grid { gap: var(--space-3); }
+  .ap-stat__value, .ap-field__value { font-size: var(--fs-caption); }
+  .ap-perms li { font-size: var(--fs-caption); grid-template-columns: 16px 1fr auto; }
+  .ap-btn { padding: var(--space-3) var(--space-4); font-size: var(--fs-caption); }
+
+  /* ===== HUD STRIP — 가로 스크롤로 7개 셀 보존 ====================== */
+  .ap-hud-strip {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 var(--space-4);
+    gap: var(--space-4);
+    -webkit-overflow-scrolling: touch;
+  }
+  .ap-hud-cell + .ap-hud-cell::before { left: calc(var(--space-2) * -1); }
+  .ap-hud-cell--right { margin-left: 0; padding-left: 0; }   /* 가로 스크롤시 right 정렬 의미 X */
+
+  /* ===== BOOT SEQUENCE BAR — 3열 → wrap ============================= */
+  .ap-boot {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    height: auto;
+  }
+  .ap-boot__steps li { padding: 2px var(--space-2); font-size: 10px; }
+  .ap-boot__seq { gap: var(--space-2); flex-wrap: wrap; }
+  .ap-boot__progress { gap: var(--space-3); }
+
+  /* footer 자체 height 자유롭게 */
+  footer.ap-boot { min-height: var(--footer-height); }
+
+  /* ===== LANDING PAGE — 모바일 stack ================================== */
+  .lp-page {
+    grid-template-rows: var(--header-height) auto auto var(--hud-strip-height) auto;
+    overflow: visible;
+  }
+  .lp-main {
+    grid-template-columns: 1fr;
+    padding: var(--space-5) var(--space-4);
+    gap: var(--space-5);
+  }
+  .lp-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .lp-subtitle { font-size: 0.875rem; letter-spacing: 0.24em; }
+  .lp-lede { font-size: var(--fs-body-sm); }
+  .lp-info { grid-template-columns: 1fr; }
+  .lp-info__cell {
+    border-right: 0;
+    border-bottom: var(--bw-thin) solid var(--border-subtle);
+  }
+  .lp-info__cell:last-child { border-bottom: 0; }
+  .lp-info__cell--rate .lp-info__value { font-size: 1.75rem; }
+  .lp-cta-row { grid-template-columns: 1fr; }
+  .lp-map-panel { min-height: 280px; }
+  .lp-cards {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 var(--space-4) var(--space-4);
+    gap: var(--space-2);
+  }
+  .lp-card { height: 160px; }
+  .lp-card__title { font-size: 1rem; }
+  .lp-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+    padding: var(--space-3) var(--space-4);
+    height: auto;
+  }
+}
+
+/* ===== 매우 좁은 브라우저 — 경고/상태 칩을 수직 분리 ================ */
+@media (max-width: 620px) {
+  .ap-warning {
+    right: auto;
+    bottom: 76px;
+    max-width: calc(100% - 24px);
+  }
+}
+
+/* ===== 좁은 폰 (≤ 380px) — 추가 미세 조정 ============================ */
+@media (max-width: 380px) {
+  .ap-title { font-size: 2.25rem; }
+  .ap-guest__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .ap-guest__grid .ap-stat:nth-child(3) { grid-column: span 2; }
+  .ap-clearance__bars { display: none; }       /* 가장 좁은 화면에선 바도 생략 */
+  .ap-warning {
+    right: auto;
+    bottom: 76px;
+    max-width: calc(100% - 24px);
+  }
+}
+  </style>
+  <link rel="stylesheet" href="css/archive-menu.css" />
+</head>
+<body class="ap-page">
+
+  <div class="grid-backdrop" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div class="ap-edge ap-edge--left" aria-hidden="true"><span>SYS::ACCESS_GATE_v1.4 / NODE::KR-PZ-10 / SESSION::GUEST</span></div>
+  <div class="ap-edge ap-edge--right" aria-hidden="true"><span>KR-INIT-001 / A-1 / PUBLIC_LAYER_PASSIVE</span></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="ap-header">
+    <div class="ap-brand">
+      <span class="ap-brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4 L12 20 L21 4 M7 4 L12 14 L17 4" stroke-linejoin="miter"/></svg>
+      </span>
+      <span class="ap-brand__text">
+        <span class="ap-brand__title">TIU UNIVERSE ARCHIVE</span>
+        <span class="ap-brand__tagline">THIS IS OUR WORLD. THIS IS THE ARCHIVE.</span>
+      </span>
+    </div>
+
+    <div class="ap-meta-strip">
+      <div class="ap-meta"><span class="ap-meta__label">ARCHIVE ID</span><span class="ap-meta__value">KR-INIT-001</span></div>
+      <div class="ap-meta"><span class="ap-meta__label">CLASSIFICATION</span><span class="ap-meta__value" data-i18n="classification_value">A-1 / 공개</span></div>
+      <div class="ap-meta"><span class="ap-meta__label">LAST UPDATED</span><span class="ap-meta__value">2032.05.12</span></div>
+      <div class="ap-meta"><span class="ap-meta__label">SERVER NODE</span><span class="ap-meta__value">KR-PZ-10 NODE</span></div>
+    </div>
+
+    <div class="ap-header__right">
+      <div class="ap-clearance">
+        <span class="ap-clearance__label">CLEARANCE LEVEL</span>
+        <span class="ap-clearance__bars" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></span>
+        <span class="ap-clearance__tag">LIMITED</span>
+        <span class="ap-clearance__dot" aria-hidden="true"></span>
+      </div>
+      <div class="ap-lang-switch">
+        <button type="button" data-lang-btn="ko">한</button>
+        <button type="button" data-lang-btn="en">EN</button>
+        <button type="button" data-lang-btn="ja">日</button>
+      </div>
+      <button class="ap-menu" aria-label="메뉴 열기" data-i18n-aria="menu_aria"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="ap-main">
+
+    <!-- LEFT — 카피 + 게스트 박스 -->
+    <section class="ap-left">
+      <h1 class="display-heading ap-title" data-i18n="title">접속 프로토콜</h1>
+      <p class="subtitle-en ap-subtitle" data-i18n="subtitle">ARCHIVE NETWORK GATEWAY</p>
+      <p class="ap-lede" data-i18n-html="lede">TIU 기록 보관망 접속 절차 개시.<br/>승인 사용자 한정 내부 기록 접근.</p>
+
+      <div class="panel corner-marks ap-guest">
+        <header class="ap-guest__head">
+          <span class="ap-guest__icon" aria-hidden="true">⌬</span>
+          <span class="ap-guest__title" data-i18n="guest_mode">게스트 접근 모드</span>
+        </header>
+
+        <div class="ap-guest__row">
+          <div class="ap-field">
+            <span class="ap-field__label" data-i18n="username">사용자명</span>
+            <span class="ap-field__value mono">GUEST</span>
+          </div>
+          <span class="ap-pill" data-i18n="guest_session_pill">GUEST SESSION</span>
+        </div>
+
+        <div class="ap-guest__row">
+          <div class="ap-field">
+            <span class="ap-field__label" data-i18n="session_status">세션 상태</span>
+            <span class="ap-field__value ap-field__value--accent" data-i18n="session_active">게스트 세션 활성화</span>
+          </div>
+          <span class="ap-status"><span data-i18n="session_issued">자동 발급 완료</span><i class="dot dot--ok" aria-hidden="true"></i></span>
+        </div>
+
+        <div class="ap-guest__grid">
+          <div class="ap-stat"><span class="ap-stat__label">NODE</span><span class="ap-stat__value mono">KR-PZ-10</span></div>
+          <div class="ap-stat"><span class="ap-stat__label">CLEARANCE</span><span class="ap-stat__value mono ap-stat__value--accent">LIMITED</span></div>
+          <div class="ap-stat"><span class="ap-stat__label">ARCHIVE STATUS</span><span class="ap-stat__value mono ap-stat__value--ok">ONLINE</span></div>
+        </div>
+
+        <ul class="ap-perms">
+          <li><i class="check" aria-hidden="true"></i><span data-i18n="perm_system">시스템 열람 권한</span><em data-i18n="perm_limited">한정</em></li>
+          <li><i class="check" aria-hidden="true"></i><span data-i18n="perm_index">기록 색인 열람</span><em data-i18n="perm_limited">한정</em></li>
+          <li><i class="check" aria-hidden="true"></i><span data-i18n="perm_public">일반 프로젝트 기록</span><em data-i18n="perm_limited">한정</em></li>
+          <li><i class="check" aria-hidden="true"></i><span data-i18n="perm_expiry">게스트 세션 만료</span><em class="accent">SYSTEM BOOT +30MIN</em></li>
+        </ul>
+
+        <a class="ap-btn ap-btn--primary" href="landing-standalone.html#archive-hub"><span data-i18n="btn_enter">아카이브 입장</span><span aria-hidden="true">→</span></a>
+        <a class="ap-btn ap-btn--ghost" href="public-records-standalone.html#public-records" data-i18n="btn_public">공개 기록관 보기</a>
+      </div>
+    </section>
+
+    <!-- RIGHT — 시네마틱 비주얼 (실제 이미지 배경) -->
+    <section class="ap-right" aria-hidden="true">
+      <div class="ap-scene-marker">
+        <span class="ap-scene-marker__id">VAULT-N07 // INTERIOR</span>
+        <span>UPLINK STABLE / SCENE LIVE</span>
+      </div>
+
+      <div class="ap-net-status">
+        <span class="ap-net-status__label">ARCHIVE NETWORK STATUS</span>
+        <span class="ap-net-status__value">ONLINE<i class="dot dot--ok" aria-hidden="true"></i></span>
+      </div>
+
+      <aside class="ap-warning">
+        <span class="ap-warning__icon" aria-hidden="true">⚠</span>
+        <p data-i18n-html="warning">무단 접근 및 사용 기록은 법령 위반 증거로 보존.</p>
+      </aside>
+    </section>
+  </main>
+
+  <!-- ===== HUD INFO STRIP ===== -->
+  <div class="ap-hud-strip">
+    <div class="ap-hud-cell">
+      <span class="ap-hud-cell__label">SECTOR ANALYSIS</span>
+      <span class="ap-hud-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    </div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">GRID</span><span class="ap-hud-cell__value">KR-A1-N07</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">LAT</span><span class="ap-hud-cell__value">37.6° N</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">LONG</span><span class="ap-hud-cell__value">128.5° E</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">SESSION ID</span><span class="ap-hud-cell__value">GST-7B2A-EE19</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">UPLINK</span><span class="ap-hud-cell__value">2032.05.12 23:45:31</span></div>
+    <div class="ap-hud-cell ap-hud-cell--right">
+      <span class="ap-hud-cell__label">SYSTEM STATUS</span>
+      <span class="ap-hud-cell__value ap-hud-cell__value--ok">OPERATIONAL</span>
+      <i class="dot dot--ok" aria-hidden="true"></i>
+    </div>
+  </div>
+
+  <!-- ===== BOOT SEQUENCE BAR ===== -->
+  <footer class="ap-boot">
+    <div class="ap-boot__seq">
+      <span class="ap-boot__label">SYSTEM BOOT SEQUENCE</span>
+      <ol class="ap-boot__steps">
+        <li class="done">INIT</li><li class="done">CHK</li><li class="done">LINK</li><li class="done">SYNC</li><li class="active">ACCESS</li>
+      </ol>
+    </div>
+    <div class="ap-boot__progress">
+      <span class="ap-boot__label">BOOT PROGRESS</span>
+      <div class="ap-progress" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><i style="--pct:92%"></i></div>
+      <span class="ap-boot__pct mono">92%</span>
+    </div>
+    <div class="ap-boot__eta">
+      <span class="ap-boot__label">ESTIMATED TIME</span>
+      <span class="mono ap-boot__time">00:00:02</span>
+    </div>
+  </footer>
+
+<script>
+/* ==========================================================================
+   TIU UNIVERSE ARCHIVE — i18n
+   --------------------------------------------------------------------------
+   사전 데이터 + 언어 전환 로직.
+   사용법:
+     - 텍스트만:    <element data-i18n="key">기본 텍스트</element>
+     - HTML 허용:   <element data-i18n-html="key">기본 <br/> 텍스트</element>
+     - 토글 버튼:   <button data-lang-btn="ko">한</button>
+   번역은 ACCESS PROTOCOL ASSET SHEET (12. MULTILINGUAL TEXT SAMPLES) 캐논 따름.
+   영어 시스템 라벨(ARCHIVE ID, NODE 등)은 의도적으로 번역 대상에서 제외 —
+   터미널/군사 도큐먼트 톤 유지.
+   ========================================================================== */
+
+(function () {
+  'use strict';
+
+  const DICT = {
+    ko: {
+      classification_value:  'A-1 / 공개',
+      title:                 '접속 프로토콜',
+      subtitle:              '기록망 접근 게이트웨이',
+      lede:                  'TIU 기록 보관망 접속 절차 개시.<br/>승인 사용자 한정 내부 기록 접근.',
+      guest_mode:            '게스트 접근 모드',
+      guest_session_pill:    '게스트 세션',
+      username:              '사용자명',
+      session_status:        '세션 상태',
+      session_active:        '게스트 세션 활성화',
+      session_issued:        '자동 발급 완료',
+      perm_system:           '시스템 열람 권한',
+      perm_index:            '기록 색인 열람',
+      perm_public:           '일반 프로젝트 기록',
+      perm_expiry:           '게스트 세션 만료',
+      perm_limited:          '한정',
+      btn_enter:             '아카이브 홈 열기',
+      btn_public:            '공개 기록관 보기',
+      warning:               '무단 접근 및 사용 기록은 법령 위반 증거로 보존.',
+      menu_aria:             '메뉴 열기',
+
+      /* === LANDING PAGE === */
+      main_title:            'TIU 유니버스 아카이브',
+      main_subtitle:         '공개 기록망 노드',
+      main_lede:             '2032년 5월 12일 기준 공개 기록망 호출.<br/>연표, 지역 현황, 주요 세력, 한국 지부 단말 기록 빠른 색인.',
+      cta1_title:            '공개 기록관 열람',
+      cta2_title:            '공개 위협 지도 확인',
+      cta3_title:            '게스트 세션 관리',
+      card1_title:           '발생 연표',
+      card1_desc:            '1900년대 초부터 2032년까지의 주요 사건 기록',
+      card2_title:           '글로벌 위협 지도',
+      card2_desc:            '전 세계 감염 확산 현황과 위협 등급 분석',
+      card3_title:           '지부 · 대한민국',
+      card3_desc:            '한국 내 거점, 도시, 생존 구역 및 주요 인프라',
+      card4_title:           '아카이브 상세 기록',
+      card4_desc:            '세력, 지역, 사건 기록을 이어 보는 상세 색인'
+    },
+    en: {
+      classification_value:  'A-1 / Public',
+      title:                 'Access Protocol',
+      subtitle:              'Archive Network Gateway',
+      lede:                  'TIU archive network access sequence initialized.<br/>Internal records limited to authorized users.',
+      guest_mode:            'Guest Access Mode',
+      guest_session_pill:    'Guest Session',
+      username:              'Username',
+      session_status:        'Session Status',
+      session_active:        'Guest session active',
+      session_issued:        'Auto-issued',
+      perm_system:           'System read access',
+      perm_index:            'Record index access',
+      perm_public:           'General project records',
+      perm_expiry:           'Guest session expiry',
+      perm_limited:          'Limited',
+      btn_enter:             'Open Archive Home',
+      btn_public:            'Public Records',
+      warning:               'Unauthorized access and usage logs are retained as legal evidence.',
+      menu_aria:             'Open menu',
+
+      /* === LANDING PAGE === */
+      main_title:            'TIU Universe Archive',
+      main_subtitle:         'Public Records Node',
+      main_lede:             'As of May 12, 2032, the public archive node is live.<br/>Review timelines, regions, factions, and Korea branch terminal records at a glance.',
+      cta1_title:            'Open Public Records',
+      cta2_title:            'Review Threat Index',
+      cta3_title:            'Manage Guest Session',
+      card1_title:           'Outbreak Timeline',
+      card1_desc:            'Major records from the early 1900s to 2032',
+      card2_title:           'Global Threat Map',
+      card2_desc:            'Worldwide infection spread and threat-level analysis',
+      card3_title:           'Korea Branch',
+      card3_desc:            'Strongholds, cities, survival zones, and key infrastructure',
+      card4_title:           'Archive Detail Records',
+      card4_desc:            'Extended index for factions, regions, and incidents'
+    },
+    ja: {
+      classification_value:  'A-1 / 公開',
+      title:                 'アクセス プロトコル',
+      subtitle:              'アーカイブネットワークゲートウェイ',
+      lede:                  'TIU記録保管網への接続手順開始。<br/>内部記録へのアクセスは承認ユーザー限定。',
+      guest_mode:            'ゲストアクセスモード',
+      guest_session_pill:    'ゲストセッション',
+      username:              'ユーザー名',
+      session_status:        'セッション状態',
+      session_active:        'ゲストセッション有効',
+      session_issued:        '自動発行完了',
+      perm_system:           'システム閲覧権限',
+      perm_index:            '記録索引閲覧',
+      perm_public:           '一般プロジェクト記録',
+      perm_expiry:           'ゲストセッション失効',
+      perm_limited:          '限定',
+      btn_enter:             'アーカイブホームを開く',
+      btn_public:            '公開記録を見る',
+      warning:               '不正アクセスおよび使用記録は法令違反の証拠として保全。',
+      menu_aria:             'メニューを開く',
+
+      /* === LANDING PAGE === */
+      main_title:            'TIU ユニバースアーカイブ',
+      main_subtitle:         '公開記録網ノード',
+      main_lede:             '2032年5月12日時点の公開記録網を読み込みます。<br/>年表、地域状況、主要勢力、韓国支部端末記録をすばやく確認できます。',
+      cta1_title:            '公開記録を見る',
+      cta2_title:            '脅威索引を確認する',
+      cta3_title:            'ゲストセッション管理',
+      card1_title:           '発生年表',
+      card1_desc:            '1900年代初頭から2032年までの主要事件記録',
+      card2_title:           'グローバル脅威マップ',
+      card2_desc:            '全世界の感染拡散状況と脅威等級分析',
+      card3_title:           '支部 · 大韓民国',
+      card3_desc:            '韓国内の拠点、都市、生存区域および主要インフラ',
+      card4_title:           'アーカイブ詳細記録',
+      card4_desc:            '勢力、地域、事件記録をつなぐ詳細索引'
+    }
+  };
+
+  const STORAGE_KEY  = 'tiu-lang';
+  const DEFAULT_LANG = 'ko';
+  const SUPPORTED    = ['ko', 'en', 'ja'];
+
+  function applyLang(lang) {
+    if (!SUPPORTED.includes(lang)) lang = DEFAULT_LANG;
+    const dict = DICT[lang];
+    document.documentElement.lang = lang;
+
+    /* 텍스트 컨텐츠 */
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const v = dict[el.dataset.i18n];
+      if (v !== undefined) el.textContent = v;
+    });
+
+    /* HTML 컨텐츠 (br 등 허용) */
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const v = dict[el.dataset.i18nHtml];
+      if (v !== undefined) el.innerHTML = v;
+    });
+
+    /* aria-label 같은 속성 번역 */
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const v = dict[el.dataset.i18nAria];
+      if (v !== undefined) el.setAttribute('aria-label', v);
+    });
+
+    /* 토글 버튼 활성 상태 */
+    document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+      btn.classList.toggle('is-active', btn.dataset.langBtn === lang);
+    });
+
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* private mode 등 */ }
+  }
+
+  function init() {
+    document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.dataset.langBtn));
+    });
+
+    let saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    applyLang(saved || DEFAULT_LANG);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+</script>
+
+  <script src="js/archive-menu.js"></script>
+</body>
+</html>

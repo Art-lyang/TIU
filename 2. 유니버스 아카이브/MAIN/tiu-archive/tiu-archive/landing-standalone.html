@@ -1,0 +1,2157 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B0B0C" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>TIU 유니버스 아카이브 — ARCHIVE DETAILS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <style>
+/* ==========================================================================
+   TIU UNIVERSE ARCHIVE — DESIGN TOKENS (variables only)
+   --------------------------------------------------------------------------
+   모든 페이지 공통 변수의 단일 진실 공급원(SSOT).
+   글로벌 리셋·유틸리티는 base.css 참조.
+   ========================================================================== */
+
+
+:root {
+  /* === COLORS — BASE LAYER (정밀 시안 캐논) ============================= */
+  --bg-void:        #050507;
+  --bg-base:        #0B0B0C;
+  --bg-surface:     #121214;
+  --bg-surface-2:   #1A1A1C;
+  --bg-elevated:    #2A2A2C;
+
+  /* === COLORS — BORDERS ================================================= */
+  --border-subtle:  #1f1f23;
+  --border-default: #2a2a2f;
+  --border-strong:  #3a3a40;
+  --border-accent:  #5c2818;
+
+  /* === COLORS — TEXT (정밀 시안 캐논) =================================== */
+  --text-primary:   #CFCFCF;
+  --text-secondary: #A7A7A7;
+  --text-tertiary:  #6B6B6B;
+  --text-muted:     #444444;
+  --text-inverse:   #0B0B0C;
+
+  /* === COLORS — ACCENT (정밀 시안 캐논) ================================= */
+  --accent:           #FF5A00;     /* PRIMARY — 강한 오렌지-레드 */
+  --accent-secondary: #FFC266;     /* SECONDARY — 라이트 오렌지 */
+  --accent-bright:    #FF7A33;     /* 호버 강화 */
+  --accent-dim:       #C74800;     /* 차분한 어두운 오렌지 */
+  --accent-deep:      #5A2200;     /* 가장 어두운 — 보더, 비활성 */
+  --accent-glow:      rgba(255, 90, 0, 0.28);
+  --accent-faint:     rgba(255, 90, 0, 0.08);
+
+  /* === COLORS — STATUS ================================================== */
+  --status-online:    #3AB26B;     /* 그린 (정밀 시안 캐논) */
+  --status-warning:   #c8a04a;
+  --status-danger:    #FF3B30;
+  --status-offline:   #555555;
+
+  --threat-low:       #3AB26B;
+  --threat-moderate:  #c8a04a;
+  --threat-high:      #FF7A33;
+  --threat-critical:  #FF3B30;
+
+  --clearance-green:  #3AB26B;
+  --clearance-yellow: #c8a04a;
+  --clearance-orange: #FF5A00;
+  --clearance-red:    #d04545;
+
+  /* === COLORS — FACTION / CONTROL (에셋 시트 캐논) ====================== */
+  --faction-friendly:  #2D7BFF;    /* 우호 (블루) */
+  --faction-neutral:   #A0A0A0;    /* 중립 (그레이) */
+  --faction-contested: #FFB000;    /* 분쟁 (황색-오렌지) */
+  --faction-hostile:   #D12A2A;    /* 적대 (적색) */
+
+  /* === TYPOGRAPHY (Pretendard 단일 패밀리 — 정밀 시안 캐논) ============ */
+  --font-display:   'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:      'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:      'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  --fs-mega:        clamp(4rem, 9vw, 9rem);
+  --fs-display:     clamp(3rem, 6vw, 6rem);
+  --fs-display-sm:  clamp(2rem, 4vw, 3.5rem);
+  --fs-h1:    2rem;
+  --fs-h2:    1.5rem;
+  --fs-h3:    1.25rem;
+  --fs-h4:    1.125rem;
+  --fs-body:        1rem;
+  --fs-body-sm:     0.875rem;
+  --fs-caption:     0.75rem;
+  --fs-micro:       0.6875rem;
+  --fs-nano:        0.625rem;
+
+  --fw-regular:   400;
+  --fw-medium:    500;
+  --fw-bold:      700;
+
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.05em;
+  --tracking-wider:   0.12em;
+  --tracking-widest:  0.25em;
+
+  --leading-tight:    1.1;
+  --leading-snug:     1.3;
+  --leading-normal:   1.5;
+  --leading-relaxed:  1.7;
+
+  /* === SPACING (4px 베이스) ============================================= */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32:  128px;
+
+  /* === BORDERS ========================================================== */
+  --bw-thin:    1px;
+  --bw-medium:  2px;
+  --bw-thick:   3px;
+  --radius-none:  0;
+  --radius-sm:    2px;
+  --radius-md:    4px;
+
+  /* === LAYOUT =========================================================== */
+  --header-height:    64px;
+  --footer-height:    44px;
+  --hud-strip-height: 28px;
+  --sidebar-width:    320px;
+  --content-max:      1680px;
+  --content-narrow:   1280px;
+  --reading-max:      72ch;
+
+  /* === SHADOWS / GLOWS ================================================== */
+  --shadow-sm:      0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md:      0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg:      0 8px 32px rgba(0,0,0,0.6);
+  --glow-accent:    0 0 24px var(--accent-glow);
+  --glow-accent-sm: 0 0 8px var(--accent-glow);
+
+  /* === MOTION =========================================================== */
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-snap:    cubic-bezier(0.85, 0, 0.15, 1);
+  --dur-instant:   80ms;
+  --dur-fast:      160ms;
+  --dur-base:      280ms;
+  --dur-slow:      480ms;
+  --dur-slower:    800ms;
+
+  /* === Z-INDEX SCALE ==================================================== */
+  --z-base:      1;
+  --z-raised:    10;
+  --z-sticky:    100;
+  --z-overlay:   500;
+  --z-modal:     1000;
+  --z-toast:     2000;
+}
+/* ==========================================================================
+   TIU UNIVERSE ARCHIVE — BASE
+   --------------------------------------------------------------------------
+   글로벌 리셋, 기본 스타일, 재사용 유틸리티 클래스.
+   design-tokens.css 다음에 import.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img, picture, svg, video { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+::selection { background: var(--accent); color: var(--text-inverse); }
+
+::-webkit-scrollbar           { width: 8px; height: 8px; }
+::-webkit-scrollbar-track     { background: var(--bg-base); }
+::-webkit-scrollbar-thumb     { background: var(--border-default); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+
+/* ===== UTILITY: 라벨 (모노 + UPPERCASE + 와이드 트래킹) ============== */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.label--accent  { color: var(--accent); }
+.label--success { color: var(--status-online); }
+
+/* ===== UTILITY: 모노 데이터 텍스트 =================================== */
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ===== UTILITY: 디스플레이 헤딩 (Pretendard Black 900) =============== */
+.display-heading {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  text-shadow:
+    0 0 1px rgba(207, 207, 207, 0.3),
+    1px 1px 0 rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+/* ===== UTILITY: 영문 부제 (Pretendard Bold 700, 320 tracking) ======== */
+.subtitle-en {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ===== UTILITY: 패널 (카드/박스 베이스) ============================== */
+.panel {
+  background: var(--bg-surface);
+  border: var(--bw-thin) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  position: relative;
+}
+.panel--accent { border-color: var(--accent-deep); }
+.panel--strong { border-color: var(--border-strong); }
+
+/* ===== UTILITY: 코너 마커 ============================================ */
+.corner-marks::before,
+.corner-marks::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: var(--bw-thin) solid var(--accent);
+  pointer-events: none;
+}
+.corner-marks::before {
+  top: -1px; left: -1px;
+  border-right: 0; border-bottom: 0;
+}
+.corner-marks::after {
+  bottom: -1px; right: -1px;
+  border-left: 0; border-top: 0;
+}
+
+/* ===== UTILITY: 그리드 백드롭 (희미한 격자) ========================== */
+.grid-backdrop {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.012) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: var(--z-base);
+}
+
+/* ===== UTILITY: 노이즈 텍스처 오버레이 (필름 그레인) ================= */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-overlay);
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.28) 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.18) 0 1px, transparent 1px);
+  background-size: 7px 7px, 11px 11px;
+}
+
+/* ===== UTILITY: 시각적으로만 숨김 (a11y) ============================ */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== UTILITY: 상태 닷 ============================================== */
+.dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+.dot--ok      { background: var(--status-online); box-shadow: 0 0 6px var(--status-online); }
+.dot--warn    { background: var(--status-warning); box-shadow: 0 0 6px var(--status-warning); }
+.dot--danger  { background: var(--status-danger); box-shadow: 0 0 6px var(--status-danger); }
+.dot--offline { background: var(--status-offline); }
+/* ==========================================================================
+   ARCHIVE HEADER — 모든 페이지 공통 헤더 컴포넌트
+   --------------------------------------------------------------------------
+   브랜드 / 메타스트립 / Clearance Level / 햄버거.
+   .ap-header 클래스명은 모든 페이지에서 동일하게 사용.
+   ========================================================================== */
+
+.ap-header {
+  display: grid;
+  grid-template-columns: 320px 1fr auto;
+  align-items: center;
+  gap: var(--space-8);
+  padding: 0 var(--space-8) 0 var(--space-10);
+  border-bottom: var(--bw-thin) solid var(--border-subtle);
+  background: rgba(10, 10, 13, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: var(--z-sticky);
+}
+
+/* ===== BRAND ========================================================== */
+.ap-brand { display: flex; align-items: center; gap: var(--space-3); color: var(--accent); }
+.ap-brand__mark { display: flex; }
+.ap-brand__text { display: flex; flex-direction: column; line-height: 1.2; }
+.ap-brand__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-body-sm);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-primary);
+}
+.ap-brand__tagline {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+/* ===== META STRIP ===================================================== */
+.ap-meta-strip { display: flex; gap: var(--space-3); justify-self: center; }
+.ap-meta {
+  display: flex; flex-direction: column; gap: 2px;
+  min-width: 0;
+  padding: 6px var(--space-3);
+  border: var(--bw-thin) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--bg-void);
+}
+.ap-meta__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+}
+.ap-meta__value {
+  font-size: var(--fs-caption);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ===== HEADER RIGHT (Clearance + Menu) ================================ */
+.ap-header__right { display: flex; align-items: center; gap: var(--space-6); }
+
+.ap-clearance {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  border: var(--bw-thin) solid var(--border-default);
+  border-radius: var(--radius-sm);
+}
+.ap-clearance__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+}
+.ap-clearance__bars { display: inline-flex; gap: 2px; }
+.ap-clearance__bars i {
+  width: 10px; height: 12px;
+  background: var(--border-strong);
+  display: inline-block;
+}
+.ap-clearance__bars i.on { background: var(--accent); }
+.ap-clearance__tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent);
+  font-weight: var(--fw-bold);
+}
+.ap-clearance__dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: ap-pulse 2s ease-in-out infinite;
+}
+@keyframes ap-pulse { 50% { opacity: 0.4; } }
+
+/* ===== LANGUAGE SWITCH (헤더 우측, 햄버거 옆) ========================= */
+.ap-lang-switch {
+  display: flex;
+  border: var(--bw-thin) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-void);
+}
+.ap-lang-switch button {
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-tertiary);
+  background: transparent;
+  border: 0;
+  border-right: var(--bw-thin) solid var(--border-default);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out);
+  min-width: 36px;
+}
+.ap-lang-switch button:last-child { border-right: 0; }
+.ap-lang-switch button:hover { color: var(--text-primary); }
+.ap-lang-switch button.is-active {
+  color: var(--accent);
+  background: rgba(255, 90, 0, 0.06);
+}
+
+/* ===== HAMBURGER ====================================================== */
+.ap-menu {
+  width: 36px; height: 36px;
+  background: transparent;
+  border: var(--bw-thin) solid var(--border-default);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 4px;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+.ap-menu:hover { border-color: var(--accent); }
+.ap-menu span { width: 16px; height: 1px; background: var(--text-secondary); }
+.ap-menu:hover span { background: var(--accent); }
+
+/* ===== EDGE DECO TEXT (좌우 가장자리 세로 코드 텍스트) ================ */
+.ap-edge {
+  position: fixed;
+  top: 0; bottom: 0;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-muted);
+  pointer-events: none;
+  z-index: var(--z-sticky);
+}
+.ap-edge--left  { left: 0;  }
+.ap-edge--right { right: 0; }
+.ap-edge span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+.ap-edge--right span { transform: none; }
+/* ==========================================================================
+   ARCHIVE HUD INFO STRIP
+   --------------------------------------------------------------------------
+   페이지 하단의 얇은 정보 스트립. 헤더와 짝을 이룸.
+   - 헤더: 이 아카이브가 무엇인가 (ID/Classification/Last Updated/Server)
+   - HUD 스트립: 지금 시스템이 어떻게 돌아가는가 (Grid/Lat-Long/Record/Time/Status)
+   ========================================================================== */
+
+.ap-hud-strip {
+  height: var(--hud-strip-height);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: 0 var(--space-10);
+  background: var(--bg-void);
+  border-top: var(--bw-thin) solid var(--border-subtle);
+  border-bottom: var(--bw-thin) solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-wider);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* ===== CELL ===== */
+.ap-hud-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  position: relative;
+}
+.ap-hud-cell + .ap-hud-cell::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--space-3) * -1);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background: var(--border-default);
+}
+.ap-hud-cell--right {
+  margin-left: auto;
+  padding-left: var(--space-4);
+}
+
+.ap-hud-cell__label {
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+}
+
+.ap-hud-cell__value {
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-wider);
+}
+.ap-hud-cell__value--accent { color: var(--accent); }
+.ap-hud-cell__value--ok     { color: var(--status-online); }
+.ap-hud-cell__value--warn   { color: var(--status-warning); }
+.ap-hud-cell__value--danger { color: var(--status-danger); }
+
+/* ===== SECTOR ANALYSIS BARS (실시간 시그널 시각화) ==================== */
+.ap-hud-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+  margin-left: var(--space-1);
+}
+.ap-hud-bars i {
+  display: block;
+  width: 2px;
+  background: var(--accent);
+  opacity: 0.7;
+  animation: ap-hud-bars 1.4s ease-in-out infinite;
+}
+.ap-hud-bars i:nth-child(1) { height: 30%; animation-delay: 0.0s; }
+.ap-hud-bars i:nth-child(2) { height: 60%; animation-delay: 0.1s; }
+.ap-hud-bars i:nth-child(3) { height: 80%; animation-delay: 0.2s; }
+.ap-hud-bars i:nth-child(4) { height: 50%; animation-delay: 0.3s; }
+.ap-hud-bars i:nth-child(5) { height: 90%; animation-delay: 0.4s; }
+.ap-hud-bars i:nth-child(6) { height: 70%; animation-delay: 0.5s; }
+.ap-hud-bars i:nth-child(7) { height: 40%; animation-delay: 0.6s; }
+.ap-hud-bars i:nth-child(8) { height: 60%; animation-delay: 0.7s; }
+
+@keyframes ap-hud-bars {
+  0%, 100% { transform: scaleY(0.6); }
+  50%      { transform: scaleY(1.0); }
+}
+
+/* ===== STATUS DOT (right cell의 종 모양 인디케이터) =================== */
+.ap-hud-strip .dot {
+  margin-left: var(--space-1);
+}
+/* ==========================================================================
+   LANDING PAGE — Shell + Layout
+   --------------------------------------------------------------------------
+   import 순서: design-tokens → base → archive-header → archive-hud-strip
+                → landing-page → landing-hero → landing-map
+                → landing-cta → landing-cards → mobile-overrides
+   ========================================================================== */
+
+/* ===== PAGE SHELL ===================================================== */
+.lp-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows:
+    var(--header-height)        /* 헤더 */
+    1fr                          /* 메인 (좌 카피 / 우 미니맵) */
+    auto                         /* 하단 4 카드 행 */
+    var(--hud-strip-height)      /* HUD 스트립 */
+    var(--footer-height);        /* 푸터 */
+  background:
+    radial-gradient(ellipse at 75% 35%, rgba(255, 90, 0, 0.05) 0%, transparent 55%),
+    var(--bg-base);
+  overflow: hidden;
+}
+
+.archive-page .lp-archive,
+.public-records-page .lp-threat,
+.public-records-page .lp-dossiers {
+  display: none;
+}
+
+/* ===== MAIN — 좌 카피 / 우 미니맵 ==================================== */
+.lp-main {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-10) var(--space-6);
+  position: relative;
+  z-index: var(--z-raised);
+  overflow: hidden;
+  min-height: 0;            /* grid 자식 overflow 방지 */
+}
+
+/* ===== FOOTER (Project © + 링크) ====================================== */
+.lp-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-10);
+  border-top: var(--bw-thin) solid var(--border-subtle);
+  background: var(--bg-void);
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-tertiary);
+}
+.lp-footer__links {
+  display: flex;
+  gap: var(--space-4);
+}
+.lp-footer__links a {
+  color: var(--text-tertiary);
+  letter-spacing: var(--tracking-widest);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.lp-footer__links a:hover { color: var(--accent); }
+
+/* ===== ENTRY ANIMATIONS ============================================== */
+.lp-title       { animation: lp-rise 0.8s var(--ease-out) both; }
+.lp-subtitle    { animation: lp-rise 0.8s var(--ease-out) 0.12s both; }
+.lp-lede        { animation: lp-rise 0.8s var(--ease-out) 0.24s both; }
+.lp-info        { animation: lp-rise 0.8s var(--ease-out) 0.36s both; }
+.lp-cta-row     { animation: lp-rise 0.8s var(--ease-out) 0.48s both; }
+.lp-map-panel   { animation: lp-fade 1.2s var(--ease-out) 0.2s both; }
+.lp-cards       { animation: lp-rise 0.8s var(--ease-out) 0.6s both; }
+
+@keyframes lp-rise { from { opacity: 0; transform: translateY(14px); } }
+@keyframes lp-fade { from { opacity: 0; } }
+/* ==========================================================================
+   LANDING — Hero (좌측 카피 + INFO STRIP)
+   ========================================================================== */
+
+.lp-hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ===== TITLE BLOCK =================================================== */
+.lp-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0;
+  /* 그런지 — 페인트 칠한 듯한 헤딩 */
+  text-shadow:
+    0 0 1px rgba(207, 207, 207, 0.4),
+    2px 2px 0 rgba(0, 0, 0, 0.9),
+    -1px -1px 0 rgba(207, 207, 207, 0.05);
+  filter: contrast(1.08);
+  word-break: keep-all;
+}
+
+.lp-subtitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.6vw, 1.5rem);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+
+.lp-lede {
+  font-size: var(--fs-h4);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 620px;
+}
+
+/* ===== INFO STRIP (큰 정보 박스) ===================================== */
+.lp-info {
+  display: grid;
+  grid-template-columns: 1.2fr 1.4fr 1fr;
+  gap: 0;
+  border: var(--bw-thin) solid var(--border-default);
+  background: var(--bg-surface);
+  margin-top: var(--space-2);
+}
+
+.lp-info__cell {
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  border-right: var(--bw-thin) solid var(--border-subtle);
+  position: relative;
+}
+.lp-info__cell:last-child { border-right: 0; }
+
+.lp-info__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.lp-info__value {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  letter-spacing: var(--tracking-wider);
+  color: var(--text-primary);
+}
+
+/* INFO STRIP — 큰 강조 값 */
+.lp-info__cell--rate .lp-info__value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: var(--tracking-wide);
+  line-height: 1;
+  margin-top: 2px;
+}
+
+/* 코너 데코 (오렌지 모서리) */
+.lp-info__cell--rate::before,
+.lp-info__cell--rate::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: var(--bw-thin) solid var(--accent);
+}
+.lp-info__cell--rate::before {
+  top: -1px; right: -1px;
+  border-left: 0; border-bottom: 0;
+}
+.lp-info__cell--rate::after {
+  bottom: -1px; right: -1px;
+  border-left: 0; border-top: 0;
+}
+/* ==========================================================================
+   LANDING — Global Archive Map Panel
+   --------------------------------------------------------------------------
+   메인 아카이브는 세계 기록망을 먼저 보여준다.
+   세계지도 에셋이 준비되기 전까지 이 영역은 빈 슬롯으로 유지한다.
+   ========================================================================== */
+
+.lp-map-panel {
+  display: flex;
+  flex-direction: column;
+  border: var(--bw-thin) solid var(--border-default);
+  background: var(--bg-surface);
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ===== HEADER (GLOBAL ARCHIVE MAP / WORLD THREAT OVERLAY) ============= */
+.lp-map-panel__head {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--bw-thin) solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.lp-map-panel__title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+.lp-map-panel__sub {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+/* ===== MAP ASSET SLOT 영역 =========================================== */
+.lp-map-panel__viewport {
+  flex: 1;
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    radial-gradient(circle at 50% 45%, rgba(255,90,0,0.12), transparent 48%),
+    var(--bg-void);
+  background-size: 42px 42px, 42px 42px, auto, auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.lp-map-panel__viewport::before,
+.lp-map-panel__viewport::after {
+  content: "";
+  position: absolute;
+  inset: var(--space-5);
+  pointer-events: none;
+}
+
+.lp-map-panel__viewport::before {
+  border: var(--bw-thin) dashed rgba(255, 90, 0, 0.36);
+}
+
+.lp-map-panel__viewport::after {
+  background:
+    linear-gradient(90deg, transparent 0 49%, rgba(255,90,0,0.32) 49% 51%, transparent 51%),
+    linear-gradient(180deg, transparent 0 49%, rgba(255,90,0,0.22) 49% 51%, transparent 51%);
+  opacity: 0.45;
+}
+
+.lp-map-panel__viewport::before,
+.lp-map-panel__viewport::after {
+  z-index: 2;
+}
+
+.lp-map-panel__image {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding: var(--space-3);
+  object-fit: contain;
+  box-sizing: border-box;
+  opacity: 0.9;
+  filter: contrast(1.12) saturate(0.92);
+}
+
+.lp-map-panel__beacon {
+  position: absolute;
+  z-index: 3;
+  width: clamp(2.1rem, 4.8vw, 4.2rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.82;
+  animation: lp-map-beacon-pulse 3.4s ease-in-out infinite;
+}
+
+.lp-map-panel__beacon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(255, 90, 0, 0.56));
+}
+
+.lp-map-panel__beacon--na { left: 27%; top: 45%; }
+.lp-map-panel__beacon--eu { left: 51%; top: 39%; animation-delay: -1.2s; }
+.lp-map-panel__beacon--ea { left: 71%; top: 46%; animation-delay: -2.1s; }
+
+@keyframes lp-map-beacon-pulse {
+  50% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+.lp-map-panel__slot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-2);
+  place-items: center;
+  width: min(82%, 34rem);
+  aspect-ratio: 16 / 9;
+  border: var(--bw-thin) solid var(--border-subtle);
+  background: rgba(18, 18, 20, 0.66);
+}
+
+.lp-map-panel__slot-kicker,
+.lp-map-panel__slot-sub {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.lp-map-panel__slot-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 2.2vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+/* ===== STATUS BLOCK (MAP SLOT 상태 + 타임스탬프) ====================== */
+.lp-map-panel__status {
+  padding: var(--space-3) var(--space-4);
+  border-top: var(--bw-thin) solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.lp-map-panel__status-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.lp-map-panel__status-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.lp-map-panel__status-rate {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* ===== 진행바 (점선 패턴) ============================================ */
+.lp-map-panel__progress {
+  height: 8px;
+  border: var(--bw-thin) solid var(--border-default);
+  background: var(--bg-surface);
+  position: relative;
+}
+.lp-map-panel__progress i {
+  display: block;
+  height: 100%;
+  width: var(--pct);
+  background: repeating-linear-gradient(90deg,
+    var(--accent) 0 6px,
+    transparent 6px 8px);
+  box-shadow: 0 0 6px var(--accent-glow);
+}
+
+/* ===== LAST UPDATED 라인 ============================================= */
+.lp-map-panel__last-update {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+/* ==========================================================================
+   LANDING — 3 Primary CTA Buttons
+   --------------------------------------------------------------------------
+   PUBLIC INDEX / THREAT INDEX / ACCESS GATE.
+   각 버튼: 아이콘 + 라벨(영어, 모노) + 부설명(한/영/일 i18n) + → 화살표
+   ========================================================================== */
+
+.lp-cta-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.lp-cta {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-4);
+  background: var(--bg-surface);
+  border: var(--bw-thin) solid var(--border-default);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 좌측 액센트 라인 (DEFAULT) */
+.lp-cta::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--accent-deep);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.lp-cta:hover {
+  border-color: var(--accent);
+  background: var(--bg-surface-2);
+  box-shadow: var(--glow-accent-sm);
+}
+.lp-cta:hover::before { background: var(--accent); }
+
+.lp-cta:active {
+  background: rgba(255, 90, 0, 0.08);
+}
+
+/* === ICON === */
+.lp-cta__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* === BODY (label + sub) === */
+.lp-cta__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.lp-cta__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+.lp-cta__sub {
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* === ARROW === */
+.lp-cta__arrow {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  color: var(--accent);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.lp-cta:hover .lp-cta__arrow {
+  transform: translateX(4px);
+}
+/* ==========================================================================
+   LANDING — Archive Sector Cards (4 variants)
+   --------------------------------------------------------------------------
+   01 발생 연표  /  02 글로벌 위협 지도  /  03 지부 · 대한민국  /  04 아카이브 접근
+   각 카드: 번호 + 공개용 프리뷰 이미지 + 제목 + 부설명 + 메타 라벨
+   ========================================================================== */
+
+.lp-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  padding: 0 var(--space-10) var(--space-5);
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+.lp-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  border: var(--bw-thin) solid var(--border-default);
+  background: var(--bg-surface);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+/* 호버 — 살짝 들어 올림 */
+.lp-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md), var(--glow-accent-sm);
+}
+
+/* === 시네마틱 배경 (세계관 이미지 에셋 기반) === */
+.lp-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  transition: opacity var(--dur-fast) var(--ease-out);
+  z-index: 0;
+}
+.lp-card:hover::before { opacity: 0.55; }
+
+.lp-card--01::before {
+  background:
+    linear-gradient(135deg, rgba(11,11,12,0.12) 0%, rgba(255,90,0,0.18) 100%),
+    url('assets/archive-card-timeline.jpg');
+}
+.lp-card--02::before {
+  background:
+    radial-gradient(circle at 70% 40%, rgba(255,90,0,0.25) 0%, transparent 50%),
+    radial-gradient(circle at 30% 60%, rgba(208,69,69,0.18) 0%, transparent 45%),
+    url('assets/archive-card-threat.jpg');
+}
+.lp-card--03::before {
+  background:
+    linear-gradient(180deg, rgba(26,26,26,0.28) 0%, rgba(10,10,10,0.52) 72%),
+    url('assets/archive-card-branch.jpg');
+}
+.lp-card--04::before {
+  background:
+    linear-gradient(45deg, rgba(22,22,24,0.46) 0%, rgba(10,10,10,0.74) 80%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 8px),
+    url('assets/archive-card-restricted.jpg');
+}
+
+/* === 카드 내부 컨텐츠 === */
+.lp-card__num {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  color: var(--accent);
+  background: var(--bg-void);
+  padding: 2px var(--space-2);
+  border: var(--bw-thin) solid var(--accent-deep);
+  z-index: 2;
+}
+
+.lp-card__body {
+  margin-top: auto;
+  padding: var(--space-4);
+  background: linear-gradient(to top, rgba(11,11,12,0.95) 0%, transparent 100%);
+  position: relative;
+  z-index: 1;
+}
+
+.lp-card__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+  line-height: 1.2;
+}
+
+.lp-card__desc {
+  font-size: var(--fs-caption);
+  line-height: var(--leading-snug);
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-2);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lp-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-2);
+  border-top: var(--bw-thin) solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.lp-card__meta-value {
+  color: var(--accent);
+  font-weight: 700;
+}
+.lp-card__meta-value--warn { color: var(--threat-high); }
+.lp-card__meta-value--ok   { color: var(--status-online); }
+/* ==========================================================================
+   MOBILE OVERRIDES — 모바일/태블릿 반응형 규칙
+   --------------------------------------------------------------------------
+   브레이크포인트: 768px 이하 (폰 + 작은 태블릿).
+   모든 페이지의 마지막에 import. 데스크탑 룰을 오버라이드.
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== PAGE SHELL — 100vh 고정 해제, 자연스러운 세로 스크롤 ========= */
+  .ap-page {
+    grid-template-rows: var(--header-height) auto auto var(--hud-strip-height) auto;
+    overflow: visible;
+    min-height: 100vh;
+  }
+
+  /* ===== EDGE TEXT — 모바일에선 공간 부족, 숨김 ====================== */
+  .ap-edge { display: none; }
+
+  /* ===== HEADER — 브랜드 + 햄버거만 유지, 메타/Clearance는 단순화 ==== */
+  .ap-header {
+    grid-template-columns: 1fr auto;
+    gap: var(--space-3);
+    padding: 0 var(--space-4);
+  }
+  .ap-meta-strip { display: none; }            /* 메타스트립 숨김 (햄버거 메뉴로 이동 가정) */
+  .ap-header__right { gap: var(--space-2); }
+  .ap-clearance {
+    padding: 4px var(--space-2);
+    gap: var(--space-2);
+  }
+  .ap-clearance__label { display: none; }      /* 라벨 텍스트 생략, 바+태그만 */
+  .ap-brand__tagline { display: none; }
+  .ap-brand__title { font-size: var(--fs-caption); }
+
+  /* 언어 토글 — 폰에선 더 컴팩트 */
+  .ap-lang-switch button { padding: 4px 6px; min-width: 28px; font-size: 10px; }
+
+  /* ===== MAIN — 좌/우 분할 → 세로 stack ============================== */
+  .ap-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 220px auto;            /* 시네마틱 banner 위 / 카피 아래 */
+    overflow: visible;
+  }
+
+  /* ===== RIGHT — 짧은 시네마틱 banner로 변환 ========================= */
+  .ap-right {
+    order: 1;                                   /* 위로 */
+    background-position: center 38%;           /* 게이트 잘 보이게 */
+    min-height: 220px;
+  }
+  .ap-right::before {                           /* 좌측 페이드 → 하단 페이드로 변경 */
+    background: linear-gradient(to bottom,
+      transparent 50%,
+      rgba(11, 11, 12, 0.85) 100%);
+  }
+  .ap-scene-marker {
+    top: var(--space-3);
+    left: var(--space-3);
+    font-size: 9px;
+  }
+  .ap-net-status {
+    top: auto;
+    bottom: var(--space-3);
+    right: var(--space-3);
+    transform: none;
+    min-width: auto;
+    padding: 6px var(--space-3);
+  }
+  .ap-net-status__label { font-size: 9px; }
+  .ap-net-status__value { font-size: var(--fs-caption); }
+  .ap-warning {
+    position: static;                           /* 시네마틱 영역 아래로 흘러나옴 */
+    margin: var(--space-4);
+    max-width: none;
+  }
+
+  /* ===== LEFT — 카피 + 게스트 박스 ================================== */
+  .ap-left {
+    order: 2;
+    padding: var(--space-6) var(--space-4);
+    overflow: visible;
+  }
+  .ap-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    text-shadow:
+      0 0 1px rgba(207, 207, 207, 0.4),
+      1px 1px 0 rgba(0, 0, 0, 0.9);
+  }
+  .ap-subtitle { font-size: 0.875rem; letter-spacing: 0.24em; }
+  .ap-lede { font-size: var(--fs-body-sm); }
+
+  /* ===== GUEST BOX ================================================== */
+  .ap-guest { padding: var(--space-4); max-width: none; }
+  .ap-guest__grid { gap: var(--space-3); }
+  .ap-stat__value, .ap-field__value { font-size: var(--fs-caption); }
+  .ap-perms li { font-size: var(--fs-caption); grid-template-columns: 16px 1fr auto; }
+  .ap-btn { padding: var(--space-3) var(--space-4); font-size: var(--fs-caption); }
+
+  /* ===== HUD STRIP — 가로 스크롤로 7개 셀 보존 ====================== */
+  .ap-hud-strip {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 var(--space-4);
+    gap: var(--space-4);
+    -webkit-overflow-scrolling: touch;
+  }
+  .ap-hud-cell + .ap-hud-cell::before { left: calc(var(--space-2) * -1); }
+  .ap-hud-cell--right { margin-left: 0; padding-left: 0; }   /* 가로 스크롤시 right 정렬 의미 X */
+
+  /* ===== BOOT SEQUENCE BAR — 3열 → wrap ============================= */
+  .ap-boot {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    height: auto;
+  }
+  .ap-boot__steps li { padding: 2px var(--space-2); font-size: 10px; }
+  .ap-boot__seq { gap: var(--space-2); flex-wrap: wrap; }
+  .ap-boot__progress { gap: var(--space-3); }
+
+  /* footer 자체 height 자유롭게 */
+  footer.ap-boot { min-height: var(--footer-height); }
+
+  /* ===== LANDING PAGE — 모바일 stack ================================== */
+  .lp-page {
+    grid-template-rows: var(--header-height) auto auto var(--hud-strip-height) auto;
+    overflow: visible;
+  }
+  .lp-main {
+    grid-template-columns: 1fr;
+    padding: var(--space-5) var(--space-4);
+    gap: var(--space-5);
+  }
+  .lp-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .lp-subtitle { font-size: 0.875rem; letter-spacing: 0.24em; }
+  .lp-lede { font-size: var(--fs-body-sm); }
+  .lp-info { grid-template-columns: 1fr; }
+  .lp-info__cell {
+    border-right: 0;
+    border-bottom: var(--bw-thin) solid var(--border-subtle);
+  }
+  .lp-info__cell:last-child { border-bottom: 0; }
+  .lp-info__cell--rate .lp-info__value { font-size: 1.75rem; }
+  .lp-cta-row { grid-template-columns: 1fr; }
+  .lp-map-panel { min-height: 280px; }
+  .lp-cards {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 var(--space-4) var(--space-4);
+    gap: var(--space-2);
+  }
+  .lp-card { height: 160px; }
+  .lp-card__title { font-size: 1rem; }
+
+  /* MAP PANEL — asset slot 모바일 미세 조정 */
+  .lp-map-panel__viewport { min-height: 240px; }
+  .lp-map-panel__status-rate { font-size: 1.25rem; }
+  .lp-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+    padding: var(--space-3) var(--space-4);
+    height: auto;
+  }
+}
+
+/* ===== 좁은 폰 (≤ 380px) — 추가 미세 조정 ============================ */
+@media (max-width: 380px) {
+  .ap-title { font-size: 2.25rem; }
+  .ap-guest__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .ap-guest__grid .ap-stat:nth-child(3) { grid-column: span 2; }
+  .ap-clearance__bars { display: none; }       /* 가장 좁은 화면에선 바도 생략 */
+}
+  </style>
+  <link rel="stylesheet" href="css/archive-menu.css" />
+  <link rel="stylesheet" href="css/landing-archive.css" />
+  <link rel="stylesheet" href="css/landing-record-images.css" />
+  <link rel="stylesheet" href="css/landing-threat.css" />
+  <link rel="stylesheet" href="css/landing-map-sites.css" />
+  <link rel="stylesheet" href="css/landing-dossiers.css" />
+</head>
+<body class="lp-page archive-page">
+
+  <div class="grid-backdrop" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div class="ap-edge ap-edge--left" aria-hidden="true"><span>SYS::LANDING_v1.0 / NODE::PUBLIC_MIRROR / PUBLIC_INDEX_PASSIVE</span></div>
+  <div class="ap-edge ap-edge--right" aria-hidden="true"><span>GLOBAL-ARCHIVE / WORLD_INDEX_SLOT / OPERATIONAL</span></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="ap-header">
+    <div class="ap-brand">
+      <span class="ap-brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4 L12 20 L21 4 M7 4 L12 14 L17 4" stroke-linejoin="miter"/></svg></span>
+      <span class="ap-brand__text"><span class="ap-brand__title">TIU UNIVERSE ARCHIVE</span><span class="ap-brand__tagline">THIS IS OUR WORLD. THIS IS THE ARCHIVE.</span></span>
+    </div>
+    <div class="ap-meta-strip">
+      <div class="ap-meta"><span class="ap-meta__label">ARCHIVE ID</span><span class="ap-meta__value">PUBLIC-HUB-2032</span></div>
+      <div class="ap-meta"><span class="ap-meta__label">CLASSIFICATION</span><span class="ap-meta__value" data-i18n="classification_value">A-1 / 공개</span></div>
+      <div class="ap-meta"><span class="ap-meta__label">LAST UPDATED</span><span class="ap-meta__value">2032.05.12</span></div>
+      <div class="ap-meta"><span class="ap-meta__label">SERVER NODE</span><span class="ap-meta__value">WORLD MIRROR 00</span></div>
+    </div>
+    <div class="ap-header__right">
+      <div class="ap-clearance"><span class="ap-clearance__label">CLEARANCE LEVEL</span><span class="ap-clearance__bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="ap-clearance__tag">ORANGE</span><span class="ap-clearance__dot" aria-hidden="true"></span></div>
+      <div class="ap-lang-switch"><button type="button" data-lang-btn="ko">한</button><button type="button" data-lang-btn="en">EN</button><button type="button" data-lang-btn="ja">日</button></div>
+      <button class="ap-menu" aria-label="메뉴 열기" data-i18n-aria="menu_aria"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ===== MAIN — 좌 카피 / 우 세계지도 슬롯 ===== -->
+  <main class="lp-main" id="archive-hub">
+
+    <!-- LEFT — Hero -->
+    <section class="lp-hero">
+      <h1 class="display-heading lp-title" data-i18n="main_title">TIU 유니버스 아카이브</h1>
+      <p class="lp-subtitle" data-i18n="main_subtitle">아카이브 상세 노드</p>
+      <p class="lp-lede" data-i18n-html="main_lede">2032년 5월 12일 기준 상세 기록망 호출.<br/>연표, 글로벌 위협 지도, 주요 세력, KR-INIT-001 단말 기록 상세 색인.</p>
+
+      <!-- INFO STRIP -->
+      <div class="lp-info">
+        <div class="lp-info__cell"><span class="lp-info__label">ARCHIVE SCOPE</span><span class="lp-info__value">GLOBAL</span></div>
+        <div class="lp-info__cell"><span class="lp-info__label">ACTIVE INDEX</span><span class="lp-info__value">PUBLIC LAYER</span></div>
+        <div class="lp-info__cell lp-info__cell--rate"><span class="lp-info__label">MAP ASSET</span><span class="lp-info__value">LINKED</span></div>
+      </div>
+
+      <!-- 3 CTA BUTTONS -->
+      <div class="lp-cta-row">
+        <a class="lp-cta" href="public-records-standalone.html#public-records">
+          <span class="lp-cta__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7 v5 l3 2"/></svg></span>
+          <span class="lp-cta__body"><span class="lp-cta__label">PUBLIC INDEX</span><span class="lp-cta__sub" data-i18n="cta1_title">공개 기록관 열람</span></span>
+          <span class="lp-cta__arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="lp-cta" href="#threat-map">
+          <span class="lp-cta__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4 v16 M5 4 L17 4 L14 8 L17 12 L5 12"/></svg></span>
+          <span class="lp-cta__body"><span class="lp-cta__label">THREAT INDEX</span><span class="lp-cta__sub" data-i18n="cta2_title">공개 위협 지도 확인</span></span>
+          <span class="lp-cta__arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="lp-cta" href="access-protocol-standalone.html">
+          <span class="lp-cta__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 H17 M13 7 L18 12 L13 17 M3 4 v16"/></svg></span>
+          <span class="lp-cta__body"><span class="lp-cta__label">ACCESS GATE</span><span class="lp-cta__sub" data-i18n="cta3_title">게스트 세션 관리</span></span>
+          <span class="lp-cta__arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- RIGHT — Global Archive Map -->
+    <aside class="lp-map-panel">
+      <div class="lp-map-panel__head">
+        <span class="lp-map-panel__title">GLOBAL ARCHIVE MAP</span>
+        <span class="lp-map-panel__sub">WORLD THREAT OVERLAY</span>
+      </div>
+      <div class="lp-map-panel__viewport lp-map-panel__viewport--status" aria-label="공개 기록망 상태">
+        <div class="lp-map-panel__summary">
+          <span class="lp-map-panel__summary-kicker">PUBLIC INDEX STATUS</span>
+          <strong data-i18n="map_panel_status_title">WORLD INDEX / ENTRY 002</strong>
+          <p data-i18n="map_panel_status_desc">전술 지도 원본 연결. 주요 사건권 마커와 지역별 요약 색인.</p>
+          <a class="lp-map-panel__jump" href="#threat-map" data-i18n="map_panel_status_link">OPEN THREAT MAP</a>
+        </div>
+      </div>
+      <div class="lp-map-panel__status">
+        <div class="lp-map-panel__status-row"><span class="lp-map-panel__status-label">MAP ASSET STATUS</span><span class="lp-map-panel__status-rate">LINKED</span></div>
+        <div class="lp-map-panel__progress" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><i style="--pct:100%"></i></div>
+        <span class="lp-map-panel__last-update">LAST UPDATED 2032.05.12 23:45:31 KST</span>
+      </div>
+    </aside>
+  </main>
+
+  <!-- ===== 4 SECTOR CARDS ===== -->
+  <section class="lp-cards">
+    <a class="lp-card lp-card--01" href="#timeline-dossier"><span class="lp-card__num">01</span>
+      <div class="lp-card__body"><h3 class="lp-card__title" data-i18n="card1_title">발생 연표</h3>
+        <p class="lp-card__desc" data-i18n="card1_desc">1900년대 초부터 2032년까지의 주요 사건 기록</p>
+        <div class="lp-card__meta"><span>YEARS</span><span class="lp-card__meta-value">1908 — 2032</span></div></div></a>
+    <a class="lp-card lp-card--02" href="#threat-map"><span class="lp-card__num">02</span>
+      <div class="lp-card__body"><h3 class="lp-card__title" data-i18n="card2_title">글로벌 위협 지도</h3>
+        <p class="lp-card__desc" data-i18n="card2_desc">전 세계 감염 확산 현황과 위협 등급 분석</p>
+        <div class="lp-card__meta"><span>THREAT LEVEL</span><span class="lp-card__meta-value lp-card__meta-value--warn">SEVERE</span></div></div></a>
+    <a class="lp-card lp-card--03" href="#branch-dossier"><span class="lp-card__num">03</span>
+      <div class="lp-card__body"><h3 class="lp-card__title" data-i18n="card3_title">지부 · 대한민국</h3>
+        <p class="lp-card__desc" data-i18n="card3_desc">한국 내 거점, 도시, 생존 구역 및 주요 인프라</p>
+        <div class="lp-card__meta"><span>STATUS</span><span class="lp-card__meta-value lp-card__meta-value--ok">CONTAINED</span></div></div></a>
+    <a class="lp-card lp-card--04" href="#public-dossiers"><span class="lp-card__num">04</span>
+      <div class="lp-card__body"><h3 class="lp-card__title" data-i18n="card4_title">아카이브 상세 기록</h3>
+        <p class="lp-card__desc" data-i18n="card4_desc">세력, 지역, 사건 기록을 이어 보는 상세 색인</p>
+        <div class="lp-card__meta"><span>DEPTH</span><span class="lp-card__meta-value">DETAIL</span></div></div></a>
+  </section>
+
+  <section class="lp-archive" id="public-records">
+    <div class="lp-archive__head">
+      <div>
+        <span class="lp-archive__kicker" data-i18n="archive_kicker">PUBLIC RECORDS / QUICK INDEX</span>
+        <h2 class="lp-archive__title" data-i18n="archive_title">공개 기록관</h2>
+      </div>
+      <p class="lp-archive__lede" data-i18n="archive_lede">2032 기준 사건 연표, 지역 현황, 주요 세력, 한국 지부 단말 기록을 빠르게 확인하는 공개 색인.</p>
+    </div>
+    <div class="lp-archive__grid">
+      <a class="lp-record lp-record--timeline" id="timeline" href="#timeline-dossier"><span class="lp-record__tag">ENTRY 001 / TIMELINE</span><span><h3 class="lp-record__title" data-i18n="record_timeline_title">발생 연표</h3><p class="lp-record__desc" data-i18n="record_timeline_desc">1908-2032 주요 사건 시간순 색인.</p></span><span class="lp-record__meta"><span>YEARS</span><strong>1908-2032</strong></span></a>
+      <a class="lp-record lp-record--threat" id="threat-map-record" href="#threat-map"><span class="lp-record__tag">ENTRY 002 / THREAT MAP</span><span><h3 class="lp-record__title" data-i18n="record_threat_title">글로벌 위협 지도</h3><p class="lp-record__desc" data-i18n="record_threat_desc">한국, 러시아, 중국, 필라델피아 등 주요 사건권 지도 표시.</p></span><span class="lp-record__meta"><span>VIEW</span><strong>GLOBAL</strong></span></a>
+      <a class="lp-record lp-record--branch" id="korea-branch" href="#branch-dossier"><span class="lp-record__tag">ENTRY 003 / KOREA BRANCH</span><span><h3 class="lp-record__title" data-i18n="record_branch_title">지부 · 대한민국</h3><p class="lp-record__desc" data-i18n="record_branch_desc">한국 방벽, KR-INIT-001, 강원 폐쇄 거점, 권한 불일치 로그.</p></span><span class="lp-record__meta"><span>NODE</span><strong>KR-PZ-10</strong></span></a>
+      <a class="lp-record lp-record--restricted" id="factions" href="#factions-dossier"><span class="lp-record__tag">ENTRY 004 / FACTIONS</span><span><h3 class="lp-record__title" data-i18n="record_factions_title">주요 세력</h3><p class="lp-record__desc" data-i18n="record_factions_desc">세력, 생활권, 물류권, 지역별 대응 분기 기록.</p></span><span class="lp-record__meta"><span>VIEW</span><strong>FACTIONS</strong></span></a>
+    </div>
+    <div class="lp-signals" aria-label="Public records scope">
+      <article class="lp-signal"><span class="lp-signal__label" data-i18n="public_signal_1_label">PUBLIC SCOPE</span><p data-i18n="public_signal_1_desc">즉시 열람 가능한 사건, 권역, 지부, 세력 표면 기록.</p></article>
+      <article class="lp-signal"><span class="lp-signal__label" data-i18n="public_signal_2_label">DETAIL ROUTE</span><p data-i18n="public_signal_2_desc">각 항목은 아카이브 상세 기록의 원문 요약과 연결.</p></article>
+      <article class="lp-signal"><span class="lp-signal__label" data-i18n="public_signal_3_label">2032 INDEX</span><p data-i18n="public_signal_3_desc">현재 공개 색인은 2032년 재정렬본 기준.</p></article>
+    </div>
+    <div class="lp-archive-route">
+      <div>
+        <span class="lp-archive-route__kicker" data-i18n="archive_route_kicker">NEXT / ARCHIVE DETAILS</span>
+        <strong data-i18n="archive_route_title">세부 기록은 아래 아카이브 상세 기록으로 연결.</strong>
+        <p data-i18n="archive_route_desc">공개 기록관은 빠른 색인. 연표, 한국 지부, 주요 세력, KR-INIT-001 단말 기록은 상세 기록에서 확장.</p>
+      </div>
+      <a class="lp-archive-route__link" href="#public-dossiers" data-i18n="archive_route_link">상세 기록 보기</a>
+    </div>
+  </section>
+
+  <section class="lp-threat" id="threat-map">
+    <div class="lp-threat__head">
+      <div>
+        <span class="lp-threat__kicker" data-i18n="threat_kicker">PUBLIC THREAT OVERLAY / 2032</span>
+        <h2 class="lp-threat__title" data-i18n="threat_title">글로벌 위협 지도</h2>
+      </div>
+      <p class="lp-threat__lede" data-i18n="threat_lede">2032 기준 사건권과 권역 흐름. 마커 선택 시 사건명, 위협 유형, 대응 기록 갱신.</p>
+    </div>
+    <div class="lp-threat__body">
+      <div class="lp-threat-map" aria-label="2032 공개 글로벌 위협 지도" data-map-scope>
+        <img class="lp-threat-map__image" src="assets/world_tactical_map_clean.svg" alt="" />
+        <div class="lp-threat-map__grid" aria-hidden="true"></div>
+        <div class="lp-threat-map__scanline" aria-hidden="true"></div>
+        <div class="lp-threat-map__slot lp-map-intel" data-map-intel>
+          <div class="lp-map-intel__head"><span data-map-intel-status>KOREA / CONTROLLED</span><b data-map-intel-tone>CONTAINMENT</b></div>
+          <img class="lp-map-intel__image" src="assets/world/korea-barrier.webp" alt="" data-map-intel-img />
+          <strong data-map-intel-title>KOREA CONTROLLED</strong>
+          <em data-map-intel-desc>97.3% 봉쇄 성공률. White Shield 정밀 봉쇄, KR-INIT-001 권한 불일치 로그, 중앙 분류 경로.</em>
+          <div class="lp-map-intel__meta">
+            <span>REGION <strong data-map-intel-country>KOREA</strong></span>
+            <span>THREAT <strong data-map-intel-threat>산발 변이 / Phase 0</strong></span>
+            <span>RESPONSE <strong data-map-intel-response>조기 탐지 · 선택 격리</strong></span>
+          </div>
+        </div>
+        <button type="button" class="lp-threat-map__pin lp-threat-map__pin--kr lp-threat-map__pin--green lp-map-site" data-map-site data-map-status="KOREA / CONTROLLED" data-map-title="KOREA CONTROLLED" data-map-desc="97.3% 봉쇄 성공률. White Shield 정밀 봉쇄, KR-INIT-001 권한 불일치 로그, 중앙 분류 경로." data-map-country="KOREA" data-map-threat="산발 변이 / Phase 0" data-map-response="조기 탐지 · 선택 격리" data-map-tone="CONTAINMENT" data-map-img="assets/world/korea-barrier.webp" data-map-status-en="KOREA / CONTROLLED" data-map-title-en="KOREA CONTROLLED" data-map-desc-en="97.3% containment success. White Shield precision walls, KR-INIT-001 permission-conflict logs, and the central classification route." data-map-country-en="KOREA" data-map-threat-en="sporadic mutation / Phase 0" data-map-response-en="early detection / selective isolation" data-map-tone-en="CONTAINMENT" data-map-status-ja="KOREA / CONTROLLED" data-map-title-ja="KOREA CONTROLLED" data-map-desc-ja="封鎖成功率97.3%。White Shield精密防壁、KR-INIT-001権限不一致ログ、中央分類経路。" data-map-country-ja="KOREA" data-map-threat-ja="散発変異 / Phase 0" data-map-response-ja="早期探知・選択隔離" data-map-tone-ja="CONTAINMENT" aria-pressed="false">KR</button>
+        <button type="button" class="lp-threat-map__pin lp-threat-map__pin--phi lp-threat-map__pin--red lp-map-site" data-map-site data-map-status="PHILADELPHIA / Z-Ω" data-map-title="PHILADELPHIA ZONE" data-map-desc="2024. Philadelphia Z-Ω 지정. 대규모 봉쇄 실패, THE EXODUS 동부 해안 난민 물결, TS-Ω 영향권 내륙 전진 기록." data-map-country="USA" data-map-threat="TS-Ω / 해양 군체" data-map-response="관측 · 회피" data-map-tone="SEVERE" data-map-img="assets/world/philadelphia-drone.webp" data-map-status-en="PHILADELPHIA / Z-Ω" data-map-title-en="PHILADELPHIA ZONE" data-map-desc-en="2024. Philadelphia Z-Ω designation. Large containment failure, THE EXODUS east-coast refugee wave, and TS-Ω inland influence record." data-map-country-en="USA" data-map-threat-en="TS-Ω / marine colony" data-map-response-en="monitor / avoid" data-map-tone-en="SEVERE" data-map-status-ja="PHILADELPHIA / Z-Ω" data-map-title-ja="PHILADELPHIA ZONE" data-map-desc-ja="2024年。Philadelphia Z-Ω指定。大規模封鎖失敗、THE EXODUS東海岸難民波、TS-Ω影響圏の内陸進行記録。" data-map-country-ja="USA" data-map-threat-ja="TS-Ω / 海洋群体" data-map-response-ja="監視・回避" data-map-tone-ja="SEVERE" aria-pressed="false">PHI</button>
+        <button type="button" class="lp-threat-map__pin lp-threat-map__pin--ash lp-threat-map__pin--red lp-map-site" data-map-site data-map-status="ASHFALL / Z-3" data-map-title="ASHFALL CITY" data-map-desc="2024. Ashfall City Z-3 지정. SHED ORDER 군체 실험 실패, 도시 구조 생체 조직 전환, Ember Corps 발생권." data-map-country="USA" data-map-threat="Brood Drone / 바이오매스" data-map-response="봉쇄 · 회수" data-map-tone="COLLAPSE" data-map-img="assets/world/ashfall-city.webp" data-map-status-en="ASHFALL / Z-3" data-map-title-en="ASHFALL CITY" data-map-desc-en="2024. Ashfall City Z-3 designation. SHED ORDER colony-experiment failure, urban-structure biomass conversion, and Ember Corps origin zone recorded." data-map-country-en="USA" data-map-threat-en="Brood Drone / biomass" data-map-response-en="blockade / recovery" data-map-tone-en="COLLAPSE" data-map-status-ja="ASHFALL / Z-3" data-map-title-ja="ASHFALL CITY" data-map-desc-ja="2024年。Ashfall City Z-3指定。SHED ORDER群体実験失敗、都市構造の生体組織転換、Ember Corps発生圏。" data-map-country-ja="USA" data-map-threat-ja="Brood Drone / バイオマス" data-map-response-ja="封鎖・回収" data-map-tone-ja="COLLAPSE" aria-pressed="false">ASH</button>
+        <button type="button" class="lp-threat-map__pin lp-threat-map__pin--ru lp-map-site" data-map-site data-map-status="RUSSIA / SILENT BELT" data-map-title="SILENT BELT" data-map-desc="러시아 광역 침묵 지대. 시드 스프레더 확산, 음향 감쇠, 월 1.2km 외연 성장 기록." data-map-country="RUSSIA" data-map-threat="광역 포자 확산" data-map-response="소각 · 감시" data-map-tone="DANGER" data-map-img="assets/world/silent-belt.webp" data-map-status-en="RUSSIA / SILENT BELT" data-map-title-en="SILENT BELT" data-map-desc-en="A broad Russian silence zone. Seed spreader expansion, acoustic dampening, and a 1.2 km monthly edge-growth record." data-map-country-en="RUSSIA" data-map-threat-en="wide-area spore spread" data-map-response-en="burn / monitor" data-map-tone-en="DANGER" data-map-status-ja="RUSSIA / SILENT BELT" data-map-title-ja="SILENT BELT" data-map-desc-ja="ロシア広域沈黙地帯。Seed Spreader拡散、音響減衰、月1.2kmの外縁成長記録。" data-map-country-ja="RUSSIA" data-map-threat-ja="広域胞子拡散" data-map-response-ja="焼却・監視" data-map-tone-ja="DANGER" aria-pressed="false">SB</button>
+        <button type="button" class="lp-threat-map__pin lp-threat-map__pin--cn lp-threat-map__pin--red lp-map-site" data-map-site data-map-status="CHINA / RED VEIL" data-map-title="RED VEIL REGION" data-map-desc="도시 밀집권 봉쇄선. 내부 통제 실패 기록, 외부 방벽 유지, 혼합 개체 침투 보고." data-map-country="CHINA" data-map-threat="혼합 개체 / 침투" data-map-response="전담군 · 격리" data-map-tone="DANGER" data-map-img="assets/world/red-veil.webp" data-map-status-en="CHINA / RED VEIL" data-map-title-en="RED VEIL REGION" data-map-desc-en="Urban-density blockade line. Internal control failure records, exterior wall maintenance, and mixed-entity infiltration reports." data-map-country-en="CHINA" data-map-threat-en="mixed entities / infiltration" data-map-response-en="task force / isolation" data-map-tone-en="DANGER" data-map-status-ja="CHINA / RED VEIL" data-map-title-ja="RED VEIL REGION" data-map-desc-ja="都市密集圏の封鎖線。内部統制失敗記録、外部防壁維持、混合個体侵入報告。" data-map-country-ja="CHINA" data-map-threat-ja="混合個体 / 侵入" data-map-response-ja="専任部隊・隔離" data-map-tone-ja="DANGER" aria-pressed="false">RV</button>
+        <button type="button" class="lp-threat-map__pin lp-threat-map__pin--jp lp-map-site" data-map-site data-map-status="JAPAN / RYUKYU LINE" data-map-title="RYUKYU LINE" data-map-desc="2025 이후 일본 남서 방위선 재편. 류큐 전선 포기 기록과 JBDF 긴급 운용 기록 연결." data-map-country="JAPAN" data-map-threat="해안 침투 / 피난권" data-map-response="JBDF 재편" data-map-tone="WATCH" data-map-img="assets/world/red-veil.webp" data-map-status-en="JAPAN / RYUKYU LINE" data-map-title-en="RYUKYU LINE" data-map-desc-en="Post-2025 southwest defense reorganization. Ryukyu-line abandonment records linked to emergency JBDF operations." data-map-country-en="JAPAN" data-map-threat-en="coastal infiltration / evacuation zone" data-map-response-en="JBDF reorganization" data-map-tone-en="WATCH" data-map-status-ja="JAPAN / RYUKYU LINE" data-map-title-ja="RYUKYU LINE" data-map-desc-ja="2025年以後の南西防衛線再編。琉球線放棄記録とJBDF緊急運用記録。" data-map-country-ja="JAPAN" data-map-threat-ja="沿岸侵入 / 避難圏" data-map-response-ja="JBDF再編" data-map-tone-ja="WATCH" aria-pressed="false">JP</button>
+        <button type="button" class="lp-threat-map__pin lp-threat-map__pin--eu lp-threat-map__pin--green lp-map-site" data-map-site data-map-status="EU / CONTESTED CORRIDOR" data-map-title="EUROPEAN CORRIDOR" data-map-desc="공식 방벽과 민간 운송로 충돌권. 난민 열차, 의료 물류, 국경 검문 기록 누적." data-map-country="EU CORRIDOR" data-map-threat="봉쇄선 충돌" data-map-response="검문 · 우회" data-map-tone="CONTESTED" data-map-img="assets/world/meridian-richter.webp" data-map-status-en="EU / CONTESTED CORRIDOR" data-map-title-en="EUROPEAN CORRIDOR" data-map-desc-en="A collision zone between official walls and civilian routes. Refugee trains, medical logistics, and border inspections accumulate here." data-map-country-en="EU CORRIDOR" data-map-threat-en="blockade collision" data-map-response-en="checkpoint / reroute" data-map-tone-en="CONTESTED" data-map-status-ja="EU / CONTESTED CORRIDOR" data-map-title-ja="EUROPEAN CORRIDOR" data-map-desc-ja="公式防壁と民間輸送路の衝突圏。難民列車、医療物流、国境検問記録が蓄積。" data-map-country-ja="EU CORRIDOR" data-map-threat-ja="封鎖線衝突" data-map-response-ja="検問・迂回" data-map-tone-ja="CONTESTED" aria-pressed="false">EU</button>
+        <button type="button" class="lp-threat-map__pin lp-threat-map__pin--au lp-threat-map__pin--green lp-map-site" data-map-site data-map-status="AUSTRALIA / LOW SIGNAL" data-map-title="SOUTHERN ROUTES" data-map-desc="해상 보고와 항공 관측 데이터 불완전. 민간 생존권과 원거리 물류 기록만 저신호로 유지." data-map-country="SOUTHERN ROUTES" data-map-threat="해상 이상 / 저신호" data-map-response="관측 · 보급" data-map-tone="LOW SIGNAL" data-map-img="assets/world/ember-ash.webp" data-map-status-en="AUSTRALIA / LOW SIGNAL" data-map-title-en="SOUTHERN ROUTES" data-map-desc-en="Maritime reports and aerial observation remain incomplete. Civilian survival and long-range logistics records persist as low-signal data." data-map-country-en="SOUTHERN ROUTES" data-map-threat-en="maritime anomalies / low signal" data-map-response-en="observe / supply" data-map-tone-en="LOW SIGNAL" data-map-status-ja="AUSTRALIA / LOW SIGNAL" data-map-title-ja="SOUTHERN ROUTES" data-map-desc-ja="海上報告と航空観測データは不完全。民間生存圏と遠距離物流記録のみ低信号で維持。" data-map-country-ja="SOUTHERN ROUTES" data-map-threat-ja="海上異常 / 低信号" data-map-response-ja="観測・補給" data-map-tone-ja="LOW SIGNAL" aria-pressed="false">AU</button>
+      </div>
+      <div class="lp-threat__list lp-threat__list--summary">
+        <article class="lp-threat-region lp-threat-region--hot"><span data-i18n="threat_index_label_1">INCIDENT AXIS</span><strong>PHI / ASH / SB / RV</strong><p data-i18n="threat_index_desc_1">EV-Σ 확산 이후 주요 사건권. 필라델피아, 애쉬폴, 침묵지대, 레드 베일.</p></article>
+        <article class="lp-threat-region lp-threat-region--watch"><span data-i18n="threat_index_label_2">KOREA ARC</span><strong>KR-INIT-001</strong><p data-i18n="threat_index_desc_2">한국 방벽, 강원 사건, 공개 임무 기록, 복원 단말 축.</p></article>
+        <article class="lp-threat-region lp-threat-region--warn"><span data-i18n="threat_index_label_3">STATE RESPONSE</span><strong>EU / JP / CN</strong><p data-i18n="threat_index_desc_3">방벽, 군 운용, 검문, 도시 행정권 재편.</p></article>
+        <article class="lp-threat-region"><span data-i18n="threat_index_label_4">OPEN INDEX</span><strong>CLICK MARKERS</strong><p data-i18n="threat_index_desc_4">선택한 지점 기준으로 사건·위협·대응 요약 갱신.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-dossiers" id="public-dossiers">
+    <div class="lp-dossiers__head">
+      <span data-i18n="dossiers_kicker">ARCHIVE DETAILS / WORLD INDEX</span>
+      <h2 data-i18n="dossiers_title">아카이브 상세 기록</h2>
+      <p data-i18n="dossiers_lede">공개 색인 확장. 발생 연표, EV-Σ 확산, 세력 구도, KR-INIT-001 단말 기록.</p>
+    </div>
+    <nav class="lp-dossier-nav" aria-label="Archive detail categories">
+      <a href="#timeline-dossier"><span>01</span><strong data-i18n="dossier_nav_timeline">Chronology</strong><em data-i18n="dossier_nav_timeline_desc">연도순 사건 기록</em></a>
+      <a href="#threat-map"><span>02</span><strong data-i18n="dossier_nav_map">Threat Map</strong><em data-i18n="dossier_nav_map_desc">세계 권역 지도</em></a>
+      <a href="#ev-spread-dossier"><span>03</span><strong data-i18n="dossier_nav_spread">EV-Σ Spread</strong><em data-i18n="dossier_nav_spread_desc">대표 확산 사건</em></a>
+      <a href="#factions-dossier"><span>04</span><strong data-i18n="dossier_nav_factions">Factions</strong><em data-i18n="dossier_nav_factions_desc">표면 세력 구도</em></a>
+      <a href="#branch-dossier"><span>05</span><strong data-i18n="dossier_nav_branch">KR-INIT-001</strong><em data-i18n="dossier_nav_branch_desc">한국 지부 기록</em></a>
+    </nav>
+    <div class="lp-dossiers__grid">
+      <article class="lp-dossier lp-dossier--timeline" id="timeline-dossier">
+        <span class="lp-dossier__tag">ENTRY 001 / CHRONOLOGY</span>
+        <h3 data-i18n="dossier_timeline_title">발생 연표</h3>
+        <ol>
+          <li><strong>1908</strong><span data-i18n="timeline_1908">Tunguska Event. 시베리아 대폭발, 충돌구 부재, 공간 재작성 계열 이상 사건으로 재분류.</span></li>
+          <li><strong>1945</strong><span data-i18n="timeline_1945">Operation Paperclip. 전후 연구자 이송, 생체·군의료 연구 계열 재편.</span></li>
+          <li><strong>1980</strong><span data-i18n="timeline_1980">Rendlesham Forest. 발광체 접촉, 기호 수기, 48시간 기억 손실 기록.</span></li>
+          <li><strong>2020-2024</strong><span data-i18n="timeline_2020_genesis">GENESIS BREAK 전조기. EV-Σ 관련 징후와 통제 실패 가능성이 누적된 시기.</span></li><li><strong>2024</strong><span data-i18n="timeline_2024_phi">PHILADELPHIA Z-Ω 지정. 대규모 봉쇄 실패. THE EXODUS 동부 해안 난민 물결의 직접 기점.</span></li><li><strong>2024</strong><span data-i18n="timeline_2024_ash">ASHFALL CITY Z-3. SHED ORDER 군체 실험 실패. 도시 구조 생체 조직 전환 기록.</span></li><li><strong>2024</strong><span data-i18n="timeline_2024_contact">FIRST CONTACT / DOMINION. TS-Ω Core 접촉권과 이후 지배권 변동 기록.</span></li><li><strong>2024-2025</strong><span data-i18n="timeline_2024_2025_exodus">THE EXODUS와 류큐 전선 재편. 미국 동부 해안 대피 물결, 일본 류큐 작전, CIPHER-MIRROR 가동.</span></li><li><strong>2025</strong><span data-i18n="timeline_2025_kr">KR-INIT-001. NADL 4계층 방벽 안정 운용, 이중철 부임, 지부 함락과 5인 비상 탈출 기록.</span></li>
+          <li><strong>2032</strong><span data-i18n="timeline_2032">PUBLIC ARCHIVE 2032. 확인 사건권, 국가 대응, 세력 구도, KR-INIT-001 단말 기록 통합 색인.</span></li>
+        </ol>
+      </article>
+
+      <article class="lp-dossier lp-dossier--spread" id="ev-spread-dossier">
+        <span class="lp-dossier__tag">ENTRY 002 / EV-Σ SPREAD</span>
+        <h3 data-i18n="dossier_spread_title">EV-Σ 확산 기록</h3>
+        <p data-i18n="dossier_spread_desc">도시 단위 붕괴와 권역별 봉쇄선. 공개 아카이브 기준 대표 사건 네 건.</p>
+        <div class="lp-event-grid">
+          <article class="lp-event-card"><img src="assets/world/philadelphia-drone.webp" alt="" /><span>Z-Ω // PHILADELPHIA</span><strong data-i18n="event_phi_title">Philadelphia Z-Ω (2024)</strong><p data-i18n="event_phi_desc">대규모 봉쇄 실패. THE EXODUS 동부 해안 난민 물결의 직접 기점.</p></article>
+          <article class="lp-event-card"><img src="assets/world/ashfall-city.webp" alt="" /><span>Z-3 // ASHFALL CITY</span><strong data-i18n="event_ash_title">Ashfall City Z-3 (2024)</strong><p data-i18n="event_ash_desc">SHED ORDER 군체 실험 실패. 도시 구조 생체 조직 전환 기록.</p></article>
+          <article class="lp-event-card"><img src="assets/world/silent-belt.webp" alt="" /><span>Z-2 // SILENT BELT</span><strong data-i18n="event_silent_title">Silent Belt</strong><p data-i18n="event_silent_desc">시드 스프레더 확산권. 음향 감쇠와 이동 경로 상실 보고.</p></article>
+          <article class="lp-event-card"><img src="assets/world/red-veil.webp" alt="" /><span>Z-2 // RED VEIL</span><strong data-i18n="event_red_title">Red Veil 봉쇄선</strong><p data-i18n="event_red_desc">도시 밀집권 내부 통제 실패. 외부 방벽과 전담군 운용 유지.</p></article>
+        </div>
+      </article>
+
+      <article class="lp-dossier lp-dossier--factions" id="factions-dossier">
+        <span class="lp-dossier__tag">ENTRY 003 / FACTIONS</span>
+        <h3 data-i18n="dossier_factions_title">주요 세력 구도</h3>
+        <p data-i18n="dossier_factions_desc">국가 대응 체계, 비공식 조직, 민간 물류권, 생존 공동체. 공개 색인은 현장 기록에 드러난 표면 활동만 연결.</p>
+        <div class="lp-faction-grid">
+          <article class="lp-faction-card lp-faction-card--oracle"><img src="assets/archive-card-restricted.jpg" alt="" /><span>CENTRAL CLASSIFICATION</span><strong data-i18n="faction_class_title">분류 경로는 출처를 남기지 않는다.</strong><p data-i18n="faction_class_desc">표면 색인에는 샘플 분류, 권한 불일치, 보류 로그만 남는다.</p></article>
+          <article class="lp-faction-card lp-faction-card--prometheus"><img src="assets/world/logo-prometheus.webp" alt="" /><span>PROMETHEUS</span><strong data-i18n="faction_prom_title">통제되지 않은 선택은 지킨다.</strong><p data-i18n="faction_prom_desc">공식 기록 밖 방벽 기술, 정보 차단, 한국 봉쇄선 협력 기록과 충돌 기록 병존.</p></article>
+          <article class="lp-faction-card lp-faction-card--shed"><img src="assets/world/logo-shed.webp" alt="" /><span>SHED ORDER</span><strong data-i18n="faction_shed_title">껍질 너머, 다음 진화.</strong><p data-i18n="faction_shed_desc">감염을 재난이 아닌 진화로 해석한 확장 세력. Ashfall 기록의 중심 축.</p></article>
+          <article class="lp-faction-card lp-faction-card--ts"><img src="assets/world/logo-tsw.webp" alt="" /><span>TS-Ω</span><strong data-i18n="faction_ts_title">지능이 아니라 반응.</strong><p data-i18n="faction_ts_desc">필라델피아 해역에서 표면화한 군체. 현재 영향권은 내륙 방향으로 전진 중.</p></article>
+          <article class="lp-faction-card"><img src="assets/world/silent-wolves-raid.webp" alt="" /><span>SILENT WOLVES</span><strong data-i18n="faction_wolves_title">감염을 두려워하지 않는 총기 계약망.</strong><p data-i18n="faction_wolves_desc">러시아권 회색지대 정보와 무장 계약망. 통신 단절권 이동 기록 다수.</p></article>
+          <article class="lp-faction-card"><img src="assets/world/choir-worship.webp" alt="" /><span>ASCENSION CHOIR</span><strong data-i18n="faction_choir_title">감염은 축복이자 저주가 아니다.</strong><p data-i18n="faction_choir_desc">재난 이후 확산된 종교적 해석권. 감염 숭배 파편과 구호 네트워크 혼재.</p></article>
+          <article class="lp-faction-card"><img src="assets/world/meridian-richter.webp" alt="" /><span>MERIDIAN GROUP</span><strong data-i18n="faction_meridian_title">모든 도로는 계약서로 닫힌다.</strong><p data-i18n="faction_meridian_desc">물류, 의료, 보험 시장을 통해 위기 물자를 이동시키는 기업권.</p></article>
+          <article class="lp-faction-card"><img src="assets/world/ember-ash.webp" alt="" /><span>EMBER CORPS</span><strong data-i18n="faction_ember_title">돌아온 34%. 그들은 복수를 선택했다.</strong><p data-i18n="faction_ember_desc">Ashfall 이후 귀환자와 생존자들이 만든 보복 네트워크.</p></article>
+        </div>
+      </article>
+
+      <article class="lp-dossier lp-dossier--branch" id="branch-dossier">
+        <span class="lp-dossier__tag">ENTRY 004 / BRANCH KR-INIT-001</span>
+        <h3 data-i18n="dossier_branch_title">한국 지부 KR-INIT-001</h3>
+        <p data-i18n="dossier_branch_desc">강원 폐쇄 거점 배치 운용진. 한국 방벽, 산간 변종체 기록, 대피소 행정, 복원 단말 임무 로그로 연결.</p>
+        <div class="lp-branch-grid">
+          <article class="lp-branch-card"><img src="assets/world/kr-lee-jungchul.png" alt="" /><span>PILEHEAD</span><strong>이중철</strong><p data-i18n="branch_lee_desc">전 육군 특수부대 장교. KR-INIT-001 공개 지휘권자.</p></article>
+          <article class="lp-branch-card"><img src="assets/world/kr-seo-haeun.png" alt="" /><span>ANALYST-01</span><strong>서하은</strong><p data-i18n="branch_seo_desc">데이터 스트림 분석, 기지 운영, 반복되는 좌표 차이 대조.</p></article>
+          <article class="lp-branch-card"><img src="assets/world/kr-kang-doyun.png" alt="" /><span>FIELD-01</span><strong>강도윤</strong><p data-i18n="branch_kang_desc">전 해병대 수색·전술 지휘. 현장 진입과 S.P.E.C 접촉 대응.</p></article>
+          <article class="lp-branch-card"><img src="assets/world/kr-yoon-sejin.png" alt="" /><span>BIO-01</span><strong>윤세진</strong><p data-i18n="branch_yoon_desc">EV-Σ 표본 분석, Phase 0~1 전환 지연 연구.</p></article>
+          <article class="lp-branch-card"><img src="assets/world/kr-lim-jaehyuk.png" alt="" /><span>SYS-01</span><strong>임재혁</strong><p data-i18n="branch_lim_desc">폐쇄 단말, 접근권, 기록 오류 추적. 사라진 순간의 로그 확인.</p></article>
+        </div>
+      </article>
+    </div>
+    <div class="lp-terminal-cta" id="terminal-session">
+      <span data-i18n="terminal_kicker">RESTORED TERMINAL // KR-INIT-001</span>
+      <strong data-i18n="terminal_title">BRANCH KR-INIT-001</strong>
+      <p data-i18n="terminal_desc">KR-PZ-10 복원 단말. 한국 지부 사건 지도, 운용진 색인, 권한 불일치 로그 열람.</p>
+      <a href="https://art-lyang.github.io/TIU-card" target="_blank" rel="noopener" data-i18n="terminal_link">복원 단말 열람</a>
+    </div>
+  </section>
+
+  <!-- ===== HUD INFO STRIP ===== -->
+  <div class="ap-hud-strip">
+    <div class="ap-hud-cell">
+      <span class="ap-hud-cell__label">SECTOR ANALYSIS</span>
+      <span class="ap-hud-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    </div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">GRID</span><span class="ap-hud-cell__value">WTH-34A</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">SCOPE</span><span class="ap-hud-cell__value">GLOBAL</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">LAYER</span><span class="ap-hud-cell__value">PUBLIC</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">RECORD ID</span><span class="ap-hud-cell__value">PUB-LP-2032</span></div>
+    <div class="ap-hud-cell"><span class="ap-hud-cell__label">UPLINK</span><span class="ap-hud-cell__value">2032.05.12 23:45:31</span></div>
+    <div class="ap-hud-cell ap-hud-cell--right"><span class="ap-hud-cell__label">SYSTEM STATUS</span><span class="ap-hud-cell__value ap-hud-cell__value--ok">OPERATIONAL</span><i class="dot dot--ok" aria-hidden="true"></i></div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="lp-footer">
+    <span>TIU UNIVERSE ARCHIVE PROJECT © 2032</span>
+    <nav class="lp-footer__links"><a href="#">TERMS</a><a href="#">PRIVACY</a><a href="#">CONTACT</a></nav>
+  </footer>
+
+<script>
+/* ==========================================================================
+   TIU UNIVERSE ARCHIVE — i18n
+   --------------------------------------------------------------------------
+   사전 데이터 + 언어 전환 로직.
+   사용법:
+     - 텍스트만:    <element data-i18n="key">기본 텍스트</element>
+     - HTML 허용:   <element data-i18n-html="key">기본 <br/> 텍스트</element>
+     - 토글 버튼:   <button data-lang-btn="ko">한</button>
+   번역은 ACCESS PROTOCOL ASSET SHEET (12. MULTILINGUAL TEXT SAMPLES) 캐논 따름.
+   영어 시스템 라벨(ARCHIVE ID, NODE 등)은 의도적으로 번역 대상에서 제외 —
+   터미널/군사 도큐먼트 톤 유지.
+   ========================================================================== */
+
+(function () {
+  'use strict';
+
+  const DICT = {
+    ko: {
+      classification_value:  'A-1 / 공개',
+      title:                 '접속 프로토콜',
+      subtitle:              '기록망 접근 게이트웨이',
+      lede:                  'TIU 기록 보관망 접속 절차 개시.<br/>승인 사용자 한정 내부 기록 접근.',
+      guest_mode:            '게스트 접근 모드',
+      guest_session_pill:    '게스트 세션',
+      username:              '사용자명',
+      session_status:        '세션 상태',
+      session_active:        '게스트 세션 활성화',
+      session_issued:        '자동 발급 완료',
+      perm_system:           '시스템 열람 권한',
+      perm_index:            '기록 색인 열람',
+      perm_public:           '일반 프로젝트 기록',
+      perm_expiry:           '게스트 세션 만료',
+      perm_limited:          '한정',
+      btn_enter:             '아카이브 홈 열기',
+      btn_public:            '공개 기록관 보기',
+      warning:               '무단 접근 및 사용 기록은 법령 위반 증거로 보존.',
+      menu_aria:             '메뉴 열기',
+
+      /* === LANDING PAGE === */
+      main_title:            'TIU 유니버스 아카이브',
+      main_subtitle:         '아카이브 상세 노드',
+      main_lede:             '2032년 5월 12일 기준 상세 기록망 호출.<br/>연표, 글로벌 위협 지도, 주요 세력, KR-INIT-001 단말 기록 상세 색인.',
+      cta1_title:            '공개 기록관 열람',
+      cta2_title:            '공개 위협 지도 확인',
+      cta3_title:            '게스트 세션 관리',
+      card1_title:           '발생 연표',
+      card1_desc:            '1900년대 초부터 2032년까지의 주요 사건 기록',
+      card2_title:           '글로벌 위협 지도',
+      card2_desc:            '전 세계 감염 확산 현황과 위협 등급 분석',
+      card3_title:           '지부 · 대한민국',
+      card3_desc:            '한국 내 거점, 도시, 생존 구역 및 주요 인프라',
+      card4_title:           '아카이브 상세 기록',
+      card4_desc:            '세력, 지역, 사건 기록을 이어 보는 상세 색인',
+      map_panel_status_title:'WORLD INDEX / ENTRY 002',
+      map_panel_status_desc: '전술 지도 원본 연결. 주요 사건권 마커와 지역별 요약 색인.',
+      map_panel_status_link: 'OPEN THREAT MAP',
+      archive_kicker:        'PUBLIC RECORDS / QUICK INDEX',
+      archive_title:         '공개 기록관',
+      archive_lede:          '2032 기준 사건 연표, 지역 현황, 주요 세력, 한국 지부 단말 기록을 빠르게 확인하는 공개 색인.',
+      record_timeline_title: '발생 연표',
+      record_timeline_desc:  '1908-2032 주요 사건 시간순 색인.',
+      record_threat_title:   '글로벌 위협 지도',
+      record_threat_desc:    '한국, 러시아, 중국, 필라델피아 등 주요 사건권 지도 표시.',
+      record_branch_title:   '지부 · 대한민국',
+      record_branch_desc:    '한국 방벽, KR-INIT-001, 강원 폐쇄 거점, 권한 불일치 로그.',
+      record_factions_title: '주요 세력',
+      record_factions_desc:  '국가 대응권, 민간 물류권, 생존 공동체, 비공식 조직 구도.',
+      archive_route_kicker:  'NEXT / ARCHIVE DETAILS',
+      archive_route_title:   '세부 기록은 아래 아카이브 상세 기록으로 연결.',
+      archive_route_desc:    '공개 기록관은 빠른 색인. 연표, 한국 지부, 주요 세력, KR-INIT-001 단말 기록은 상세 기록에서 확장.',
+      archive_route_link:    '상세 기록 보기',
+      public_signal_1_label: 'PUBLIC SCOPE',
+      public_signal_1_desc:  '즉시 열람 가능한 사건, 권역, 지부, 세력 표면 기록.',
+      public_signal_2_label: 'DETAIL ROUTE',
+      public_signal_2_desc:  '각 항목은 아카이브 상세 기록의 원문 요약과 연결.',
+      public_signal_3_label: '2032 INDEX',
+      public_signal_3_desc:  '현재 공개 색인은 2032년 재정렬본 기준.',
+      threat_kicker:         'PUBLIC THREAT OVERLAY / 2032',
+      threat_title:          '글로벌 위협 지도',
+      threat_lede:           '2032 기준 사건권과 권역 흐름. 마커 선택 시 사건명, 위협 유형, 대응 기록 갱신.',
+      threat_index_label_1:  'INCIDENT AXIS',
+      threat_index_desc_1:   'EV-Σ 확산 이후 주요 사건권. 필라델피아, 애쉬폴, 침묵지대, 레드 베일.',
+      threat_index_label_2:  'KOREA ARC',
+      threat_index_desc_2:   '한국 방벽, 강원 사건, 공개 임무 기록, 복원 단말 축.',
+      threat_index_label_3:  'STATE RESPONSE',
+      threat_index_desc_3:   '방벽, 군 운용, 검문, 도시 행정권 재편.',
+      threat_index_label_4:  'OPEN INDEX',
+      threat_index_desc_4:   '선택 지점 기준 사건·위협·대응 기록 갱신.',
+      threat_note_label:     'MAP INDEX',
+      threat_note_title:     'WORLD REFERENCE LAYER',
+      threat_note_desc:      '주요 권역과 사건 위치를 빠르게 찾는 공개 지도 레이어.',
+      dossiers_kicker:       'ARCHIVE DETAILS / WORLD INDEX',
+      dossiers_title:        '아카이브 상세 기록',
+      dossiers_lede:         '공개 색인 확장. 발생 연표, EV-Σ 확산, 세력 구도, KR-INIT-001 단말 기록.',
+      dossier_nav_timeline:  'Chronology',
+      dossier_nav_timeline_desc: '연도순 사건 기록',
+      dossier_nav_map:       'Threat Map',
+      dossier_nav_map_desc:  '세계 권역 지도',
+      dossier_nav_spread:    'EV-Σ Spread',
+      dossier_nav_spread_desc: '대표 확산 사건',
+      dossier_nav_factions:  'Factions',
+      dossier_nav_factions_desc: '표면 세력 구도',
+      dossier_nav_branch:    'KR-INIT-001',
+      dossier_nav_branch_desc: '한국 지부 기록',
+      dossier_timeline_title:'발생 연표',
+      timeline_1908:         'Tunguska Event. 시베리아 대폭발, 충돌구 부재, 공간 재작성 계열 이상 사건으로 재분류.',
+      timeline_1945:         'Operation Paperclip. 전후 연구자 이송, 생체·군의료 연구 계열 재편.',
+      timeline_1980:         'Rendlesham Forest. 발광체 접촉, 기호 수기, 48시간 기억 손실 기록.',
+      timeline_2020_genesis: 'GENESIS BREAK 전조기. EV-Σ 관련 징후와 통제 실패 가능성이 누적된 시기.',
+      timeline_2024_phi:     'PHILADELPHIA Z-Ω 지정. 대규모 봉쇄 실패. THE EXODUS 동부 해안 난민 물결의 직접 기점.',
+      timeline_2024_ash:     'ASHFALL CITY Z-3. SHED ORDER 군체 실험 실패. 도시 구조 생체 조직 전환 기록.',
+      timeline_2024_contact:  'FIRST CONTACT / DOMINION. TS-Ω Core 접촉권과 이후 지배권 변동 기록.',
+      timeline_2024_2025_exodus: 'THE EXODUS와 류큐 전선 재편. 미국 동부 해안 대피 물결, 일본 류큐 작전, CIPHER-MIRROR 가동.',
+      timeline_2025_kr:       'KR-INIT-001. NADL 4계층 방벽 안정 운용, 이중철 부임, 지부 함락과 5인 비상 탈출 기록.',
+      timeline_2032:         'PUBLIC ARCHIVE 2032. 확인 사건권, 국가 대응, 세력 구도, KR-INIT-001 단말 기록 통합 색인.',
+      dossier_spread_title:  'EV-Σ 확산 기록',
+      dossier_spread_desc:   '도시 단위 붕괴와 권역별 봉쇄선. 공개 아카이브 기준 대표 사건 네 건.',
+      dossier_branch_title:  '한국 지부 KR-INIT-001',
+      dossier_branch_desc:   '강원 폐쇄 거점 배치 운용진. 한국 방벽, 산간 변종체 기록, 대피소 행정, 복원 단말 임무 로그로 연결.',
+      dossier_factions_title:'주요 세력 구도',
+      dossier_factions_desc: '국가 대응 체계, 비공식 조직, 민간 물류권, 생존 공동체. 공개 색인은 현장 기록에 드러난 표면 활동만 연결.',
+      dossiers_hint_label:   'ARCHIVE INDEX',
+      dossiers_hint_desc:    '세부 기록으로 연결되는 공개 색인.',
+      event_phi_title:       'Philadelphia Z-Ω (2024)',
+      event_phi_desc:        '대규모 봉쇄 실패. THE EXODUS 동부 해안 난민 물결의 직접 기점.',
+      event_ash_title:       'Ashfall City Z-3 (2024)',
+      event_ash_desc:        'SHED ORDER 군체 실험 실패. 도시 구조 생체 조직 전환 기록.',
+      event_silent_title:    'Silent Belt',
+      event_silent_desc:     '시드 스프레더 확산권. 음향 감쇠와 이동 경로 상실 보고.',
+      event_red_title:       'Red Veil 봉쇄선',
+      event_red_desc:        '도시 밀집권 내부 통제 실패. 외부 방벽과 전담군 운용 유지.',
+      faction_class_title:   '분류 경로는 출처를 남기지 않는다.',
+      faction_class_desc:    '표면 색인에는 샘플 분류, 권한 불일치, 보류 로그만 남는다.',
+      faction_prom_title:    '통제되지 않은 선택은 지킨다.',
+      faction_prom_desc:     '공식 기록 밖 방벽 기술, 정보 차단, 한국 봉쇄선 협력 기록과 충돌 기록 병존.',
+      faction_shed_title:    '껍질 너머, 다음 진화.',
+      faction_shed_desc:     '감염을 재난이 아닌 진화로 해석한 확장 세력. Ashfall 기록의 중심 축.',
+      faction_ts_title:      '지능이 아니라 반응.',
+      faction_ts_desc:       '필라델피아 해역에서 표면화한 군체. 현재 영향권은 내륙 방향으로 전진 중.',
+      faction_wolves_title:  '감염을 두려워하지 않는 총기 계약망.',
+      faction_wolves_desc:   '러시아권 회색지대 정보와 무장 계약망. 통신 단절권 이동 기록 다수.',
+      faction_choir_title:   '감염은 축복이자 저주가 아니다.',
+      faction_choir_desc:    '재난 이후 확산된 종교적 해석권. 감염 숭배 파편과 구호 네트워크 혼재.',
+      faction_meridian_title:'모든 도로는 계약서로 닫힌다.',
+      faction_meridian_desc: '물류, 의료, 보험 시장을 통해 위기 물자를 이동시키는 기업권.',
+      faction_ember_title:   '돌아온 34%. 그들은 복수를 선택했다.',
+      faction_ember_desc:    'Ashfall 이후 귀환자와 생존자들이 만든 보복 네트워크.',
+      branch_lee_desc:       '전 육군 특수부대 장교. KR-INIT-001 공개 지휘권자.',
+      branch_seo_desc:       '데이터 스트림 분석, 기지 운영, 반복되는 좌표 차이 대조.',
+      branch_kang_desc:      '전 해병대 수색·전술 지휘. 현장 진입과 S.P.E.C 접촉 대응.',
+      branch_yoon_desc:      'EV-Σ 표본 분석, Phase 0~1 전환 지연 연구.',
+      branch_lim_desc:       '폐쇄 단말, 접근권, 기록 오류 추적. 사라진 순간의 로그 확인.',
+      terminal_kicker:       'RESTORED TERMINAL // KR-INIT-001',
+      terminal_title:        'BRANCH KR-INIT-001',
+      terminal_desc:         'KR-PZ-10 복원 단말. 한국 지부 사건 지도, 운용진 색인, 권한 불일치 로그 열람.',
+      terminal_link:         '복원 단말 열람'
+    },
+    en: {
+      classification_value:  'A-1 / Public',
+      title:                 'Access Protocol',
+      subtitle:              'Archive Network Gateway',
+      lede:                  'TIU archive network access sequence initialized.<br/>Internal records limited to authorized users.',
+      guest_mode:            'Guest Access Mode',
+      guest_session_pill:    'Guest Session',
+      username:              'Username',
+      session_status:        'Session Status',
+      session_active:        'Guest session active',
+      session_issued:        'Auto-issued',
+      perm_system:           'System read access',
+      perm_index:            'Record index access',
+      perm_public:           'General project records',
+      perm_expiry:           'Guest session expiry',
+      perm_limited:          'Limited',
+      btn_enter:             'Open Archive Home',
+      btn_public:            'Public Records',
+      warning:               'Unauthorized access and usage logs are retained as legal evidence.',
+      menu_aria:             'Open menu',
+
+      /* === LANDING PAGE === */
+      main_title:            'TIU Universe Archive',
+      main_subtitle:         'Archive Detail Node',
+      main_lede:             'As of May 12, 2032, the detail archive node is live.<br/>Timeline, global threat map, factions, and KR-INIT-001 terminal records are indexed here.',
+      cta1_title:            'Open Public Records',
+      cta2_title:            'Review Threat Index',
+      cta3_title:            'Manage Guest Session',
+      card1_title:           'Outbreak Timeline',
+      card1_desc:            'Major records from the early 1900s to 2032',
+      card2_title:           'Global Threat Map',
+      card2_desc:            'Worldwide infection spread and threat-level analysis',
+      card3_title:           'Korea Branch',
+      card3_desc:            'Strongholds, cities, survival zones, and key infrastructure',
+      card4_title:           'Archive Detail Records',
+      card4_desc:            'Extended index for factions, regions, and incidents',
+      map_panel_status_title:'WORLD INDEX / ENTRY 002',
+      map_panel_status_desc: 'Tactical map source connected. Key incident-zone markers and regional summaries indexed.',
+      map_panel_status_link: 'OPEN THREAT MAP',
+      archive_kicker:        'PUBLIC RECORDS / QUICK INDEX',
+      archive_title:         'Public Records',
+      archive_lede:          'Quick 2032 index for timelines, regions, factions, and Korea branch terminal records.',
+      record_timeline_title: 'Event Timeline',
+      record_timeline_desc:  'Core sequence from the 1908 Tunguska record to the 2032 public index.',
+      record_threat_title:   'Global Threat Map',
+      record_threat_desc:    'Locate key zones such as Korea, Russia, China, and Philadelphia on the world map.',
+      record_branch_title:   'Branch · Korea',
+      record_branch_desc:    'Korean walls, KR-INIT-001, the closed Gangwon site, and permission-conflict logs.',
+      record_factions_title: 'Major Factions',
+      record_factions_desc:  'Faction, living-zone, logistics, and regional response divergence records.',
+      archive_route_kicker:  'NEXT / ARCHIVE DETAILS',
+      archive_route_title:   'Detail records continue below.',
+      archive_route_desc:    'Public Records is the quick index. Timeline, Korea branch, factions, and KR-INIT-001 terminal records expand in the detail records.',
+      archive_route_link:    'View Details',
+      public_signal_1_label: 'PUBLIC SCOPE',
+      public_signal_1_desc:  'Surface records for incidents, regions, branch activity, and factions.',
+      public_signal_2_label: 'DETAIL ROUTE',
+      public_signal_2_desc:  'Each entry links into the corresponding archive detail summary.',
+      public_signal_3_label: '2032 INDEX',
+      public_signal_3_desc:  'The current public index follows the 2032 reclassification set.',
+      threat_kicker:         'PUBLIC THREAT OVERLAY / 2032',
+      threat_title:          'Global Threat Map',
+      threat_lede:           '2032 incident zones and regional flows. Select a marker to refresh incident, threat, and response records.',
+      threat_index_label_1:  'INCIDENT AXIS',
+      threat_index_desc_1:   'Major incident zones after EV-Σ spread: Philadelphia, Ashfall, Silent Belt, Red Veil.',
+      threat_index_label_2:  'KOREA ARC',
+      threat_index_desc_2:   'Korean walls, Gangwon incident fragments, public mission records, and restored terminal records.',
+      threat_index_label_3:  'STATE RESPONSE',
+      threat_index_desc_3:   'Walls, military operations, checkpoints, and city administration shifts.',
+      threat_index_label_4:  'OPEN INDEX',
+      threat_index_desc_4:   'Selected markers update incident, threat, and response records.',
+      threat_note_label:     'MAP INDEX',
+      threat_note_title:     'WORLD REFERENCE LAYER',
+      threat_note_desc:      'Public navigation layer for major regions and incident sites.',
+      dossiers_kicker:       'ARCHIVE DETAILS / WORLD INDEX',
+      dossiers_title:        'Archive Detail Records',
+      dossiers_lede:         'Expanded public index: chronology, EV-Σ spread, faction structure, and the KR-INIT-001 Korea arc.',
+      dossier_nav_timeline:  'Chronology',
+      dossier_nav_timeline_desc: 'Year-sequenced records',
+      dossier_nav_map:       'Threat Map',
+      dossier_nav_map_desc:  'Global region layer',
+      dossier_nav_spread:    'EV-Σ Spread',
+      dossier_nav_spread_desc: 'Representative incidents',
+      dossier_nav_factions:  'Factions',
+      dossier_nav_factions_desc: 'Surface faction structure',
+      dossier_nav_branch:    'KR-INIT-001',
+      dossier_nav_branch_desc: 'Korea branch records',
+      dossier_timeline_title:'Event Timeline',
+      timeline_1908:         'Tunguska Event. Siberian explosion, no crater, later reclassified as a space-rewrite anomaly line.',
+      timeline_1945:         'Operation Paperclip. Postwar researcher transfer and a reorganization of bio-military medical research.',
+      timeline_1980:         'Rendlesham Forest. Light-object contact, symbol notes, and a 48-hour memory-loss record.',
+      timeline_2020_genesis: 'Genesis Break precursor period. EV-Σ signals and control-failure risks accumulate across this interval.',
+      timeline_2024_phi:     'PHILADELPHIA Z-Ω designation. Large containment failure and the direct trigger for THE EXODUS east-coast refugee wave.',
+      timeline_2024_ash:     'ASHFALL CITY Z-3. SHED ORDER colony experiment failure; urban structures convert into biomass.',
+      timeline_2024_contact:  'FIRST CONTACT / DOMINION. TS-Ω Core contact zone and subsequent dominance-shift records.',
+      timeline_2024_2025_exodus: 'THE EXODUS and Ryukyu-line reorganization. U.S. east-coast displacement, Japan Ryukyu operations, and CIPHER-MIRROR activation.',
+      timeline_2025_kr:       'KR-INIT-001. NADL four-layer wall stable operations, Lee Jungchul assignment, branch collapse, and five-person emergency escape record.',
+      timeline_2032:         'PUBLIC ARCHIVE 2032. Unified index for confirmed incident zones, state response, faction structure, and KR-INIT-001 terminal records.',
+      dossier_spread_title:  'EV-Σ Spread Records',
+      dossier_spread_desc:   'City-scale collapses and regional blockade lines. Four representative cases in the public archive.',
+      dossier_branch_title:  'Korea Branch KR-INIT-001',
+      dossier_branch_desc:   'Personnel assigned to the closed Gangwon site. Korean walls, mountain-variant records, shelter administration, and restored terminal logs.',
+      dossier_factions_title:'Major Faction Structure',
+      dossier_factions_desc: 'State response systems, unofficial organizations, civilian logistics, and survival communities. The public index connects only surface activity found in field records.',
+      dossiers_hint_label:   'ARCHIVE INDEX',
+      dossiers_hint_desc:    'Public index linked to detail records.',
+      event_phi_title:       'Philadelphia Z-Ω (2024)',
+      event_phi_desc:        'Large containment failure. Direct trigger for THE EXODUS east-coast refugee wave.',
+      event_ash_title:       'Ashfall City Z-3 (2024)',
+      event_ash_desc:        'SHED ORDER colony experiment failure. Urban-structure biomass conversion record.',
+      event_silent_title:    'Silent Belt',
+      event_silent_desc:     'Seed Spreader expansion zone. Acoustic dampening and route-loss reports.',
+      event_red_title:       'Red Veil Line',
+      event_red_desc:        'Internal control failure in a dense urban belt. Exterior walls and task-force operations maintained.',
+      faction_class_title:   'The classification route leaves no source.',
+      faction_class_desc:    'Surface indexes retain only sample classes, permission conflicts, and pending logs.',
+      faction_prom_title:    'Protect the uncontrolled choice.',
+      faction_prom_desc:     'Off-record wall technology, information blocks, and both cooperation and conflict along the Korean line.',
+      faction_shed_title:    'Beyond the shell, the next evolution.',
+      faction_shed_desc:     'An expansionist faction interpreting infection as evolution, central to the Ashfall records.',
+      faction_ts_title:      'Not intelligence. Response.',
+      faction_ts_desc:       'A colony surfaced near Philadelphia waters. Current influence continues inland.',
+      faction_wolves_title:  'A firearms contract web without fear of infection.',
+      faction_wolves_desc:   'Russian gray-zone intelligence and armed contracts. Frequent movement records through silent regions.',
+      faction_choir_title:   'Infection is neither blessing nor curse.',
+      faction_choir_desc:    'Post-disaster religious interpretation zones, mixing worship fragments with relief networks.',
+      faction_meridian_title:'Every route closes with a contract.',
+      faction_meridian_desc: 'A corporate zone moving crisis goods through logistics, medical, and insurance markets.',
+      faction_ember_title:   'The returned 34% chose retaliation.',
+      faction_ember_desc:    'A revenge network formed by returnees and survivors after Ashfall.',
+      branch_lee_desc:       'Former Army special-operations officer. Public commander of KR-INIT-001.',
+      branch_seo_desc:       'Data-stream analysis, base operation, and repeated coordinate discrepancy checks.',
+      branch_kang_desc:      'Former Marine recon and tactical command. Field entry and S.P.E.C contact response.',
+      branch_yoon_desc:      'EV-Σ sample analysis and Phase 0-1 transition-delay research.',
+      branch_lim_desc:       'Closed terminals, access rights, and record-error tracing. Log review at the disappearance point.',
+      terminal_kicker:       'RESTORED TERMINAL // KR-INIT-001',
+      terminal_title:        'BRANCH KR-INIT-001',
+      terminal_desc:         'KR-PZ-10 restored terminal. Branch incident map, personnel index, and permission-conflict logs.',
+      terminal_link:         'Open Restored Terminal'
+    },
+    ja: {
+      classification_value:  'A-1 / 公開',
+      title:                 'アクセス プロトコル',
+      subtitle:              'アーカイブネットワークゲートウェイ',
+      lede:                  'TIU記録保管網への接続手順開始。<br/>内部記録へのアクセスは承認ユーザー限定。',
+      guest_mode:            'ゲストアクセスモード',
+      guest_session_pill:    'ゲストセッション',
+      username:              'ユーザー名',
+      session_status:        'セッション状態',
+      session_active:        'ゲストセッション有効',
+      session_issued:        '自動発行完了',
+      perm_system:           'システム閲覧権限',
+      perm_index:            '記録索引閲覧',
+      perm_public:           '一般プロジェクト記録',
+      perm_expiry:           'ゲストセッション失効',
+      perm_limited:          '限定',
+      btn_enter:             'アーカイブホームを開く',
+      btn_public:            '公開記録を見る',
+      warning:               '不正アクセスおよび使用記録は法令違反の証拠として保全。',
+      menu_aria:             'メニューを開く',
+
+      /* === LANDING PAGE === */
+      main_title:            'TIU ユニバースアーカイブ',
+      main_subtitle:         'アーカイブ詳細ノード',
+      main_lede:             '2032年5月12日時点の詳細記録網。<br/>年表、グローバル脅威マップ、主要勢力、KR-INIT-001端末記録の詳細索引。',
+      cta1_title:            '公開記録を見る',
+      cta2_title:            '脅威索引を確認する',
+      cta3_title:            'ゲストセッション管理',
+      card1_title:           '発生年表',
+      card1_desc:            '1900年代初頭から2032年までの主要事件記録',
+      card2_title:           'グローバル脅威マップ',
+      card2_desc:            '全世界の感染拡散状況と脅威等級分析',
+      card3_title:           '支部 · 大韓民国',
+      card3_desc:            '韓国内の拠点、都市、生存区域および主要インフラ',
+      card4_title:           'アーカイブ詳細記録',
+      card4_desc:            '勢力、地域、事件記録をつなぐ詳細索引',
+      map_panel_status_title:'WORLD INDEX / ENTRY 002',
+      map_panel_status_desc: '戦術地図原本を接続。主要事件圏マーカーと地域別要約索引。',
+      map_panel_status_link: 'OPEN THREAT MAP',
+      archive_kicker:        'PUBLIC RECORDS / QUICK INDEX',
+      archive_title:         '公開記録館',
+      archive_lede:          '2032年基準の年表、地域状況、主要勢力、韓国支部端末記録のクイック索引。',
+      record_timeline_title: '発生年表',
+      record_timeline_desc:  '1908年Tunguska記録から2032年公開索引までの核心事件列。',
+      record_threat_title:   'グローバル脅威マップ',
+      record_threat_desc:    '韓国、ロシア、中国、フィラデルフィアなど主要事件圏を地図表示。',
+      record_branch_title:   '支部 · 大韓民国',
+      record_branch_desc:    '韓国防壁、KR-INIT-001、江原閉鎖拠点、権限不一致ログ。',
+      record_factions_title: '主要勢力',
+      record_factions_desc:  '国家対応圏、民間物流圏、生存共同体、非公式組織の構図。',
+      archive_route_kicker:  'NEXT / ARCHIVE DETAILS',
+      archive_route_title:   '詳細記録は下のアーカイブ詳細記録へ接続。',
+      archive_route_desc:    '公開記録館はクイック索引。年表、韓国支部、主要勢力、KR-INIT-001端末記録は詳細記録で拡張。',
+      archive_route_link:    '詳細記録を見る',
+      public_signal_1_label: 'PUBLIC SCOPE',
+      public_signal_1_desc:  '即時閲覧可能な事件、圏域、支部、勢力の表面記録。',
+      public_signal_2_label: 'DETAIL ROUTE',
+      public_signal_2_desc:  '各項目はアーカイブ詳細記録の要約へ接続。',
+      public_signal_3_label: '2032 INDEX',
+      public_signal_3_desc:  '現在の公開索引は2032年再分類版基準。',
+      threat_kicker:         'PUBLIC THREAT OVERLAY / 2032',
+      threat_title:          'グローバル脅威マップ',
+      threat_lede:           '2032年基準の事件圏と地域流。マーカー選択で事件名、脅威タイプ、対応記録を更新。',
+      threat_index_label_1:  'INCIDENT AXIS',
+      threat_index_desc_1:   'EV-Σ拡散以後の主要事件圏。フィラデルフィア、Ashfall、Silent Belt、Red Veil。',
+      threat_index_label_2:  'KOREA ARC',
+      threat_index_desc_2:   '韓国防壁、江原事件断片、公開任務記録、復元端末記録。',
+      threat_index_label_3:  'STATE RESPONSE',
+      threat_index_desc_3:   '防壁、軍運用、検問、都市行政権再編。',
+      threat_index_label_4:  'OPEN INDEX',
+      threat_index_desc_4:   '選択地点を基準に事件・脅威・対応記録を更新。',
+      threat_note_label:     'MAP INDEX',
+      threat_note_title:     'WORLD REFERENCE LAYER',
+      threat_note_desc:      '主要地域と事件地点を探す公開地図レイヤー。',
+      dossiers_kicker:       'ARCHIVE DETAILS / WORLD INDEX',
+      dossiers_title:        'アーカイブ詳細記録',
+      dossiers_lede:         '公開索引の拡張。発生年表、EV-Σ拡散、勢力構図、KR-INIT-001韓国事件軸。',
+      dossier_nav_timeline:  'Chronology',
+      dossier_nav_timeline_desc: '年次事件記録',
+      dossier_nav_map:       'Threat Map',
+      dossier_nav_map_desc:  '世界圏域地図',
+      dossier_nav_spread:    'EV-Σ Spread',
+      dossier_nav_spread_desc: '代表拡散事件',
+      dossier_nav_factions:  'Factions',
+      dossier_nav_factions_desc: '表面勢力構図',
+      dossier_nav_branch:    'KR-INIT-001',
+      dossier_nav_branch_desc: '韓国支部記録',
+      dossier_timeline_title:'発生年表',
+      timeline_1908:         'Tunguska Event。シベリア大爆発、衝突口不在、空間再記述系異常事件として再分類。',
+      timeline_1945:         'Operation Paperclip。戦後研究者移送、生体・軍医療研究系列の再編。',
+      timeline_1980:         'Rendlesham Forest。発光体接触、記号手記、48時間記憶喪失記録。',
+      timeline_2020_genesis: 'GENESIS BREAK前兆期。EV-Σ関連兆候と制御失敗リスクが蓄積された時期。',
+      timeline_2024_phi:     'PHILADELPHIA Z-Ω指定。大規模封鎖失敗。THE EXODUS東海岸難民波の直接起点。',
+      timeline_2024_ash:     'ASHFALL CITY Z-3。SHED ORDER群体実験失敗。都市構造が生体組織へ転換。',
+      timeline_2024_contact:  'FIRST CONTACT / DOMINION。TS-Ω Core接触圏と以後の支配権変動記録。',
+      timeline_2024_2025_exodus: 'THE EXODUSと琉球戦線再編。米国東海岸避難波、日本琉球作戦、CIPHER-MIRROR稼働。',
+      timeline_2025_kr:       'KR-INIT-001。NADL四層防壁安定運用、イ・ジュンチョル着任、支部陥落と5名非常脱出記録。',
+      timeline_2032:         'PUBLIC ARCHIVE 2032。確認事件圏、国家対応、勢力構図、KR-INIT-001端末記録の統合索引。',
+      dossier_spread_title:  'EV-Σ拡散記録',
+      dossier_spread_desc:   '都市単位崩壊と圏域別封鎖線。公開アーカイブ基準の代表事件四件。',
+      dossier_branch_title:  '韓国支部KR-INIT-001',
+      dossier_branch_desc:   '江原閉鎖拠点配備運用陣。韓国防壁、山間変種体記録、避難所行政、復元端末ログ。',
+      dossier_factions_title:'主要勢力構図',
+      dossier_factions_desc: '国家対応体系、非公式組織、民間物流圏、生存共同体。公開索引は現場記録に現れた表面活動のみ接続。',
+      dossiers_hint_label:   'ARCHIVE INDEX',
+      dossiers_hint_desc:    '詳細記録へ接続する公開索引。',
+      event_phi_title:       'Philadelphia Z-Ω (2024)',
+      event_phi_desc:        '大規模封鎖失敗。THE EXODUS東海岸難民波の直接起点。',
+      event_ash_title:       'Ashfall City Z-3 (2024)',
+      event_ash_desc:        'SHED ORDER群体実験失敗。都市構造の生体組織転換記録。',
+      event_silent_title:    'Silent Belt',
+      event_silent_desc:     'Seed Spreader拡散圏。音響減衰と移動経路喪失報告。',
+      event_red_title:       'Red Veil封鎖線',
+      event_red_desc:        '都市密集圏内部の統制失敗。外部防壁と専任部隊運用を維持。',
+      faction_class_title:   '分類経路は出典を残さない。',
+      faction_class_desc:    '表面索引にはサンプル分類、権限不一致、保留ログのみ残存。',
+      faction_prom_title:    '制御されない選択を守る。',
+      faction_prom_desc:     '公式記録外の防壁技術、情報遮断、韓国封鎖線での協力記録と衝突記録。',
+      faction_shed_title:    '殻の向こう、次の進化。',
+      faction_shed_desc:     '感染を災害ではなく進化と解釈する拡張勢力。Ashfall記録の中心軸。',
+      faction_ts_title:      '知能ではなく反応。',
+      faction_ts_desc:       'Philadelphia海域で表面化した群体。現在の影響圏は内陸方向へ前進中。',
+      faction_wolves_title:  '感染を恐れない銃器契約網。',
+      faction_wolves_desc:   'ロシア圏灰色地帯の情報と武装契約網。通信断絶圏の移動記録多数。',
+      faction_choir_title:   '感染は祝福でも呪いでもない。',
+      faction_choir_desc:    '災害以後に拡散した宗教的解釈圏。感染崇拝の断片と救護網が混在。',
+      faction_meridian_title:'すべての道路は契約書で閉じる。',
+      faction_meridian_desc: '物流、医療、保険市場を通じて危機物資を移動させる企業圏。',
+      faction_ember_title:   '戻った34%は報復を選んだ。',
+      faction_ember_desc:    'Ashfall以後の帰還者と生存者が作った報復ネットワーク。',
+      branch_lee_desc:       '元陸軍特殊部隊将校。KR-INIT-001公開指揮権者。',
+      branch_seo_desc:       'データストリーム分析、基地運用、反復する座標差異の照合。',
+      branch_kang_desc:      '元海兵隊捜索・戦術指揮。現場進入とS.P.E.C接触対応。',
+      branch_yoon_desc:      'EV-Σ標本分析、Phase 0-1転換遅延研究。',
+      branch_lim_desc:       '閉鎖端末、アクセス権、記録エラー追跡。消失瞬間のログ確認。',
+      terminal_kicker:       'RESTORED TERMINAL // KR-INIT-001',
+      terminal_title:        'BRANCH KR-INIT-001',
+      terminal_desc:         'KR-PZ-10復元端末。韓国支部事件地図、運用陣索引、権限不一致ログ。',
+      terminal_link:         '復元端末を開く'
+    }
+  };
+
+  const STORAGE_KEY  = 'tiu-lang';
+  const DEFAULT_LANG = 'ko';
+  const SUPPORTED    = ['ko', 'en', 'ja'];
+
+  function applyLang(lang) {
+    if (!SUPPORTED.includes(lang)) lang = DEFAULT_LANG;
+    const dict = DICT[lang];
+    document.documentElement.lang = lang;
+
+    /* 텍스트 컨텐츠 */
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const v = dict[el.dataset.i18n];
+      if (v !== undefined) el.textContent = v;
+    });
+
+    /* HTML 컨텐츠 (br 등 허용) */
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const v = dict[el.dataset.i18nHtml];
+      if (v !== undefined) el.innerHTML = v;
+    });
+
+    /* aria-label 같은 속성 번역 */
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const v = dict[el.dataset.i18nAria];
+      if (v !== undefined) el.setAttribute('aria-label', v);
+    });
+
+    /* 토글 버튼 활성 상태 */
+    document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+      btn.classList.toggle('is-active', btn.dataset.langBtn === lang);
+    });
+
+    document.dispatchEvent(new CustomEvent('tiu:langchange', { detail: { lang } }));
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* private mode 등 */ }
+  }
+
+  function init() {
+    document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.dataset.langBtn));
+    });
+
+    let saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    applyLang(saved || DEFAULT_LANG);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+</script>
+
+  <script src="js/archive-menu.js"></script>
+  <script src="js/landing-map-sites.js"></script>
+</body>
+</html>
+

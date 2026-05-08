@@ -1,0 +1,111 @@
+/* ==========================================================================
+   LANDING — Hero (좌측 카피 + INFO STRIP)
+   ========================================================================== */
+
+.lp-hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ===== TITLE BLOCK =================================================== */
+.lp-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0;
+  /* 그런지 — 페인트 칠한 듯한 헤딩 */
+  text-shadow:
+    0 0 1px rgba(207, 207, 207, 0.4),
+    2px 2px 0 rgba(0, 0, 0, 0.9),
+    -1px -1px 0 rgba(207, 207, 207, 0.05);
+  filter: contrast(1.08);
+  word-break: keep-all;
+}
+
+.lp-subtitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.6vw, 1.5rem);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+
+.lp-lede {
+  font-size: var(--fs-h4);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 620px;
+}
+
+/* ===== INFO STRIP (큰 정보 박스) ===================================== */
+.lp-info {
+  display: grid;
+  grid-template-columns: 1.2fr 1.4fr 1fr;
+  gap: 0;
+  border: var(--bw-thin) solid var(--border-default);
+  background: var(--bg-surface);
+  margin-top: var(--space-2);
+}
+
+.lp-info__cell {
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  border-right: var(--bw-thin) solid var(--border-subtle);
+  position: relative;
+}
+.lp-info__cell:last-child { border-right: 0; }
+
+.lp-info__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-nano);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.lp-info__value {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  letter-spacing: var(--tracking-wider);
+  color: var(--text-primary);
+}
+
+/* INFO STRIP — 큰 강조 값 */
+.lp-info__cell--rate .lp-info__value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: var(--tracking-wide);
+  line-height: 1;
+  margin-top: 2px;
+}
+
+/* 코너 데코 (오렌지 모서리) */
+.lp-info__cell--rate::before,
+.lp-info__cell--rate::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: var(--bw-thin) solid var(--accent);
+}
+.lp-info__cell--rate::before {
+  top: -1px; right: -1px;
+  border-left: 0; border-bottom: 0;
+}
+.lp-info__cell--rate::after {
+  bottom: -1px; right: -1px;
+  border-left: 0; border-top: 0;
+}
