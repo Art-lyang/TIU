@@ -17,3 +17,7 @@ desktop.ini
 # Logs
 *.log
 npm-debug.log*
+
+# Local app temp folders
+.tmp.driveupload/
+.tmp.drivedownload/
