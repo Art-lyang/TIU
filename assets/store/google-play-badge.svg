@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="96" viewBox="0 0 360 96" role="img" aria-labelledby="title desc">
+  <title id="title">Google Play badge</title>
+  <desc id="desc">Google Play release badge.</desc>
+  <rect width="360" height="96" rx="6" fill="#111113"/>
+  <rect x="1" y="1" width="358" height="94" rx="5" fill="none" stroke="#39d98a" stroke-opacity=".75"/>
+  <path d="M45 25v46l24-23-24-23Z" fill="#39d98a"/>
+  <path d="M68 48 45 25l36 21-13 2Z" fill="#4ec8ff"/>
+  <path d="M68 48 45 71l36-21-13-2Z" fill="#ffce45"/>
+  <path d="M82 46c4 2 4 4 0 6l-14-4 14-2Z" fill="#ff5a5f"/>
+  <text x="130" y="39" fill="#ffefe3" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="800">Google Play</text>
+  <text x="130" y="65" fill="#72f0ad" font-family="Consolas, 'Courier New', monospace" font-size="15" font-weight="700">MOBILE RELEASE</text>
+</svg>

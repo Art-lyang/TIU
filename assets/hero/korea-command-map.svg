@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000" role="img" aria-label="Korean branch tactical map silhouette">
+  <defs>
+    <pattern id="smallGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ff5a00" stroke-width="1" opacity="0.16"/>
+    </pattern>
+    <pattern id="largeGrid" width="160" height="160" patternUnits="userSpaceOnUse">
+      <rect width="160" height="160" fill="url(#smallGrid)"/>
+      <path d="M 160 0 L 0 0 0 160" fill="none" stroke="#ffc266" stroke-width="1.4" opacity="0.12"/>
+    </pattern>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="mapFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff5a00" stop-opacity="0.22"/>
+      <stop offset="0.52" stop-color="#f4efe7" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#ffb35b" stop-opacity="0.16"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="1000" fill="transparent"/>
+  <g opacity="0.88">
+    <rect x="70" y="74" width="1030" height="805" fill="url(#largeGrid)" opacity="0.32"/>
+    <path d="M109 184H337M873 184H1090M110 785H373M804 785H1092" fill="none" stroke="#ff5a00" stroke-width="2" opacity="0.42"/>
+    <path d="M182 118v138M1033 118v138M182 709v138M1033 709v138" fill="none" stroke="#ff5a00" stroke-width="2" opacity="0.42"/>
+  </g>
+
+  <g transform="translate(515 84)" filter="url(#glow)">
+    <path
+      d="M154 10
+         C196 42 206 96 184 135
+         C226 172 250 223 239 276
+         C283 318 300 373 276 424
+         C318 478 312 548 260 596
+         C292 660 266 727 207 764
+         C164 792 107 788 73 752
+         C44 720 35 672 9 637
+         C-28 586 -31 535 4 490
+         C-33 443 -25 391 22 352
+         C8 296 30 248 77 219
+         C73 165 94 121 130 92
+         C126 58 135 29 154 10Z"
+      fill="url(#mapFill)"
+      stroke="#f4efe7"
+      stroke-width="4"
+      opacity="0.78"/>
+    <path d="M143 72 C125 132 157 189 137 241 C115 298 52 319 56 380 C60 439 120 463 108 526 C99 574 58 604 72 651 C87 706 132 730 189 726" fill="none" stroke="#ff5a00" stroke-width="3" stroke-dasharray="14 13" opacity="0.72"/>
+    <path d="M214 274 C165 304 118 335 72 377 M246 430 C194 445 147 471 103 509 M231 596 C183 604 142 625 104 661" fill="none" stroke="#ffc266" stroke-width="2" opacity="0.36"/>
+    <ellipse cx="40" cy="846" rx="54" ry="26" fill="none" stroke="#f4efe7" stroke-width="3" opacity="0.44"/>
+    <ellipse cx="40" cy="846" rx="21" ry="10" fill="#ff5a00" opacity="0.2"/>
+    <circle cx="137" cy="241" r="9" fill="#ff5a00"/>
+    <circle cx="56" cy="380" r="7" fill="#ffc266"/>
+    <circle cx="108" cy="526" r="7" fill="#ff5a00"/>
+    <circle cx="72" cy="651" r="6" fill="#ffc266"/>
+    <circle cx="189" cy="726" r="8" fill="#ff5a00"/>
+    <g fill="none" stroke="#ff5a00" opacity="0.3">
+      <circle cx="137" cy="241" r="38"/>
+      <circle cx="108" cy="526" r="48"/>
+      <circle cx="189" cy="726" r="42"/>
+    </g>
+  </g>
+
+  <g opacity="0.38" stroke="#f4efe7" stroke-width="2" fill="none">
+    <path d="M718 208h210v86H718z"/>
+    <path d="M738 236h108M738 262h156M738 288h76"/>
+    <path d="M386 648h174v74H386z"/>
+    <path d="M406 676h120M406 701h84"/>
+  </g>
+
+  <g opacity="0.54" fill="none" stroke="#ff5a00" stroke-width="2">
+    <path d="M628 323 L736 245"/>
+    <path d="M623 609 L501 681"/>
+    <path d="M706 804 L858 790"/>
+  </g>
+</svg>
