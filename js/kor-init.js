@@ -1,4 +1,23 @@
 (function () {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+
+  if (menuToggle && nav) {
+    menuToggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      menuToggle.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+    });
+
+    nav.addEventListener("click", (e) => {
+      if (e.target.tagName === "A") {
+        nav.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "메뉴 열기");
+      }
+    });
+  }
+
   const filterButtons = Array.from(document.querySelectorAll(".filter-button"));
   const termCards = Array.from(document.querySelectorAll(".term-card"));
   const copyButton = document.getElementById("copyBriefing");
