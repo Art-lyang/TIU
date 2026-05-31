@@ -12,7 +12,7 @@
 | 한국 방벽 | `1. 세계관/5. WORLD/1. 지표 L1/1. KOREA-BALANCED/TIU-KOREA-WALL.md` | NADL 명칭, 4레이어, 특재사/DG 의존 |
 | 방벽 경제 | `1. 세계관/5. WORLD/1. 지표 L1/1. KOREA-BALANCED/TIU-KOREA-WALL-ECONOMY.md` | W-0~W-X, 신속 검사, 격리 비용, 감염 이력 보험 |
 | 감염자 법적 지위 | `1. 세계관/5. WORLD/1. 지표 L1/1. KOREA-BALANCED/TIU-MUTATION-PHASE-LEGAL-STATUS.md` | Phase별 시민권·면회·기록 처리 |
-| 메리디언 한국 | `1. 세계관/5. WORLD/1. 지표 L1/1. KOREA-BALANCED/TIU-MERIDIAN-KOREA.md` | 송도 거점, DG와의 제한 경쟁, 외부자 포지션 |
+| 메리디언 한국 | `1. 세계관/5. WORLD/1. 지표 L1/1. KOREA-BALANCED/TIU-MERIDIAN-KOREA.md` | 한국권 제한 거점, DG와의 제한 경쟁, 외부자 포지션 |
 | SPEC 표본 | `1. 세계관/2. ABERRANT/*.md` + `TIU-WORLDBUILDING-SUMMARY.md` | 공개 표본명, 위험 감각, 세부 기원 제외 |
 
 ## 공개 가능 처리

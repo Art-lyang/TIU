@@ -251,12 +251,12 @@
 .hero::before {
   content: "";
   position: absolute;
-  inset: 4% 0 0 32%;
+  inset: 0 -6% -6% 0;
   z-index: 0;
   pointer-events: none;
-  background: url("../assets/hero/korea-command-map.svg") center right / contain no-repeat;
-  opacity: 0.26;
-  filter: blur(0.7px) saturate(0.9);
+  background: url("../assets/hero/korea-command-map-generated.png") center center / cover no-repeat;
+  opacity: 0.32;
+  filter: blur(0.25px) saturate(1.02);
   mix-blend-mode: screen;
 }
 
@@ -1139,6 +1139,17 @@ h1 {
   margin: 10px 0 0;
   color: var(--ki-muted);
   line-height: 1.65;
+}
+
+.screen-card strong,
+.screen-card p {
+  word-break: keep-all;
+  overflow-wrap: normal;
+  text-wrap: pretty;
+}
+
+.screen-card p {
+  line-height: 1.55;
 }
 
 .locked-panel {

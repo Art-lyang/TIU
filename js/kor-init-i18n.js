@@ -14,12 +14,14 @@
         "5. Locked records remain inaccessible under the current issue scope."
       ],
       text: {
-        navKorea: "Basic Terms",
+        navKorea: "Operations Manual",
         navRoute: "Operations Flow",
-        navPersonnel: "Korean Branch",
-        navGlossary: "Term Index",
+        navPersonnel: "World / Personnel",
+        navGlossary: "Terms / SPEC",
         navGuide: "Play Reading",
-        manualTabWorld: "World Manual",
+        manualTabOps: "Operations Manual",
+        manualTabWorld: "World / Personnel",
+        manualTabData: "Terms / SPEC",
         manualTabPlay: "Play Reading",
         heroTitle: "Oracle System Manual<br>For Branch Commanders",
         heroLead: "An operations manual for commanders newly assigned to Oracle AI facilities. Quickly review the key identifiers needed for duty: place names, SPEC classifications, command chains, and corporate relations.",
@@ -113,7 +115,7 @@
         dgDesc: "A major Korean corporate and resource axis connected to defense, technology, bio, and infrastructure.",
         meridianLabel: "Meridian Korea",
         meridianTitle: "Limited external company",
-        meridianDesc: "A Songdo-based logistics and security consulting presence with a limited Korean role.",
+        meridianDesc: "An external corporate axis fronted by logistics and security consulting, operating within a limited Korean scope.",
         zeroLabel: "Section Zero",
         zeroTitle: "Unverified cover line",
         zeroDesc: "Externally, it may appear as an advisory group under the SDAC commander or as a Daega Industrial Security (DIS) consulting team, but this has not been clearly confirmed.",
@@ -171,7 +173,6 @@
         ["KR-INIT-001", "Korean Branch incident baseline record. Facility logs, personnel choices, and incident branches filed under this code. Command decisions require record cross-check."],
         ["Korean Wall / NADL", "Public label: Korean Wall. Formal formation: NADL. Not a barrier-only system. Detection, alert, interdiction, and mobile response combined."],
         ["NADL North / West / East", "Wall-sector responsibility labels. First layer for incident direction, infiltration route, and responding command axis."],
-        ["Incheon Songdo", "Visible Korean foothold of Meridian Korea. Logistics, consulting, and external-contact zone. Korean role observed as limited."],
         ["Philadelphia Z-Ω", "Major U.S. contamination-containment axis. Cited as failed containment comparison against the Korean Wall. External-risk scale reference."],
         ["Ashfall City", "U.S. Z-3 damaged city. Disaster records, samples, and survivor response connected. City-scale aberrant spread recorded."],
         ["EV-Σ", "Core disaster name covering infection, mutation, and environmental contamination. Starting point for civilian life, military response, and SPEC classification. Deeper origin not covered here."],
@@ -184,7 +185,7 @@
         ["Section Zero", "Observed through the outer cover of an SDAC commander advisory group or Daega Industrial Security (DIS) consulting team. True structure unconfirmed."],
         ["PROMETHEUS", "Faction leaving technical and informational traces outside official government systems. Not a cooperation target. Surveillance and interdiction first."],
         ["Meridian Group", "Company name recurring across logistics, bio-assets, resources, and private security. Multiple external-contact records."],
-        ["Meridian Korea", "Korean foothold of Meridian Group. Korean role limited. Surface activity observed around Songdo."]
+        ["Meridian Korea", "Limited Korean foothold of Meridian Group. Recurs in logistics, consulting, and external-contact records."]
       ],
       spec: [
         "An early mutation sample resembling a human form. Because visual identification may be delayed, distance control and record comparison take priority over contact.",
@@ -219,12 +220,14 @@
         "5. ロック記録は現在の配布範囲では閲覧できません。"
       ],
       text: {
-        navKorea: "基本用語",
+        navKorea: "運用教本",
         navRoute: "運用の流れ",
-        navPersonnel: "韓国支部",
-        navGlossary: "用語索引",
+        navPersonnel: "世界観・人物",
+        navGlossary: "用語・SPEC",
         navGuide: "プレイ判読",
-        manualTabWorld: "世界観教本",
+        manualTabOps: "運用教本",
+        manualTabWorld: "世界観・人物",
+        manualTabData: "用語・SPEC",
         manualTabPlay: "プレイ判読",
         heroTitle: "支部指揮官用<br>オラクルシステム運用教本",
         heroLead: "オラクルAI基地に初めて着任した指揮官向けの運用教本です。任務遂行に必要な地名、SPEC分類、組織系統、企業関係などの核心識別子を迅速に確認できます。",
@@ -318,7 +321,7 @@
         dgDesc: "防衛、技術、バイオ、インフラ分野と接続される韓国圏の中核企業軸です。",
         meridianLabel: "Meridian Korea",
         meridianTitle: "限定的外部企業",
-        meridianDesc: "松島を拠点とする物流・保安コンサルティング拠点で、韓国では限定された範囲で活動します。",
+        meridianDesc: "物流・保安コンサルティングを前面に出す外部企業軸で、韓国では限定された範囲で活動します。",
         zeroLabel: "0課",
         zeroTitle: "未確認の外皮ライン",
         zeroDesc: "外部からは特災司司令官直属の諮問グループ、またはDaega Industrial Security（DIS）のコンサルティングチームのように見えますが、明確に確認された情報ではありません。",
@@ -376,7 +379,6 @@
         ["KR-INIT-001", "韓国支部事件の基準記録名。施設ログ、人員選択、事件分岐は本コード下に整理。指揮判断時、同一記録体系で照合必要。"],
         ["韓国防壁 / NADL", "一般名称、韓国防壁。正式編制名、NADL。物理防壁単独ではない。検知、警報、遮断、機動対応の複合国家防衛線。"],
         ["NADL北部・西部・東部", "防壁責任区域の区分表記。事件発生方向、侵入経路、初動対応軸の判別時に優先確認。"],
-        ["仁川・松島", "Meridian Koreaの韓国圏表面拠点。物流、コンサルティング、対外接触表示区域。韓国内の役割は限定的に観測。"],
         ["Philadelphia Z-Ω", "米国圏の大規模汚染・封鎖軸。韓国防壁と対比される失敗封鎖事例として引用。外部世界の危険規模比較基準。"],
         ["Ashfall City", "米国圏Z-3被害都市。災害記録、標本、生存者対応の接続区域。異変体リスクの都市単位拡散結果として記録。"],
         ["EV-Σ", "感染、変異、環境汚染を包括する核心災害名。市民生活、軍対応、SPEC分類の出発点。詳細起源は本ページで扱わず。"],
@@ -389,7 +391,7 @@
         ["0課", "特災司司令官直属の諮問グループ、またはDaega Industrial Security（DIS）コンサルティングチーム外皮として観測。実体未確認。"],
         ["PROMETHEUS", "政府公式体系外で技術・情報痕跡を残す勢力。協力対象ではない。監視・阻止優先。"],
         ["Meridian Group", "物流、バイオ、資源、民間保安領域で反復登場する企業名。外部接触記録多数。"],
-        ["Meridian Korea", "Meridian Groupの韓国圏拠点。韓国内の役割は限定的。松島基盤の表面活動を観測。"]
+        ["Meridian Korea", "Meridian Groupの韓国圏制限拠点。物流、コンサルティング、対外接触記録で繰り返し観測。"]
       ],
       spec: [
         "人型に似た初期変異標本です。外形識別が遅れやすいため、接触より距離確保と記録照合が優先されます。",
@@ -416,13 +418,15 @@
   const attrNodes = new Map();
 
   const selectors = {
-    navKorea: '.nav a[href="#korea"]',
+    navKorea: '.nav a[href="./index.html"]',
     navRoute: '.nav a[href="#route"]',
-    navPersonnel: '.nav a[href="#personnel"]',
-    navGlossary: '.nav a[href="#glossary"]',
-    navGuide: '.nav a[data-nav-guide]',
-    manualTabWorld: '.manual-tabs a:nth-child(1)',
-    manualTabPlay: '.manual-tabs a:nth-child(2)',
+    navPersonnel: '.nav a[href="./world.html"]',
+    navGlossary: '.nav a[href="./database.html"]',
+    navGuide: '.nav a[href="./play-guide.html"]',
+    manualTabOps: '.manual-tabs a:nth-child(1)',
+    manualTabWorld: '.manual-tabs a:nth-child(2)',
+    manualTabData: '.manual-tabs a:nth-child(3)',
+    manualTabPlay: '.manual-tabs a:nth-child(4)',
     heroTitle: '.hero-copy h1',
     heroLead: '.hero-lead',
     heroPrimary: '.primary-action',
@@ -657,7 +661,7 @@
       }
       const labels = {
         brand: 'Move to KR-INIT-001 top',
-        nav: next === 'ja' ? 'ページセクション' : 'Page sections',
+        nav: next === 'ja' ? '教本カテゴリ' : 'Manual categories',
         langSwitch: next === 'ja' ? '言語選択' : 'Language selection',
         manualTabs: next === 'ja' ? '教本カテゴリ' : 'Manual categories',
         actions: next === 'ja' ? 'クイックリンク' : 'Quick links',
