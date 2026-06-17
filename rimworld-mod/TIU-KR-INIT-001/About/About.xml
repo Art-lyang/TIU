@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>TIU: KR-INIT-001 — 한국방벽 오라클</name>
+  <author>art-lyang / TIU</author>
+  <packageId>artlyang.tiu.krinit001</packageId>
+  <supportedVersions>
+    <li>1.5</li>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>TIU(The Interconnected Universe) 세계관 KR-INIT-001 기록을 림월드로 옮긴 콘텐츠 모드입니다.
+
+[ 추가 내용 ]
+· 세력: 화이트실드 / NADL(한국방벽) — 우호 세력
+· 세력: 이변체(ABERRANT) — 영구 적대 세력
+· 이변체 SPEC: 마네킹(SPEC-001), 브루드 드론(SPEC-003), 쉘 토커(SPEC-011)
+· 무기: NADL 제식 소총
+· 방어구: 화이트실드 방호복
+· 의약품: EV-Σ 억제제 (+ EV-Σ 억제 효과)
+· 연구: 한국방벽 대응 프로토콜
+
+[ 비고 ]
+순수 XML 모드라 별도 컴파일이 필요 없습니다. 이변체와 일부 아이템은 바닐라 텍스처를 재사용하므로 핑크 박스 없이 즉시 동작합니다. 전용 텍스처/사운드는 추후 Textures 폴더에 추가하면 됩니다.
+
+세계관 출처: TIU KR-INIT-001 ORACLE SYSTEM MANUAL (공개 교본 범위).</description>
+</ModMetaData>

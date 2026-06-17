@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================== 무기: NADL 제식 소총 ===================== -->
+  <ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>TIU_Gun_NADL_Rifle</defName>
+    <label>NADL 제식 소총</label>
+    <description>한국방벽(NADL) 기동 대응반의 제식 화기. 월경 변이체 차단 작전을 위해 안정적인 3점사 사격에 최적화되어 있다. 특재사 보급 규격 기준으로 제작된다.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/AssaultRifle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+      <WorkToMake>26000</WorkToMake>
+      <Mass>3.8</Mass>
+      <AccuracyTouch>0.70</AccuracyTouch>
+      <AccuracyShort>0.76</AccuracyShort>
+      <AccuracyMedium>0.70</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>1.4</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>60</Steel>
+      <ComponentIndustrial>5</ComponentIndustrial>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>TIU_NADL_Protocol</researchPrerequisite>
+    </recipeMaker>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_AssaultRifle</defaultProjectile>
+        <warmupTime>0.9</warmupTime>
+        <range>27</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <soundCast>Shot_AssaultRifle</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>stock</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+    </tools>
+    <weaponTags>
+      <li>TIU_NADL</li>
+      <li>AssaultRifle</li>
+    </weaponTags>
+    <tradeTags>
+      <li>WeaponRanged</li>
+    </tradeTags>
+  </ThingDef>
+
+  <!-- ===================== 방어구: 화이트실드 방호복 ===================== -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>TIU_Apparel_WhiteShieldVest</defName>
+    <label>화이트실드 방호복</label>
+    <description>화이트실드/NADL 현장 대응반이 착용하는 방호복. 이변체의 근접 공격과 환경 오염을 동시에 막도록 설계되었다.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costStuffCount>80</costStuffCount>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <statBases>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Mass>4.0</Mass>
+      <WorkToMake>9000</WorkToMake>
+      <Insulation_Cold>12</Insulation_Cold>
+      <Insulation_Heat>2</Insulation_Heat>
+      <ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.30</ArmorRating_Heat>
+    </statBases>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+      </layers>
+      <tags>
+        <li>TIU_WhiteShield</li>
+        <li>IndustrialMilitaryBasic</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <recipeMaker>
+      <researchPrerequisite>TIU_NADL_Protocol</researchPrerequisite>
+    </recipeMaker>
+  </ThingDef>
+
+  <!-- ===================== 의약품: EV-Σ 억제제 ===================== -->
+  <ThingDef ParentName="DrugPillBase">
+    <defName>TIU_Drug_EVSuppressant</defName>
+    <label>EV-Σ 억제제</label>
+    <description>변이 진행과 환경 오염에 대한 일시적 저항을 부여하는 의료용 억제제. 윤세진 의료·연구 라인의 표준 처방을 림월드 보급 규격으로 재현한 것이다.</description>
+    <descriptionHyperlinks>
+      <Hediff>TIU_EVSuppression</Hediff>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Drug/Penoxycyline</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>28</MarketValue>
+      <Mass>0.005</Mass>
+    </statBases>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+      <foodType>Medicine</foodType>
+      <baseIngestTicks>120</baseIngestTicks>
+      <ingestSound>Ingest_Pill</ingestSound>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>TIU_EVSuppression</hediffDef>
+          <severity>1.0</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>1010</listOrder>
+      </li>
+    </comps>
+    <recipeMaker>
+      <researchPrerequisite>TIU_NADL_Protocol</researchPrerequisite>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+    </recipeMaker>
+    <costList>
+      <Neutroamine>1</Neutroamine>
+      <MedicineHerbal>1</MedicineHerbal>
+    </costList>
+  </ThingDef>
+
+</Defs>

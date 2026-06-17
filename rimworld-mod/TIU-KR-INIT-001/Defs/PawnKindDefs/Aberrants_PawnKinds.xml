@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <PawnKindDef>
+    <defName>TIU_Aberrant_Mannequin</defName>
+    <label>마네킹</label>
+    <race>TIU_Aberrant_Mannequin</race>
+    <defaultFactionType>TIU_Aberrant</defaultFactionType>
+    <combatPower>45</combatPower>
+    <ecoSystemWeight>0</ecoSystemWeight>
+    <canArriveManhunter>true</canArriveManhunter>
+    <wildGroupSize>
+      <min>1</min>
+      <max>4</max>
+    </wildGroupSize>
+  </PawnKindDef>
+
+  <PawnKindDef>
+    <defName>TIU_Aberrant_BroodDrone</defName>
+    <label>브루드 드론</label>
+    <race>TIU_Aberrant_BroodDrone</race>
+    <defaultFactionType>TIU_Aberrant</defaultFactionType>
+    <combatPower>38</combatPower>
+    <ecoSystemWeight>0</ecoSystemWeight>
+    <canArriveManhunter>true</canArriveManhunter>
+    <wildGroupSize>
+      <min>2</min>
+      <max>6</max>
+    </wildGroupSize>
+  </PawnKindDef>
+
+  <PawnKindDef>
+    <defName>TIU_Aberrant_ShellTalker</defName>
+    <label>쉘 토커</label>
+    <race>TIU_Aberrant_ShellTalker</race>
+    <defaultFactionType>TIU_Aberrant</defaultFactionType>
+    <combatPower>120</combatPower>
+    <ecoSystemWeight>0</ecoSystemWeight>
+    <canArriveManhunter>true</canArriveManhunter>
+    <wildGroupSize>
+      <min>1</min>
+      <max>1</max>
+    </wildGroupSize>
+  </PawnKindDef>
+
+</Defs>

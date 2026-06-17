@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TIU_EVSuppression.label>EV-Sigma suppression</TIU_EVSuppression.label>
+  <TIU_EVSuppression.description>A temporary state induced by an EV-Sigma suppressant dose. It raises resistance to mutation progression and environmental contamination, but the effect fades within a day.</TIU_EVSuppression.description>
+
+</LanguageData>

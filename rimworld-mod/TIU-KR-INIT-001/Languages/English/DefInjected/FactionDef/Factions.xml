@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TIU_WhiteShield.label>White Shield / NADL</TIU_WhiteShield.label>
+  <TIU_WhiteShield.description>Publicly known as the "Korea Wall," officially designated NADL. A multi-layered defense line combining physical barriers, detection, alerts, interdiction, and rapid response, with SDAC field units handling direct engagement. They cooperate with outside settlements under the shared goal of aberrant containment.</TIU_WhiteShield.description>
+  <TIU_WhiteShield.pawnSingular>operative</TIU_WhiteShield.pawnSingular>
+  <TIU_WhiteShield.pawnsPlural>operatives</TIU_WhiteShield.pawnsPlural>
+  <TIU_WhiteShield.leaderTitle>commander</TIU_WhiteShield.leaderTitle>
+
+  <TIU_Aberrant.label>aberrant / ABERRANT</TIU_Aberrant.label>
+  <TIU_Aberrant.description>The collective of mutated entities and anomalous specimens confirmed after EV-Sigma. Includes human, animal, and environmental hazards. They emerge outside official government systems and are not subjects for cooperation. On sighting, escalate immediately to distance, containment, and elimination procedures.</TIU_Aberrant.description>
+  <TIU_Aberrant.pawnSingular>aberrant</TIU_Aberrant.pawnSingular>
+  <TIU_Aberrant.pawnsPlural>aberrants</TIU_Aberrant.pawnsPlural>
+
+</LanguageData>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===================================================================
+       화이트실드 / NADL (한국방벽) — 우호 세력
+       특재사(SDAC) 현장 대응을 상징하는 공식 군사·행정 축.
+  ==================================================================== -->
+  <FactionDef>
+    <defName>TIU_WhiteShield</defName>
+    <label>화이트실드 / NADL</label>
+    <description>대중 명칭 "한국방벽", 공식 편제명 NADL. 물리 장벽, 감지, 경보, 차단, 기동 대응이 결합된 다층 방어선이며, 특재사(SDAC) 현장 부대가 직접 대응을 맡는다. 이변체 차단이라는 공동 목표 아래 외부 정착지와 협력한다.</description>
+    <categoryTag>Outlander</categoryTag>
+    <pawnSingular>대원</pawnSingular>
+    <pawnsPlural>대원</pawnsPlural>
+    <leaderTitle>사령관</leaderTitle>
+    <humanlikeFaction>true</humanlikeFaction>
+    <listOrder>55</listOrder>
+    <techLevel>Industrial</techLevel>
+    <canMakeRandomly>true</canMakeRandomly>
+    <canSiege>false</canSiege>
+    <canStageAttacks>false</canStageAttacks>
+    <naturalColonyGoodwill>
+      <min>30</min>
+      <max>100</max>
+    </naturalColonyGoodwill>
+    <startingGoodwill>
+      <min>20</min>
+      <max>60</max>
+    </startingGoodwill>
+    <colorSpectrum>
+      <li>(0.85, 0.90, 0.95)</li>
+      <li>(0.55, 0.70, 0.85)</li>
+    </colorSpectrum>
+    <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+    <factionNameMaker>NamerFactionOutlander</factionNameMaker>
+    <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <options>
+          <Town_Guard>10</Town_Guard>
+          <Mercenary_Gunner>10</Mercenary_Gunner>
+          <Mercenary_Slasher>4</Mercenary_Slasher>
+          <Mercenary_Sniper>3</Mercenary_Sniper>
+        </options>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <Town_Trader>1</Town_Trader>
+        </traders>
+        <carriers>
+          <Muffalo>5</Muffalo>
+          <Dromedary>5</Dromedary>
+          <Alpaca>2</Alpaca>
+        </carriers>
+        <guards>
+          <Town_Guard>6</Town_Guard>
+          <Mercenary_Gunner>6</Mercenary_Gunner>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <options>
+          <Town_Guard>10</Town_Guard>
+          <Mercenary_Gunner>8</Mercenary_Gunner>
+          <Mercenary_Slasher>4</Mercenary_Slasher>
+        </options>
+      </li>
+      <li>
+        <kindDef>Peaceful</kindDef>
+        <options>
+          <Town_Guard>10</Town_Guard>
+          <Drifter>4</Drifter>
+        </options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+  <!-- ===================================================================
+       이변체 / ABERRANT — 영구 적대 세력
+       EV-Σ 이후 확인되는 변이 개체군. 협조 불가. 감시·저지·격리·제거 대상.
+  ==================================================================== -->
+  <FactionDef>
+    <defName>TIU_Aberrant</defName>
+    <label>이변체 / ABERRANT</label>
+    <description>EV-Σ 이후 확인되는 변이 개체와 이상 표본의 집합. 사람, 동물, 환경형 위험을 포함한다. 정부 공식 체계 밖에서 출현하며 협조 대상이 아니다. 발견 즉시 거리 확보, 격리, 제거 절차로 이관한다.</description>
+    <categoryTag>Insect</categoryTag>
+    <pawnSingular>이변체</pawnSingular>
+    <pawnsPlural>이변체</pawnsPlural>
+    <humanlikeFaction>false</humanlikeFaction>
+    <hidden>false</hidden>
+    <permanentEnemy>true</permanentEnemy>
+    <listOrder>56</listOrder>
+    <techLevel>Animal</techLevel>
+    <canMakeRandomly>true</canMakeRandomly>
+    <canSiege>false</canSiege>
+    <canStageAttacks>true</canStageAttacks>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <colorSpectrum>
+      <li>(0.35, 0.10, 0.12)</li>
+      <li>(0.20, 0.05, 0.08)</li>
+    </colorSpectrum>
+    <maxPawnCostPerTotalPointsCurve>
+      <points>
+        <li>(0, 50)</li>
+        <li>(10000, 2000)</li>
+      </points>
+    </maxPawnCostPerTotalPointsCurve>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <TIU_Aberrant_Mannequin>10</TIU_Aberrant_Mannequin>
+          <TIU_Aberrant_BroodDrone>12</TIU_Aberrant_BroodDrone>
+          <TIU_Aberrant_ShellTalker>3</TIU_Aberrant_ShellTalker>
+        </options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+</Defs>

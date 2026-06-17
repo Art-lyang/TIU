@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TIU_Gun_NADL_Rifle.label>NADL service rifle</TIU_Gun_NADL_Rifle.label>
+  <TIU_Gun_NADL_Rifle.description>The standard firearm of the Korea Wall (NADL) rapid-response teams. Tuned for stable three-round bursts in cross-border aberrant interdiction. Built to SDAC supply specifications.</TIU_Gun_NADL_Rifle.description>
+
+  <TIU_Apparel_WhiteShieldVest.label>White Shield protective vest</TIU_Apparel_WhiteShieldVest.label>
+  <TIU_Apparel_WhiteShieldVest.description>Protective gear worn by White Shield / NADL field response teams. Designed to block aberrant melee attacks and environmental contamination at the same time.</TIU_Apparel_WhiteShieldVest.description>
+
+  <TIU_Drug_EVSuppressant.label>EV-Sigma suppressant</TIU_Drug_EVSuppressant.label>
+  <TIU_Drug_EVSuppressant.description>A medical suppressant that grants temporary resistance to mutation progression and environmental contamination. A supply-grade reproduction of the standard prescription from Yoon Se-jin's medical/research line.</TIU_Drug_EVSuppressant.description>
+
+</LanguageData>

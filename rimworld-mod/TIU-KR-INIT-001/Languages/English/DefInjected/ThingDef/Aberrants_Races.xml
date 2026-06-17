@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TIU_Aberrant_Mannequin.label>mannequin</TIU_Aberrant_Mannequin.label>
+  <TIU_Aberrant_Mannequin.description>SPEC-001. An early mutation that mimics the human form. Because it is easy to misidentify, keeping distance and cross-checking records takes priority over contact.</TIU_Aberrant_Mannequin.description>
+
+  <TIU_Aberrant_BroodDrone.label>brood drone</TIU_Aberrant_BroodDrone.label>
+  <TIU_Aberrant_BroodDrone.description>SPEC-003. A lesser unit with strong swarm response and pursuit. The danger spikes when encountered in groups, so log movement routes and rear cutoff status together.</TIU_Aberrant_BroodDrone.description>
+
+  <TIU_Aberrant_ShellTalker.label>shell talker</TIU_Aberrant_ShellTalker.label>
+  <TIU_Aberrant_ShellTalker.description>SPEC-011. A high-threat specimen showing vocal luring and field command behavior. Never move toward its sound, and watch the reactions of nearby lesser units as well.</TIU_Aberrant_ShellTalker.description>
+
+</LanguageData>
