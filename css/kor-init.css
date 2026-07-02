@@ -892,20 +892,22 @@ h1 {
 }
 
 .personnel-grid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .person-card {
   display: grid;
-  grid-template-rows: 240px minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
   overflow: hidden;
 }
 
+/* 인물 원본은 3:2 가로형(1536x1024) — 비율 일치로 크롭 없음 */
 .person-card img {
   width: 100%;
-  height: 240px;
+  height: auto;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 30%;
   filter: grayscale(0.25) contrast(1.03) brightness(0.86);
 }
 
@@ -973,10 +975,12 @@ h1 {
   background: var(--ki-panel-strong);
 }
 
+/* 관측 기록 원본 비율 혼재(4:3~16:9) — contain 레터박스로 전체 노출 */
 .spec-card img {
   width: 100%;
   aspect-ratio: 16 / 10;
-  object-fit: cover;
+  object-fit: contain;
+  background: #050505;
   filter: grayscale(1) contrast(1.08) brightness(0.82);
 }
 
@@ -1333,14 +1337,6 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .person-card {
-    grid-template-rows: 220px minmax(0, 1fr);
-  }
-
-  .person-card img {
-    height: 220px;
-  }
-
   .section-heading h2 {
     font-size: 1.8rem;
   }
@@ -1425,7 +1421,7 @@ h1 {
 }
 
 /* ── 게임 아트 레이어 (index 교본 시각 보강) ── */
-.brief-thumb{margin:0 0 18px;height:120px;overflow:hidden;border:1px solid var(--ki-line-soft);background:#0a0a0a}
+.brief-thumb{margin:0 0 18px;aspect-ratio:3/2;overflow:hidden;border:1px solid var(--ki-line-soft);background:#0a0a0a}
 .brief-thumb img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(.3) contrast(1.03);transition:filter .2s ease,transform .25s ease}
 .brief-card:hover .brief-thumb img{filter:grayscale(0);transform:scale(1.03)}
 
@@ -1441,22 +1437,17 @@ h1 {
 .staff-section .section-heading{margin-bottom:22px}
 .staff-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;position:relative;padding:20px;border-top:1px solid var(--ki-line-soft);border-bottom:1px solid var(--ki-line-soft);background:rgba(255,255,255,.02);text-decoration:none}
 .staff-strip figure{margin:0}
-.staff-strip img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 22%;border:1px solid var(--ki-line-soft);filter:grayscale(.4);transition:filter .2s ease}
+.staff-strip img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 22%;border:1px solid var(--ki-line-soft);filter:grayscale(.4);transition:filter .2s ease}
 .staff-strip:hover img{filter:grayscale(0)}
 .staff-strip figcaption{margin-top:8px;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;color:rgba(245,241,232,.62);text-align:center}
 .staff-more{position:absolute;right:20px;top:-34px;font-family:var(--font-mono);font-size:.74rem;color:var(--ki-orange)}
 @media (max-width:720px){.staff-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.staff-strip figure:nth-child(n+4){display:none}}
 
 .release-art{grid-column:1/-1;margin:-28px -28px 0;border-bottom:1px solid var(--ki-line-soft);overflow:hidden}
-.release-art img{display:block;width:100%;max-height:280px;object-fit:cover}
+.release-art img{display:block;width:100%;height:auto}
 
 
-/* ── 모바일 최적화 패스: 이미지 크롭 제거, 반응형 그리드, 버튼/탭 정비 ── */
-/* 인물 카드: 원본이 3:2 가로형 — 고정 높이 세로 크롭 대신 비율 유지 */
-.person-card{grid-template-rows:auto minmax(0,1fr)}
-.person-card img{height:auto;aspect-ratio:3/2;object-fit:cover;object-position:center 30%}
-/* 인물 그리드: 고정 5열(데스크톱에서 과밀) → 폭 기반 자동 배치 */
-.personnel-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+/* ── 모바일 최적화 패스: 버튼/탭 정비 (인물 카드·그리드 규칙은 기본부로 통합) ── */
 
 /* 페이지 내 앵커 칩 */
 .page-anchors{display:flex;gap:8px;padding-top:12px;position:relative;z-index:11}
@@ -1470,6 +1461,9 @@ h1 {
   .manual-tab{flex:0 0 auto;white-space:nowrap}
   .page-anchors{overflow-x:auto;scrollbar-width:none}
   .page-anchors::-webkit-scrollbar{display:none}
+  .manual-tab{font-size:.84rem;padding:12px 15px}
+  /* 섹션 여백 사다리: 데스크톱 78px -> 모바일 52px */
+  .quick-brief,.context-section,.route-section,.personnel-section,.glossary-section,.spec-section,.play-section{padding:52px 0}
   /* 히어로 콘솔 패널이 화면 밖으로 밀리지 않게 */
   .hero{grid-template-columns:1fr}
   .branch-console{max-width:100%}
