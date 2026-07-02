@@ -1,0 +1,124 @@
+<!-- @dsCard group="Overview" -->
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TIU 디자인 시스템 | KR-INIT-001</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../css/kor-init.css">
+  <style>
+    .ds-wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    .ds-h{font-family:var(--font-mono);letter-spacing:.2em;color:var(--ki-amber);font-size:.8rem;margin:44px 0 14px;border-bottom:1px solid var(--ki-line-soft);padding-bottom:8px}
+    .ds-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+    .ds-swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+    .ds-sw{border:1px solid var(--ki-line-soft)}
+    .ds-sw i{display:block;height:56px}
+    .ds-sw b{display:block;font-family:var(--font-mono);font-size:.62rem;font-weight:400;color:var(--ki-muted);padding:7px 9px;letter-spacing:.04em}
+    .ds-card{border:1px solid var(--ki-line-soft);background:var(--ki-panel);padding:18px}
+    .ds-note{font-size:.8rem;color:var(--ki-dim);margin-top:6px}
+    .ds-globe{position:relative;height:340px;border:1px solid var(--ki-line-soft);background:#050607;overflow:hidden}
+    .ds-globe canvas{position:absolute;inset:0;width:100%;height:100%}
+    .ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  </style>
+</head>
+<body class="kor-init">
+  <div class="grid-backdrop" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="ds-wrap">
+    <p class="eyebrow">DESIGN SYSTEM</p>
+    <h2>TIU / KR-INIT-001 디자인 시스템</h2>
+    <p class="ds-note">교본 사이트(kor-init)와 인트로의 디자인 언어를 한 페이지로 모은 살아있는 스타일 가이드.
+      PC에서 Claude Design 작업 시 이 페이지의 토큰·컴포넌트를 기준으로 삼는다.</p>
+
+    <div class="ds-h">01 · COLORS — 팔레트 토큰</div>
+    <div class="ds-swatches">
+      <div class="ds-sw"><i style="background:#070708"></i><b>--ki-bg #070708</b></div>
+      <div class="ds-sw"><i style="background:#ff5a00"></i><b>--ki-orange #ff5a00</b></div>
+      <div class="ds-sw"><i style="background:#ffc266"></i><b>--ki-amber #ffc266</b></div>
+      <div class="ds-sw"><i style="background:#3ab26b"></i><b>--ki-green #3ab26b</b></div>
+      <div class="ds-sw"><i style="background:#4ade96"></i><b>intro-green #4ade96</b></div>
+      <div class="ds-sw"><i style="background:#6aa6a3"></i><b>--ki-teal #6aa6a3</b></div>
+      <div class="ds-sw"><i style="background:#d04545"></i><b>--ki-red #d04545</b></div>
+      <div class="ds-sw"><i style="background:#d7d4cd"></i><b>--ki-text #d7d4cd</b></div>
+      <div class="ds-sw"><i style="background:#9c9890"></i><b>--ki-muted #9c9890</b></div>
+    </div>
+    <p class="ds-note">지표 액센트: C 청록 #57b8c9 · R 앰버 #d9a53f · T 그린 #5ec98f · O 레드 #e0563f (게임 4대 자원과 동일 의미)</p>
+
+    <div class="ds-h">02 · TYPE — 타이포그래피</div>
+    <div class="ds-card">
+      <p class="eyebrow">EYEBROW — MONO / ORANGE / TRACKING .2EM</p>
+      <h1 style="font-size:2.4rem;margin:6px 0">헤드라인 H1 — 지부 지휘관용</h1>
+      <h2 style="margin:6px 0">섹션 헤딩 H2 — 운용 목표</h2>
+      <p style="margin:8px 0">본문 — 오라클 기지에 처음 부임한 지휘관을 위한 운용 교본입니다. 핵심 식별자를 빠르게 확인할 수 있습니다.</p>
+      <p style="font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;color:var(--ki-muted);margin:8px 0 0">MONO CAPTION — CLASSIFIED DISTRIBUTION / SECURITY LV.3</p>
+    </div>
+
+    <div class="ds-h">03 · BUTTONS — 액션</div>
+    <div class="ds-card ds-row">
+      <a class="primary-action" href="#">운용 목표 확인</a>
+      <a class="ghost-action" href="#">세계관 열람</a>
+      <a class="manual-tab is-current" href="#">운용 교본</a>
+      <a class="manual-tab" href="#">용어 · SPEC</a>
+      <button class="access-btn" type="button" style="font-family:var(--font-mono);font-size:.9rem;font-weight:700;letter-spacing:.22em;color:#4ade96;background:rgba(74,222,150,.06);border:1px solid rgba(74,222,150,.55);padding:13px 34px;cursor:pointer">ACCESS — 접속</button>
+    </div>
+    <p class="ds-note">primary(주황 채움) / ghost(주황 윤곽) / manual-tab(카테고리) / access(인트로 전용 그린)</p>
+
+    <div class="ds-h">04 · PANELS — 카드 패턴</div>
+    <div class="ds-grid">
+      <article class="brief-card" style="min-height:0">
+        <figure class="brief-thumb" aria-hidden="true"><img src="../assets/game/brief-oracle.jpg" alt="" loading="lazy"></figure>
+        <span class="card-index">01</span>
+        <h3>아트 썸네일 카드</h3>
+        <p>운용 목표 카드 — 상단 게임 아트 + 인덱스 + 제목 + 본문. 호버 시 아트 컬러 복원.</p>
+      </article>
+      <article class="resource-card" style="border-top:2px solid rgba(87,184,201,.45)">
+        <span class="resource-code" style="color:#57b8c9">C / CONTAINMENT</span>
+        <h3>지표 카드</h3>
+        <p>상단 보더 + 코드 컬러로 4대 지표를 구분한다.</p>
+      </article>
+      <article class="person-card">
+        <img src="../assets/personnel/kr-seo-haeun.png" alt="">
+        <div>
+          <p class="eyebrow">DATA ANALYSIS</p>
+          <h3>인물 카드</h3>
+          <p>3:2 원본 비율 유지(aspect-ratio). 고정 높이 크롭 금지.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="ds-h">05 · INTRO GLOBE — 라이브 컴포넌트</div>
+    <div class="ds-globe">
+      <canvas id="globe"></canvas>
+    </div>
+    <p class="ds-note">canvas 2D 정사영 지구본. 노드: KR-INIT-001(앰버 펄스) / 관측 노드(그린) / MERIDIAN-HQ(퍼플).
+      자전 0.055rad/s, ACCESS 시 한국 정렬 1.15s → 다이브 0.9s. 원본: js/globe-intro.js</p>
+  </div>
+
+  <script src="../js/globe-data.js"></script>
+  <script>
+    // 스타일 가이드용 미니 지구본 (원본 globe-intro.js 의 idle 모드만 — 내비게이션 없음)
+    (function(){
+      var canvas=document.getElementById('globe');if(!canvas||typeof GLOBE_LAND==='undefined')return;
+      var ctx=canvas.getContext('2d'),DPR=Math.min(2,window.devicePixelRatio||1),W,H,R,CX,CY;
+      function rs(){W=canvas.clientWidth;H=canvas.clientHeight;canvas.width=W*DPR;canvas.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);R=Math.min(W,H)*0.4;CX=W/2;CY=H*0.52}
+      rs();window.addEventListener('resize',rs);
+      var KR={lon:129.11,lat:37.52},DEG=Math.PI/180,lam=-100*DEG,phi=-22*DEG,t0=performance.now();
+      function prj(lon,lat){var l=lon*DEG+lam,p=lat*DEG,cp=Math.cos(p);var x=cp*Math.sin(l),y0=Math.sin(p),z0=cp*Math.cos(l);
+        return{x:CX+x*R,y:CY-(y0*Math.cos(phi)-z0*Math.sin(phi))*R,z:y0*Math.sin(phi)+z0*Math.cos(phi)}}
+      function draw(now){var dt=(now-t0)/1000;t0=now;lam+=dt*0.055;ctx.clearRect(0,0,W,H);
+        var g=ctx.createRadialGradient(CX-R*.35,CY-R*.4,R*.1,CX,CY,R);g.addColorStop(0,'rgba(20,44,38,.9)');g.addColorStop(1,'rgba(3,7,8,.98)');
+        ctx.beginPath();ctx.arc(CX,CY,R,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();ctx.strokeStyle='rgba(74,222,150,.35)';ctx.stroke();
+        ctx.lineWidth=.9;ctx.strokeStyle='rgba(74,222,150,.55)';
+        for(var i=0;i<GLOBE_LAND.length;i++){var ln=GLOBE_LAND[i];ctx.beginPath();var on=false;
+          for(var j=0;j<ln.length;j++){var q=prj(ln[j][0],ln[j][1]);if(q.z>0){if(on)ctx.lineTo(q.x,q.y);else{ctx.moveTo(q.x,q.y);on=true}}else on=false}ctx.stroke()}
+        var pp=prj(KR.lon,KR.lat),pulse=(Math.sin(now/380)+1)/2;
+        if(pp.z>0){ctx.beginPath();ctx.arc(pp.x,pp.y,5+pulse*6,0,Math.PI*2);ctx.strokeStyle='rgba(255,176,72,'+(0.5-pulse*0.35)+')';ctx.stroke();
+          ctx.beginPath();ctx.arc(pp.x,pp.y,3,0,Math.PI*2);ctx.fillStyle='rgba(255,176,72,.95)';ctx.fill();
+          ctx.font='9px monospace';ctx.fillStyle='rgba(255,176,72,.95)';ctx.fillText('KR-INIT-001',pp.x+8,pp.y+3)}
+        requestAnimationFrame(draw)}
+      requestAnimationFrame(draw);
+    })();
+  </script>
+</body>
+</html>
