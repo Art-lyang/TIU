@@ -8,26 +8,83 @@
   <link rel="stylesheet" href="./css/kor-init.css">
   <style>
     /* ── 인트로 전용 (이 페이지에서만 쓰는 스타일이라 인라인 유지) ── */
+    :root{ --intro-green:#4ade96; --intro-green-line:rgba(74,222,150,.34); }
     .intro-body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;overflow:hidden;background:#050607}
     .intro-stage{position:relative;flex:1;display:flex;align-items:center;justify-content:center}
     /* 지구 뒤 오라클 로고 워터마크 */
     .intro-stage::before{content:"";position:absolute;inset:0;background:url("./assets/brand/oracle-logo.png") center 42% / min(78vmin,700px) no-repeat;opacity:.08;filter:blur(1.2px) saturate(.6)}
     #globe{position:absolute;inset:0;width:100%;height:100%;display:block}
-    .intro-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;z-index:3;font-family:var(--font-mono)}
+
+    /* 뷰포트 비네트 — 지구본에 시선 집중 + 시네마틱 깊이 */
+    .intro-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;
+      background:radial-gradient(125% 92% at 50% 46%, transparent 38%, rgba(3,5,7,.30) 74%, rgba(3,5,7,.72) 100%)}
+
+    /* 관측 터미널 HUD 프레임 — 네 모서리 브래킷 */
+    .intro-frame{position:absolute;inset:14px;z-index:2;pointer-events:none}
+    .intro-frame i{position:absolute;width:24px;height:24px;border:1px solid var(--intro-green-line)}
+    .intro-frame .tl{top:0;left:0;border-right:0;border-bottom:0}
+    .intro-frame .tr{top:0;right:0;border-left:0;border-bottom:0}
+    .intro-frame .bl{bottom:0;left:0;border-right:0;border-top:0}
+    .intro-frame .br{bottom:0;right:0;border-left:0;border-top:0}
+
+    .intro-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:18px 22px;z-index:3;font-family:var(--font-mono)}
     .intro-top .sig{font-size:.72rem;letter-spacing:.14em;color:rgba(245,241,232,.55)}
     .intro-top .sig strong{display:block;color:#f5f1e8;font-size:.86rem;letter-spacing:.1em}
-    .intro-top .live{font-size:.68rem;letter-spacing:.12em;color:#4ade96;animation:introBlink 1.6s steps(2) infinite}
+    /* 텔레메트리 — 시그 아래 관측 상태 (로어 연동: 노드 7 · 봉쇄 97.3%) */
+    .intro-tele{margin-top:8px;display:flex;flex-direction:column;gap:2px;font-size:.6rem;letter-spacing:.1em;color:rgba(245,241,232,.34)}
+    .intro-tele b{color:rgba(74,222,150,.7);font-weight:400}
+    .intro-live{display:flex;align-items:center;gap:8px;font-size:.68rem;letter-spacing:.12em;color:var(--intro-green)}
+    .intro-live .bars{display:inline-flex;align-items:flex-end;gap:2px;height:11px}
+    .intro-live .bars span{width:2px;background:var(--intro-green);animation:introBars 1.1s ease-in-out infinite}
+    .intro-live .bars span:nth-child(1){height:4px;animation-delay:0s}
+    .intro-live .bars span:nth-child(2){height:7px;animation-delay:.15s}
+    .intro-live .bars span:nth-child(3){height:11px;animation-delay:.3s}
+    .intro-live .dot{width:6px;height:6px;border-radius:50%;background:var(--intro-green);animation:introBlink 1.6s steps(2) infinite}
     @keyframes introBlink{50%{opacity:.35}}
-    .intro-cta{position:absolute;left:0;right:0;bottom:max(34px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:14px;z-index:3;padding:0 20px}
-    .intro-title{margin:0;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.34em;color:rgba(245,241,232,.6);text-align:center}
-    .access-btn{font-family:var(--font-mono);font-size:1rem;font-weight:700;letter-spacing:.22em;color:#4ade96;background:rgba(74,222,150,.06);border:1px solid rgba(74,222,150,.55);padding:16px 44px;min-height:54px;cursor:pointer;transition:background .2s,box-shadow .2s,color .2s}
-    .access-btn:hover,.access-btn:focus-visible{background:rgba(74,222,150,.14);box-shadow:0 0 24px rgba(74,222,150,.25);outline:none}
-    .access-btn.is-armed{color:#0a0f0c;background:#4ade96;box-shadow:0 0 34px rgba(74,222,150,.5)}
-    .intro-skip{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:rgba(245,241,232,.4)}
-    .intro-skip:hover{color:var(--ki-amber)}
+    @keyframes introBars{0%,100%{transform:scaleY(.4);opacity:.55}50%{transform:scaleY(1);opacity:1}}
+
+    .intro-cta{position:absolute;left:0;right:0;bottom:max(38px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:15px;z-index:3;padding:0 20px}
+    .intro-kicker{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.4em;color:rgba(74,222,150,.6)}
+    .intro-title{margin:0;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.34em;color:rgba(245,241,232,.62);text-align:center}
+    /* ACCESS — 관측망 접속 (녹색 = ORACLE 네트워크 색어) */
+    .access-btn{position:relative;font-family:var(--font-mono);font-size:1rem;font-weight:700;letter-spacing:.22em;color:var(--intro-green);background:rgba(74,222,150,.06);border:1px solid rgba(74,222,150,.55);padding:16px 46px;min-height:54px;cursor:pointer;overflow:hidden;transition:background .2s,box-shadow .2s,color .2s,letter-spacing .2s}
+    .access-btn::before{content:"";position:absolute;left:-40%;top:0;bottom:0;width:40%;background:linear-gradient(90deg,transparent,rgba(74,222,150,.22),transparent);transform:skewX(-18deg);transition:left .5s ease}
+    .access-btn:hover,.access-btn:focus-visible{background:rgba(74,222,150,.14);box-shadow:0 0 26px rgba(74,222,150,.28);letter-spacing:.26em;outline:none}
+    .access-btn:hover::before,.access-btn:focus-visible::before{left:130%}
+    .access-btn .tick{position:absolute;width:7px;height:7px;border:1px solid var(--intro-green);opacity:.65}
+    .access-btn .tick.tl{top:5px;left:5px;border-right:0;border-bottom:0}
+    .access-btn .tick.tr{top:5px;right:5px;border-left:0;border-bottom:0}
+    .access-btn .tick.bl{bottom:5px;left:5px;border-right:0;border-top:0}
+    .access-btn .tick.br{bottom:5px;right:5px;border-left:0;border-top:0}
+    .access-btn.is-armed{color:#0a0f0c;background:var(--intro-green);box-shadow:0 0 40px rgba(74,222,150,.5)}
+    .access-btn.is-armed .tick{border-color:#0a0f0c;opacity:.5}
+    .intro-skip{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:rgba(245,241,232,.4);transition:color .2s}
+    .intro-skip:hover,.intro-skip:focus-visible{color:var(--ki-amber);outline:none}
     .intro-foot{position:absolute;bottom:10px;right:14px;z-index:3;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:rgba(245,241,232,.28)}
-    .is-accessing .intro-cta,.is-accessing .intro-top{opacity:0;transition:opacity .8s ease}
-    @media (prefers-reduced-motion: reduce){.intro-top .live{animation:none}}
+
+    /* 시네마틱 진입 — 요소별 스태거드 페이드/상승 */
+    @keyframes introRise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .intro-anim{animation:introRise .7s cubic-bezier(.2,.7,.2,1) backwards}
+    .intro-top{animation-delay:.15s}
+    .intro-kicker{animation-delay:.5s}.intro-title{animation-delay:.62s}
+    .access-btn{animation-delay:.76s}.intro-skip{animation-delay:.9s}.intro-foot{animation-delay:1s}
+    .intro-frame{animation:introFrame 1s ease .3s backwards}
+    @keyframes introFrame{from{opacity:0}to{opacity:1}}
+
+    /* 접속 연출 시 HUD 크롬 페이드 아웃 (지구본 다이브에 집중) */
+    .is-accessing .intro-cta,.is-accessing .intro-top,.is-accessing .intro-frame,.is-accessing .intro-vignette{opacity:0;transition:opacity .8s ease}
+
+    @media (max-width:560px){
+      .intro-frame{inset:10px}
+      .intro-tele{display:none}
+      .access-btn{padding:15px 38px;font-size:.94rem}
+      .intro-title{font-size:.72rem;letter-spacing:.28em}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .intro-live .bars span,.intro-live .dot{animation:none}
+      .intro-anim,.intro-frame{animation:none}
+      .access-btn::before{display:none}
+    }
   </style>
 </head>
 <body class="kor-init intro-body">
@@ -35,19 +92,28 @@
 
   <div class="intro-stage">
     <canvas id="globe" aria-label="ORACLE 전 지구 관측망 지구본"></canvas>
+    <div class="intro-vignette" aria-hidden="true"></div>
+    <div class="intro-frame" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
 
-    <div class="intro-top">
-      <span class="sig"><strong>ORACLE</strong>GLOBAL OBSERVATION NETWORK</span>
-      <span class="live">● LIVE FEED</span>
+    <div class="intro-top intro-anim">
+      <div class="sig">
+        <strong>ORACLE</strong>GLOBAL OBSERVATION NETWORK
+        <div class="intro-tele">
+          <span>OBS NODES <b>07</b> · CONTAINMENT <b>97.3%</b></span>
+          <span>KR-INIT-001 · 37.52°N 129.11°E</span>
+        </div>
+      </div>
+      <span class="intro-live"><span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>LIVE FEED<span class="dot" aria-hidden="true"></span></span>
     </div>
 
     <div class="intro-cta">
-      <p class="intro-title">KR-INIT-001 — KOREAN BRANCH TERMINAL</p>
-      <button id="access" class="access-btn" type="button">ACCESS — 접속</button>
-      <a class="intro-skip" href="./manual.html">연출 없이 바로 교본 열기 →</a>
+      <span class="intro-kicker intro-anim">KOREAN BRANCH TERMINAL</span>
+      <p class="intro-title intro-anim">KR-INIT-001 — 접속 대기</p>
+      <button id="access" class="access-btn intro-anim" type="button">ACCESS — 접속<span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span></button>
+      <a class="intro-skip intro-anim" href="./manual.html">연출 없이 바로 교본 열기 →</a>
     </div>
 
-    <span class="intro-foot">CLASSIFIED DISTRIBUTION / SECURITY LV.3</span>
+    <span class="intro-foot intro-anim">CLASSIFIED DISTRIBUTION / SECURITY LV.3</span>
   </div>
 
   <script src="./js/globe-data.js"></script>
