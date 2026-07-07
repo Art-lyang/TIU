@@ -376,6 +376,17 @@ main {
   box-shadow: inset 0 0 16px rgba(var(--amber-rgb), 0.12), 0 0 18px rgba(var(--amber-rgb), 0.2);
 }
 
+.primary-action.is-disabled,
+.primary-action.is-disabled:hover {
+  cursor: not-allowed;
+  color: rgba(220, 232, 242, 0.42);
+  border-color: rgba(220, 232, 242, 0.18);
+  background: linear-gradient(180deg, rgba(220, 232, 242, 0.035), rgba(5, 8, 9, 0.72));
+  text-shadow: none;
+  box-shadow: inset 0 0 14px rgba(220, 232, 242, 0.04);
+  filter: none;
+}
+
 .ghost-action {
   display: inline-flex;
   align-items: center;
@@ -875,6 +886,20 @@ main {
 .store-badge:hover img {
   filter: none;
   opacity: 1;
+}
+
+.store-badge.is-disabled,
+.store-badge.is-disabled:hover {
+  cursor: not-allowed;
+  border-color: rgba(220, 232, 242, 0.16);
+  background: linear-gradient(180deg, rgba(220, 232, 242, 0.025), rgba(3, 8, 9, 0.58));
+  box-shadow: none;
+}
+
+.store-badge.is-disabled img,
+.store-badge.is-disabled:hover img {
+  filter: grayscale(1) brightness(0.9);
+  opacity: .36;
 }
 
 /* ---------- 푸터 ---------- */
