@@ -162,13 +162,13 @@
         play3Title: "Locked Record Handling",
         play3Desc: "A lock mark indicates records unavailable at the current clearance. Do not attempt bypass access; follow the displayed procedure.",
         releaseTitle: "Game Access Routes",
-        releaseLead: "The free demo is available first. Full version and community channels will activate after preparation is complete.",
+        releaseLead: "Final check for the free demo release. Full version and community channels will be announced separately when ready.",
         releaseKicker: "ORACLE REMOTE TERMINAL",
         releaseName: "KR-INIT-001 Command Session",
         releaseDesc: "Swipe cards left or right to adjust Containment, Resources, Trust, and Evaluation. Session reports and records accumulate at termination.",
         releaseItem1: "Free demo: itch.io browser build — through Act 2.",
-        releaseItem2: "Full version: upload planned after PayPal and payment setup are complete.",
-        releaseItem3: "Discord: notice and feedback channel in preparation.",
+        releaseItem2: "Full version: final build review and release timing to be announced separately.",
+        releaseItem3: "Discord: channel setup to be announced separately after final check.",
         copyButton: "Copy Manual Summary",
         footerLock: "ORACLE SYSTEM MANUAL / CLASSIFIED DISTRIBUTION"
       },
@@ -371,13 +371,13 @@
         play3Title: "ロック記録の処理",
         play3Desc: "ロック表示は現在権限で閲覧できない記録を示します。迂回アクセスを試みず、表示された手順に従ってください。",
         releaseTitle: "ゲームプレイ経路",
-        releaseLead: "無料デモを先行公開。本編とコミュニティチャンネルは準備完了後に順次有効化予定。",
+        releaseLead: "無料デモ公開項目の最終確認。本編とコミュニティチャンネルは準備完了後に別途案内予定。",
         releaseKicker: "ORACLE REMOTE TERMINAL",
         releaseName: "KR-INIT-001 指揮セッション",
         releaseDesc: "カードを左右にスワイプし、封鎖・資源・信頼・評価を調整。セッション終了時、報告書と記録が蓄積。",
         releaseItem1: "無料デモ: itch.ioブラウザビルド公開 — Act 2まで。",
-        releaseItem2: "本編: PayPalおよび決済連携完了後にアップロード予定。",
-        releaseItem3: "Discord: 告知・フィードバックチャンネル準備中。",
+        releaseItem2: "本編: 最終ビルド確認および公開時期を別途案内予定。",
+        releaseItem3: "Discord: チャンネル構成の最終確認後、別途案内予定。",
         copyButton: "教本要約をコピー",
         footerLock: "ORACLE SYSTEM MANUAL / CLASSIFIED DISTRIBUTION"
       },
@@ -422,9 +422,37 @@
 
   const nodes = new Map();
   const attrNodes = new Map();
+  const initialTitle = document.title;
+  const initialMeta = document.querySelector('meta[name="description"]')?.getAttribute('content') || '';
+  const pageMeta = {
+    'manual.html': {
+      en: { title: TRANSLATIONS.en.title, meta: TRANSLATIONS.en.meta },
+      ja: { title: TRANSLATIONS.ja.title, meta: TRANSLATIONS.ja.meta }
+    },
+    'world.html': {
+      en: {
+        title: 'Korean Region Background / Personnel / Procedure | KR-INIT-001',
+        meta: 'Korean Branch wall, Phase, factions, key personnel, and standard commander procedures.'
+      },
+      ja: {
+        title: '韓国圏背景・人物・手順 | KR-INIT-001',
+        meta: '韓国圏の防壁、Phase、主要勢力、核心人員、新任指揮官の標準手順を整理した資料です。'
+      }
+    },
+    'database.html': {
+      en: {
+        title: 'Term Index / SPEC Samples | KR-INIT-001',
+        meta: 'Commander reference for recurring ORACLE log terms and public SPEC specimen records.'
+      },
+      ja: {
+        title: '用語索引・SPEC標本 | KR-INIT-001',
+        meta: 'ORACLE運用ログで反復確認される用語索引および異変体SPEC標本資料です。'
+      }
+    }
+  };
 
   const selectors = {
-    navKorea: '.nav a[href="./index.html"]',
+    navKorea: '.nav a[href="./manual.html"]',
     navRoute: '.nav a[href="#route"]',
     navPersonnel: '.nav a[href="./world.html"]',
     navGlossary: '.nav a[href="./database.html"]',
@@ -627,13 +655,13 @@
 
   function setLang(lang) {
     const next = TRANSLATIONS[lang] ? lang : 'ko';
+    const pageKey = window.location.pathname.split('/').pop() || 'manual.html';
+    const localizedMeta = pageMeta[pageKey] && pageMeta[pageKey][next] ? pageMeta[pageKey][next] : null;
     document.documentElement.lang = next;
-    document.title = next === 'ko' ? '지부 지휘관용 오라클 시스템 사용 교본 | KR-INIT-001' : TRANSLATIONS[next].title;
+    document.title = next === 'ko' ? initialTitle : (localizedMeta ? localizedMeta.title : TRANSLATIONS[next].title);
     const meta = document.querySelector('meta[name="description"]');
     if (meta) {
-      meta.setAttribute('content', next === 'ko'
-        ? '오라클 AI를 운용하는 기지의 신규 지휘관을 위한 한국지부 용어·세력·SPEC 요약 교본.'
-        : TRANSLATIONS[next].meta);
+      meta.setAttribute('content', next === 'ko' ? initialMeta : (localizedMeta ? localizedMeta.meta : TRANSLATIONS[next].meta));
     }
 
     document.querySelectorAll('.lang-button').forEach((button) => {
