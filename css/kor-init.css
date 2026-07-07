@@ -1,7 +1,6 @@
-@import url("../../tiu-archive/css/design-tokens.css");
-@import url("../../tiu-archive/css/base.css");
-
 :root {
+  --font-sans: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --ki-bg: #070708;
   --ki-panel: rgba(18, 18, 20, 0.86);
   --ki-panel-strong: rgba(26, 26, 28, 0.94);
@@ -15,6 +14,31 @@
   --ki-green: #3ab26b;
   --ki-teal: #6aa6a3;
   --ki-red: #d04545;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--ki-bg);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
 }
 
 .kor-init,
@@ -1212,10 +1236,16 @@ h1 {
 }
 
 .store-badge {
-  display: block;
+  display: grid;
+  place-items: center;
+  min-height: 118px;
+  padding: 18px 22px;
   border: 1px solid var(--ki-line-soft);
-  background: #0b0b0d;
-  transition: transform 160ms ease, border-color 160ms ease, filter 160ms ease;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01)),
+    #0b0b0d;
+  overflow: hidden;
+  transition: transform 160ms ease, border-color 160ms ease, filter 160ms ease, box-shadow 160ms ease;
 }
 
 .store-badge:hover {
@@ -1224,22 +1254,39 @@ h1 {
   filter: brightness(1.08);
 }
 
-/* 준비 중 배지 — 링크 미정 상태의 시각적 비활성 처리 */
-.store-badge.is-pending {
-  opacity: 0.45;
-  filter: grayscale(1);
+.store-badge--itch {
+  border-color: rgba(255, 90, 0, 0.58);
 }
 
-.store-badge.is-pending:hover {
-  transform: none;
-  border-color: var(--ki-line-soft);
-  filter: grayscale(1);
+.store-badge--discord {
+  border-color: rgba(88, 101, 242, 0.58);
+}
+
+.store-badge--discord:hover {
+  border-color: rgba(88, 101, 242, 0.78);
+  box-shadow: 0 0 24px rgba(88, 101, 242, 0.14);
 }
 
 .store-badge img {
   display: block;
-  width: 100%;
+  width: min(86%, 420px);
+  max-height: 104px;
   height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.store-badge--itch img {
+  width: min(92%, 440px);
+  max-height: 112px;
+  border-radius: 4px;
+}
+
+.store-badge--discord img {
+  width: min(96%, 430px);
+  transform: scale(1.42);
+  transform-origin: center;
+  filter: drop-shadow(0 0 12px rgba(88, 101, 242, 0.18));
 }
 
 .site-footer {
@@ -1497,7 +1544,8 @@ h1 {
   /* 버튼: 좁은 화면에서 어중간한 래핑 대신 풀폭 스택 */
   .hero-actions{display:grid;grid-template-columns:1fr;gap:10px}
   .primary-action,.ghost-action{width:100%}
-  .store-badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start}
+  .store-badges{display:grid;grid-template-columns:1fr;gap:10px}
+  .store-badge{min-height:96px;padding:14px}
   /* 인물 카드 이미지: 초소형 화면에서도 비율 유지 (고정 220px 제거는 위 규칙이 담당) */
   .section-heading h2{font-size:1.55rem}
 }
