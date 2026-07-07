@@ -26,6 +26,9 @@
         heroTitle: "Oracle System Manual<br>For Branch Commanders",
         heroLead: "An operations manual for commanders newly assigned to Oracle AI facilities. Quickly review the key identifiers needed for duty: place names, SPEC classifications, command chains, and corporate relations.",
         heroPrimary: "Review Objectives",
+        heroDemo: "[ Play Free Demo ]",
+        heroBuy: "[ Buy Full Game — itch.io ]",
+        heroWorld: "World / Personnel",
         heroGhost: "Term Index",
         heroPlay: "Play Reading",
         recordName: "Record ID",
@@ -159,13 +162,13 @@
         play3Title: "Locked Record Handling",
         play3Desc: "A lock mark indicates records unavailable at the current clearance. Do not attempt bypass access; follow the displayed procedure.",
         releaseTitle: "Game Access Routes",
-        releaseLead: "Links for the public build, community notices, and mobile release path. Activation follows the actual release state.",
+        releaseLead: "Links for the free demo, the itch.io full release, and community channels. Activation follows the actual release state.",
         releaseKicker: "ORACLE REMOTE TERMINAL",
         releaseName: "KR-INIT-001 Command Session",
         releaseDesc: "Swipe cards left or right to adjust Containment, Resources, Trust, and Evaluation. Session reports and records accumulate at termination.",
-        releaseItem1: "itch.io public build: browser-play entry point.",
-        releaseItem2: "Discord: notices, feedback, and update-log channel.",
-        releaseItem3: "Google Play: mobile release path in preparation.",
+        releaseItem1: "Free demo: instant browser play — through Act 2.",
+        releaseItem2: "Full version (itch.io): all 4 Acts, 16 endings, 19 field missions.",
+        releaseItem3: "Discord: notice and feedback channel (in preparation).",
         copyButton: "Copy Manual Summary",
         footerLock: "ORACLE SYSTEM MANUAL / CLASSIFIED DISTRIBUTION"
       },
@@ -232,6 +235,9 @@
         heroTitle: "支部指揮官用<br>オラクルシステム運用教本",
         heroLead: "オラクルAI基地に初めて着任した指揮官向けの運用教本です。任務遂行に必要な地名、SPEC分類、組織系統、企業関係などの核心識別子を迅速に確認できます。",
         heroPrimary: "運用目標を確認",
+        heroDemo: "[ 無料デモをプレイ ]",
+        heroBuy: "[ 本編を購入 — itch.io ]",
+        heroWorld: "世界観・人物",
         heroGhost: "用語索引",
         heroPlay: "プレイ判読",
         recordName: "記録名",
@@ -365,13 +371,13 @@
         play3Title: "ロック記録の処理",
         play3Desc: "ロック表示は現在権限で閲覧できない記録を示します。迂回アクセスを試みず、表示された手順に従ってください。",
         releaseTitle: "ゲームプレイ経路",
-        releaseLead: "公開ビルド、コミュニティ告知、モバイル配布経路の確認用リンク。実際の登録状態に合わせて順次有効化予定。",
+        releaseLead: "無料デモ、itch.io本編、コミュニティチャンネルの案内リンク。実際の配布状態に合わせて順次有効化予定。",
         releaseKicker: "ORACLE REMOTE TERMINAL",
         releaseName: "KR-INIT-001 指揮セッション",
         releaseDesc: "カードを左右にスワイプし、封鎖・資源・信頼・評価を調整。セッション終了時、報告書と記録が蓄積。",
-        releaseItem1: "itch.io公開ビルド: ブラウザプレイ入口。",
-        releaseItem2: "Discord: 告知、フィードバック、更新ログ受信チャンネル。",
-        releaseItem3: "Google Play: モバイル配布準備経路。",
+        releaseItem1: "無料デモ: ブラウザで即プレイ — Act 2まで。",
+        releaseItem2: "本編（itch.io）: 全4 Act・エンディング16種・現場任務19種。",
+        releaseItem3: "Discord: 告知・フィードバックチャンネル（準備中）。",
         copyButton: "教本要約をコピー",
         footerLock: "ORACLE SYSTEM MANUAL / CLASSIFIED DISTRIBUTION"
       },
@@ -429,8 +435,11 @@
     manualTabPlay: '.manual-tabs a:nth-child(4)',
     heroTitle: '.hero-copy h1',
     heroLead: '.hero-lead',
-    heroPrimary: '.primary-action',
-    heroGhost: '.ghost-action',
+    heroPrimary: '.hero-actions a[data-hero-objective]',
+    heroDemo: '.hero-actions a[data-hero-demo]',
+    heroBuy: '.hero-actions a[data-hero-buy]',
+    heroWorld: '.hero-actions a[data-hero-world]',
+    heroGhost: '.hero-actions a[data-hero-terms]',
     heroPlay: '.hero-actions a[data-hero-play]',
     recordName: '.console-grid div:nth-child(1) dt',
     gameLayer: '.console-grid div:nth-child(2) dt',
@@ -609,8 +618,7 @@
       ['filter', '.filter-bar', 'aria-label'],
       ['storeBadges', '.store-badges', 'aria-label'],
       ['itchLink', '.store-badge:nth-child(1)', 'aria-label'],
-      ['discordLink', '.store-badge:nth-child(2)', 'aria-label'],
-      ['googlePlayLink', '.store-badge:nth-child(3)', 'aria-label']
+      ['discordLink', '.store-badge:nth-child(2)', 'aria-label']
     ].forEach(([key, selector, attr]) => {
       const node = document.querySelector(selector);
       if (node) attrNodes.set(key, { node, attr, value: node.getAttribute(attr) || '' });
@@ -671,9 +679,8 @@
         relation: next === 'ja' ? '韓国圏機関連係要約' : 'Korean institutional relation summary',
         filter: next === 'ja' ? '用語分類フィルター' : 'Term category filter',
         storeBadges: next === 'ja' ? 'ゲームプレイおよびコミュニティリンク' : 'Game play and community links',
-        itchLink: next === 'ja' ? 'itch.io公開ビルドへ移動' : 'Go to itch.io public build',
-        discordLink: next === 'ja' ? 'Discordコミュニティへ移動' : 'Go to Discord community',
-        googlePlayLink: next === 'ja' ? 'Google Playストアへ移動' : 'Go to Google Play store'
+        itchLink: next === 'ja' ? 'itch.io本編購入ページへ移動' : 'Go to the itch.io full-version page',
+        discordLink: next === 'ja' ? 'Discordコミュニティ準備中' : 'Discord community in preparation'
       };
       Object.entries(labels).forEach(([key, value]) => {
         const entry = attrNodes.get(key);

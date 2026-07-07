@@ -337,6 +337,19 @@ h1 {
   border-color: var(--ki-orange);
 }
 
+/* 히어로 CTA 강조 변형 — 본편 구매(유료) 버튼 */
+.primary-action.is-buy {
+  background: var(--ki-amber);
+  border-color: var(--ki-amber);
+}
+
+/* 데모/구매 CTA 텍스트색 — `.kor-init a` 리셋(0,1,1)이 `.primary-action`(0,1,0)을
+   이겨 밝은 회색이 되므로, 신규 CTA 두 개만 특이도 높여 의도색(#111) 복원 */
+.hero-actions a[data-hero-demo],
+.hero-actions a[data-hero-buy] {
+  color: #111;
+}
+
 .ghost-action,
 .copy-button {
   color: var(--ki-amber);
@@ -1209,6 +1222,18 @@ h1 {
   transform: translateY(-2px);
   border-color: rgba(255, 90, 0, 0.65);
   filter: brightness(1.08);
+}
+
+/* 준비 중 배지 — 링크 미정 상태의 시각적 비활성 처리 */
+.store-badge.is-pending {
+  opacity: 0.45;
+  filter: grayscale(1);
+}
+
+.store-badge.is-pending:hover {
+  transform: none;
+  border-color: var(--ki-line-soft);
+  filter: grayscale(1);
 }
 
 .store-badge img {
