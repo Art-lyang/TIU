@@ -1513,3 +1513,38 @@ main {
 
   .staff-more { margin: 6px auto 0; }
 }
+
+
+/* ============================================================
+   디자인 시스템 정합 보강 — 타입별 액센트
+   (claude.ai TIU ORACLE Design System 카드 스펙과 동일 매핑)
+   ============================================================ */
+
+/* 용어 색인 — PLACE=블루(기본) / ENTITY=앰버 / FACTION=Act2 그린 */
+.term-card[data-type="entity"] span {
+  color: var(--amber);
+  text-shadow: 0 0 8px rgba(var(--amber-rgb), 0.4);
+}
+
+.term-card[data-type="faction"] span {
+  color: var(--act2);
+  text-shadow: 0 0 8px rgba(var(--act2-rgb), 0.4);
+}
+
+/* SPEC 표본 라벨 — 위험 태그 앰버 (게임 fm-head-tag 톤) */
+.spec-card span {
+  color: var(--amber);
+  text-shadow: 0 0 8px rgba(var(--amber-rgb), 0.4);
+}
+
+/* 자원 경고 4종 — Act 색상 정체성 (manual 지표 카드와 동일 매핑) */
+.warning-card:nth-child(1) span { color: var(--act1); text-shadow: 0 0 8px rgba(var(--act1-rgb), .45); }
+.warning-card:nth-child(2) span { color: var(--act2); text-shadow: 0 0 8px rgba(var(--act2-rgb), .45); }
+.warning-card:nth-child(3) span { color: var(--act3); text-shadow: 0 0 8px rgba(var(--act3-rgb), .45); }
+.warning-card:nth-child(4) span { color: var(--act4); text-shadow: 0 0 8px rgba(var(--act4-rgb), .45); }
+
+/* 현장 미션 라벨 — 게임 fm-accent 앰버 */
+.mission-card span {
+  color: var(--amber);
+  text-shadow: 0 0 8px rgba(var(--amber-rgb), 0.4);
+}
