@@ -1548,3 +1548,57 @@ main {
   color: var(--amber);
   text-shadow: 0 0 8px rgba(var(--amber-rgb), 0.4);
 }
+
+/* ---------- 세계관 요약 (world #universe) ---------- */
+
+.lore-section { padding: 26px 0 10px; }
+
+.lore-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.lore-card {
+  position: relative;
+  border: 1px solid rgba(var(--ui-rgb), 0.2);
+  border-radius: var(--r-md);
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.045), rgba(3, 8, 9, 0.6));
+  box-shadow: inset 0 0 14px rgba(var(--ui-rgb), 0.03);
+  padding: 14px 15px;
+  overflow: hidden;
+}
+
+.lore-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.6), rgba(var(--ui-rgb), 0.06));
+}
+
+.lore-card span {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  color: var(--ui-card);
+  text-shadow: 0 0 8px rgba(var(--ui-card-rgb), 0.36);
+}
+
+.lore-card h3 {
+  margin: 0 0 6px;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #dce8f2;
+}
+
+.lore-card p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.68;
+  color: rgba(192, 208, 221, 0.7);
+}
