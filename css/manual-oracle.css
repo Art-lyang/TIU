@@ -1696,3 +1696,40 @@ main {
 
   .lang-button { padding: 6px 8px; }
 }
+
+/* ============================================================
+   세계관 아카이브 (archive.html) — 분류 액센트 + 진입 CTA
+   ============================================================ */
+
+/* 유니버스 요약 하단 아카이브 진입 버튼 */
+.lore-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  text-align: center;
+}
+
+.lore-more-note {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: rgba(var(--ui-rgb), 0.55);
+}
+
+/* 아카이브 분류 색상 — 세계/한국권은 기본 블루, 각지=Act3 옐로, 이변체=앰버 */
+.term-card[data-type="region"] span {
+  color: var(--act3);
+  text-shadow: 0 0 8px rgba(var(--act3-rgb), 0.4);
+}
+
+.term-card[data-type="aberrant"] span {
+  color: var(--amber);
+  text-shadow: 0 0 8px rgba(var(--amber-rgb), 0.4);
+}
+
+.term-card[data-type="korea"] span {
+  color: var(--act2);
+  text-shadow: 0 0 8px rgba(var(--act2-rgb), 0.4);
+}

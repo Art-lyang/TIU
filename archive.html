@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>세계관 아카이브 | TERMINAL SESSION</title>
+  <meta name="description" content="카드 지휘 게임 TERMINAL SESSION의 세계관 아카이브. EV-Σ 재난, 한국권 방벽, 이변체 SPEC, 조직·세력, 세계 각 지역 공개 기록.">
+  <link rel="icon" href="./assets/brand/oracle-logo.png">
+  <meta name="theme-color" content="#050808">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TERMINAL SESSION — TIU">
+  <meta property="og:title" content="세계관 아카이브 — TERMINAL SESSION">
+  <meta property="og:description" content="EV-Σ 재난 이후의 세계, 한국권 방벽, 이변체 SPEC, 조직·세력 공개 기록 열람.">
+  <meta property="og:url" content="https://art-lyang.github.io/TIU/archive.html">
+  <meta property="og:image" content="https://art-lyang.github.io/TIU/assets/game/release-keyart.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="./assets/fonts/fonts.css?v=1">
+  <link rel="stylesheet" href="./css/manual-oracle.css?v=7">
+</head>
+<body class="kor-init">
+  <div class="grid-backdrop" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="./manual.html" aria-label="KR-INIT-001 메인으로 이동">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="./assets/brand/oracle-logo.png" alt="">
+      </span>
+      <span>
+        <strong>KR-INIT-001</strong>
+        <small>ORACLE MANUAL</small>
+      </span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+    </button>
+    <nav class="nav" aria-label="교본 카테고리">
+      <a href="./manual.html">운용 교본</a>
+      <a href="./world.html">세계관 · 인물</a>
+      <a href="./database.html">용어 · SPEC</a>
+      <a href="./play-guide.html">플레이 판독</a>
+      <a class="is-current" href="./archive.html" aria-current="page">ARCHIVE</a>
+    </nav>
+    <a class="header-demo" href="https://tiu-art.itch.io/terminal-session-demo" target="_blank" rel="noopener">[ DEMO ]</a>
+  </header>
+
+  <nav class="manual-tabs section-shell" aria-label="교본 카테고리">
+    <a class="manual-tab" href="./manual.html">운용 교본</a>
+    <a class="manual-tab" href="./world.html">세계관 · 인물</a>
+    <a class="manual-tab" href="./database.html">용어 · SPEC</a>
+    <a class="manual-tab" href="./play-guide.html">플레이 판독</a>
+    <a class="manual-tab is-current" href="./archive.html" aria-current="page">ARCHIVE</a>
+  </nav>
+
+  <main id="top">
+    <section class="section-shell glossary-section">
+      <div class="section-heading">
+        <p class="eyebrow">WORLD ARCHIVE</p>
+        <h2>세계관 아카이브</h2>
+        <p>유니버스 요약보다 깊은 기록을 원하는 열람자를 위한 공개 등급 아카이브.
+           EV-Σ 재난 이후의 세계, 한국권, 이변체, 조직·세력, 세계 각 지역의 기록이 분류되어 있음.
+           심층 기밀과 후속 기록의 결말은 본 권한으로 열람할 수 없음.</p>
+      </div>
+
+      <div class="filter-bar" role="group" aria-label="아카이브 분류 필터">
+        <button class="filter-button is-active" data-filter="all" type="button">전체</button>
+        <button class="filter-button" data-filter="world" type="button">세계 · 재난</button>
+        <button class="filter-button" data-filter="korea" type="button">한국권</button>
+        <button class="filter-button" data-filter="aberrant" type="button">이변체</button>
+        <button class="filter-button" data-filter="faction" type="button">조직 · 세력</button>
+        <button class="filter-button" data-filter="region" type="button">세계 각지</button>
+      </div>
+
+      <div class="glossary-grid" id="archiveGrid">
+        <!-- ARCHIVE_ENTRIES -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>TIU CARD / KR-INIT-001 v1.2</span>
+    <span>WORLD ARCHIVE / PUBLIC DISTRIBUTION</span>
+  </footer>
+
+  <script src="./js/kor-init.js"></script>
+</body>
+</html>
