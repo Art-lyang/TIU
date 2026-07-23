@@ -3,10 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TIU — ORACLE GLOBAL OBSERVATION | KR-INIT-001</title>
-  <meta name="description" content="ORACLE 전 지구 관측망. 접속하여 한국지부 KR-INIT-001 교본을 열람하십시오.">
+  <title>TERMINAL SESSION — 한국 SF 카드 지휘 게임 | TIU ORACLE 관측망</title>
+  <meta name="description" content="ORACLE AI 관리 시스템의 한국지부 지휘관이 되는 카드 지휘 내러티브 게임 TERMINAL SESSION. 무료 데모 플레이 가능. 접속하여 KR-INIT-001 교본을 열람하십시오.">
+  <meta name="theme-color" content="#050607">
+  <link rel="icon" href="./assets/brand/oracle-logo.png">
+  <link rel="canonical" href="https://art-lyang.github.io/TIU/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TERMINAL SESSION — TIU">
+  <meta property="og:title" content="TERMINAL SESSION — 한국 SF 카드 지휘 게임">
+  <meta property="og:description" content="ORACLE AI 관리 시스템의 한국지부 지휘관이 되어 봉쇄·자원·신뢰·평가를 유지하는 카드 지휘 내러티브 게임. 무료 데모 플레이 가능.">
+  <meta property="og:url" content="https://art-lyang.github.io/TIU/">
+  <meta property="og:image" content="https://art-lyang.github.io/TIU/assets/game/release-keyart.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="./assets/fonts/fonts.css?v=1">
-  <link rel="stylesheet" href="./css/manual-oracle.css?v=5">
+  <link rel="stylesheet" href="./css/manual-oracle.css?v=6">
   <style>
     /* ── 인트로 전용 (이 페이지에서만 쓰는 스타일이라 인라인 유지) ── */
     :root{ --intro-green:#4ade96; --intro-green-line:rgba(74,222,150,.34); }
@@ -29,10 +39,10 @@
     .intro-frame .br{bottom:0;right:0;border-left:0;border-top:0}
 
     .intro-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:18px 22px;z-index:3;font-family:var(--font-mono)}
-    .intro-top .sig{font-size:.72rem;letter-spacing:.14em;color:rgba(245,241,232,.55)}
+    .intro-top .sig{font-size:.72rem;letter-spacing:.14em;color:rgba(245,241,232,.66)}
     .intro-top .sig strong{display:block;color:#f5f1e8;font-size:.86rem;letter-spacing:.1em}
     /* 텔레메트리 — 시그 아래 관측 상태 (로어 연동: 노드 7 · 봉쇄 97.3%) */
-    .intro-tele{margin-top:8px;display:flex;flex-direction:column;gap:2px;font-size:.6rem;letter-spacing:.1em;color:rgba(245,241,232,.34)}
+    .intro-tele{margin-top:8px;display:flex;flex-direction:column;gap:2px;font-size:.6rem;letter-spacing:.1em;color:rgba(245,241,232,.5)}
     .intro-tele b{color:rgba(74,222,150,.7);font-weight:400}
     .intro-live{display:flex;align-items:center;gap:8px;font-size:.68rem;letter-spacing:.12em;color:var(--intro-green)}
     .intro-live .bars{display:inline-flex;align-items:flex-end;gap:2px;height:11px}
@@ -45,8 +55,14 @@
     @keyframes introBars{0%,100%{transform:scaleY(.4);opacity:.55}50%{transform:scaleY(1);opacity:1}}
 
     .intro-cta{position:absolute;left:0;right:0;bottom:max(38px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:15px;z-index:3;padding:0 20px}
-    .intro-kicker{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.4em;color:rgba(74,222,150,.6)}
-    .intro-title{margin:0;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.34em;color:rgba(245,241,232,.62);text-align:center}
+    .intro-kicker{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.4em;color:rgba(74,222,150,.72)}
+    .intro-title{margin:0;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.34em;color:rgba(245,241,232,.74);text-align:center}
+    /* 게임 정체성 한 줄 — 처음 온 방문자에게 "이건 게임"임을 알림 */
+    .intro-game{margin:0;font-size:.84rem;letter-spacing:.02em;color:rgba(245,241,232,.82);text-align:center;line-height:1.5}
+    .intro-game b{color:#f5f1e8;font-weight:700}
+    .intro-links{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center}
+    .intro-demo{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;color:var(--intro-green);border-bottom:1px solid rgba(74,222,150,.4);padding-bottom:2px;transition:color .2s,border-color .2s}
+    .intro-demo:hover,.intro-demo:focus-visible{color:#8df0bd;border-color:#8df0bd;outline:none}
     /* ACCESS — 관측망 접속 (녹색 = ORACLE 네트워크 색어) */
     .access-btn{position:relative;font-family:var(--font-mono);font-size:1rem;font-weight:700;letter-spacing:.22em;color:var(--intro-green);background:rgba(74,222,150,.06);border:1px solid rgba(74,222,150,.55);padding:16px 46px;min-height:54px;cursor:pointer;overflow:hidden;transition:background .2s,box-shadow .2s,color .2s,letter-spacing .2s}
     .access-btn::before{content:"";position:absolute;left:-40%;top:0;bottom:0;width:40%;background:linear-gradient(90deg,transparent,rgba(74,222,150,.22),transparent);transform:skewX(-18deg);transition:left .5s ease}
@@ -59,16 +75,16 @@
     .access-btn .tick.br{bottom:5px;right:5px;border-left:0;border-top:0}
     .access-btn.is-armed{color:#0a0f0c;background:var(--intro-green);box-shadow:0 0 40px rgba(74,222,150,.5)}
     .access-btn.is-armed .tick{border-color:#0a0f0c;opacity:.5}
-    .intro-skip{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:rgba(245,241,232,.4);transition:color .2s}
+    .intro-skip{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:rgba(245,241,232,.58);transition:color .2s}
     .intro-skip:hover,.intro-skip:focus-visible{color:var(--amber);outline:none}
-    .intro-foot{position:absolute;bottom:10px;right:14px;z-index:3;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:rgba(245,241,232,.28)}
+    .intro-foot{position:absolute;bottom:10px;right:14px;z-index:3;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:rgba(245,241,232,.44)}
 
     /* 시네마틱 진입 — 요소별 스태거드 페이드/상승 */
     @keyframes introRise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
     .intro-anim{animation:introRise .7s cubic-bezier(.2,.7,.2,1) backwards}
     .intro-top{animation-delay:.15s}
-    .intro-kicker{animation-delay:.5s}.intro-title{animation-delay:.62s}
-    .access-btn{animation-delay:.76s}.intro-skip{animation-delay:.9s}.intro-foot{animation-delay:1s}
+    .intro-kicker{animation-delay:.5s}.intro-title{animation-delay:.62s}.intro-game{animation-delay:.68s}
+    .access-btn{animation-delay:.76s}.intro-links{animation-delay:.9s}.intro-foot{animation-delay:1s}
     .intro-frame{animation:introFrame 1s ease .3s backwards}
     @keyframes introFrame{from{opacity:0}to{opacity:1}}
 
@@ -110,8 +126,12 @@
     <div class="intro-cta">
       <span class="intro-kicker intro-anim">KOREAN BRANCH TERMINAL</span>
       <p class="intro-title intro-anim">KR-INIT-001 — 접속 대기</p>
+      <p class="intro-game intro-anim"><b>TERMINAL SESSION</b> — 한국 SF 카드 지휘 내러티브 게임</p>
       <button id="access" class="access-btn intro-anim" type="button">ACCESS — 접속<span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span></button>
-      <a class="intro-skip intro-anim" href="./manual.html">연출 없이 바로 교본 열기 →</a>
+      <div class="intro-links intro-anim">
+        <a class="intro-demo" href="https://tiu-art.itch.io/terminal-session-demo" target="_blank" rel="noopener">무료 데모 플레이 →</a>
+        <a class="intro-skip" href="./manual.html">연출 없이 바로 교본 열기 →</a>
+      </div>
     </div>
 
     <span class="intro-foot intro-anim">CLASSIFIED DISTRIBUTION / SECURITY LV.3</span>

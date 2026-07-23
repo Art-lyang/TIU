@@ -29,7 +29,8 @@
 
   var DEG=Math.PI/180;
   // 회전 상태: lam=경도 회전, phi=위도 기울기
-  var lam=-35*DEG, phi=-18*DEG, zoom=1, t0=performance.now();
+  // 초기 뷰: 한국지부(KR-INIT-001)가 화면에 들어온 상태로 시작 — 사이트 주인공이 첫 화면에 보이게
+  var lam=-KR.lon*DEG, phi=20*DEG, zoom=1, t0=performance.now();
   var mode='idle'; // idle → target(한국 정렬) → dive(줌인) → done
   var modeT=0;
   var TARGET_LAM=-KR.lon*DEG, TARGET_PHI=KR.lat*DEG; // phi=+lat 일 때 해당 위도가 화면 중앙

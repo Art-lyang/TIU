@@ -185,7 +185,7 @@ main {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 1px;
-  color: rgba(var(--ui-rgb), 0.72);
+  color: rgba(var(--ui-rgb), 0.85);
   transition: color .15s, border-color .15s, background .15s;
 }
 
@@ -269,14 +269,14 @@ main {
 
 .manual-tab {
   flex-shrink: 0;
-  padding: 9px 16px;
+  padding: 10px 16px;
   border: 1px solid rgba(var(--ui-rgb), 0.2);
   border-radius: var(--r-sm);
   background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.04), rgba(3, 8, 9, 0.6));
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 1.5px;
-  color: rgba(var(--ui-rgb), 0.68);
+  color: rgba(var(--ui-rgb), 0.82);
   transition: border-color .15s, color .15s, background .15s;
 }
 
@@ -329,9 +329,9 @@ main {
 .hero-lead {
   margin: 0 0 26px;
   max-width: 52ch;
-  font-size: 15px;
-  line-height: 1.75;
-  color: rgba(192, 208, 221, 0.82);
+  font-size: 16px;
+  line-height: 1.78;
+  color: rgba(192, 208, 221, 0.9);
 }
 
 .hero-actions {
@@ -627,9 +627,9 @@ main {
 
 .brief-card p {
   margin: 0 16px;
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(192, 208, 221, 0.72);
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: rgba(192, 208, 221, 0.82);
 }
 
 /* ---------- 지휘 평가 4대 지표 (Act 색상 정체성) ---------- */
@@ -689,9 +689,9 @@ main {
 
 .resource-card p {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(192, 208, 221, 0.7);
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: rgba(192, 208, 221, 0.82);
 }
 
 /* ---------- 지휘부 인사 파일 ---------- */
@@ -921,9 +921,9 @@ main {
 .mission-card p,
 .access-card p {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.72;
-  color: rgba(192, 208, 221, 0.72);
+  font-size: 13.5px;
+  line-height: 1.74;
+  color: rgba(192, 208, 221, 0.82);
 }
 
 .person-card .eyebrow {
@@ -1160,9 +1160,9 @@ main {
 
 .route-track p {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(192, 208, 221, 0.7);
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: rgba(192, 208, 221, 0.82);
 }
 
 .filter-bar {
@@ -1598,7 +1598,97 @@ main {
 
 .lore-card p {
   margin: 0;
-  font-size: 12.5px;
-  line-height: 1.68;
-  color: rgba(192, 208, 221, 0.7);
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: rgba(192, 208, 221, 0.82);
+}
+
+/* ============================================================
+   사용성/가독성 보강 패스 (2026-07-23)
+   — 헤더 상시 데모 CTA / 모바일 탭 랩 / 모바일 히어로 액션 정리 / 포커스 링
+   ============================================================ */
+
+/* 헤더 상시 데모 버튼 — 모든 서브페이지에서 한 번의 탭으로 데모 진입 */
+.header-demo {
+  flex-shrink: 0;
+  padding: 9px 13px;
+  border: 1px solid rgba(var(--act2-rgb), 0.5);
+  border-radius: var(--r-sm);
+  background: linear-gradient(180deg, rgba(var(--act2-rgb), 0.1), rgba(3, 10, 6, 0.7));
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--act2);
+  text-shadow: 0 0 8px rgba(var(--act2-rgb), 0.4);
+  transition: border-color .15s, background .15s, box-shadow .15s;
+}
+
+.header-demo:hover {
+  border-color: rgba(var(--act2-rgb), 0.9);
+  background: linear-gradient(180deg, rgba(var(--act2-rgb), 0.18), rgba(3, 10, 6, 0.75));
+  box-shadow: 0 0 16px rgba(var(--act2-rgb), 0.2);
+}
+
+/* 키보드 접근성 — 포커스 위치가 항상 보이도록 */
+.nav a:focus-visible,
+.manual-tab:focus-visible,
+.primary-action:focus-visible,
+.ghost-action:focus-visible,
+.header-demo:focus-visible,
+.lang-button:focus-visible,
+.filter-button:focus-visible {
+  outline: 2px solid rgba(var(--ui-card-rgb), 0.8);
+  outline-offset: 2px;
+}
+
+@media (max-width: 560px) {
+  /* 교본 탭 — 스크롤 잘림 대신 두 줄 랩으로 4개 탭 모두 노출 */
+  .manual-tabs {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+
+  .manual-tab {
+    flex: 1 1 calc(50% - 3px);
+    text-align: center;
+  }
+
+  /* 히어로 액션 — 주요 CTA(데모/본편)는 전폭, 보조 링크는 2열 그리드 */
+  .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .hero-actions .primary-action { grid-column: 1 / -1; }
+
+  .header-demo {
+    padding: 8px 9px;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 560px) {
+  /* 헤더 4요소(브랜드/토글/DEMO/언어)가 390px에서 넘치지 않도록 압축 */
+  .site-header {
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .brand { gap: 8px; }
+
+  .brand-mark { width: 36px; height: 36px; }
+
+  .brand-mark img { width: 30px; height: 30px; }
+
+  .brand strong {
+    font-size: 12px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .brand small { display: none; }
+
+  .lang-button { padding: 6px 8px; }
 }
