@@ -15,9 +15,130 @@
   <meta property="og:image" content="https://art-lyang.github.io/TIU/assets/game/release-keyart.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="./assets/fonts/fonts.css?v=1">
-  <link rel="stylesheet" href="./css/index-oracle.css?v=1">
+  <link rel="stylesheet" href="./css/index-oracle.css?v=2">
+  <style>
+    /* ── 인트로 게이트 (지구본 접속 연출 — 이 페이지 전용이라 인라인 유지) ── */
+    :root{ --intro-green:#4ade96; --intro-green-line:rgba(74,222,150,.34); }
+    #intro-gate{position:fixed;inset:0;z-index:999;display:flex;flex-direction:column;overflow:hidden;background:#050607}
+    #intro-gate.is-done{opacity:0;pointer-events:none;transition:opacity .7s ease}
+    body.has-intro{overflow:hidden}
+    .intro-stage{position:relative;flex:1;display:flex;align-items:center;justify-content:center}
+    .intro-stage::before{content:"";position:absolute;inset:0;background:url("./assets/brand/oracle-logo.png") center 42% / min(78vmin,700px) no-repeat;opacity:.08;filter:blur(1.2px) saturate(.6)}
+    #globe{position:absolute;inset:0;width:100%;height:100%;display:block}
+    .intro-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;
+      background:radial-gradient(125% 92% at 50% 46%, transparent 38%, rgba(3,5,7,.30) 74%, rgba(3,5,7,.72) 100%)}
+    .intro-frame{position:absolute;inset:14px;z-index:2;pointer-events:none}
+    .intro-frame i{position:absolute;width:24px;height:24px;border:1px solid var(--intro-green-line)}
+    .intro-frame .tl{top:0;left:0;border-right:0;border-bottom:0}
+    .intro-frame .tr{top:0;right:0;border-left:0;border-bottom:0}
+    .intro-frame .bl{bottom:0;left:0;border-right:0;border-top:0}
+    .intro-frame .br{bottom:0;right:0;border-left:0;border-top:0}
+    .intro-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:18px 22px;z-index:3;font-family:var(--mono)}
+    .intro-top .sig{font-size:.72rem;letter-spacing:.14em;color:rgba(245,241,232,.66)}
+    .intro-top .sig strong{display:block;color:#f5f1e8;font-size:.86rem;letter-spacing:.1em}
+    .intro-tele{margin-top:8px;display:flex;flex-direction:column;gap:2px;font-size:.6rem;letter-spacing:.1em;color:rgba(245,241,232,.5)}
+    .intro-tele b{color:rgba(74,222,150,.7);font-weight:400}
+    .intro-live{display:flex;align-items:center;gap:8px;font-size:.68rem;letter-spacing:.12em;color:var(--intro-green)}
+    .intro-live .bars{display:inline-flex;align-items:flex-end;gap:2px;height:11px}
+    .intro-live .bars span{width:2px;background:var(--intro-green);animation:introBars 1.1s ease-in-out infinite}
+    .intro-live .bars span:nth-child(1){height:4px;animation-delay:0s}
+    .intro-live .bars span:nth-child(2){height:7px;animation-delay:.15s}
+    .intro-live .bars span:nth-child(3){height:11px;animation-delay:.3s}
+    .intro-live .dot{width:6px;height:6px;border-radius:50%;background:var(--intro-green);animation:introBlink 1.6s steps(2) infinite}
+    @keyframes introBlink{50%{opacity:.35}}
+    @keyframes introBars{0%,100%{transform:scaleY(.4);opacity:.55}50%{transform:scaleY(1);opacity:1}}
+    .intro-cta{position:absolute;left:0;right:0;bottom:max(38px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:15px;z-index:3;padding:0 20px}
+    .intro-kicker{font-family:var(--mono);font-size:.6rem;letter-spacing:.4em;color:rgba(74,222,150,.72)}
+    .intro-title{margin:0;font-family:var(--mono);font-size:.78rem;letter-spacing:.34em;color:rgba(245,241,232,.74);text-align:center}
+    .intro-game{margin:0;font-size:.84rem;letter-spacing:.02em;color:rgba(245,241,232,.82);text-align:center;line-height:1.5}
+    .intro-game b{color:#f5f1e8;font-weight:700}
+    .intro-links{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center}
+    .intro-demo{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;color:var(--intro-green);border-bottom:1px solid rgba(74,222,150,.4);padding-bottom:2px;transition:color .2s,border-color .2s;text-decoration:none}
+    .intro-demo:hover,.intro-demo:focus-visible{color:#8df0bd;border-color:#8df0bd;outline:none}
+    .access-btn{position:relative;font-family:var(--mono);font-size:1rem;font-weight:700;letter-spacing:.22em;color:var(--intro-green);background:rgba(74,222,150,.06);border:1px solid rgba(74,222,150,.55);padding:16px 46px;min-height:54px;cursor:pointer;overflow:hidden;transition:background .2s,box-shadow .2s,color .2s,letter-spacing .2s}
+    .access-btn::before{content:"";position:absolute;left:-40%;top:0;bottom:0;width:40%;background:linear-gradient(90deg,transparent,rgba(74,222,150,.22),transparent);transform:skewX(-18deg);transition:left .5s ease}
+    .access-btn:hover,.access-btn:focus-visible{background:rgba(74,222,150,.14);box-shadow:0 0 26px rgba(74,222,150,.28);letter-spacing:.26em;outline:none}
+    .access-btn:hover::before,.access-btn:focus-visible::before{left:130%}
+    .access-btn .tick{position:absolute;width:7px;height:7px;border:1px solid var(--intro-green);opacity:.65}
+    .access-btn .tick.tl{top:5px;left:5px;border-right:0;border-bottom:0}
+    .access-btn .tick.tr{top:5px;right:5px;border-left:0;border-bottom:0}
+    .access-btn .tick.bl{bottom:5px;left:5px;border-right:0;border-top:0}
+    .access-btn .tick.br{bottom:5px;right:5px;border-left:0;border-top:0}
+    .access-btn.is-armed{color:#0a0f0c;background:var(--intro-green);box-shadow:0 0 40px rgba(74,222,150,.5)}
+    .access-btn.is-armed .tick{border-color:#0a0f0c;opacity:.5}
+    .intro-skip{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:rgba(245,241,232,.58);transition:color .2s;background:none;border:0;padding:0;cursor:pointer}
+    .intro-skip:hover,.intro-skip:focus-visible{color:var(--amber);outline:none}
+    .intro-foot{position:absolute;bottom:10px;right:14px;z-index:3;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:rgba(245,241,232,.44)}
+    @keyframes introRise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .intro-anim{animation:introRise .7s cubic-bezier(.2,.7,.2,1) backwards}
+    .intro-top{animation-delay:.15s}
+    .intro-kicker{animation-delay:.5s}.intro-title{animation-delay:.62s}.intro-game{animation-delay:.68s}
+    .access-btn{animation-delay:.76s}.intro-links{animation-delay:.9s}.intro-foot{animation-delay:1s}
+    .intro-frame{animation:introFrame 1s ease .3s backwards}
+    @keyframes introFrame{from{opacity:0}to{opacity:1}}
+    .is-accessing .intro-cta,.is-accessing .intro-top,.is-accessing .intro-frame,.is-accessing .intro-vignette{opacity:0;transition:opacity .8s ease}
+    @media (max-width:560px){
+      .intro-frame{inset:10px}
+      .intro-tele{display:none}
+      .access-btn{padding:15px 38px;font-size:.94rem}
+      .intro-title{font-size:.72rem;letter-spacing:.28em}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .intro-live .bars span,.intro-live .dot{animation:none}
+      .intro-anim,.intro-frame{animation:none}
+      .access-btn::before{display:none}
+    }
+  </style>
 </head>
 <body>
+  <div id="intro-gate">
+    <div class="intro-stage">
+      <canvas id="globe" aria-label="ORACLE 전 지구 관측망 지구본"></canvas>
+      <div class="intro-vignette" aria-hidden="true"></div>
+      <div class="intro-frame" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
+      <div class="intro-top intro-anim">
+        <div class="sig">
+          <strong>ORACLE</strong>GLOBAL OBSERVATION NETWORK
+          <div class="intro-tele">
+            <span>OBS NODES <b>07</b> · CONTAINMENT <b>97.3%</b></span>
+            <span>KR-INIT-001 · 37.52°N 129.11°E</span>
+          </div>
+        </div>
+        <span class="intro-live"><span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>LIVE FEED<span class="dot" aria-hidden="true"></span></span>
+      </div>
+      <div class="intro-cta">
+        <span class="intro-kicker intro-anim">KOREAN BRANCH TERMINAL</span>
+        <p class="intro-title intro-anim">KR-INIT-001 — 접속 대기</p>
+        <p class="intro-game intro-anim"><b>TERMINAL SESSION</b> — 한국 SF 카드 지휘 내러티브 게임</p>
+        <button id="access" class="access-btn intro-anim" type="button">ACCESS — 접속<span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span></button>
+        <div class="intro-links intro-anim">
+          <a class="intro-demo" href="https://tiu-art.itch.io/terminal-session-demo" target="_blank" rel="noopener">무료 데모 플레이 →</a>
+          <button id="intro-skip" class="intro-skip" type="button">연출 없이 바로 열기 →</button>
+        </div>
+      </div>
+      <span class="intro-foot intro-anim">CLASSIFIED DISTRIBUTION</span>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var gate=document.getElementById('intro-gate');
+      var seen=false;
+      try{seen=sessionStorage.getItem('tiuIntroSeen')==='1'}catch(e){}
+      if(seen){gate.remove();return}
+      document.body.classList.add('has-intro');
+      window.__introDone=function(){
+        var g=document.getElementById('intro-gate');
+        if(!g)return;
+        try{sessionStorage.setItem('tiuIntroSeen','1')}catch(e){}
+        g.classList.add('is-done');
+        document.body.classList.remove('has-intro');
+        document.body.classList.remove('is-accessing');
+        setTimeout(function(){g.remove()},750);
+      };
+      var skip=document.getElementById('intro-skip');
+      if(skip)skip.addEventListener('click',function(){window.__introDone()});
+    })();
+  </script>
   <div class="screen-noise" aria-hidden="true"></div>
   <header class="topbar">
     <a class="brand" href="./index.html" aria-label="TERMINAL SESSION 홈">
@@ -85,10 +206,16 @@
     </section>
 
     <section class="commander panel">
-      <header class="panel-head"><h2>지휘관 프로필</h2><span>COMMANDER</span></header>
+      <header class="panel-head"><h2>지휘부 인원</h2><span>PERSONNEL</span></header>
       <div class="commander-body">
         <img src="./assets/personnel/kr-lee-jungchul.png" alt="이중철 지휘관">
         <div><h3>이중철</h3><p>COMMANDER<br>PILEHEAD</p><dl><dt>소속</dt><dd>ORACLE 한국지부</dd><dt>경력</dt><dd>전직 특수전 장교</dd><dt>임무</dt><dd>대한민국 봉쇄 체계 관찰 및 지원</dd></dl></div>
+      </div>
+      <div class="staff-grid">
+        <a class="staff-card" href="./world.html"><img src="./assets/personnel/kr-seo-haeun.png" alt="서하은"><span><b>서하은</b><small>부지휘관 · DATA ANALYSIS</small></span></a>
+        <a class="staff-card" href="./world.html"><img src="./assets/personnel/kr-kang-doyun.png" alt="강도윤"><span><b>강도윤</b><small>전술지휘 · FIELD COMMAND</small></span></a>
+        <a class="staff-card" href="./world.html"><img src="./assets/personnel/kr-yoon-sejin.png" alt="윤세진"><span><b>윤세진</b><small>의료·연구 · MEDICAL / RESEARCH</small></span></a>
+        <a class="staff-card" href="./world.html"><img src="./assets/personnel/kr-lim-jaehyuk.png" alt="임재혁"><span><b>임재혁</b><small>보안·기술 · SYSTEM / SECURITY</small></span></a>
       </div>
       <a class="panel-link" href="./world.html">전체 인물 파일 열람 →</a>
     </section>
@@ -96,5 +223,7 @@
 
   <footer class="footer"><span>ORACLE KOREA BRANCH / KR-INIT-001</span><span><i class="live-dot"></i> SYSTEM STATUS: NOMINAL</span><span>CLASSIFIED DISTRIBUTION</span></footer>
   <script src="./js/kor-init.js"></script>
+  <script src="./js/globe-data.js"></script>
+  <script src="./js/globe-intro.js?v=2"></script>
 </body>
 </html>

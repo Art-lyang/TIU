@@ -1,5 +1,5 @@
 // globe-intro.js — 인트로 지구본 (canvas 2D, 의존성 없음)
-// 정사영 투영 + 자동 회전. ACCESS 시 한국(강원 해안 KR-INIT-001)으로 회전·줌인 후 manual.html 이동.
+// 정사영 투영 + 자동 회전. ACCESS 시 한국(강원 해안 KR-INIT-001)으로 회전·줌인 후 게이트 해제(window.__introDone).
 // 데이터: js/globe-data.js (GLOBE_LAND 해안선 폴리라인). prefers-reduced-motion 시 즉시 이동.
 (function(){
   var canvas=document.getElementById('globe');
@@ -130,7 +130,7 @@
     if(mode!=='done')requestAnimationFrame(draw);
   }
 
-  function go(){location.href='./manual.html';}
+  function go(){if(window.__introDone){window.__introDone();}else{location.href='./manual.html';}}
 
   var btn=document.getElementById('access');
   if(btn)btn.addEventListener('click',function(e){
