@@ -1,29 +1,36 @@
 /* ============================================================
-   manual-oracle.css — KR-INIT-001 사이트 전역 / TIU_CARD 게임 디자인 이식
-   게임 본편 style.css의 Act-1(도입/안정) 블루 터미널 팔레트·CRT 질감·
-   Share Tech Mono 레이블 체계를 그대로 따른다.
-   지표 4종(C/R/T/O)만 Act 1~4 색상 정체성(blue/green/yellow/red)을 사용.
-   적용 페이지: manual / world / database / play-guide / index(인트로 베이스)
+   manual-oracle.css — KR-INIT-001 사이트 전역 (하위 페이지)
+   index.html(css/index-oracle.css)의 ORACLE 그린 대시보드 팔레트를 기준으로
+   정렬한다. 토큰·크롬(topbar/panel/footer/button)이 index와 같은 계열이어야
+   인트로 → 하위 페이지 이동에서 정체성이 끊기지 않는다.
+   지표 4종(C/R/T/O)만 Act 1~4 색상 정체성(blue/green/yellow/red)을 유지한다.
+   적용 페이지: manual / world / database / play-guide / archive
    ============================================================ */
 
 :root {
-  /* 게임 :root(.act-1) 팔레트 원본 이식 */
-  --ui: #5a9fd6;
-  --ui-rgb: 90, 159, 214;
-  --ui-dim: #1a5a8a;
-  --ui-border: #1a2a3a;
-  --ui-bg: rgba(10, 18, 26, 0.6);
-  --ui-glow: rgba(90, 159, 214, 0.3);
-  --ui-text: #c0d0dd;
-  --ui-label: #88aaccdd;
-  --ui-foot: #1a3a5a;
-  --ui-card: #6aa8db;
-  --ui-card-rgb: 106, 168, 219;
-  --ui-green-dim: #3a6c96;
-  --ui-green-dim-rgb: 58, 108, 150;
-  --r-sm: 4px;
-  --r-md: 8px;
-  --r-lg: 12px;
+  /* index-oracle.css 팔레트 정렬 (--green/--line/--text 계열) */
+  --ui: #49e58e;
+  --ui-rgb: 73, 229, 142;
+  --ui-dim: #199f5f;
+  --ui-border: #0d452e;
+  --ui-bg: rgba(4, 16, 12, 0.6);
+  --ui-glow: rgba(73, 229, 142, 0.3);
+  --ui-text: #b9d8c6;
+  --ui-label: #86aa95dd;
+  --ui-foot: #17603e;
+  --ui-card: #70e9a5;
+  --ui-card-rgb: 112, 233, 165;
+  --ui-green-dim: #6a927c;
+  --ui-green-dim-rgb: 106, 146, 124;
+  /* index 대시보드 원본 토큰 (크롬 정렬용) */
+  --panel: #04100c;
+  --line: #0d452e;
+  --line2: #17603e;
+  --heading: #9ed8b6;
+  /* index 대시보드는 전면 각진 터미널 — 라운드 제거로 형태를 맞춘다 */
+  --r-sm: 0;
+  --r-md: 0;
+  --r-lg: 0;
   /* Act 색상 정체성 (지표 카드 전용) */
   --act1: #5a9fd6;
   --act1-rgb: 90, 159, 214;
@@ -33,10 +40,10 @@
   --act3-rgb: 230, 192, 48;
   --act4: #e0524e;
   --act4-rgb: 224, 82, 78;
-  /* 게임 공용 강조색 */
-  --amber: #f0a030;
-  --amber-rgb: 240, 160, 48;
-  --alert: #ff5040;
+  /* 공용 강조색 — index 대시보드 .tag.amber / .tag.danger 와 동일 */
+  --amber: #e8aa28;
+  --amber-rgb: 232, 170, 40;
+  --alert: #ff4038;
   --font-sans: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
   --font-mono: 'Share Tech Mono', 'Noto Sans KR', monospace;
 }
@@ -47,7 +54,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: #050808;
+  background: #020806;
   font-family: var(--font-sans);
 }
 
@@ -59,8 +66,8 @@ img { max-width: 100%; }
   overflow-x: hidden;
   color: var(--ui-text);
   background:
-    radial-gradient(ellipse at 50% -10%, rgba(var(--ui-rgb), 0.08), transparent 40rem),
-    linear-gradient(180deg, #050808 0%, #060a0d 50%, #04070a 100%);
+    radial-gradient(circle at 52% -10%, #092116 0, transparent 35rem),
+    #020806;
 }
 
 a {
@@ -120,7 +127,7 @@ main {
   gap: 14px;
   min-height: 64px;
   padding: 10px 24px;
-  background: rgba(5, 8, 8, 0.92);
+  background: rgba(2, 8, 6, 0.92);
   border-bottom: 1px solid rgba(var(--ui-rgb), 0.18);
   box-shadow: 0 1px 0 rgba(var(--ui-rgb), 0.05), 0 8px 24px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(14px);
@@ -142,7 +149,7 @@ main {
   border-radius: var(--r-sm);
   background:
     radial-gradient(circle at 50% 50%, rgba(var(--ui-rgb), 0.14), transparent 62%),
-    rgba(5, 10, 12, 0.6);
+    rgba(4, 16, 12, 0.6);
   box-shadow: inset 0 0 12px rgba(var(--ui-rgb), 0.08);
   overflow: hidden;
 }
@@ -272,7 +279,7 @@ main {
   padding: 10px 16px;
   border: 1px solid rgba(var(--ui-rgb), 0.2);
   border-radius: var(--r-sm);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.04), rgba(3, 8, 9, 0.6));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.04), rgba(2, 10, 7, 0.6));
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 1.5px;
@@ -287,7 +294,7 @@ main {
 
 .manual-tab.is-current {
   border-color: rgba(var(--ui-card-rgb), 0.55);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.12), rgba(5, 12, 16, 0.7));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.12), rgba(4, 16, 12, 0.7));
   color: var(--ui-card);
   text-shadow: 0 0 8px rgba(var(--ui-card-rgb), 0.4);
   box-shadow: inset 0 0 14px rgba(var(--ui-rgb), 0.06);
@@ -322,8 +329,8 @@ main {
   font-size: clamp(30px, 4.6vw, 46px);
   font-weight: 700;
   line-height: 1.22;
-  color: #dce8f2;
-  text-shadow: 0 0 18px rgba(var(--ui-rgb), 0.22);
+  color: #54df8f;
+  text-shadow: 0 0 24px rgba(var(--ui-rgb), 0.18);
 }
 
 .hero-lead {
@@ -331,7 +338,7 @@ main {
   max-width: 52ch;
   font-size: 16px;
   line-height: 1.78;
-  color: rgba(192, 208, 221, 0.9);
+  color: rgba(185, 216, 198, 0.9);
 }
 
 .hero-actions {
@@ -346,7 +353,7 @@ main {
   padding: 12px 20px;
   border: 1px solid rgba(var(--ui-card-rgb), 0.55);
   border-radius: var(--r-sm);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.14), rgba(5, 12, 16, 0.75));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.14), rgba(4, 16, 12, 0.75));
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 1px;
@@ -358,7 +365,7 @@ main {
 
 .primary-action:hover {
   border-color: rgba(var(--ui-card-rgb), 0.9);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.22), rgba(5, 12, 16, 0.8));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.22), rgba(4, 16, 12, 0.8));
   box-shadow: inset 0 0 16px rgba(var(--ui-rgb), 0.14), 0 0 18px rgba(var(--ui-rgb), 0.18);
 }
 
@@ -379,11 +386,11 @@ main {
 .primary-action.is-disabled,
 .primary-action.is-disabled:hover {
   cursor: not-allowed;
-  color: rgba(220, 232, 242, 0.42);
-  border-color: rgba(220, 232, 242, 0.18);
-  background: linear-gradient(180deg, rgba(220, 232, 242, 0.035), rgba(5, 8, 9, 0.72));
+  color: rgba(185, 216, 198, 0.42);
+  border-color: rgba(185, 216, 198, 0.18);
+  background: linear-gradient(180deg, rgba(185, 216, 198, 0.035), rgba(2, 10, 7, 0.72));
   text-shadow: none;
-  box-shadow: inset 0 0 14px rgba(220, 232, 242, 0.04);
+  box-shadow: inset 0 0 14px rgba(185, 216, 198, 0.04);
   filter: none;
 }
 
@@ -411,7 +418,7 @@ main {
 .branch-console {
   border: 1px solid rgba(var(--ui-rgb), 0.28);
   border-radius: var(--r-md);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.06), rgba(3, 8, 9, 0.72));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.06), rgba(2, 10, 7, 0.72));
   box-shadow: inset 0 0 20px rgba(var(--ui-rgb), 0.05), 0 12px 32px rgba(0, 0, 0, 0.4);
   padding: 16px 18px 18px;
 }
@@ -485,7 +492,7 @@ main {
   padding: 8px 11px;
   border: 1px solid rgba(var(--ui-rgb), 0.18);
   border-radius: var(--r-sm);
-  background: linear-gradient(90deg, rgba(var(--ui-rgb), 0.055), rgba(5, 10, 12, 0.18));
+  background: linear-gradient(90deg, rgba(var(--ui-rgb), 0.055), rgba(4, 16, 12, 0.18));
   box-shadow: inset 0 0 14px rgba(var(--ui-rgb), 0.035);
 }
 
@@ -513,16 +520,16 @@ main {
 }
 
 .map-row.locked {
-  border-color: rgba(255, 80, 64, 0.4);
-  background: linear-gradient(90deg, rgba(255, 80, 64, 0.07), rgba(12, 5, 5, 0.3));
-  box-shadow: inset 0 0 14px rgba(255, 80, 64, 0.05);
+  border-color: rgba(255, 64, 56, 0.4);
+  background: linear-gradient(90deg, rgba(255, 64, 56, 0.07), rgba(12, 5, 5, 0.3));
+  box-shadow: inset 0 0 14px rgba(255, 64, 56, 0.05);
 }
 
 .map-row.locked span,
-.map-row.locked strong { color: var(--alert); text-shadow: 0 0 8px rgba(255, 80, 64, 0.4); }
+.map-row.locked strong { color: var(--alert); text-shadow: 0 0 8px rgba(255, 64, 56, 0.4); }
 
 .map-row.locked em {
-  color: rgba(255, 80, 64, 0.75);
+  color: rgba(255, 64, 56, 0.75);
   animation: lockPulse 2.4s ease-in-out infinite;
 }
 
@@ -541,7 +548,7 @@ main {
   margin: 0 0 10px;
   font-size: clamp(21px, 3vw, 28px);
   font-weight: 700;
-  color: #dce8f2;
+  color: #70e9a5;
   text-shadow: 0 0 14px rgba(var(--ui-rgb), 0.18);
 }
 
@@ -550,7 +557,7 @@ main {
   max-width: 62ch;
   font-size: 14px;
   line-height: 1.7;
-  color: rgba(192, 208, 221, 0.72);
+  color: rgba(185, 216, 198, 0.72);
 }
 
 /* ---------- 운용 목표 (브리핑 카드) ---------- */
@@ -567,7 +574,7 @@ main {
   position: relative;
   border: 1px solid rgba(var(--ui-rgb), 0.22);
   border-radius: var(--r-md);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.05), rgba(3, 8, 9, 0.6));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.05), rgba(2, 10, 7, 0.6));
   box-shadow: inset 0 0 14px rgba(var(--ui-rgb), 0.035);
   padding: 0 0 16px;
   overflow: hidden;
@@ -591,7 +598,7 @@ main {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(3, 8, 9, 0.75));
+  background: linear-gradient(180deg, transparent 55%, rgba(2, 10, 7, 0.75));
   pointer-events: none;
 }
 
@@ -612,7 +619,7 @@ main {
   letter-spacing: 2px;
   color: var(--ui-card);
   text-shadow: 0 0 8px rgba(var(--ui-card-rgb), 0.6);
-  background: rgba(5, 10, 12, 0.85);
+  background: rgba(4, 16, 12, 0.85);
   border: 1px solid rgba(var(--ui-card-rgb), 0.4);
   border-radius: var(--r-sm);
   padding: 2px 7px;
@@ -629,7 +636,7 @@ main {
   margin: 0 16px;
   font-size: 13.5px;
   line-height: 1.72;
-  color: rgba(192, 208, 221, 0.82);
+  color: rgba(185, 216, 198, 0.82);
 }
 
 /* ---------- 지휘 평가 4대 지표 (Act 색상 정체성) ---------- */
@@ -648,7 +655,7 @@ main {
   position: relative;
   border: 1px solid rgba(var(--rc-rgb), 0.28);
   border-radius: var(--r-md);
-  background: linear-gradient(180deg, rgba(var(--rc-rgb), 0.06), rgba(3, 8, 9, 0.65));
+  background: linear-gradient(180deg, rgba(var(--rc-rgb), 0.06), rgba(2, 10, 7, 0.65));
   box-shadow: inset 0 0 16px rgba(var(--rc-rgb), 0.045);
   padding: 16px 16px 18px;
   overflow: hidden;
@@ -691,7 +698,7 @@ main {
   margin: 0;
   font-size: 13.5px;
   line-height: 1.72;
-  color: rgba(192, 208, 221, 0.82);
+  color: rgba(185, 216, 198, 0.82);
 }
 
 /* ---------- 지휘부 인사 파일 ---------- */
@@ -705,7 +712,7 @@ main {
   flex-wrap: wrap;
   border: 1px solid rgba(var(--ui-rgb), 0.22);
   border-radius: var(--r-md);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.05), rgba(3, 8, 9, 0.6));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.05), rgba(2, 10, 7, 0.6));
   box-shadow: inset 0 0 14px rgba(var(--ui-rgb), 0.035);
   padding: 16px 18px;
   transition: border-color .15s, box-shadow .15s;
@@ -771,7 +778,7 @@ main {
   padding: 8px 13px;
   border: 1px solid rgba(var(--ui-rgb), 0.2);
   border-radius: var(--r-sm);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.035), rgba(3, 8, 9, 0.55));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.035), rgba(2, 10, 7, 0.55));
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 1.5px;
@@ -846,7 +853,7 @@ main {
   border: 1px solid rgba(var(--ui-rgb), 0.22);
   border-radius: var(--r-md);
   background:
-    linear-gradient(180deg, rgba(var(--ui-rgb), 0.052), rgba(3, 8, 9, 0.64)),
+    linear-gradient(180deg, rgba(var(--ui-rgb), 0.052), rgba(2, 10, 7, 0.64)),
     repeating-linear-gradient(90deg, rgba(var(--ui-rgb), 0.018) 0, rgba(var(--ui-rgb), 0.018) 1px, transparent 1px, transparent 64px);
   box-shadow: inset 0 0 16px rgba(var(--ui-rgb), 0.035);
   overflow: hidden;
@@ -906,7 +913,7 @@ main {
   margin: 0 0 8px;
   font-size: 17px;
   font-weight: 700;
-  color: #dce8f2;
+  color: #9ed8b6;
   text-shadow: 0 0 12px rgba(var(--ui-rgb), 0.16);
 }
 
@@ -923,7 +930,7 @@ main {
   margin: 0;
   font-size: 13.5px;
   line-height: 1.74;
-  color: rgba(192, 208, 221, 0.82);
+  color: rgba(185, 216, 198, 0.82);
 }
 
 .person-card .eyebrow {
@@ -1031,7 +1038,7 @@ main {
   display: block;
   margin-bottom: 7px;
   font-size: 14px;
-  color: #dce8f2;
+  color: #9ed8b6;
 }
 
 .wall-stack em {
@@ -1039,7 +1046,7 @@ main {
   font-style: normal;
   font-size: 12px;
   line-height: 1.62;
-  color: rgba(192, 208, 221, 0.66);
+  color: rgba(185, 216, 198, 0.66);
 }
 
 .compact-list {
@@ -1057,14 +1064,14 @@ main {
 .compact-list strong {
   display: block;
   margin-bottom: 5px;
-  color: #dce8f2;
+  color: #9ed8b6;
 }
 
 .compact-list span {
   display: block;
   font-size: 13px;
   line-height: 1.65;
-  color: rgba(192, 208, 221, 0.68);
+  color: rgba(185, 216, 198, 0.68);
 }
 
 .priority-list {
@@ -1088,7 +1095,7 @@ main {
 }
 
 .priority-list dt {
-  color: rgba(192, 208, 221, 0.7);
+  color: rgba(185, 216, 198, 0.7);
 }
 
 .priority-list dd {
@@ -1100,10 +1107,10 @@ main {
 .prometheus-warning {
   margin-top: 18px;
   padding: 14px;
-  border: 1px solid rgba(255, 80, 64, 0.42);
+  border: 1px solid rgba(255, 64, 56, 0.42);
   border-radius: var(--r-sm);
   background:
-    repeating-linear-gradient(135deg, rgba(255, 80, 64, 0.085) 0 8px, transparent 8px 16px),
+    repeating-linear-gradient(135deg, rgba(255, 64, 56, 0.085) 0 8px, transparent 8px 16px),
     rgba(16, 5, 5, 0.28);
 }
 
@@ -1114,7 +1121,7 @@ main {
   font-size: 10px;
   letter-spacing: 2px;
   color: var(--alert);
-  text-shadow: 0 0 8px rgba(255, 80, 64, 0.35);
+  text-shadow: 0 0 8px rgba(255, 64, 56, 0.35);
 }
 
 .prometheus-warning strong {
@@ -1138,7 +1145,7 @@ main {
   padding: 18px 18px 20px;
   border: 1px solid rgba(var(--ui-rgb), 0.22);
   border-radius: var(--r-md);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.05), rgba(3, 8, 9, 0.66));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.05), rgba(2, 10, 7, 0.66));
   box-shadow: inset 0 0 14px rgba(var(--ui-rgb), 0.035);
 }
 
@@ -1155,14 +1162,14 @@ main {
   display: block;
   margin-bottom: 10px;
   font-size: 16px;
-  color: #dce8f2;
+  color: #9ed8b6;
 }
 
 .route-track p {
   margin: 0;
   font-size: 13.5px;
   line-height: 1.72;
-  color: rgba(192, 208, 221, 0.82);
+  color: rgba(185, 216, 198, 0.82);
 }
 
 .filter-bar {
@@ -1177,7 +1184,7 @@ main {
   padding: 9px 14px;
   border: 1px solid rgba(var(--ui-rgb), 0.2);
   border-radius: var(--r-sm);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.035), rgba(3, 8, 9, 0.55));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.035), rgba(2, 10, 7, 0.55));
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 1.2px;
@@ -1189,7 +1196,7 @@ main {
 .filter-button.is-active {
   color: var(--ui-card);
   border-color: rgba(var(--ui-card-rgb), 0.55);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.12), rgba(5, 12, 16, 0.7));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.12), rgba(4, 16, 12, 0.7));
   text-shadow: 0 0 8px rgba(var(--ui-card-rgb), 0.4);
 }
 
@@ -1223,7 +1230,7 @@ main {
 .guide-console {
   border: 1px solid rgba(var(--ui-rgb), 0.28);
   border-radius: var(--r-md);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.06), rgba(3, 8, 9, 0.72));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.06), rgba(2, 10, 7, 0.72));
   box-shadow: inset 0 0 20px rgba(var(--ui-rgb), 0.05), 0 12px 32px rgba(0, 0, 0, 0.4);
   padding: 16px 18px 18px;
 }
@@ -1239,10 +1246,10 @@ main {
 }
 
 .locked-panel {
-  border-color: rgba(255, 80, 64, 0.34);
+  border-color: rgba(255, 64, 56, 0.34);
   background:
-    repeating-linear-gradient(135deg, rgba(255, 80, 64, 0.07) 0 8px, transparent 8px 16px),
-    linear-gradient(180deg, rgba(var(--ui-rgb), 0.04), rgba(3, 8, 9, 0.7));
+    repeating-linear-gradient(135deg, rgba(255, 64, 56, 0.07) 0 8px, transparent 8px 16px),
+    linear-gradient(180deg, rgba(var(--ui-rgb), 0.04), rgba(2, 10, 7, 0.7));
 }
 
 .guide-return {
@@ -1263,7 +1270,7 @@ main {
   align-items: center;
   border: 1px solid rgba(var(--ui-rgb), 0.28);
   border-radius: var(--r-md);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.06), rgba(3, 8, 9, 0.72));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.06), rgba(2, 10, 7, 0.72));
   box-shadow: inset 0 0 20px rgba(var(--ui-rgb), 0.05), 0 12px 32px rgba(0, 0, 0, 0.4);
   padding: 22px;
 }
@@ -1284,7 +1291,7 @@ main {
   font-size: 10px;
   letter-spacing: 1px;
   color: var(--alert);
-  text-shadow: 0 0 6px rgba(255, 80, 64, 0.6);
+  text-shadow: 0 0 6px rgba(255, 64, 56, 0.6);
   animation: lockPulse 1.6s ease-in-out infinite;
 }
 
@@ -1308,7 +1315,7 @@ main {
   margin: 0 0 8px;
   font-size: 21px;
   font-weight: 700;
-  color: #dce8f2;
+  color: #9ed8b6;
   text-shadow: 0 0 14px rgba(var(--ui-rgb), 0.18);
 }
 
@@ -1316,7 +1323,7 @@ main {
   margin: 0 0 12px;
   font-size: 14px;
   line-height: 1.7;
-  color: rgba(192, 208, 221, 0.75);
+  color: rgba(185, 216, 198, 0.75);
 }
 
 .release-copy ul {
@@ -1333,7 +1340,7 @@ main {
   padding-left: 18px;
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(192, 208, 221, 0.72);
+  color: rgba(185, 216, 198, 0.72);
 }
 
 .release-copy li::before {
@@ -1362,7 +1369,7 @@ main {
   padding: 10px 22px;
   border: 1px solid rgba(var(--ui-rgb), 0.28);
   border-radius: var(--r-sm);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.06), rgba(3, 8, 9, 0.65));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.06), rgba(2, 10, 7, 0.65));
   transition: border-color .15s, box-shadow .15s;
 }
 
@@ -1386,8 +1393,8 @@ main {
 .store-badge.is-disabled,
 .store-badge.is-disabled:hover {
   cursor: not-allowed;
-  border-color: rgba(220, 232, 242, 0.16);
-  background: linear-gradient(180deg, rgba(220, 232, 242, 0.025), rgba(3, 8, 9, 0.58));
+  border-color: rgba(185, 216, 198, 0.16);
+  background: linear-gradient(180deg, rgba(185, 216, 198, 0.025), rgba(2, 10, 7, 0.58));
   box-shadow: none;
 }
 
@@ -1461,7 +1468,7 @@ main {
     align-items: stretch;
     gap: 2px;
     padding: 10px 16px 14px;
-    background: rgba(5, 8, 8, 0.97);
+    background: rgba(2, 8, 6, 0.97);
     border-bottom: 1px solid rgba(var(--ui-rgb), 0.22);
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
     display: none;
@@ -1567,7 +1574,7 @@ main {
   position: relative;
   border: 1px solid rgba(var(--ui-rgb), 0.2);
   border-radius: var(--r-md);
-  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.045), rgba(3, 8, 9, 0.6));
+  background: linear-gradient(180deg, rgba(var(--ui-rgb), 0.045), rgba(2, 10, 7, 0.6));
   box-shadow: inset 0 0 14px rgba(var(--ui-rgb), 0.03);
   padding: 14px 15px;
   overflow: hidden;
@@ -1597,14 +1604,14 @@ main {
   margin: 0 0 6px;
   font-size: 15.5px;
   font-weight: 700;
-  color: #dce8f2;
+  color: #9ed8b6;
 }
 
 .lore-card p {
   margin: 0;
   font-size: 13.5px;
   line-height: 1.7;
-  color: rgba(192, 208, 221, 0.82);
+  color: rgba(185, 216, 198, 0.82);
 }
 
 /* ============================================================
@@ -1618,7 +1625,7 @@ main {
   padding: 9px 13px;
   border: 1px solid rgba(var(--act2-rgb), 0.5);
   border-radius: var(--r-sm);
-  background: linear-gradient(180deg, rgba(var(--act2-rgb), 0.1), rgba(3, 10, 6, 0.7));
+  background: linear-gradient(180deg, rgba(var(--act2-rgb), 0.1), rgba(2, 10, 7, 0.7));
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 1.5px;
@@ -1629,7 +1636,7 @@ main {
 
 .header-demo:hover {
   border-color: rgba(var(--act2-rgb), 0.9);
-  background: linear-gradient(180deg, rgba(var(--act2-rgb), 0.18), rgba(3, 10, 6, 0.75));
+  background: linear-gradient(180deg, rgba(var(--act2-rgb), 0.18), rgba(2, 10, 7, 0.75));
   box-shadow: 0 0 16px rgba(var(--act2-rgb), 0.2);
 }
 
@@ -1732,4 +1739,254 @@ main {
 .term-card[data-type="korea"] span {
   color: var(--act2);
   text-shadow: 0 0 8px rgba(var(--act2-rgb), 0.4);
+}
+
+/* ============================================================
+   index 대시보드 크롬 정렬 — topbar / nav 셀 / button / footer
+   index-oracle.css의 형태 규칙(높이·테두리·셀 구획·각진 모서리)을 하위
+   페이지 마크업(.site-header/.nav/.primary-action/.site-footer)에 대응시킨다.
+   마크업은 i18n이 구조 셀렉터에 의존하므로 건드리지 않는다.
+   ============================================================ */
+
+/* ---------- 헤더 → .topbar 형태 ---------- */
+
+.site-header {
+  min-height: 76px;
+  padding: 0 28px;
+  gap: 28px;
+  background: rgba(2, 8, 6, 0.94);
+  border-bottom: 1px solid var(--line);
+  box-shadow: none;
+}
+
+.brand {
+  gap: 12px;
+  min-width: 260px;
+  /* 줄바꿈되면 헤더가 76px를 넘겨 index topbar와 높이가 어긋난다 */
+  flex: 0 0 auto;
+}
+
+.brand strong,
+.brand small { white-space: nowrap; }
+
+/* 대시보드 brand는 로고 박스 없이 48px 이미지 단독 */
+.brand-mark {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.brand-mark img {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 8px rgba(var(--ui-rgb), 0.35));
+}
+
+.brand strong {
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: .08em;
+  color: #d8f6e5;
+  text-shadow: none;
+}
+
+.brand small {
+  margin-top: 3px;
+  font-size: 12px;
+  letter-spacing: .1em;
+  color: var(--ui);
+}
+
+/* 내비 → .main-nav 구획 셀 */
+.nav {
+  align-self: stretch;
+  flex: 1;
+  justify-content: center;
+  gap: 0;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  min-width: 132px;
+  justify-content: center;
+  padding: 17px 14px;
+  border: 0;
+  border-left: 1px solid rgba(13, 69, 46, 0.28);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  letter-spacing: 0;
+  color: #89cba6;
+}
+
+.nav a:last-of-type {
+  border-right: 1px solid rgba(13, 69, 46, 0.28);
+}
+
+.nav a:hover {
+  background: rgba(var(--ui-rgb), 0.05);
+  color: var(--ui);
+  border-color: rgba(13, 69, 46, 0.28);
+}
+
+.nav a.is-current {
+  background: rgba(var(--ui-rgb), 0.05);
+  color: var(--ui);
+  border-color: rgba(13, 69, 46, 0.28);
+  text-shadow: none;
+}
+
+/* DEMO 배지 → .header-state b 형태 */
+.header-demo {
+  padding: 12px 15px;
+  border: 1px solid var(--line2);
+  color: var(--ui);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.menu-toggle {
+  width: 42px;
+  height: 42px;
+  background: transparent;
+  border: 1px solid var(--line);
+}
+
+.menu-bar {
+  width: 20px;
+  background: var(--ui);
+  box-shadow: none;
+}
+
+/* ---------- CTA → .button / .button.primary ---------- */
+
+.primary-action,
+.ghost-action {
+  padding: 13px 22px;
+  border: 1px solid var(--line2);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0;
+  color: var(--ui);
+  background: none;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.primary-action {
+  background: var(--ui);
+  color: #031008;
+  font-weight: 700;
+  border-color: var(--ui);
+}
+
+.primary-action:hover,
+.ghost-action:hover {
+  background: var(--ui);
+  color: #031008;
+  border-color: var(--ui);
+  box-shadow: 0 0 18px rgba(var(--ui-rgb), 0.16);
+}
+
+.ghost-action:hover { background: rgba(var(--ui-rgb), 0.08); color: var(--ui); }
+
+.primary-action.is-buy {
+  background: none;
+  color: var(--amber);
+  border-color: rgba(var(--amber-rgb), 0.55);
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.primary-action.is-buy:hover {
+  background: rgba(var(--amber-rgb), 0.1);
+  color: var(--amber);
+  border-color: var(--amber);
+  box-shadow: 0 0 18px rgba(var(--amber-rgb), 0.16);
+}
+
+.primary-action.is-disabled,
+.primary-action.is-disabled:hover {
+  background: none;
+  color: rgba(185, 216, 198, 0.42);
+  border-color: rgba(13, 69, 46, 0.8);
+  box-shadow: none;
+}
+
+/* ---------- 푸터 → .footer 박스 ---------- */
+
+.site-footer {
+  min-height: 58px;
+  margin: 0 auto 20px;
+  padding: 14px 20px;
+  border: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+}
+
+.site-footer span {
+  font-size: 10px;
+  letter-spacing: .06em;
+  color: #4e745e;
+}
+
+/* ---------- 모바일: 대시보드와 같은 1100px 접힘 ---------- */
+
+@media (max-width: 1100px) {
+  .site-header { padding: 0 16px; gap: 14px; }
+
+  .brand { min-width: auto; }
+
+  .menu-toggle { display: flex; margin-left: auto; }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+    background: #020806;
+    border-bottom: 1px solid var(--line);
+    box-shadow: none;
+    display: none;
+  }
+
+  .nav.is-open { display: flex; }
+
+  .nav a {
+    min-width: auto;
+    justify-content: flex-start;
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav a:last-of-type { border-right: 0; }
+
+  .header-demo { font-size: 12px; padding: 9px 11px; }
+}
+
+/* 좁은 화면에서는 brand+토글 / DEMO+언어 2줄로 접는다.
+   한 줄 고정 시 375px에서 헤더가 넘치고 .lang-switch가 짓눌린다. */
+@media (max-width: 700px) {
+  .site-header {
+    flex-wrap: wrap;
+    min-height: auto;
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
+  .brand { min-width: 0; }
+  .brand strong { font-size: 25px; }
+  .brand small { font-size: 9px; }
+  .brand-mark, .brand-mark img { width: 40px; height: 40px; }
+
+  /* 1행: brand + 햄버거(우측 끝) / 2행: DEMO + 언어 */
+  .menu-toggle { margin-left: auto; flex: 0 0 auto; }
+  .header-demo { flex: 0 0 auto; }
+  .lang-switch { flex: 0 0 auto; }
 }
