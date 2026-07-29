@@ -36,21 +36,26 @@
       <span class="menu-bar"></span>
       <span class="menu-bar"></span>
     </button>
-    <nav class="nav" aria-label="교본 카테고리">
-      <a href="./manual.html">운용 교본</a>
-      <a href="./world.html">세계관 · 인물</a>
-      <a href="./database.html">용어 · SPEC</a>
-      <a href="./play-guide.html">플레이 판독</a>
+    <nav class="nav" aria-label="교본 카테고리" data-i18n-aria="navAria">
+      <a href="./manual.html" data-i18n="navKorea">운용 교본</a>
+      <a href="./world.html" data-i18n="navPersonnel">세계관 · 인물</a>
+      <a href="./database.html" data-i18n="navGlossary">용어 · SPEC</a>
+      <a href="./play-guide.html" data-i18n="navGuide">플레이 판독</a>
       <a class="is-current" href="./archive.html" aria-current="page">ARCHIVE</a>
     </nav>
     <a class="header-demo" href="https://tiu-art.itch.io/terminal-session-demo" target="_blank" rel="noopener">[ DEMO ]</a>
+    <div class="lang-switch" aria-label="언어 선택" data-i18n-aria="langAria">
+      <button type="button" class="lang-button is-active" data-lang="ko" aria-pressed="true">KO</button>
+      <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" class="lang-button" data-lang="ja" aria-pressed="false">JA</button>
+    </div>
   </header>
 
-  <nav class="manual-tabs section-shell" aria-label="교본 카테고리">
-    <a class="manual-tab" href="./manual.html">운용 교본</a>
-    <a class="manual-tab" href="./world.html">세계관 · 인물</a>
-    <a class="manual-tab" href="./database.html">용어 · SPEC</a>
-    <a class="manual-tab" href="./play-guide.html">플레이 판독</a>
+  <nav class="manual-tabs section-shell" aria-label="교본 카테고리" data-i18n-aria="tabAria">
+    <a class="manual-tab" href="./manual.html" data-i18n="manualTabOps">운용 교본</a>
+    <a class="manual-tab" href="./world.html" data-i18n="manualTabWorld">세계관 · 인물</a>
+    <a class="manual-tab" href="./database.html" data-i18n="manualTabData">용어 · SPEC</a>
+    <a class="manual-tab" href="./play-guide.html" data-i18n="manualTabPlay">플레이 판독</a>
     <a class="manual-tab is-current" href="./archive.html" aria-current="page">ARCHIVE</a>
   </nav>
 
@@ -58,240 +63,240 @@
     <section class="section-shell glossary-section">
       <div class="section-heading">
         <p class="eyebrow">WORLD ARCHIVE</p>
-        <h2>세계관 아카이브</h2>
-        <p>유니버스 요약보다 깊은 기록을 원하는 열람자를 위한 공개 등급 아카이브.
+        <h2 data-i18n="archiveTitle">세계관 아카이브</h2>
+        <p data-i18n="archiveLead">유니버스 요약보다 깊은 기록을 원하는 열람자를 위한 공개 등급 아카이브.
            EV-Σ 재난 이후의 세계, 한국권, 이변체, 조직·세력, 세계 각 지역의 기록이 분류되어 있음.
            심층 기밀과 후속 기록의 결말은 본 권한으로 열람할 수 없음.</p>
       </div>
 
-      <div class="filter-bar" role="group" aria-label="아카이브 분류 필터">
-        <button class="filter-button is-active" data-filter="all" type="button">전체</button>
-        <button class="filter-button" data-filter="world" type="button">세계 · 재난</button>
-        <button class="filter-button" data-filter="korea" type="button">한국권</button>
-        <button class="filter-button" data-filter="aberrant" type="button">이변체</button>
-        <button class="filter-button" data-filter="faction" type="button">조직 · 세력</button>
-        <button class="filter-button" data-filter="region" type="button">세계 각지</button>
+      <div class="filter-bar" role="group" aria-label="아카이브 분류 필터" data-i18n-aria="filterAria">
+        <button class="filter-button is-active" data-filter="all" type="button" data-i18n="filterAll">전체</button>
+        <button class="filter-button" data-filter="world" type="button" data-i18n="filterWorld">세계 · 재난</button>
+        <button class="filter-button" data-filter="korea" type="button" data-i18n="filterKorea">한국권</button>
+        <button class="filter-button" data-filter="aberrant" type="button" data-i18n="filterAberrant">이변체</button>
+        <button class="filter-button" data-filter="faction" type="button" data-i18n="filterFaction">조직 · 세력</button>
+        <button class="filter-button" data-filter="region" type="button" data-i18n="filterRegion">세계 각지</button>
       </div>
 
       <div class="glossary-grid" id="archiveGrid">
         <!-- ── 세계 · 재난 ── -->
         <article class="term-card" data-type="world">
-          <span>EV-Σ</span>
-          <h3>EV-Σ — 생물학적 진화 가속 매개체</h3>
-          <p>EV-Σ는 단순 바이러스가 아닌 생물학적 진화 가속 매개체로 분류됨. 프리온 단백질 기반 자기 변형 메커니즘으로 숙주를 변이시키며, 진행 단계는 Phase 0(초기 감염)부터 Phase 3(종 흔적 소실·비가역)까지 4단계로 구분됨. 억제제는 Phase 0 잠복기에서만 부분적으로 유효하며, Phase 2 이후는 독자적 진화·통제 불가 상태로 기록됨.</p>
+          <span data-i18n="arc1Tag">EV-Σ</span>
+          <h3 data-i18n="arc1Title">EV-Σ — 생물학적 진화 가속 매개체</h3>
+          <p data-i18n="arc1Desc">EV-Σ는 단순 바이러스가 아닌 생물학적 진화 가속 매개체로 분류됨. 프리온 단백질 기반 자기 변형 메커니즘으로 숙주를 변이시키며, 진행 단계는 Phase 0(초기 감염)부터 Phase 3(종 흔적 소실·비가역)까지 4단계로 구분됨. 억제제는 Phase 0 잠복기에서만 부분적으로 유효하며, Phase 2 이후는 독자적 진화·통제 불가 상태로 기록됨.</p>
         </article>
         <article class="term-card" data-type="world">
-          <span>TIMELINE</span>
-          <h3>GENESIS BREAK — 최초 대규모 발현</h3>
-          <p>GENESIS BREAK는 EV-Σ가 최초로 대규모 발현한 사건으로 기록됨. 이후 전 세계 모든 봉쇄 프로토콜의 기준 사건이 됨. 배경 시대는 2030년대 초반이며, 이 사건 이후 EV-Σ가 전 지구적으로 확산되기 시작한 것으로 확인됨.</p>
+          <span data-i18n="arc2Tag">TIMELINE</span>
+          <h3 data-i18n="arc2Title">GENESIS BREAK — 최초 대규모 발현</h3>
+          <p data-i18n="arc2Desc">GENESIS BREAK는 EV-Σ가 최초로 대규모 발현한 사건으로 기록됨. 이후 전 세계 모든 봉쇄 프로토콜의 기준 사건이 됨. 배경 시대는 2030년대 초반이며, 이 사건 이후 EV-Σ가 전 지구적으로 확산되기 시작한 것으로 확인됨.</p>
         </article>
         <article class="term-card" data-type="world">
-          <span>WORLD-ORDER</span>
-          <h3>재난 이후 세계 봉쇄 질서</h3>
-          <p>EV-Σ 확산 이후 대부분의 국가가 완전 봉쇄에 실패, "부분 봉쇄(PARTIAL CONTAINMENT)" 상태로 전환됨. 오염 구역의 진화 속도는 OVERDRIVE(과속·붕괴), CONTROLLED(통제), DELAYED(지연), STAGNANT(정체) 등으로 분류·관리됨. 대한민국만이 진화 속도를 인위적으로 관리하는 CONTROLLED 구역이자 97.3% 봉쇄 성공률을 유지하는 유일한 예외로 기록됨.</p>
+          <span data-i18n="arc3Tag">WORLD-ORDER</span>
+          <h3 data-i18n="arc3Title">재난 이후 세계 봉쇄 질서</h3>
+          <p data-i18n="arc3Desc">EV-Σ 확산 이후 대부분의 국가가 완전 봉쇄에 실패, "부분 봉쇄(PARTIAL CONTAINMENT)" 상태로 전환됨. 오염 구역의 진화 속도는 OVERDRIVE(과속·붕괴), CONTROLLED(통제), DELAYED(지연), STAGNANT(정체) 등으로 분류·관리됨. 대한민국만이 진화 속도를 인위적으로 관리하는 CONTROLLED 구역이자 97.3% 봉쇄 성공률을 유지하는 유일한 예외로 기록됨.</p>
         </article>
         <article class="term-card" data-type="world">
-          <span>CONTAINMENT</span>
-          <h3>봉쇄선 — 다층 방어 경계 체계</h3>
-          <p>오염 구역은 봉쇄선이라 불리는 다층 방어 경계선으로 격리됨. 봉쇄선은 4개 이상 구역으로 분할 운영되며 각 구역이 독립 격리 가능하도록 설계됨. 전기 울타리, 열감지 센서, 2인 1조 야간 순찰 루트가 표준 구성으로 운용되며, 열감지 센서에는 사각지대가 존재하는 것으로 확인됨.</p>
+          <span data-i18n="arc4Tag">CONTAINMENT</span>
+          <h3 data-i18n="arc4Title">봉쇄선 — 다층 방어 경계 체계</h3>
+          <p data-i18n="arc4Desc">오염 구역은 봉쇄선이라 불리는 다층 방어 경계선으로 격리됨. 봉쇄선은 4개 이상 구역으로 분할 운영되며 각 구역이 독립 격리 가능하도록 설계됨. 전기 울타리, 열감지 센서, 2인 1조 야간 순찰 루트가 표준 구성으로 운용되며, 열감지 센서에는 사각지대가 존재하는 것으로 확인됨.</p>
         </article>
         <article class="term-card" data-type="world">
-          <span>ORACLE</span>
-          <h3>ORACLE — 전 지구 관측·관리 네트워크</h3>
-          <p>ORACLE은 전 지구 규모의 자율 관리 네트워크로 소개되며, 전 세계 격리 기지를 원격 통제함. 각 지부에 지휘관 성과 평가·보급 관리·작전 권고를 수행하고, 국가별 대응 성공률을 산출·기록함. 단말기를 통한 임상적 어조의 브리핑·경고·알림이 표준 인터페이스로 일관 운용됨. 시스템의 최종 목적은 본 권한으로 열람할 수 없음.</p>
+          <span data-i18n="arc5Tag">ORACLE</span>
+          <h3 data-i18n="arc5Title">ORACLE — 전 지구 관측·관리 네트워크</h3>
+          <p data-i18n="arc5Desc">ORACLE은 전 지구 규모의 자율 관리 네트워크로 소개되며, 전 세계 격리 기지를 원격 통제함. 각 지부에 지휘관 성과 평가·보급 관리·작전 권고를 수행하고, 국가별 대응 성공률을 산출·기록함. 단말기를 통한 임상적 어조의 브리핑·경고·알림이 표준 인터페이스로 일관 운용됨. 시스템의 최종 목적은 본 권한으로 열람할 수 없음.</p>
         </article>
 
         <!-- ── 한국권 ── -->
         <article class="term-card" data-type="korea">
-          <span>NADL</span>
-          <h3>한국방벽 / 국가변이방위선(NADL)</h3>
-          <p>대중은 "한국방벽"으로, 군 공식 문서는 국가변이방위선(NADL, National Aberrant Defense Line)으로 동일 대상을 지칭함이 확인됨. 단순한 벽이 아니라 물리 장벽·센서망·자동 교전·기동 대응의 4레이어를 중첩한 다층 감시·타격 네트워크형 통합 방어 체계로 기록됨. 구역은 NADL-북부(DMZ 접경), NADL-서부(서해·중국 방향), NADL-동부(동해)로 구분되며, 운용 주관은 국가특수재난변이사령부(특재사)에 귀속됨.</p>
+          <span data-i18n="arc6Tag">NADL</span>
+          <h3 data-i18n="arc6Title">한국방벽 / 국가변이방위선(NADL)</h3>
+          <p data-i18n="arc6Desc">대중은 "한국방벽"으로, 군 공식 문서는 국가변이방위선(NADL, National Aberrant Defense Line)으로 동일 대상을 지칭함이 확인됨. 단순한 벽이 아니라 물리 장벽·센서망·자동 교전·기동 대응의 4레이어를 중첩한 다층 감시·타격 네트워크형 통합 방어 체계로 기록됨. 구역은 NADL-북부(DMZ 접경), NADL-서부(서해·중국 방향), NADL-동부(동해)로 구분되며, 운용 주관은 국가특수재난변이사령부(특재사)에 귀속됨.</p>
         </article>
         <article class="term-card" data-type="korea">
-          <span>NADL</span>
-          <h3>위협 방향별 차등 배치와 강원도 격리 구역</h3>
-          <p>방벽은 위협 방향에 따라 밀도가 차등 배치되며, 현 시점 최대 실질 위협은 중국 방향(NADL-서부)으로 센서·자동 교전 레이어 밀도가 가장 높은 것으로 확인됨. 전통 주 전선인 북한 방향(NADL-북부)은 상징성은 크나 월경 활동은 간헐적으로 기록됨. 강원도 DMZ 인근 일부 구역은 완전 격리(C급) 지역으로 지정되어 민간 출입이 불가하며, 공식 명분은 "과거 전투 격전지·미폭발물 위험·환경 복구 중"으로 고지됨.</p>
+          <span data-i18n="arc7Tag">NADL</span>
+          <h3 data-i18n="arc7Title">위협 방향별 차등 배치와 강원도 격리 구역</h3>
+          <p data-i18n="arc7Desc">방벽은 위협 방향에 따라 밀도가 차등 배치되며, 현 시점 최대 실질 위협은 중국 방향(NADL-서부)으로 센서·자동 교전 레이어 밀도가 가장 높은 것으로 확인됨. 전통 주 전선인 북한 방향(NADL-북부)은 상징성은 크나 월경 활동은 간헐적으로 기록됨. 강원도 DMZ 인근 일부 구역은 완전 격리(C급) 지역으로 지정되어 민간 출입이 불가하며, 공식 명분은 "과거 전투 격전지·미폭발물 위험·환경 복구 중"으로 고지됨.</p>
         </article>
         <article class="term-card" data-type="korea">
-          <span>GOV</span>
-          <h3>정부 조직과 대가(大家) 축 논쟁</h3>
-          <p>국정은 대통령실·국가안전보장회의(NSC)·국방부·합동참모본부를 중심으로 운영되며, 대(對)아베란트 작전의 공식 주체는 합동작전사령부로 기록됨. 현 한국 정치의 가장 오래된 표면 쟁점은 준(準)국가화된 사기업 DG의 권력 행사가 민주적 정당성을 갖는가로 확인됨. 국방·의료·인프라의 민간 의존, DG의 사업 독점·세제 혜택 범위를 둘러싸고 친(親)DG·반(反)DG 파벌이 국회·청문을 무대로 대립함.</p>
+          <span data-i18n="arc8Tag">GOV</span>
+          <h3 data-i18n="arc8Title">정부 조직과 대가(大家) 축 논쟁</h3>
+          <p data-i18n="arc8Desc">국정은 대통령실·국가안전보장회의(NSC)·국방부·합동참모본부를 중심으로 운영되며, 대(對)아베란트 작전의 공식 주체는 합동작전사령부로 기록됨. 현 한국 정치의 가장 오래된 표면 쟁점은 준(準)국가화된 사기업 DG의 권력 행사가 민주적 정당성을 갖는가로 확인됨. 국방·의료·인프라의 민간 의존, DG의 사업 독점·세제 혜택 범위를 둘러싸고 친(親)DG·반(反)DG 파벌이 국회·청문을 무대로 대립함.</p>
         </article>
         <article class="term-card" data-type="korea">
-          <span>SDAC</span>
-          <h3>특재사 / White Shield (SDAC)</h3>
-          <p>대한민국의 대(對)아베란트 체계는 대외·대중 통용명 "White Shield(백색방패)"로 불리며, 군·정부 내부 공식 편제명은 국가특수재난변이사령부(약칭 특재사, 영문 SDAC — Special Disaster &amp; Aberrant Command)로 확인됨. 합동참모본부 직속의 독립 사령부로, 지휘관은 대장(4성)이며 대통령 직보 권한을 보유함. 정식 병력 규모·예산 세부는 국방예산서에서도 일괄 기밀 처리되는 것으로 기록됨.</p>
+          <span data-i18n="arc9Tag">SDAC</span>
+          <h3 data-i18n="arc9Title">특재사 / White Shield (SDAC)</h3>
+          <p data-i18n="arc9Desc">대한민국의 대(對)아베란트 체계는 대외·대중 통용명 "White Shield(백색방패)"로 불리며, 군·정부 내부 공식 편제명은 국가특수재난변이사령부(약칭 특재사, 영문 SDAC — Special Disaster &amp; Aberrant Command)로 확인됨. 합동참모본부 직속의 독립 사령부로, 지휘관은 대장(4성)이며 대통령 직보 권한을 보유함. 정식 병력 규모·예산 세부는 국방예산서에서도 일괄 기밀 처리되는 것으로 기록됨.</p>
         </article>
         <article class="term-card" data-type="korea">
-          <span>SDAC</span>
-          <h3>특화형 불균형 강국</h3>
-          <p>한국 군사력은 전체 규모 면에서 동아시아 지역 상위권이나 글로벌 원정 역량은 제한적인 "특화형 불균형" 구조로 기록됨. 반면 대(對)아베란트 역량은 세계 최고 수준으로, 장비 세대·생체감지·현장 대응·백신 인프라 전 축에서 선두를 유지함이 확인됨. 타 국가·기관의 대(對)아베란트 기술은 최소 한 세대 뒤처져 있어, 외국 연구소가 한국의 대응 데이터 접근을 요청하는 역전된 구도가 나타남.</p>
+          <span data-i18n="arc10Tag">SDAC</span>
+          <h3 data-i18n="arc10Title">특화형 불균형 강국</h3>
+          <p data-i18n="arc10Desc">한국 군사력은 전체 규모 면에서 동아시아 지역 상위권이나 글로벌 원정 역량은 제한적인 "특화형 불균형" 구조로 기록됨. 반면 대(對)아베란트 역량은 세계 최고 수준으로, 장비 세대·생체감지·현장 대응·백신 인프라 전 축에서 선두를 유지함이 확인됨. 타 국가·기관의 대(對)아베란트 기술은 최소 한 세대 뒤처져 있어, 외국 연구소가 한국의 대응 데이터 접근을 요청하는 역전된 구도가 나타남.</p>
         </article>
         <article class="term-card" data-type="korea">
-          <span>SOCIETY</span>
-          <h3>일상 생체감지 의무의 침투</h3>
-          <p>생체감지 통과가 도시 거주자의 일상적 기본 리듬으로 정착했으며, 지역·업종에 따라 A~C 수준으로 차등화됨이 확인됨. 고위험 업종·접경 지역(C수준)은 주거 출입까지 스캔해 하루 수십 회 감지되고, 도시 상업지(B수준)는 카페·대중교통·병원까지, 일반 주거지(A수준)는 공공장소 위주로 적용됨. 감지 거부·회피는 강한 사회적 의심 대상으로, 사실상 불가능한 것으로 기록됨.</p>
+          <span data-i18n="arc11Tag">SOCIETY</span>
+          <h3 data-i18n="arc11Title">일상 생체감지 의무의 침투</h3>
+          <p data-i18n="arc11Desc">생체감지 통과가 도시 거주자의 일상적 기본 리듬으로 정착했으며, 지역·업종에 따라 A~C 수준으로 차등화됨이 확인됨. 고위험 업종·접경 지역(C수준)은 주거 출입까지 스캔해 하루 수십 회 감지되고, 도시 상업지(B수준)는 카페·대중교통·병원까지, 일반 주거지(A수준)는 공공장소 위주로 적용됨. 감지 거부·회피는 강한 사회적 의심 대상으로, 사실상 불가능한 것으로 기록됨.</p>
         </article>
         <article class="term-card" data-type="korea">
-          <span>SOCIETY</span>
-          <h3>"감염 이력 없음" 증명서의 결혼 시장 정착</h3>
-          <p>결혼 상대 탐색 시 감염 이력 없음 증명서 제출이 비공식 기본 요건으로 정착했으며, 중매·결혼정보회사가 이를 전제 조건으로 분류함이 확인됨. 실제 감염 이력자는 극소수이나 증명서의 사회적 비중은 학력·소득과 동등하거나 그 이상으로 기록됨. 본인뿐 아니라 가족 전원의 이력까지 요구되는 사례가 증가하며, 이 관행은 혼인 영역에서 차별 구조를 제도화한 것으로 평가됨.</p>
+          <span data-i18n="arc12Tag">SOCIETY</span>
+          <h3 data-i18n="arc12Title">"감염 이력 없음" 증명서의 결혼 시장 정착</h3>
+          <p data-i18n="arc12Desc">결혼 상대 탐색 시 감염 이력 없음 증명서 제출이 비공식 기본 요건으로 정착했으며, 중매·결혼정보회사가 이를 전제 조건으로 분류함이 확인됨. 실제 감염 이력자는 극소수이나 증명서의 사회적 비중은 학력·소득과 동등하거나 그 이상으로 기록됨. 본인뿐 아니라 가족 전원의 이력까지 요구되는 사례가 증가하며, 이 관행은 혼인 영역에서 차별 구조를 제도화한 것으로 평가됨.</p>
         </article>
         <article class="term-card" data-type="korea">
-          <span>ECONOMY</span>
-          <h3>표면 정상 + 내부 이중화 경제</h3>
-          <p>GDP·고용률·금융시장 지표는 선진국 수준을 유지하며 "위기에도 안정적으로 기능하는 모범 국가"라는 대외 이미지가 확인됨. 그러나 실질 경제는 제약·바이오·군사·방벽·테크의 고성장 DG 경제권과, 관광·외식·중소 제조의 정체된 일반 민간 경제권으로 명확히 이분화된 것으로 기록됨. 두 경제권 간 이동성이 낮아 지는 산업에서 뜨는 산업으로의 전환이 구조적으로 어렵다는 점이 장기 스트레스 요인으로 지적됨.</p>
+          <span data-i18n="arc13Tag">ECONOMY</span>
+          <h3 data-i18n="arc13Title">표면 정상 + 내부 이중화 경제</h3>
+          <p data-i18n="arc13Desc">GDP·고용률·금융시장 지표는 선진국 수준을 유지하며 "위기에도 안정적으로 기능하는 모범 국가"라는 대외 이미지가 확인됨. 그러나 실질 경제는 제약·바이오·군사·방벽·테크의 고성장 DG 경제권과, 관광·외식·중소 제조의 정체된 일반 민간 경제권으로 명확히 이분화된 것으로 기록됨. 두 경제권 간 이동성이 낮아 지는 산업에서 뜨는 산업으로의 전환이 구조적으로 어렵다는 점이 장기 스트레스 요인으로 지적됨.</p>
         </article>
         <article class="term-card" data-type="korea">
-          <span>ECONOMY</span>
-          <h3>외국인 장기체류·이민 신청 급증의 역설</h3>
-          <p>국제 검역·감지·봉쇄 체계 중첩으로 국제 이동 자체가 사실상 마비되었음에도, 한국 장기체류·이민 신청은 오히려 급증하는 역설이 확인됨. 이는 "그 정도 고생을 해서라도 가겠다는 수요"로서 한국 방역 성공의 사회적 증거로 기능하며, 신청 주체는 주로 선진국·중진국의 중산층 이상으로 기록됨. 이동 난이도와 선별 체류 요건의 이중 장벽으로 유입자는 대체로 고학력·전문직·자산가에 집중됨.</p>
+          <span data-i18n="arc14Tag">ECONOMY</span>
+          <h3 data-i18n="arc14Title">외국인 장기체류·이민 신청 급증의 역설</h3>
+          <p data-i18n="arc14Desc">국제 검역·감지·봉쇄 체계 중첩으로 국제 이동 자체가 사실상 마비되었음에도, 한국 장기체류·이민 신청은 오히려 급증하는 역설이 확인됨. 이는 "그 정도 고생을 해서라도 가겠다는 수요"로서 한국 방역 성공의 사회적 증거로 기능하며, 신청 주체는 주로 선진국·중진국의 중산층 이상으로 기록됨. 이동 난이도와 선별 체류 요건의 이중 장벽으로 유입자는 대체로 고학력·전문직·자산가에 집중됨.</p>
         </article>
         <article class="term-card" data-type="korea">
-          <span>NORTH</span>
-          <h3>DPRK Black Zone — 한국의 공식 인식</h3>
-          <p>북한 지역은 위성 영상·제한적 관측만 가능한 관측 불가 구역으로, 정부·군·국제사회 모두 내부 실상을 추정만 하는 상태로 기록됨. 군 훈련·퍼레이드 등 예전 행태는 전면 소멸했고 도시 인구 움직임은 극저수준으로 관측되나, 이는 완전 붕괴도 정상 운영도 확증하지 못함. 한국 정부·군의 공식 입장은 "DPRK 지역에서 대규모 EV-Σ 변이 사태가 발생한 것으로 추정"이며, 모든 정책·군사 편제가 이 가정 위에 구축됨이 확인됨.</p>
+          <span data-i18n="arc15Tag">NORTH</span>
+          <h3 data-i18n="arc15Title">DPRK Black Zone — 한국의 공식 인식</h3>
+          <p data-i18n="arc15Desc">북한 지역은 위성 영상·제한적 관측만 가능한 관측 불가 구역으로, 정부·군·국제사회 모두 내부 실상을 추정만 하는 상태로 기록됨. 군 훈련·퍼레이드 등 예전 행태는 전면 소멸했고 도시 인구 움직임은 극저수준으로 관측되나, 이는 완전 붕괴도 정상 운영도 확증하지 못함. 한국 정부·군의 공식 입장은 "DPRK 지역에서 대규모 EV-Σ 변이 사태가 발생한 것으로 추정"이며, 모든 정책·군사 편제가 이 가정 위에 구축됨이 확인됨.</p>
         </article>
         <article class="term-card" data-type="korea">
-          <span>DAEGA</span>
-          <h3>대가(大家) 인더스트리 (DG Inc.)</h3>
-          <p>정식 명칭 대가(大家) 인더스트리, 영문 Daega Industries(통용 약칭 DG Inc.)로 서울 여의도에 본사를 둔 제약·군사·테크 복합 메가코퍼로 기록됨. 창업 가문은 김해 허씨(金海 許氏)이며, 대외 공식 설립은 해방 1년 후인 1946년으로 인식됨. "거대한 가문"이라는 상호대로 창업 가문이 3대에 걸쳐 지배하는 재벌 구조로 공표되며, 대중은 "한국에서 가장 영향력 있는 가문 중 하나"로 인식함.</p>
+          <span data-i18n="arc16Tag">DAEGA</span>
+          <h3 data-i18n="arc16Title">대가(大家) 인더스트리 (DG Inc.)</h3>
+          <p data-i18n="arc16Desc">정식 명칭 대가(大家) 인더스트리, 영문 Daega Industries(통용 약칭 DG Inc.)로 서울 여의도에 본사를 둔 제약·군사·테크 복합 메가코퍼로 기록됨. 창업 가문은 김해 허씨(金海 許氏)이며, 대외 공식 설립은 해방 1년 후인 1946년으로 인식됨. "거대한 가문"이라는 상호대로 창업 가문이 3대에 걸쳐 지배하는 재벌 구조로 공표되며, 대중은 "한국에서 가장 영향력 있는 가문 중 하나"로 인식함.</p>
         </article>
         <article class="term-card" data-type="korea">
-          <span>DAEGA</span>
-          <h3>DG의 준(準)국가형 위치</h3>
-          <p>DG는 국방·의료·인프라의 상당 영역을 실질 대행하여 정부가 행정·외교·법률 기능에 집중하는 "준(準)국가형" 사실상 민관 이중정부 구조를 형성함이 확인됨. 제약·바이오(EV-Σ 백신·조기 감지), 군사·방산(한국방벽 장비 주공급), 테크·인프라 전 영역에서 한국 산업을 장악한 것으로 기록됨. 생체감지 장비·센서 유지보수까지 사실상 독점 공급하는 구조가 반DG 파벌의 핵심 쟁점으로 부상함.</p>
+          <span data-i18n="arc17Tag">DAEGA</span>
+          <h3 data-i18n="arc17Title">DG의 준(準)국가형 위치</h3>
+          <p data-i18n="arc17Desc">DG는 국방·의료·인프라의 상당 영역을 실질 대행하여 정부가 행정·외교·법률 기능에 집중하는 "준(準)국가형" 사실상 민관 이중정부 구조를 형성함이 확인됨. 제약·바이오(EV-Σ 백신·조기 감지), 군사·방산(한국방벽 장비 주공급), 테크·인프라 전 영역에서 한국 산업을 장악한 것으로 기록됨. 생체감지 장비·센서 유지보수까지 사실상 독점 공급하는 구조가 반DG 파벌의 핵심 쟁점으로 부상함.</p>
         </article>
 
         <!-- ── 이변체 ── -->
         <article class="term-card" data-type="aberrant">
-          <span>CLASS</span>
-          <h3>이변체 분류 체계 — M·H 타입</h3>
-          <p>이변체(ABERRANT)는 EV-Σ 변이 양상에 따라 4개 타입으로 분류됨. M-TYPE(MUTATION)은 개체 단위 변이로, 감염 단계별로 분화하며 개별 대응이 가능한 것으로 기록됨. H-TYPE(HIVE)은 집단 의식으로 작동하는 군체형으로, 독립 의지가 관측되지 않고 군체에서 분리 시 일정 시간 내 기능 정지가 확인됨.</p>
+          <span data-i18n="arc18Tag">CLASS</span>
+          <h3 data-i18n="arc18Title">이변체 분류 체계 — M·H 타입</h3>
+          <p data-i18n="arc18Desc">이변체(ABERRANT)는 EV-Σ 변이 양상에 따라 4개 타입으로 분류됨. M-TYPE(MUTATION)은 개체 단위 변이로, 감염 단계별로 분화하며 개별 대응이 가능한 것으로 기록됨. H-TYPE(HIVE)은 집단 의식으로 작동하는 군체형으로, 독립 의지가 관측되지 않고 군체에서 분리 시 일정 시간 내 기능 정지가 확인됨.</p>
         </article>
         <article class="term-card" data-type="aberrant">
-          <span>CLASS</span>
-          <h3>이변체 분류 체계 — S·X 타입</h3>
-          <p>S-TYPE(SPREADER)은 광역 확산 기능을 가진 고정형 또는 비실체 개체로, 포자를 통한 원거리 확산이 주 위협으로 분류됨. X-TYPE(APEX)은 분류 체계 상위 등급으로, 형태·거동이 비고정적이어 표준 대응 프로토콜 수립이 불가한 것으로 기록됨. X-TYPE 개체군의 기원·성격은 조사 중이며, 현재 직접 접촉 금지·관측 프로토콜만 유지됨.</p>
+          <span data-i18n="arc19Tag">CLASS</span>
+          <h3 data-i18n="arc19Title">이변체 분류 체계 — S·X 타입</h3>
+          <p data-i18n="arc19Desc">S-TYPE(SPREADER)은 광역 확산 기능을 가진 고정형 또는 비실체 개체로, 포자를 통한 원거리 확산이 주 위협으로 분류됨. X-TYPE(APEX)은 분류 체계 상위 등급으로, 형태·거동이 비고정적이어 표준 대응 프로토콜 수립이 불가한 것으로 기록됨. X-TYPE 개체군의 기원·성격은 조사 중이며, 현재 직접 접촉 금지·관측 프로토콜만 유지됨.</p>
         </article>
         <article class="term-card" data-type="aberrant">
-          <span>PHASE</span>
-          <h3>EV-Σ 감염 4단계 진행 체계</h3>
-          <p>EV-Σ 감염은 4단계로 진행됨. Phase 0(잠복, 24~72h)은 외부 증상 없이 혈액 검사로만 감지되며, 이 시간창 내 처치로 진행 정지가 가능한 것으로 확인됨. Phase 1(표면 변이)에서 피부 경질화·행동 정지가, Phase 2(구조 변형)에서 골격·근육 재편이 진행되며, Phase 3(터미널)에서 원래 종의 흔적이 소실되고 비가역 상태로 고착됨.</p>
+          <span data-i18n="arc20Tag">PHASE</span>
+          <h3 data-i18n="arc20Title">EV-Σ 감염 4단계 진행 체계</h3>
+          <p data-i18n="arc20Desc">EV-Σ 감염은 4단계로 진행됨. Phase 0(잠복, 24~72h)은 외부 증상 없이 혈액 검사로만 감지되며, 이 시간창 내 처치로 진행 정지가 가능한 것으로 확인됨. Phase 1(표면 변이)에서 피부 경질화·행동 정지가, Phase 2(구조 변형)에서 골격·근육 재편이 진행되며, Phase 3(터미널)에서 원래 종의 흔적이 소실되고 비가역 상태로 고착됨.</p>
         </article>
         <article class="term-card" data-type="aberrant">
-          <span>SPEC-001</span>
-          <h3>감염체 마네킹</h3>
-          <p>EV-Σ Phase 1 개체로 기록됨. 행동이 완전 정지된 상태에서는 외관상 마네킹과 구분이 불가하며, 피부는 플라스틱 유사 광택·동공 완전 확장 고정으로 관측됨. 접촉·소음·광량 변화 시 0.3초 미만에 폭력 상태로 전환됨이 확인됨. 3m 이내 접근 금지, 열감지 스캐너 확인이 권고됨.</p>
+          <span data-i18n="arc21Tag">SPEC-001</span>
+          <h3 data-i18n="arc21Title">감염체 마네킹</h3>
+          <p data-i18n="arc21Desc">EV-Σ Phase 1 개체로 기록됨. 행동이 완전 정지된 상태에서는 외관상 마네킹과 구분이 불가하며, 피부는 플라스틱 유사 광택·동공 완전 확장 고정으로 관측됨. 접촉·소음·광량 변화 시 0.3초 미만에 폭력 상태로 전환됨이 확인됨. 3m 이내 접근 금지, 열감지 스캐너 확인이 권고됨.</p>
         </article>
         <article class="term-card" data-type="aberrant">
-          <span>SPEC-003</span>
-          <h3>Brood Drone</h3>
-          <p>H-TYPE 군체 하위 개체. 인간의 약 60% 크기, 외골격·단안(單眼)·갈고리 앞다리 형태로 관측됨. 독립 의지 없이 정찰·수집·방어를 수행하며, 군체에서 분리 시 12시간 내 기능 정지가 확인됨. 단독 위협은 낮으나 집단 출현 시 즉시 후퇴가 권고됨.</p>
+          <span data-i18n="arc22Tag">SPEC-003</span>
+          <h3 data-i18n="arc22Title">Brood Drone</h3>
+          <p data-i18n="arc22Desc">H-TYPE 군체 하위 개체. 인간의 약 60% 크기, 외골격·단안(單眼)·갈고리 앞다리 형태로 관측됨. 독립 의지 없이 정찰·수집·방어를 수행하며, 군체에서 분리 시 12시간 내 기능 정지가 확인됨. 단독 위협은 낮으나 집단 출현 시 즉시 후퇴가 권고됨.</p>
         </article>
         <article class="term-card" data-type="aberrant">
-          <span>SPEC-004</span>
-          <h3>Seed Spreader</h3>
-          <p>S-TYPE 고정형 확산 개체. 높이 2~4m, 식물 유사 외형에 상부에서 불규칙 포자 구름을 방출함이 기록됨. 자체 이동 없이 반경 수km에 포자를 확산시키며, Silent Belt 형성의 주요 원인으로 분류됨. 반경 500m 접근 금지, 제거 시도 시 폭발적 포자 방출(2차 확산) 위험이 확인됨.</p>
+          <span data-i18n="arc23Tag">SPEC-004</span>
+          <h3 data-i18n="arc23Title">Seed Spreader</h3>
+          <p data-i18n="arc23Desc">S-TYPE 고정형 확산 개체. 높이 2~4m, 식물 유사 외형에 상부에서 불규칙 포자 구름을 방출함이 기록됨. 자체 이동 없이 반경 수km에 포자를 확산시키며, Silent Belt 형성의 주요 원인으로 분류됨. 반경 500m 접근 금지, 제거 시도 시 폭발적 포자 방출(2차 확산) 위험이 확인됨.</p>
         </article>
         <article class="term-card" data-type="aberrant">
-          <span>SPEC-008</span>
-          <h3>Spore Phantom</h3>
-          <p>S-TYPE 포자 집합체. 안개 속에서 인간형 실루엣을 형성하여 접근하며, 광원을 비추면 분산되었다가 어둠 속에서 재형성됨이 관측됨. 실체가 없어 물리 제거가 불가하며, 접근 시 포자 농도 급상승으로 흡입 감염 위험이 확인됨. 조명 유지·방독면 착용이 요구됨.</p>
+          <span data-i18n="arc24Tag">SPEC-008</span>
+          <h3 data-i18n="arc24Title">Spore Phantom</h3>
+          <p data-i18n="arc24Desc">S-TYPE 포자 집합체. 안개 속에서 인간형 실루엣을 형성하여 접근하며, 광원을 비추면 분산되었다가 어둠 속에서 재형성됨이 관측됨. 실체가 없어 물리 제거가 불가하며, 접근 시 포자 농도 급상승으로 흡입 감염 위험이 확인됨. 조명 유지·방독면 착용이 요구됨.</p>
         </article>
         <article class="term-card" data-type="aberrant">
-          <span>SPEC-011</span>
-          <h3>Shell Talker (쉘 토커)</h3>
-          <p>긴목 거북 형태의 대형 변이체(체장 1.6~1.8m)로 관측됨. 과거 포획·흡수한 대상의 음성을 저장했다가 재생하여 유인하는 음성 모방 행동이 기록됨("도와줘", "여기야" 등). 무장·인원·경계 수준을 관찰해 취약 대상을 선별하고, 사냥 실패 시 전술을 바꾸는 학습 행동이 확인됨. 아는 목소리에도 반응 금지, 무전으로 위치 선(先)확인이 요구됨. 기원 미확인.</p>
+          <span data-i18n="arc25Tag">SPEC-011</span>
+          <h3 data-i18n="arc25Title">Shell Talker (쉘 토커)</h3>
+          <p data-i18n="arc25Desc">긴목 거북 형태의 대형 변이체(체장 1.6~1.8m)로 관측됨. 과거 포획·흡수한 대상의 음성을 저장했다가 재생하여 유인하는 음성 모방 행동이 기록됨("도와줘", "여기야" 등). 무장·인원·경계 수준을 관찰해 취약 대상을 선별하고, 사냥 실패 시 전술을 바꾸는 학습 행동이 확인됨. 아는 목소리에도 반응 금지, 무전으로 위치 선(先)확인이 요구됨. 기원 미확인.</p>
         </article>
         <article class="term-card" data-type="aberrant">
-          <span>SPEC-012</span>
-          <h3>Blood Pit (블러드 핏)</h3>
-          <p>감염 구역 저지대에 고이는 적갈색 반고체 웅덩이. EV-Σ 변이에 실패한 개체 다수가 용해·합류하여 형성된 것으로 기록됨. 자체 이동·판단 능력은 없으나 유기체 접촉 시 점성이 급변하여 대상을 고착시키며, 장시간 방치 시 감염으로 이어짐이 확인됨. 정지 상태에서는 고인 피와 구분이 어려워, 저지대 진입 시 바닥 선확인·적갈색 액체 접근 금지가 권고됨.</p>
+          <span data-i18n="arc26Tag">SPEC-012</span>
+          <h3 data-i18n="arc26Title">Blood Pit (블러드 핏)</h3>
+          <p data-i18n="arc26Desc">감염 구역 저지대에 고이는 적갈색 반고체 웅덩이. EV-Σ 변이에 실패한 개체 다수가 용해·합류하여 형성된 것으로 기록됨. 자체 이동·판단 능력은 없으나 유기체 접촉 시 점성이 급변하여 대상을 고착시키며, 장시간 방치 시 감염으로 이어짐이 확인됨. 정지 상태에서는 고인 피와 구분이 어려워, 저지대 진입 시 바닥 선확인·적갈색 액체 접근 금지가 권고됨.</p>
         </article>
         <article class="term-card" data-type="aberrant">
-          <span>FIELD</span>
-          <h3>이변체 현장 대응 표준 수칙</h3>
-          <p>EV-Σ 개체의 환경 반응이 확인됨: 저온에서 개체는 Dormant(억제) 상태가 되나 이는 제거가 아니며, 고온 소각 시에만 구조 붕괴·사멸이 기록됨. 경질화 개체에 대한 총격은 무효이며 고온 소각만 유효한 것으로 확인됨. 감염 구역에서는 낯선·익숙한 음성 모두에 반응 금지, 접촉·이동 전 바닥과 주변 열감지 확인이 표준 수칙으로 권고됨.</p>
+          <span data-i18n="arc27Tag">FIELD</span>
+          <h3 data-i18n="arc27Title">이변체 현장 대응 표준 수칙</h3>
+          <p data-i18n="arc27Desc">EV-Σ 개체의 환경 반응이 확인됨: 저온에서 개체는 Dormant(억제) 상태가 되나 이는 제거가 아니며, 고온 소각 시에만 구조 붕괴·사멸이 기록됨. 경질화 개체에 대한 총격은 무효이며 고온 소각만 유효한 것으로 확인됨. 감염 구역에서는 낯선·익숙한 음성 모두에 반응 금지, 접촉·이동 전 바닥과 주변 열감지 확인이 표준 수칙으로 권고됨.</p>
         </article>
 
         <!-- ── 조직 · 세력 ── -->
         <article class="term-card" data-type="faction">
-          <span>WHITE-SHIELD</span>
-          <h3>화이트 실드 (White Shield)</h3>
-          <p>대한민국의 대(對)아베란트 체계를 지칭하는 공공 통용 명칭으로 확인됨. 내부 공식 편제명은 국가특수재난변이사령부(특재사, SDAC)로 기록됨. 대중·외신·타 국가는 특재사를 한국 자체 개발 체계로 인식하고 있음이 확인됨. 검역·신분 기록의 교차 검증 시스템이 강력하여 고급 위조물조차 현장 단계 적발 비율이 높은 것으로 기록됨.</p>
+          <span data-i18n="arc28Tag">WHITE-SHIELD</span>
+          <h3 data-i18n="arc28Title">화이트 실드 (White Shield)</h3>
+          <p data-i18n="arc28Desc">대한민국의 대(對)아베란트 체계를 지칭하는 공공 통용 명칭으로 확인됨. 내부 공식 편제명은 국가특수재난변이사령부(특재사, SDAC)로 기록됨. 대중·외신·타 국가는 특재사를 한국 자체 개발 체계로 인식하고 있음이 확인됨. 검역·신분 기록의 교차 검증 시스템이 강력하여 고급 위조물조차 현장 단계 적발 비율이 높은 것으로 기록됨.</p>
         </article>
         <article class="term-card" data-type="faction">
-          <span>DG</span>
-          <h3>대가 (大家 / DG) — 세력 관계</h3>
-          <p>한국 정부·특재사와 준공식 관계에 있는 기술·산업 축으로 기록됨. 국내 기술·산업 흐름의 상당 부분이 DG 축 아래에 놓여 있음이 확인됨. 회색 지대 일부 고급 상품이 DG 주변부의 묵인 영역인지 완전 외곽인지 구분이 모호하며, 특재사 일부 라인은 이 모호함을 관리 가능한 안정 장치로 간주한다는 비공식 견해가 존재함.</p>
+          <span data-i18n="arc29Tag">DG</span>
+          <h3 data-i18n="arc29Title">대가 (大家 / DG) — 세력 관계</h3>
+          <p data-i18n="arc29Desc">한국 정부·특재사와 준공식 관계에 있는 기술·산업 축으로 기록됨. 국내 기술·산업 흐름의 상당 부분이 DG 축 아래에 놓여 있음이 확인됨. 회색 지대 일부 고급 상품이 DG 주변부의 묵인 영역인지 완전 외곽인지 구분이 모호하며, 특재사 일부 라인은 이 모호함을 관리 가능한 안정 장치로 간주한다는 비공식 견해가 존재함.</p>
         </article>
         <article class="term-card" data-type="faction">
-          <span>MERIDIAN</span>
-          <h3>메리디언 그룹 (Meridian Group Global Inc.)</h3>
-          <p>2019년 합법 민간군사기업(PMC)으로 설립되어 스위스 취리히에 본사를 둔 글로벌 기업으로 등재됨. 정규 직원 4,000명 이상, 14개국 정부 및 다수 민간 기업을 고객으로 두며 PMC·물류공급·생물소재 사업부로 구성됨이 기록됨. COO Elena Richter가 실질 운영 책임자, CEO "ZERO"는 신원 미확인 상태로 확인됨. 봉쇄 구역 물자 공급에서 독점적 지위를 보유해 국가 단위 안보 위협으로 분류됨.</p>
+          <span data-i18n="arc30Tag">MERIDIAN</span>
+          <h3 data-i18n="arc30Title">메리디언 그룹 (Meridian Group Global Inc.)</h3>
+          <p data-i18n="arc30Desc">2019년 합법 민간군사기업(PMC)으로 설립되어 스위스 취리히에 본사를 둔 글로벌 기업으로 등재됨. 정규 직원 4,000명 이상, 14개국 정부 및 다수 민간 기업을 고객으로 두며 PMC·물류공급·생물소재 사업부로 구성됨이 기록됨. COO Elena Richter가 실질 운영 책임자, CEO "ZERO"는 신원 미확인 상태로 확인됨. 봉쇄 구역 물자 공급에서 독점적 지위를 보유해 국가 단위 안보 위협으로 분류됨.</p>
         </article>
         <article class="term-card" data-type="faction">
-          <span>MERIDIAN</span>
-          <h3>메리디언 글로벌 거점망 (한국 연계)</h3>
-          <p>취리히 법적 본사와 미국 Miami 실질 운영 허브를 중심으로 함부르크·두바이·싱가포르·상파울루 지역 허브 및 전 세계 저온 물류 네트워크를 운용함이 기록됨. 각국 봉쇄 구역 필수 물자 공급업체로서 정부 의존도 높은 독점적 지위가 확인됨. 한국 내에서는 일부 중간급 브로커가 냉장 컨테이너 개조·항만 하청 등 하청 물류망 말단에 포섭되어 있다는 정황이 보고됨.</p>
+          <span data-i18n="arc31Tag">MERIDIAN</span>
+          <h3 data-i18n="arc31Title">메리디언 글로벌 거점망 (한국 연계)</h3>
+          <p data-i18n="arc31Desc">취리히 법적 본사와 미국 Miami 실질 운영 허브를 중심으로 함부르크·두바이·싱가포르·상파울루 지역 허브 및 전 세계 저온 물류 네트워크를 운용함이 기록됨. 각국 봉쇄 구역 필수 물자 공급업체로서 정부 의존도 높은 독점적 지위가 확인됨. 한국 내에서는 일부 중간급 브로커가 냉장 컨테이너 개조·항만 하청 등 하청 물류망 말단에 포섭되어 있다는 정황이 보고됨.</p>
         </article>
         <article class="term-card" data-type="faction">
-          <span>PROMETHEUS</span>
-          <h3>프로메테우스 (Prometheus)</h3>
-          <p>정부 공식 체계 외부에서 기술·정보 흔적을 남기는 세력으로 확인됨. 협조 대상이 아니며, 감시·저지가 우선 방침으로 기록됨. 내부 구조·구성원·목적은 미확인 상태로 남아 있음.</p>
+          <span data-i18n="arc32Tag">PROMETHEUS</span>
+          <h3 data-i18n="arc32Title">프로메테우스 (Prometheus)</h3>
+          <p data-i18n="arc32Desc">정부 공식 체계 외부에서 기술·정보 흔적을 남기는 세력으로 확인됨. 협조 대상이 아니며, 감시·저지가 우선 방침으로 기록됨. 내부 구조·구성원·목적은 미확인 상태로 남아 있음.</p>
         </article>
         <article class="term-card" data-type="faction">
-          <span>GRAY</span>
-          <h3>회색 지대 경제 (Gray-Zone Economy)</h3>
-          <p>국제 이동의 구조적 마비와 감염 이력의 비소거라는 두 압력이 교차하는 지점에서 발생하는 중간 경제로 기록됨. 위조 검역·신분 문서, 정규 밖 Phase 0 탐지 키트, 봉쇄 구역 유래물(Containment-Origin Goods), 감염 이력 세탁, 밀항·국경 우회 서비스가 주요 상품군으로 확인됨. 한국은 국내 유출이 특재사 차단망에 억제되어 생산 허브가 아닌 소비·은닉 허브로 기능함이 확인됨.</p>
+          <span data-i18n="arc33Tag">GRAY</span>
+          <h3 data-i18n="arc33Title">회색 지대 경제 (Gray-Zone Economy)</h3>
+          <p data-i18n="arc33Desc">국제 이동의 구조적 마비와 감염 이력의 비소거라는 두 압력이 교차하는 지점에서 발생하는 중간 경제로 기록됨. 위조 검역·신분 문서, 정규 밖 Phase 0 탐지 키트, 봉쇄 구역 유래물(Containment-Origin Goods), 감염 이력 세탁, 밀항·국경 우회 서비스가 주요 상품군으로 확인됨. 한국은 국내 유출이 특재사 차단망에 억제되어 생산 허브가 아닌 소비·은닉 허브로 기능함이 확인됨.</p>
         </article>
         <article class="term-card" data-type="faction">
-          <span>CIVIL</span>
-          <h3>잔불 군단 (Ember Corps)</h3>
-          <p>Ashfall City 붕괴 생존자와 유가족이 결성한 자경단·복수 조직으로 기록됨. 전직 소방관 Marcus Cole "ASH"가 리더, 한국계 미국인 전직 간호사 Sarah Kim이 작전 담당으로 등재됨. 초기 방어적 구출·수색에서 점차 공격적으로 방식이 과격화되고 있음이 확인됨.</p>
+          <span data-i18n="arc34Tag">CIVIL</span>
+          <h3 data-i18n="arc34Title">잔불 군단 (Ember Corps)</h3>
+          <p data-i18n="arc34Desc">Ashfall City 붕괴 생존자와 유가족이 결성한 자경단·복수 조직으로 기록됨. 전직 소방관 Marcus Cole "ASH"가 리더, 한국계 미국인 전직 간호사 Sarah Kim이 작전 담당으로 등재됨. 초기 방어적 구출·수색에서 점차 공격적으로 방식이 과격화되고 있음이 확인됨.</p>
         </article>
         <article class="term-card" data-type="faction">
-          <span>WOLVES</span>
-          <h3>침묵의 늑대들 (Silent Wolves)</h3>
-          <p>러시아 Silent Belt 구역에서 살아남은 약탈·생존 집단으로 기록됨. 감염 구역 내부 정보에서 우위를 확보하고 있음이 확인됨. 봉쇄 구역 유래물의 전속 공급선으로 Meridian Group과 연결되며, 회색 지대 일반 유통망과는 섞이지 않는 것으로 확인됨.</p>
+          <span data-i18n="arc35Tag">WOLVES</span>
+          <h3 data-i18n="arc35Title">침묵의 늑대들 (Silent Wolves)</h3>
+          <p data-i18n="arc35Desc">러시아 Silent Belt 구역에서 살아남은 약탈·생존 집단으로 기록됨. 감염 구역 내부 정보에서 우위를 확보하고 있음이 확인됨. 봉쇄 구역 유래물의 전속 공급선으로 Meridian Group과 연결되며, 회색 지대 일반 유통망과는 섞이지 않는 것으로 확인됨.</p>
         </article>
         <article class="term-card" data-type="faction">
-          <span>HAEJINHOE</span>
-          <h3>해진회 (Haejinhoe)</h3>
-          <p>봉쇄선 인접 마을에서 야간 습격을 벌인 자칭 집단으로 기록됨. 방벽을 열어야 한다는 주장 하에 주민 대피소를 습격하고 일부는 통신 중계기를 먼저 파손한 것으로 확인됨. 민간 치안 사건이자 봉쇄선 인접 소요로 분류되어 지방청이 현장 기록을 요구하는 등 정부 대응이 이뤄짐. 현재 감시대상(WATCHED)으로 등재됨.</p>
+          <span data-i18n="arc36Tag">HAEJINHOE</span>
+          <h3 data-i18n="arc36Title">해진회 (Haejinhoe)</h3>
+          <p data-i18n="arc36Desc">봉쇄선 인접 마을에서 야간 습격을 벌인 자칭 집단으로 기록됨. 방벽을 열어야 한다는 주장 하에 주민 대피소를 습격하고 일부는 통신 중계기를 먼저 파손한 것으로 확인됨. 민간 치안 사건이자 봉쇄선 인접 소요로 분류되어 지방청이 현장 기록을 요구하는 등 정부 대응이 이뤄짐. 현재 감시대상(WATCHED)으로 등재됨.</p>
         </article>
 
         <!-- ── 세계 각지 ── -->
         <article class="term-card" data-type="region">
-          <span>USA</span>
-          <h3>미국 — 부분 봉쇄 구역</h3>
-          <p>미국은 EV-Σ 대응 등급 "부분 봉쇄"로 분류됨. 주요 오염 구역은 필라델피아(Z-Ω)와 캠던의 Ashfall City(Z-3)이며, 대변이체 특수부대 ARES Division과 민간 방역 기관 NBS(국가생물안보국)가 대응을 분담함. 필라델피아는 하룻밤 사이 봉쇄에 실패했고, Ashfall City는 도시 인프라가 생체 조직으로 전환되며 비가역적으로 붕괴한 것으로 기록됨. ORACLE 평가상 ARES 대응 성공률은 62%로 글로벌 최고치로 확인됨.</p>
+          <span data-i18n="arc37Tag">USA</span>
+          <h3 data-i18n="arc37Title">미국 — 부분 봉쇄 구역</h3>
+          <p data-i18n="arc37Desc">미국은 EV-Σ 대응 등급 "부분 봉쇄"로 분류됨. 주요 오염 구역은 필라델피아(Z-Ω)와 캠던의 Ashfall City(Z-3)이며, 대변이체 특수부대 ARES Division과 민간 방역 기관 NBS(국가생물안보국)가 대응을 분담함. 필라델피아는 하룻밤 사이 봉쇄에 실패했고, Ashfall City는 도시 인프라가 생체 조직으로 전환되며 비가역적으로 붕괴한 것으로 기록됨. ORACLE 평가상 ARES 대응 성공률은 62%로 글로벌 최고치로 확인됨.</p>
         </article>
         <article class="term-card" data-type="region">
-          <span>USA</span>
-          <h3>미국 민간 사회 — 내부 분열</h3>
-          <p>미국 민간 사회는 부분 공개 정책 하에서 만성적 불안 상태로 관측됨. 필라델피아·Ashfall 합산 피해 인구 약 190만 명 중 대피 확인은 34%에 그침. 정보 공백 속에서 다수의 음모론 클러스터와 정보 공개 시위·폭동이 확산되며, ORACLE은 미국 사회가 외부 위협보다 내부 분열에 의해 먼저 붕괴할 가능성이 높다고 평가함.</p>
+          <span data-i18n="arc38Tag">USA</span>
+          <h3 data-i18n="arc38Title">미국 민간 사회 — 내부 분열</h3>
+          <p data-i18n="arc38Desc">미국 민간 사회는 부분 공개 정책 하에서 만성적 불안 상태로 관측됨. 필라델피아·Ashfall 합산 피해 인구 약 190만 명 중 대피 확인은 34%에 그침. 정보 공백 속에서 다수의 음모론 클러스터와 정보 공개 시위·폭동이 확산되며, ORACLE은 미국 사회가 외부 위협보다 내부 분열에 의해 먼저 붕괴할 가능성이 높다고 평가함.</p>
         </article>
         <article class="term-card" data-type="region">
-          <span>JAPAN</span>
-          <h3>일본 — 제3의 개국</h3>
-          <p>일본의 EV-Σ 대응 등급은 YELLOW-GREEN(경계-안전)으로, 국내 확진 사례는 확인되지 않음. 다만 이시가키·미야코·오키나와 본섬 등 서남 도서를 해상 확산으로 상실했고, 이후 "류큐 해방 작전"으로 오키나와 본섬을 탈환함. 영토 상실 충격과 탈환 성공을 계기로 자위대의 "일본방위군" 개칭 등 "제3의 개국"으로 불리는 사회·제도 전환이 진행됨.</p>
+          <span data-i18n="arc39Tag">JAPAN</span>
+          <h3 data-i18n="arc39Title">일본 — 제3의 개국</h3>
+          <p data-i18n="arc39Desc">일본의 EV-Σ 대응 등급은 YELLOW-GREEN(경계-안전)으로, 국내 확진 사례는 확인되지 않음. 다만 이시가키·미야코·오키나와 본섬 등 서남 도서를 해상 확산으로 상실했고, 이후 "류큐 해방 작전"으로 오키나와 본섬을 탈환함. 영토 상실 충격과 탈환 성공을 계기로 자위대의 "일본방위군" 개칭 등 "제3의 개국"으로 불리는 사회·제도 전환이 진행됨.</p>
         </article>
         <article class="term-card" data-type="region">
-          <span>CHINA</span>
-          <h3>중국 — Red Veil 봉쇄</h3>
-          <p>중국의 EV-Σ 대응 등급은 "부분 봉쇄"이며, 주요 오염 구역은 허베이성·북한 접경의 Red Veil(Z-2)로 확인됨. 대변이체 부대 RDF(红龙部队)는 15,000명 이상으로 세계 최대 규모이나 대규모 화력 투사에 의존해 성공률은 41%로 기록됨. Red Veil 봉쇄에 국방예산의 약 30%가 투입되며, 내부 완전 정리보다 외부 확산 차단에 특화된 체계로 운용됨. 민간 방역·정보는 당 직속 기관 SFJ가 통제함.</p>
+          <span data-i18n="arc40Tag">CHINA</span>
+          <h3 data-i18n="arc40Title">중국 — Red Veil 봉쇄</h3>
+          <p data-i18n="arc40Desc">중국의 EV-Σ 대응 등급은 "부분 봉쇄"이며, 주요 오염 구역은 허베이성·북한 접경의 Red Veil(Z-2)로 확인됨. 대변이체 부대 RDF(红龙部队)는 15,000명 이상으로 세계 최대 규모이나 대규모 화력 투사에 의존해 성공률은 41%로 기록됨. Red Veil 봉쇄에 국방예산의 약 30%가 투입되며, 내부 완전 정리보다 외부 확산 차단에 특화된 체계로 운용됨. 민간 방역·정보는 당 직속 기관 SFJ가 통제함.</p>
         </article>
         <article class="term-card" data-type="region">
-          <span>EU</span>
-          <h3>유럽연합 — 통합 위기대응 체계</h3>
-          <p>EU는 베를린에 통합 위기대응본부를 창설하고 27개국 45,000명 규모의 공동 방역군(EU-JBDF)을 편성함. ORACLE 평가상 통합 대응 성공률은 54%로 개별 국가 평균(약 35%)을 상회함. 최대 경제·기술국인 독일이 예산의 약 40%를 부담하며 리더 역할을 맡고, "EV-Σ 사건 발생 시 30분 내 인접국 지원" 등 국경 초월 신속 대응 전술이 특징으로 기록됨.</p>
+          <span data-i18n="arc41Tag">EU</span>
+          <h3 data-i18n="arc41Title">유럽연합 — 통합 위기대응 체계</h3>
+          <p data-i18n="arc41Desc">EU는 베를린에 통합 위기대응본부를 창설하고 27개국 45,000명 규모의 공동 방역군(EU-JBDF)을 편성함. ORACLE 평가상 통합 대응 성공률은 54%로 개별 국가 평균(약 35%)을 상회함. 최대 경제·기술국인 독일이 예산의 약 40%를 부담하며 리더 역할을 맡고, "EV-Σ 사건 발생 시 30분 내 인접국 지원" 등 국경 초월 신속 대응 전술이 특징으로 기록됨.</p>
         </article>
         <article class="term-card" data-type="region">
-          <span>RUSSIA</span>
-          <h3>러시아 — 지역별 격리와 층층 방어</h3>
-          <p>러시아는 11개 시간대·85개 연방주체의 광역성으로 인해 "지역별 격리(REGIONAL ISOLATION)" 체계를 운용하며, 대응 성공률은 지역 편차가 극심해 평균 38%로 기록됨. 소비에트 군사 교리를 응용한 "층층 방어"와 시베리아 혹한을 이용한 "동계 봉쇄"가 핵심 전략임. 극동에서는 확산 중인 Silent Belt(DELAYED 진화 지대)를 방벽 부대가 경계·억제하며, 모스크바 중심 지역 성공률 78%에 비해 시베리아는 22%로 지역 격차가 큼.</p>
+          <span data-i18n="arc42Tag">RUSSIA</span>
+          <h3 data-i18n="arc42Title">러시아 — 지역별 격리와 층층 방어</h3>
+          <p data-i18n="arc42Desc">러시아는 11개 시간대·85개 연방주체의 광역성으로 인해 "지역별 격리(REGIONAL ISOLATION)" 체계를 운용하며, 대응 성공률은 지역 편차가 극심해 평균 38%로 기록됨. 소비에트 군사 교리를 응용한 "층층 방어"와 시베리아 혹한을 이용한 "동계 봉쇄"가 핵심 전략임. 극동에서는 확산 중인 Silent Belt(DELAYED 진화 지대)를 방벽 부대가 경계·억제하며, 모스크바 중심 지역 성공률 78%에 비해 시베리아는 22%로 지역 격차가 큼.</p>
         </article>
       </div>
     </section>
@@ -303,5 +308,6 @@
   </footer>
 
   <script src="./js/kor-init.js"></script>
+  <script src="./js/archive-i18n.js?v=1"></script>
 </body>
 </html>
