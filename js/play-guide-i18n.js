@@ -1,7 +1,7 @@
 (function () {
   const TRANSLATIONS = {
     en: {
-      title: "KR-INIT-001 Play Reading Manual | ORACLE MANUAL",
+      title: "Play Guide | TERMINAL SESSION",
       meta: "A KR-INIT-001 companion manual for TIU cardgame players: card decisions, DAY loop, logs, facilities, missions, and archive access.",
       text: {
         navKorea: "Operations Manual",
@@ -11,19 +11,19 @@
         navGuide: "Play Reading",
         manualTabWorld: "World Manual",
         manualTabPlay: "Play Reading",
-        heroTitle: "KR-INIT-001<br>Play Reading<br>Manual",
-        heroLead: "This manual assists newly assigned commanders in reading recurring card choices, resources, DAY, LOG, facilities, and mission information during play. Later-record endings and deep classified material are not covered.",
-        heroPrimary: "Check Session Loop",
-        heroGhost: "Screen Terms",
-        heroWorld: "World Manual",
+        heroTitle: "From the first choice<br>to the end of the day.",
+        heroLead: "Make decisions, watch the state of your branch, and hear from your officers at the end of the day. This guide walks you through your first session.",
+        heroPrimary: "Follow a day",
+        heroGhost: "Screen terms",
+        heroWorld: "Explore the world",
         console1Label: "Target",
         console1Value: "New commander",
         console2Label: "Reading Scope",
         console2Value: "DAY / ACT / LOG",
         console3Label: "Core Metrics",
         console3Value: "C / R / T / O",
-        console4Label: "Excluded Data",
-        console4Value: "Deep classified",
+        console4Label: "Guide policy",
+        console4Value: "No ending spoilers",
         order1Title: "Read card text",
         order1Desc: "Cross-check loss, gain, and follow-up signals before selection",
         order2Title: "Check four metrics",
@@ -123,7 +123,7 @@
         access3Desc: "LOG and ending records accumulate as comparison data for later judgments.",
         access4Title: "Do not force bypass",
         access4Desc: "Lock marks indicate records outside current clearance. Forced reading unavailable before displayed conditions.",
-        returnWorld: "Return To World Manual",
+        returnWorld: "Explore the world",
         returnTop: "Review Session Loop",
         footerLock: "Non-spoiler reading manual for TIU cardgame players."
       },
@@ -138,7 +138,7 @@
       }
     },
     ja: {
-      title: "KR-INIT-001プレイ判読教本 | ORACLE MANUAL",
+      title: "プレイガイド | TERMINAL SESSION",
       meta: "TIUカードゲームのプレイヤー向けに、KR-INIT-001のカード選択、DAY進行、ログ、施設、任務、アーカイブを整理した判読教本です。",
       text: {
         navKorea: "運用教本",
@@ -148,19 +148,19 @@
         navGuide: "プレイ判読",
         manualTabWorld: "世界観教本",
         manualTabPlay: "プレイ判読",
-        heroTitle: "KR-INIT-001<br>プレイ判読<br>教本",
-        heroLead: "本教本は、カードゲーム進行中に反復表示される選択、資源、DAY、LOG、施設、任務情報を新任指揮官基準で判読するための補助文書。後続記録の結末と深層機密は扱わない。",
-        heroPrimary: "進行ループ確認",
-        heroGhost: "画面用語",
-        heroWorld: "世界観教本",
+        heroTitle: "最初の選択から、<br>一日の終わりまで。",
+        heroLead: "カードを選び、支部の状況を確かめ、一日の終わりに幹部の話を聞く。初めてのプレイに必要な流れを順に案内します。",
+        heroPrimary: "一日の流れを見る",
+        heroGhost: "画面の用語",
+        heroWorld: "世界観を読む",
         console1Label: "対象",
         console1Value: "新任指揮官",
         console2Label: "判読範囲",
         console2Value: "DAY / ACT / LOG",
         console3Label: "核心指標",
         console3Value: "C / R / T / O",
-        console4Label: "除外情報",
-        console4Value: "深層機密",
+        console4Label: "案内方針",
+        console4Value: "結末のネタバレなし",
         order1Title: "カード文面確認",
         order1Desc: "選択前に損失・利益・後続信号を照合",
         order2Title: "4大資源確認",
@@ -260,7 +260,7 @@
         access3Desc: "LOGとエンディング記録は次の判断の比較資料として蓄積。",
         access4Title: "迂回接近禁止",
         access4Desc: "ロック表示は現在権限外記録。表示条件充足前の強制判読不可。",
-        returnWorld: "世界観教本へ戻る",
+        returnWorld: "世界観を読む",
         returnTop: "進行ループ再確認",
         footerLock: "TIUカードゲームプレイヤー向けの非スポイラー判読教本。"
       },
@@ -296,11 +296,11 @@
   function applyLang(lang) {
     const next = TRANSLATIONS[lang] ? lang : 'ko';
     document.documentElement.lang = next;
-    document.title = next === 'ko' ? 'KR-INIT-001 플레이 판독 교본 | ORACLE MANUAL' : TRANSLATIONS[next].title;
+    document.title = next === 'ko' ? '플레이 가이드 | TERMINAL SESSION' : TRANSLATIONS[next].title;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) {
       meta.setAttribute('content', next === 'ko'
-        ? 'TIU 카드게임 플레이어를 위한 KR-INIT-001 카드 선택, DAY 루프, 로그, 시설, 미션 판독 교본.'
+        ? '첫 선택부터 하루의 끝까지. TERMINAL SESSION의 카드 선택, 지표, 대화와 기록을 안내합니다.'
         : TRANSLATIONS[next].meta);
     }
 

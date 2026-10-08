@@ -6,7 +6,7 @@
   <title>용어 색인 · SPEC 표본 | TERMINAL SESSION</title>
   <meta name="description" content="카드 지휘 게임 TERMINAL SESSION의 용어 색인 및 이변체 SPEC 표본 자료.">
   <link rel="icon" href="./assets/brand/oracle-logo.png">
-  <meta name="theme-color" content="#050808">
+  <meta name="theme-color" content="#080f0d">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="TERMINAL SESSION — TIU">
   <meta property="og:title" content="용어 색인 · SPEC 표본 — TERMINAL SESSION">
@@ -16,55 +16,37 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="./assets/fonts/fonts.css?v=1">
   <link rel="stylesheet" href="./css/manual-oracle.css?v=12">
+  <link rel="stylesheet" href="./css/archive-theme.css?v=2">
 </head>
 <body class="kor-init">
   <div class="grid-backdrop" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a class="brand" href="./manual.html" aria-label="KR-INIT-001 메인으로 이동">
-      <span class="brand-mark" aria-hidden="true">
-        <img src="./assets/brand/oracle-logo.png" alt="">
-      </span>
-      <span>
-        <strong>KR-INIT-001</strong>
-        <small>ORACLE MANUAL</small>
-      </span>
-    </a>
-    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
-      <span class="menu-bar"></span>
-      <span class="menu-bar"></span>
-      <span class="menu-bar"></span>
-    </button>
-    <nav class="nav" aria-label="교본 카테고리">
-      <a href="./manual.html">운용 교본</a>
-      <a href="./world.html">세계관 · 인물</a>
-      <a class="is-current" href="./database.html" aria-current="page">용어 · SPEC</a>
-      <a href="./play-guide.html">플레이 판독</a>
-      <a href="./archive.html">ARCHIVE</a>
+    <a class="brand" href="./lore/" aria-label="TIU 세계관 처음으로"><span><strong>TIU</strong><small>WORLD ARCHIVE</small></span></a>
+    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="companion-nav"><span data-site-copy="menu">메뉴</span></button>
+    <nav class="nav" id="companion-nav" aria-label="게임 안내"><a href="./manual.html" data-site-copy="nav0">운용 안내</a>
+<a href="./world.html" data-site-copy="nav1">세계관 · 인물</a>
+<a href="./database.html" class="is-current" aria-current="page" data-site-copy="nav2">용어 · SPEC</a>
+<a href="./play-guide.html" data-site-copy="nav3">플레이 가이드</a>
+<a href="./archive.html" data-site-copy="nav4">아카이브</a>
+
+      <div class="lang-switch" aria-label="언어 선택">
+        <button type="button" class="lang-button is-active" data-lang="ko" aria-pressed="true">KO</button>
+        <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" class="lang-button" data-lang="ja" aria-pressed="false">JA</button>
+      </div>
     </nav>
-    <a class="header-demo" href="https://tiu-art.itch.io/terminal-session-demo" target="_blank" rel="noopener">[ DEMO ]</a>
-    <div class="lang-switch" aria-label="언어 선택">
-      <button type="button" class="lang-button is-active" data-lang="ko" aria-pressed="true">KO</button>
-      <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
-      <button type="button" class="lang-button" data-lang="ja" aria-pressed="false">JA</button>
-    </div>
+    <a class="header-demo" href="./index.html">TERMINAL SESSION</a>
   </header>
 
-  <nav class="manual-tabs section-shell" aria-label="교본 카테고리">
-    <a class="manual-tab" href="./manual.html">운용 교본</a>
-    <a class="manual-tab" href="./world.html">세계관 · 인물</a>
-    <a class="manual-tab is-current" href="./database.html" aria-current="page">용어 · SPEC</a>
-    <a class="manual-tab" href="./play-guide.html">플레이 판독</a>
-  <a class="manual-tab" href="./archive.html">ARCHIVE</a>
-  </nav>
-
   <main id="top">
+    <section class="document-intro section-shell"><p class="eyebrow">FIELD REFERENCE</p><h1 data-site-copy="databaseTitle">낯선 이름을,<br>읽을 수 있도록.</h1><p class="intro-lead" data-site-copy="databaseLead">보고서에 반복되는 지명과 조직명, 이변체의 SPEC 분류를 찾아보세요. 필요한 항목부터 읽어도 좋습니다.</p></section>
     <section id="glossary" class="section-shell glossary-section">
       <div class="section-heading">
         <p class="eyebrow">TERM CHECK</p>
         <h2>지휘관용 용어 색인</h2>
-        <p>오라클 명령문과 운용 로그에서 반복 확인되는 명칭 정리본. 신임 지휘관 열람용.</p>
+        <p>지명, 이변체, 조직과 기업을 분류별로 살펴보세요.</p>
       </div>
 
       <div class="filter-bar" role="group" aria-label="용어 분류 필터">
@@ -230,7 +212,8 @@
     <span>ORACLE SYSTEM MANUAL / CLASSIFIED DISTRIBUTION</span>
   </footer>
 
-  <script src="./js/kor-init-i18n.js?v=3"></script>
+  <script src="./js/kor-init-i18n.js?v=20261008b"></script>
   <script src="./js/kor-init.js"></script>
+  <script src="./js/site-chrome.js?v=1"></script>
 </body>
 </html>

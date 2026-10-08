@@ -6,7 +6,7 @@
   <title>한국권 배경 · 인물 · 절차 | TERMINAL SESSION</title>
   <meta name="description" content="카드 지휘 게임 TERMINAL SESSION의 한국권 방벽, Phase, 주요 세력, 핵심 인원, 신임 지휘관 표준 절차 안내.">
   <link rel="icon" href="./assets/brand/oracle-logo.png">
-  <meta name="theme-color" content="#050808">
+  <meta name="theme-color" content="#080f0d">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="TERMINAL SESSION — TIU">
   <meta property="og:title" content="한국권 배경 · 인물 · 절차 — TERMINAL SESSION">
@@ -16,48 +16,29 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="./assets/fonts/fonts.css?v=1">
   <link rel="stylesheet" href="./css/manual-oracle.css?v=12">
+  <link rel="stylesheet" href="./css/archive-theme.css?v=2">
 </head>
 <body class="kor-init">
   <div class="grid-backdrop" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a class="brand" href="./manual.html" aria-label="KR-INIT-001 메인으로 이동">
-      <span class="brand-mark" aria-hidden="true">
-        <img src="./assets/brand/oracle-logo.png" alt="">
-      </span>
-      <span>
-        <strong>KR-INIT-001</strong>
-        <small>ORACLE MANUAL</small>
-      </span>
-    </a>
-    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
-      <span class="menu-bar"></span>
-      <span class="menu-bar"></span>
-      <span class="menu-bar"></span>
-    </button>
-    <nav class="nav" aria-label="교본 카테고리">
-      <a href="./manual.html">운용 교본</a>
-      <a class="is-current" href="./world.html" aria-current="page">세계관 · 인물</a>
-      <a href="./database.html">용어 · SPEC</a>
-      <a href="./play-guide.html">플레이 판독</a>
-      <a href="./archive.html">ARCHIVE</a>
-    </nav>
-    <a class="header-demo" href="https://tiu-art.itch.io/terminal-session-demo" target="_blank" rel="noopener">[ DEMO ]</a>
-    <div class="lang-switch" aria-label="언어 선택">
-      <button type="button" class="lang-button is-active" data-lang="ko" aria-pressed="true">KO</button>
-      <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
-      <button type="button" class="lang-button" data-lang="ja" aria-pressed="false">JA</button>
-    </div>
-  </header>
+    <a class="brand" href="./lore/" aria-label="TIU 세계관 처음으로"><span><strong>TIU</strong><small>WORLD ARCHIVE</small></span></a>
+    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="companion-nav"><span data-site-copy="menu">메뉴</span></button>
+    <nav class="nav" id="companion-nav" aria-label="게임 안내"><a href="./manual.html" data-site-copy="nav0">운용 안내</a>
+<a href="./world.html" class="is-current" aria-current="page" data-site-copy="nav1">세계관 · 인물</a>
+<a href="./database.html" data-site-copy="nav2">용어 · SPEC</a>
+<a href="./play-guide.html" data-site-copy="nav3">플레이 가이드</a>
+<a href="./archive.html" data-site-copy="nav4">아카이브</a>
 
-  <nav class="manual-tabs section-shell" aria-label="교본 카테고리">
-    <a class="manual-tab" href="./manual.html">운용 교본</a>
-    <a class="manual-tab is-current" href="./world.html" aria-current="page">세계관 · 인물</a>
-    <a class="manual-tab" href="./database.html">용어 · SPEC</a>
-    <a class="manual-tab" href="./play-guide.html">플레이 판독</a>
-  <a class="manual-tab" href="./archive.html">ARCHIVE</a>
-  </nav>
+      <div class="lang-switch" aria-label="언어 선택">
+        <button type="button" class="lang-button is-active" data-lang="ko" aria-pressed="true">KO</button>
+        <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" class="lang-button" data-lang="ja" aria-pressed="false">JA</button>
+      </div>
+    </nav>
+    <a class="header-demo" href="./index.html">TERMINAL SESSION</a>
+  </header>
 
   <nav class="page-anchors section-shell" aria-label="페이지 내 이동">
     <a href="#universe">UNIVERSE</a>
@@ -67,11 +48,12 @@
   </nav>
 
   <main id="top">
+    <section class="document-intro section-shell"><p class="eyebrow">WORLD / PEOPLE</p><h1 data-site-copy="worldTitle">방벽 안의 세계,<br>그곳의 사람들.</h1><p class="intro-lead" data-site-copy="worldLead">재난 이후의 한국권과 ORACLE 한국지부. 지휘관이 마주할 장소, 조직, 그리고 사람들을 소개합니다.</p></section>
     <section id="universe" class="section-shell lore-section">
       <div class="section-heading">
         <p class="eyebrow">UNIVERSE PRIMER</p>
-        <h2>TIU 유니버스 — 세계 상황 요약</h2>
-        <p>이 유니버스를 처음 접하는 열람자를 위한 최소 브리핑입니다. 세부 기록은 아래 인물 파일과 용어 색인에서 확장됩니다.</p>
+        <h2>이 세계를 이해하는 네 가지 이름</h2>
+        <p>재난과 이변체, 한국권과 ORACLE. 먼저 이 네 가지를 알아두면 인물과 사건의 기록을 읽기 쉬워집니다.</p>
       </div>
       <div class="lore-grid">
         <article class="lore-card">
@@ -328,7 +310,8 @@
     <a href="./lore/" lang="en">TIU WORLD ARCHIVE</a>
   </footer>
 
-  <script src="./js/kor-init-i18n.js?v=3"></script>
+  <script src="./js/kor-init-i18n.js?v=20261008b"></script>
   <script src="./js/kor-init.js"></script>
+  <script src="./js/site-chrome.js?v=1"></script>
 </body>
 </html>

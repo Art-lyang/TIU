@@ -14,3 +14,23 @@
 
 /* First visual comparison: retain the reference hero and compact overview rhythm. */
 @media(min-width:851px){.hero-inner{padding-bottom:28px}.hero h1{font-size:clamp(68px,6.65vw,92px);line-height:1.04}.hero-desc{margin-top:18px;font-size:18px}.hero .eyebrow{margin-bottom:12px}.hero .button{margin-top:18px;min-height:50px;padding-block:10px}.store-link{min-height:44px}.overview.section-pad{padding-block:40px}.record-excerpt h3{font-size:clamp(30px,3.2vw,43px);line-height:1.35}.scenes{padding-top:40px}}
+
+/* Keep long public records readable without native horizontal scrollbar chrome. */
+html { color-scheme: dark; }
+* { scrollbar-color: #466b58 #0b1510; scrollbar-width: thin; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0b1510; }
+::-webkit-scrollbar-thumb { background: #466b58; border: 2px solid #0b1510; border-radius: 8px; }
+::-webkit-scrollbar-button { display: none; }
+.cell-label { display: none; }
+@media (max-width: 640px) {
+  .table-wrap { overflow: visible; }
+  .record-table { display: block; min-width: 0; width: 100%; }
+  .record-table thead { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .record-table tbody { display: block; }
+  .record-table tbody tr { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .record-table tbody tr:first-child { padding-top: 0; }
+  .record-table td { display: grid; grid-template-columns: 76px minmax(0,1fr); gap: 14px; border: 0; padding: 7px 0; font-size: 13px; }
+  .record-table td .cell-label { display: block; color: var(--muted); font-size: 11px; padding-top: 2px; }
+  .record-table td > span:last-child { min-width: 0; }
+}

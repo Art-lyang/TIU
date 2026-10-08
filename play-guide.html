@@ -3,90 +3,74 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>플레이 판독 교본 | TERMINAL SESSION</title>
-  <meta name="description" content="카드 지휘 게임 TERMINAL SESSION 플레이어를 위한 카드 선택, DAY 루프, 로그, 시설, 미션 판독 교본.">
+  <title>플레이 가이드 | TERMINAL SESSION</title>
+  <meta name="description" content="첫 선택부터 하루의 끝까지. TERMINAL SESSION의 카드 선택, 지표, 대화와 기록을 안내합니다.">
   <link rel="icon" href="./assets/brand/oracle-logo.png">
-  <meta name="theme-color" content="#050808">
+  <meta name="theme-color" content="#080f0d">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="TERMINAL SESSION — TIU">
-  <meta property="og:title" content="플레이 판독 교본 — TERMINAL SESSION">
-  <meta property="og:description" content="한국 SF 카드 지휘 게임 TERMINAL SESSION의 플레이 판독 교본. 무료 데모 플레이 가능.">
+  <meta property="og:title" content="플레이 가이드 — TERMINAL SESSION">
+  <meta property="og:description" content="카드 선택부터 보고와 대화까지, 첫 지휘를 위한 플레이 가이드.">
   <meta property="og:url" content="https://art-lyang.github.io/TIU/play-guide.html">
   <meta property="og:image" content="https://art-lyang.github.io/TIU/assets/game/release-keyart.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="./assets/fonts/fonts.css?v=1">
   <link rel="stylesheet" href="./css/manual-oracle.css?v=12">
+  <link rel="stylesheet" href="./css/archive-theme.css?v=2">
 </head>
 <body class="kor-init play-guide">
   <div class="grid-backdrop" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a class="brand" href="./manual.html#top" aria-label="KR-INIT-001 세계관 교본으로 이동" data-i18n-aria="brandAria">
-      <span class="brand-mark" aria-hidden="true">
-        <img src="./assets/brand/oracle-logo.png" alt="">
-      </span>
-      <span>
-        <strong>KR-INIT-001</strong>
-        <small>ORACLE MANUAL</small>
-      </span>
-    </a>
-    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
-      <span class="menu-bar"></span>
-      <span class="menu-bar"></span>
-      <span class="menu-bar"></span>
-    </button>
-    <nav class="nav" aria-label="교본 카테고리" data-i18n-aria="navAria">
-      <a href="./manual.html" data-i18n="navKorea">운용 교본</a>
-      <a href="./world.html" data-i18n="navPersonnel">세계관 · 인물</a>
-      <a href="./database.html" data-i18n="navGlossary">용어 · SPEC</a>
-      <a class="is-current" href="./play-guide.html" aria-current="page" data-i18n="navGuide">플레이 판독</a>
-      <a href="./archive.html">ARCHIVE</a>
-    </nav>
-    <a class="header-demo" href="https://tiu-art.itch.io/terminal-session-demo" target="_blank" rel="noopener">[ DEMO ]</a>
-    <div class="lang-switch" aria-label="언어 선택" data-i18n-aria="langAria">
-      <button type="button" class="lang-button is-active" data-lang="ko" aria-pressed="true">KO</button>
-      <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
-      <button type="button" class="lang-button" data-lang="ja" aria-pressed="false">JA</button>
-    </div>
-  </header>
+    <a class="brand" href="./lore/" aria-label="TIU 세계관 처음으로"><span><strong>TIU</strong><small>WORLD ARCHIVE</small></span></a>
+    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="companion-nav"><span data-site-copy="menu">메뉴</span></button>
+    <nav class="nav" id="companion-nav" aria-label="게임 안내"><a href="./manual.html" data-site-copy="nav0">운용 안내</a>
+<a href="./world.html" data-site-copy="nav1">세계관 · 인물</a>
+<a href="./database.html" data-site-copy="nav2">용어 · SPEC</a>
+<a href="./play-guide.html" class="is-current" aria-current="page" data-site-copy="nav3">플레이 가이드</a>
+<a href="./archive.html" data-site-copy="nav4">아카이브</a>
 
-  <nav class="manual-tabs section-shell" aria-label="교본 카테고리" data-i18n-aria="tabAria">
-    <a class="manual-tab" href="./manual.html">운용 교본</a>
-    <a class="manual-tab" href="./world.html">세계관 · 인물</a>
-    <a class="manual-tab" href="./database.html">용어 · SPEC</a>
-    <a class="manual-tab is-current" href="./play-guide.html" aria-current="page" data-i18n="manualTabPlay">플레이 판독</a>
-  <a class="manual-tab" href="./archive.html">ARCHIVE</a>
-  </nav>
+      <div class="lang-switch" aria-label="언어 선택">
+        <button type="button" class="lang-button is-active" data-lang="ko" aria-pressed="true">KO</button>
+        <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" class="lang-button" data-lang="ja" aria-pressed="false">JA</button>
+      </div>
+    </nav>
+    <a class="header-demo" href="./index.html">TERMINAL SESSION</a>
+  </header>
 
   <main id="top">
     <section class="hero section-shell">
       <div class="hero-copy">
-        <p class="eyebrow">PLAY INTERPRETATION MANUAL</p>
-        <h1 data-i18n="heroTitle" data-i18n-html>KR-INIT-001<br>플레이 판독<br>교본</h1>
-        <p class="hero-lead" data-i18n="heroLead">
-          본 교본은 카드게임 진행 중 반복 노출되는 선택, 자원, DAY, LOG, 시설, 미션 정보를 신임 지휘관 기준으로 판독하기 위한 보조 문서임.
-          후속 기록의 결말과 심층 기밀은 다루지 않음.
-        </p>
+        <p class="eyebrow">TERMINAL SESSION / PLAY GUIDE</p>
+        <h1 data-i18n="heroTitle" data-i18n-html>첫 선택부터,<br>하루의 끝까지.</h1>
+        <p class="hero-lead" data-i18n="heroLead">카드를 고르고, 지부의 상태를 살피고, 하루가 끝나면 간부들의 이야기를 듣습니다. 첫 플레이에 필요한 흐름을 차근차근 안내합니다.</p>
         <div class="hero-actions" aria-label="빠른 이동" data-i18n-aria="actionsAria">
-          <a class="primary-action" href="#cycle" data-i18n="heroPrimary">진행 루프 확인</a>
-          <a class="ghost-action" href="#screen" data-i18n="heroGhost">화면 용어</a>
-          <a class="ghost-action" href="./manual.html" data-i18n="heroWorld">세계관 교본</a>
+          <a class="primary-action" href="#cycle" data-i18n="heroPrimary">하루의 흐름 보기</a>
+          <a class="ghost-action" href="#screen" data-i18n="heroGhost">화면 용어 찾기</a>
+          <a class="ghost-action" href="./lore/" data-i18n="heroWorld">세계관 둘러보기</a>
         </div>
       </div>
 
-      <aside class="guide-console" aria-label="플레이 판독 요약 콘솔" data-i18n-aria="consoleAria">
+      <figure class="guide-scene">
+        <img src="./assets/game/brief-base.jpg" width="900" height="600" alt="한국지부 통제실에 모인 네 명의 간부" data-site-alt="briefAlt" fetchpriority="high">
+        <figcaption><span>ORACLE / KOREA BRANCH</span><span data-site-copy="briefCaption">당신의 판단을 기다리는 사람들</span></figcaption>
+      </figure>
+    </section>
+
+    <details class="quick-check section-shell"><summary data-site-copy="checklist">첫 플레이 체크리스트</summary><aside class="guide-console" aria-label="플레이 판독 요약 콘솔" data-i18n-aria="consoleAria">
         <div class="console-header">
           <span>ORACLE PLAY MANUAL</span>
           <strong>NO ENDING SPOILER</strong>
         </div>
         <dl class="console-grid">
           <div>
-            <dt data-i18n="console1Label">대상</dt>
-            <dd data-i18n="console1Value">신규 지휘관</dd>
+            <dt data-i18n="console1Label">추천 대상</dt>
+            <dd data-i18n="console1Value">처음 부임한 지휘관</dd>
           </div>
           <div>
-            <dt data-i18n="console2Label">판독 범위</dt>
+            <dt data-i18n="console2Label">안내 범위</dt>
             <dd data-i18n="console2Value">DAY / ACT / LOG</dd>
           </div>
           <div>
@@ -94,71 +78,70 @@
             <dd data-i18n="console3Value">C / R / T / O</dd>
           </div>
           <div>
-            <dt data-i18n="console4Label">제외 정보</dt>
-            <dd data-i18n="console4Value">심층 기밀</dd>
+            <dt data-i18n="console4Label">안내 원칙</dt>
+            <dd data-i18n="console4Value">결말 스포일러 없음</dd>
           </div>
         </dl>
         <div class="facility-map" aria-label="첫 플레이 권장 순서" data-i18n-aria="orderAria">
           <div class="map-row">
             <span>01</span>
-            <strong data-i18n="order1Title">카드 문구 확인</strong>
-            <em data-i18n="order1Desc">선택 전 손실·이득·후속 신호 대조</em>
+            <strong data-i18n="order1Title">선택지를 먼저 읽기</strong>
+            <em data-i18n="order1Desc">지금의 이득과 나중의 영향을 함께 살펴보세요.</em>
           </div>
           <div class="map-row">
             <span>02</span>
-            <strong data-i18n="order2Title">4대 자원 확인</strong>
-            <em data-i18n="order2Desc">0 도달 위험 지표 우선 안정화</em>
+            <strong data-i18n="order2Title">네 가지 지표 살피기</strong>
+            <em data-i18n="order2Desc">0에 가까워진 지표부터 안정시키세요.</em>
           </div>
           <div class="map-row">
             <span>03</span>
-            <strong data-i18n="order3Title">이브닝 허브 확인</strong>
-            <em data-i18n="order3Desc">하루 1명 대화, 신뢰·단서 기록</em>
+            <strong data-i18n="order3Title">하루 끝에 대화하기</strong>
+            <em data-i18n="order3Desc">간부 한 명의 이야기를 듣고 단서를 모으세요.</em>
           </div>
           <div class="map-row locked">
             <span>04</span>
-            <strong data-i18n="order4Title">잠금 기록 보류</strong>
-            <em data-i18n="order4Desc">권한 상승 또는 LOG 확보 후 재열람</em>
+            <strong data-i18n="order4Title">잠긴 기록은 나중에</strong>
+            <em data-i18n="order4Desc">새 기록을 얻거나 조건을 갖추면 다시 확인하세요.</em>
           </div>
         </div>
-      </aside>
-    </section>
+      </aside></details>
 
     <section id="cycle" class="section-shell quick-brief">
       <div class="section-heading">
         <p class="eyebrow">SESSION LOOP</p>
-        <h2 data-i18n="cycleTitle">1일 진행 루프</h2>
-        <p data-i18n="cycleLead">세션은 카드 판단과 보고 축적의 반복으로 진행됨. 각 DAY의 작은 손실이 후속 기록과 현장 조건으로 이월됨.</p>
+        <h2 data-i18n="cycleTitle">지휘관의 하루는 이렇게 흐릅니다</h2>
+        <p data-i18n="cycleLead">오늘 내린 판단은 지부의 상태를 바꾸고, 다음 보고에 흔적을 남깁니다. 작은 변화부터 눈여겨보세요.</p>
       </div>
       <div class="cycle-grid">
         <article class="cycle-step">
           <span>01</span>
-          <strong data-i18n="cycle1Title">카드 수신</strong>
-          <p data-i18n="cycle1Desc">상황, 요청, 이상 징후가 카드 단위로 표시됨. 문구와 태그 우선 확인.</p>
+          <strong data-i18n="cycle1Title">카드 읽기</strong>
+          <p data-i18n="cycle1Desc">들어온 요청과 현장의 이상 징후를 확인합니다.</p>
         </article>
         <article class="cycle-step">
           <span>02</span>
-          <strong data-i18n="cycle2Title">좌우 판단</strong>
-          <p data-i18n="cycle2Desc">왼쪽·오른쪽 선택이 지표, LOG, 후속 카드 조건에 반영됨.</p>
+          <strong data-i18n="cycle2Title">선택하기</strong>
+          <p data-i18n="cycle2Desc">좌우 선택지 중 하나를 골라 지시를 내립니다.</p>
         </article>
         <article class="cycle-step">
           <span>03</span>
-          <strong data-i18n="cycle3Title">자원 변동</strong>
-          <p data-i18n="cycle3Desc">봉쇄·자원·신뢰·평가 변화 확인. 임계 지표 우선 복구.</p>
+          <strong data-i18n="cycle3Title">지표 살피기</strong>
+          <p data-i18n="cycle3Desc">봉쇄·자원·신뢰·평가가 어떻게 달라졌는지 살핍니다.</p>
         </article>
         <article class="cycle-step">
           <span>04</span>
-          <strong data-i18n="cycle4Title">보고 수신</strong>
-          <p data-i18n="cycle4Desc">일일 보고, 뉴스, 경고 토스트가 선택 결과를 재분류함.</p>
+          <strong data-i18n="cycle4Title">보고 확인하기</strong>
+          <p data-i18n="cycle4Desc">보고와 뉴스에서 선택이 남긴 결과를 확인합니다.</p>
         </article>
         <article class="cycle-step">
           <span>05</span>
-          <strong data-i18n="cycle5Title">이브닝 허브</strong>
-          <p data-i18n="cycle5Desc">간부 1명과 대화 가능. 신뢰와 조사 단서가 축적됨.</p>
+          <strong data-i18n="cycle5Title">간부와 대화하기</strong>
+          <p data-i18n="cycle5Desc">하루에 한 명, 간부의 이야기를 듣고 단서를 얻습니다.</p>
         </article>
         <article class="cycle-step">
           <span>06</span>
-          <strong data-i18n="cycle6Title">다음 DAY</strong>
-          <p data-i18n="cycle6Desc">LOG, 시설, 미션 조건을 보존한 채 다음 날로 진행.</p>
+          <strong data-i18n="cycle6Title">다음 날로</strong>
+          <p data-i18n="cycle6Desc">쌓인 기록과 시설 상태를 안고 새로운 하루를 맞습니다.</p>
         </article>
       </div>
     </section>
@@ -166,25 +149,28 @@
     <section id="card" class="section-shell context-section">
       <div class="section-heading">
         <p class="eyebrow">CARD DECODER</p>
-        <h2 data-i18n="cardTitle">카드 명령문 판독</h2>
-        <p data-i18n="cardLead">선택지는 정답 표시가 아님. 비용, 지연 효과, 기록 해금 가능성 동시 대조 필요.</p>
+        <h2 data-i18n="cardTitle">선택지 너머의 결과를 읽는 법</h2>
+        <p data-i18n="cardLead">모든 것을 지킬 수 있는 선택은 드뭅니다. 당장의 변화와 앞으로 남을 기록을 함께 생각해 보세요.</p>
       </div>
+      <div class="card-walkthrough">
+        <figure class="game-capture"><img src="./assets/game/play-command.png" width="1080" height="1920" loading="lazy" alt="봉쇄·자원·신뢰·평가 지표와 카드의 두 선택지가 보이는 실제 게임 화면" data-site-alt="captureAlt"><figcaption data-site-copy="captureCaption">실제 게임 화면 · 네 가지 지표와 두 개의 선택지</figcaption></figure>
       <div class="decoder-grid">
         <article class="decoder-card">
           <span data-i18n="card1Label">IMMEDIATE DELTA</span>
-          <strong data-i18n="card1Title">즉시 변화</strong>
-          <p data-i18n="card1Desc">표시 지표가 즉시 변동. 낮은 지표가 있을 경우 이득보다 붕괴 방지가 우선.</p>
+          <strong data-i18n="card1Title">지금 달라지는 것</strong>
+          <p data-i18n="card1Desc">선택에 따라 네 가지 지표가 오르거나 내려갑니다. 낮아진 지표가 있다면 더 큰 손실을 막는 일이 먼저입니다.</p>
         </article>
         <article class="decoder-card">
           <span data-i18n="card2Label">DELAYED RECORD</span>
-          <strong data-i18n="card2Title">지연 결과</strong>
-          <p data-i18n="card2Desc">당일 손익이 작아도 다음 DAY 보고, 뉴스, 인물 대화로 재등장 가능.</p>
+          <strong data-i18n="card2Title">나중에 돌아오는 것</strong>
+          <p data-i18n="card2Desc">당장은 조용한 선택도 다음 날의 보고나 뉴스, 인물과의 대화에서 다시 모습을 드러낼 수 있습니다.</p>
         </article>
         <article class="decoder-card">
           <span data-i18n="card3Label">CHAIN / LOG</span>
-          <strong data-i18n="card3Title">기록 조건</strong>
-          <p data-i18n="card3Desc">일부 선택은 LOG, 후속 카드, 현장 미션 진입 조건으로 저장됨.</p>
+          <strong data-i18n="card3Title">기록으로 남는 것</strong>
+          <p data-i18n="card3Desc">일부 선택은 LOG로 남거나 후속 카드와 현장 미션을 여는 조건이 됩니다.</p>
         </article>
+      </div>
       </div>
     </section>
 
@@ -192,35 +178,35 @@
       <div class="section-heading">
         <p class="eyebrow">SCREEN TERMS</p>
         <h2 data-i18n="screenTitle">게임 화면 용어</h2>
-        <p data-i18n="screenLead">메뉴·단말 반복 표기. 해금은 별도 기록.</p>
+        <p data-i18n="screenLead">게임을 하며 자주 만나게 될 화면과 표기를 모았습니다.</p>
       </div>
       <div class="screen-grid">
-        <article class="screen-card"><span>DAY</span><strong data-i18n="screenDayTitle">일차</strong><p data-i18n="screenDayDesc">하루 진행값. 카드·보고량 증가.</p></article>
-        <article class="screen-card"><span>ACT</span><strong data-i18n="screenActTitle">단계</strong><p data-i18n="screenActDesc">서사와 위험도를 바꾸는 구간.</p></article>
-        <article class="screen-card"><span>LOG</span><strong data-i18n="screenLogTitle">기록</strong><p data-i18n="screenLogDesc">선택·대화·미션의 내부 흔적.</p></article>
-        <article class="screen-card"><span>ARC</span><strong data-i18n="screenArcTitle">아카이브</strong><p data-i18n="screenArcDesc">인물·조직·사건 자료 열람.</p></article>
-        <article class="screen-card"><span>EVENING</span><strong data-i18n="screenEveningTitle">이브닝</strong><p data-i18n="screenEveningDesc">하루 1명 대화. 신뢰·단서 확보.</p></article>
-        <article class="screen-card"><span>TABLE</span><strong data-i18n="screenTableTitle">조사테이블</strong><p data-i18n="screenTableDesc">기록 확보 후 증거 조합 표시.</p></article>
-        <article class="screen-card"><span>FACILITY</span><strong data-i18n="screenFacilityTitle">시설</strong><p data-i18n="screenFacilityDesc">보급·의료·격리·봉쇄 보조.</p></article>
-        <article class="screen-card"><span>MISSION</span><strong data-i18n="screenMissionTitle">현장 미션</strong><p data-i18n="screenMissionDesc">카드 선택 후 진입하는 작전.</p></article>
-        <article class="screen-card"><span>ENDING</span><strong data-i18n="screenEndingTitle">엔딩 기록</strong><p data-i18n="screenEndingDesc">세션 결과와 결말 기록.</p></article>
-        <article class="screen-card"><span>STATUS</span><strong data-i18n="screenStatusTitle">상태 태그</strong><p data-i18n="screenStatusDesc">안정·경계·위험 상태 요약.</p></article>
-        <article class="screen-card"><span>LOCK</span><strong data-i18n="screenLockTitle">잠금 표시</strong><p data-i18n="screenLockDesc">권한·LOG·회차 조건 미충족.</p></article>
-        <article class="screen-card locked-panel"><span>UNKNOWN</span><strong data-i18n="screenUnknownTitle">미해금 보조 지표</strong><p data-i18n="screenUnknownDesc">반복 세션 이후 제한 노출.</p></article>
+        <article class="screen-card"><span>DAY</span><strong data-i18n="screenDayTitle">일차</strong><p data-i18n="screenDayDesc">게임 안에서 흐른 날짜입니다.</p></article>
+        <article class="screen-card"><span>ACT</span><strong data-i18n="screenActTitle">단계</strong><p data-i18n="screenActDesc">이야기의 진행 단계를 나타냅니다.</p></article>
+        <article class="screen-card"><span>LOG</span><strong data-i18n="screenLogTitle">기록</strong><p data-i18n="screenLogDesc">선택과 대화, 임무가 남긴 기록입니다.</p></article>
+        <article class="screen-card"><span>ARC</span><strong data-i18n="screenArcTitle">아카이브</strong><p data-i18n="screenArcDesc">인물과 조직, 사건 자료를 읽는 곳입니다.</p></article>
+        <article class="screen-card"><span>EVENING</span><strong data-i18n="screenEveningTitle">이브닝</strong><p data-i18n="screenEveningDesc">하루가 끝나면 간부 한 명과 대화합니다.</p></article>
+        <article class="screen-card"><span>TABLE</span><strong data-i18n="screenTableTitle">조사테이블</strong><p data-i18n="screenTableDesc">확보한 증거를 놓고 연결하는 공간입니다.</p></article>
+        <article class="screen-card"><span>FACILITY</span><strong data-i18n="screenFacilityTitle">시설</strong><p data-i18n="screenFacilityDesc">보급·의료·격리·봉쇄를 돕는 시설입니다.</p></article>
+        <article class="screen-card"><span>MISSION</span><strong data-i18n="screenMissionTitle">현장 미션</strong><p data-i18n="screenMissionDesc">일부 카드에서 이어지는 현장 작전입니다.</p></article>
+        <article class="screen-card"><span>ENDING</span><strong data-i18n="screenEndingTitle">엔딩 기록</strong><p data-i18n="screenEndingDesc">이전 플레이의 결과와 결말을 모아둡니다.</p></article>
+        <article class="screen-card"><span>STATUS</span><strong data-i18n="screenStatusTitle">상태 태그</strong><p data-i18n="screenStatusDesc">현재 상황이 안정적인지, 위험한지 알려줍니다.</p></article>
+        <article class="screen-card"><span>LOCK</span><strong data-i18n="screenLockTitle">잠금 표시</strong><p data-i18n="screenLockDesc">기록을 열기 위한 조건이 남아 있습니다.</p></article>
+        <article class="screen-card locked-panel"><span>UNKNOWN</span><strong data-i18n="screenUnknownTitle">미해금 보조 지표</strong><p data-i18n="screenUnknownDesc">플레이를 거듭하며 일부 정보가 드러납니다.</p></article>
       </div>
     </section>
 
     <section id="resources-guide" class="section-shell resource-section">
       <div class="section-heading">
         <p class="eyebrow">RESOURCE WARNING</p>
-        <h2 data-i18n="warningTitle">자원 경고 판독</h2>
-        <p data-i18n="warningLead">0 도달 시 임무 실패. 상승보다 하락 신호의 누적 원인 추적 우선.</p>
+        <h2 data-i18n="warningTitle">네 가지 지표를 놓치지 마세요</h2>
+        <p data-i18n="warningLead">지표 중 하나가 0에 닿으면 지휘를 이어갈 수 없습니다. 수치가 계속 내려간다면 최근의 선택과 보고를 돌아보세요.</p>
       </div>
       <div class="warning-grid">
-        <article class="warning-card"><span>C / CONTAINMENT</span><strong data-i18n="warning1Title">봉쇄</strong><p data-i18n="warning1Desc">NADL 균열, 침투, 이탈자, 외부 유입 신호와 연결.</p></article>
-        <article class="warning-card"><span>R / RESOURCES</span><strong data-i18n="warning2Title">자원</strong><p data-i18n="warning2Desc">식량, 의약품, 장비, 시설 가동률 저하와 연결.</p></article>
-        <article class="warning-card"><span>T / TRUST</span><strong data-i18n="warning3Title">신뢰</strong><p data-i18n="warning3Desc">간부 협조, 인원 이탈, 명령 수용도, 대화 품질과 연결.</p></article>
-        <article class="warning-card"><span>O / EVALUATION</span><strong data-i18n="warning4Title">평가</strong><p data-i18n="warning4Desc">ORACLE 권한, 지휘관 재평가, 접속 차단 위험과 연결.</p></article>
+        <article class="warning-card"><span>C / CONTAINMENT</span><strong data-i18n="warning1Title">봉쇄</strong><p data-i18n="warning1Desc">방벽의 균열과 외부 침투에 대응하는 능력입니다.</p></article>
+        <article class="warning-card"><span>R / RESOURCES</span><strong data-i18n="warning2Title">자원</strong><p data-i18n="warning2Desc">식량과 의약품, 장비와 시설을 유지하는 기반입니다.</p></article>
+        <article class="warning-card"><span>T / TRUST</span><strong data-i18n="warning3Title">신뢰</strong><p data-i18n="warning3Desc">간부들이 지휘관을 믿고 함께할 수 있는 정도입니다.</p></article>
+        <article class="warning-card"><span>O / EVALUATION</span><strong data-i18n="warning4Title">평가</strong><p data-i18n="warning4Desc">ORACLE이 지휘관의 판단과 운용을 평가하는 지표입니다.</p></article>
       </div>
     </section>
 
@@ -228,46 +214,47 @@
       <div class="section-heading">
         <p class="eyebrow">FIELD MODULE</p>
         <h2 data-i18n="missionTitle">현장 미션과 미니게임</h2>
-        <p data-i18n="missionLead">Act 2 이후 일부 카드 선택이 현장 임무로 분기. 대표 유형과 결과 반영 범위를 함께 정리.</p>
+        <p data-i18n="missionLead">Act 2부터 일부 카드가 현장 임무로 이어집니다. 임무마다 요구하는 판단과 조작이 다르니 안내를 먼저 확인하세요.</p>
       </div>
       <div class="mission-grid">
-        <article class="mission-card"><span>SIGNAL</span><strong data-i18n="mission1Title">신호 정렬</strong><p data-i18n="mission1Desc">음향·패턴 계열 작전. 실패해도 정보 일부가 잔류할 수 있음.</p></article>
-        <article class="mission-card"><span>SEQUENCE</span><strong data-i18n="mission2Title">봉인 시퀀스</strong><p data-i18n="mission2Desc">격리·봉쇄 계열 작전. 입력 정확도와 시간 손실 대조.</p></article>
-        <article class="mission-card"><span>BREACH</span><strong data-i18n="mission3Title">권한 흔적 추적</strong><p data-i18n="mission3Desc">단말·접속 계열 작전. 성공 등급에 따라 기록 신뢰도 변동.</p></article>
-        <article class="mission-card"><span>SUPPLY</span><strong data-i18n="mission4Title">보급 분배</strong><p data-i18n="mission4Desc">부족 자원 우선순위와 손실 폭을 조정.</p></article>
-        <article class="mission-card"><span>MEDICAL</span><strong data-i18n="mission5Title">감염 스캔</strong><p data-i18n="mission5Desc">증상 단계 판독 후 격리 여부 판단.</p></article>
-        <article class="mission-card"><span>CONTAIN</span><strong data-i18n="mission6Title">봉쇄 대응</strong><p data-i18n="mission6Desc">균열·침투 지점 차단과 방벽 보정.</p></article>
-        <article class="mission-card"><span>ROUTE</span><strong data-i18n="mission7Title">경로 확보</strong><p data-i18n="mission7Desc">민간인·현장팀 이동로 개방 여부 결정.</p></article>
-        <article class="mission-card"><span>SPECIMEN</span><strong data-i18n="mission8Title">표본 판별</strong><p data-i18n="mission8Desc">이변체 유형과 현장 위험도 대조.</p></article>
-        <article class="mission-card"><span>COMMS</span><strong data-i18n="mission9Title">통신 복구</strong><p data-i18n="mission9Desc">끊긴 보고선과 후속 LOG를 재연결.</p></article>
+        <article class="mission-card"><span>SIGNAL</span><strong data-i18n="mission1Title">신호 정렬</strong><p data-i18n="mission1Desc">소리와 패턴을 살펴 신호를 맞춥니다.</p></article>
+        <article class="mission-card"><span>SEQUENCE</span><strong data-i18n="mission2Title">봉인 시퀀스</strong><p data-i18n="mission2Desc">정해진 순서에 맞춰 격리와 봉쇄 절차를 수행합니다.</p></article>
+        <article class="mission-card"><span>BREACH</span><strong data-i18n="mission3Title">권한 흔적 추적</strong><p data-i18n="mission3Desc">단말에 남은 접근 흔적을 추적합니다.</p></article>
+        <article class="mission-card"><span>SUPPLY</span><strong data-i18n="mission4Title">보급 분배</strong><p data-i18n="mission4Desc">부족한 자원을 어디에 먼저 보낼지 결정합니다.</p></article>
+        <article class="mission-card"><span>MEDICAL</span><strong data-i18n="mission5Title">감염 스캔</strong><p data-i18n="mission5Desc">증상을 살피고 격리가 필요한지 판단합니다.</p></article>
+        <article class="mission-card"><span>CONTAIN</span><strong data-i18n="mission6Title">봉쇄 대응</strong><p data-i18n="mission6Desc">균열과 침투 지점을 막아 방벽을 유지합니다.</p></article>
+        <article class="mission-card"><span>ROUTE</span><strong data-i18n="mission7Title">경로 확보</strong><p data-i18n="mission7Desc">민간인과 현장팀이 이동할 경로를 확보합니다.</p></article>
+        <article class="mission-card"><span>SPECIMEN</span><strong data-i18n="mission8Title">표본 판별</strong><p data-i18n="mission8Desc">이변체의 유형과 현장의 위험을 확인합니다.</p></article>
+        <article class="mission-card"><span>COMMS</span><strong data-i18n="mission9Title">통신 복구</strong><p data-i18n="mission9Desc">끊어진 통신을 복구하고 보고를 이어갑니다.</p></article>
       </div>
     </section>
 
     <section id="access" class="section-shell context-section">
       <div class="section-heading">
         <p class="eyebrow">ARCHIVE ACCESS</p>
-        <h2 data-i18n="accessTitle">아카이브와 잠금 기록</h2>
-        <p data-i18n="accessLead">열리지 않는 기록은 실패 표기가 아님. 세션 진행, LOG 확보, 인물 신뢰, 회차 조건에 따라 접근 범위가 변동됨.</p>
+        <h2 data-i18n="accessTitle">아직 열리지 않은 기록</h2>
+        <p data-i18n="accessLead">잠긴 기록은 진행 상황에 따라 열립니다. 새 LOG를 얻거나 간부와 대화한 뒤 아카이브를 다시 살펴보세요.</p>
       </div>
       <div class="access-grid">
-        <article class="access-card"><span>READ FIRST</span><strong data-i18n="access1Title">초회차 기준</strong><p data-i18n="access1Desc">잠금 기록 추적보다 4대 자원 안정화와 간부 역할 파악 우선.</p></article>
-        <article class="access-card"><span>AFTER REPORT</span><strong data-i18n="access2Title">보고 후 재확인</strong><p data-i18n="access2Desc">DAY 보고, 이브닝 대화, 현장 미션 뒤 아카이브 변동 가능.</p></article>
-        <article class="access-card"><span>SESSION MEMORY</span><strong data-i18n="access3Title">세션 기록</strong><p data-i18n="access3Desc">LOG와 엔딩 기록은 다음 판단의 비교 자료로 축적.</p></article>
-        <article class="access-card locked-panel"><span>DO NOT FORCE</span><strong data-i18n="access4Title">우회 접근 금지</strong><p data-i18n="access4Desc">잠금 표기는 현재 권한 외 기록. 표시 조건 충족 전 강제 판독 불가.</p></article>
+        <article class="access-card"><span>READ FIRST</span><strong data-i18n="access1Title">첫 지휘에서는 기본부터</strong><p data-i18n="access1Desc">네 가지 지표를 안정시키고, 각 간부가 맡은 일을 알아가는 것부터 시작하세요.</p></article>
+        <article class="access-card"><span>AFTER REPORT</span><strong data-i18n="access2Title">새 보고 뒤에는 다시 확인</strong><p data-i18n="access2Desc">일일 보고, 저녁 대화, 현장 임무를 마치면 아카이브에 변화가 생길 수 있습니다.</p></article>
+        <article class="access-card"><span>SESSION MEMORY</span><strong data-i18n="access3Title">다음 판단을 위한 기록</strong><p data-i18n="access3Desc">쌓인 LOG와 엔딩 기록은 다음 플레이에서 다른 선택을 고민할 실마리가 됩니다.</p></article>
+        <article class="access-card locked-panel"><span>DO NOT FORCE</span><strong data-i18n="access4Title">잠금 표시가 보인다면</strong><p data-i18n="access4Desc">아직 열람 조건을 갖추지 않은 기록입니다. 표시된 조건을 확인하고 진행을 이어가세요.</p></article>
       </div>
       <div class="guide-return">
-        <a class="primary-action" href="./manual.html" data-i18n="returnWorld">세계관 교본으로 복귀</a>
-        <a class="ghost-action" href="#cycle" data-i18n="returnTop">진행 루프 재확인</a>
+        <a class="primary-action" href="./lore/" data-i18n="returnWorld">세계관 둘러보기</a>
+        <a class="ghost-action" href="#cycle" data-i18n="returnTop">하루의 흐름 다시 보기</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <span>TIU CARD COMPANION / KR-INIT-001</span>
-    <span data-i18n="footerLock">카드게임 플레이어를 위한 비스포일러 판독 교본.</span>
+    <span data-i18n="footerLock">첫 지휘를 위한 플레이 가이드 · 결말 스포일러 없음</span>
   </footer>
 
   <script src="./js/kor-init.js"></script>
-  <script src="./js/play-guide-i18n.js"></script>
+  <script src="./js/play-guide-i18n.js?v=20261008b"></script>
+  <script src="./js/site-chrome.js?v=1"></script>
 </body>
 </html>

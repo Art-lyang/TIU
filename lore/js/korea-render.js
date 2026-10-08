@@ -7,7 +7,7 @@
   function renderRecord(rec, open) {
     var content = '';
     if (rec.table) {
-      content = '<div class="table-wrap" tabindex="0" role="region" aria-label="'+esc(rec.title)+' · 가로로 넘겨 읽는 표"><table class="record-table"><thead><tr>'+rec.table.head.map(function (h) {return '<th scope="col">'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+rec.table.rows.map(function (row) { return '<tr>'+row.map(function (cell) {return '<td>'+esc(cell)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';
+      content = '<div class="table-wrap" tabindex="0" role="region" aria-label="'+esc(rec.title)+'"><table class="record-table" role="table"><thead role="rowgroup"><tr role="row">'+rec.table.head.map(function (h) {return '<th scope="col" role="columnheader">'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody role="rowgroup">'+rec.table.rows.map(function (row) { return '<tr role="row">'+row.map(function (cell, column) {return '<td role="cell"><span class="cell-label" aria-hidden="true">'+esc(rec.table.head[column])+'</span><span>'+esc(cell)+'</span></td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';
     } else if (rec.screen || rec.form) {
       content = '<pre class="'+(rec.screen?'record-screen':'record-form')+'">'+esc((rec.screen||rec.form).join('\n'))+'</pre>';
     } else if (rec.lists) {
