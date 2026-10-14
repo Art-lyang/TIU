@@ -89,9 +89,10 @@
       .access-btn::before{display:none}
     }
   </style>
-  <link rel="stylesheet" href="./css/archive-theme.css?v=2">
+  <link rel="stylesheet" href="./css/archive-theme.css?v=20261015">
 </head>
 <body class="game-home">
+<a class="site-skip" href="#top">본문으로 건너뛰기</a>
   <div id="intro-gate">
     <div class="intro-stage">
       <canvas id="globe" aria-label="ORACLE 전 지구 관측망 지구본"></canvas>
@@ -113,7 +114,7 @@
         <p class="intro-game intro-anim"><b>TERMINAL SESSION</b> — 한국 SF 카드 지휘 내러티브 게임</p>
         <button id="access" class="access-btn intro-anim" type="button">ACCESS — 접속<span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span></button>
         <div class="intro-links intro-anim">
-          <a class="intro-demo" href="https://tiu-art.itch.io/terminal-session-demo" target="_blank" rel="noopener">무료 데모 플레이 →</a>
+          <a class="intro-demo" href="https://play.google.com/store/apps/details?id=io.github.artlyang.tiucard" target="_blank" rel="noopener noreferrer">Google Play에서 보기 →</a>
           <button id="intro-skip" class="intro-skip" type="button">연출 없이 바로 열기 →</button>
         </div>
       </div>
@@ -130,6 +131,7 @@
       window.__introDone=function(){
         var g=document.getElementById('intro-gate');
         if(!g)return;
+        if(window.__stopGlobe)window.__stopGlobe();
         try{sessionStorage.setItem('tiuIntroSeen','1')}catch(e){}
         g.classList.add('is-done');
         document.body.classList.remove('has-intro');
@@ -141,23 +143,14 @@
     })();
   </script>
   <div class="screen-noise" aria-hidden="true"></div>
-  <header class="topbar">
-    <a class="brand" href="./index.html" aria-label="TERMINAL SESSION 홈">
-      <img src="./assets/brand/oracle-logo.png" alt="">
-      <span><b>TIU</b><small>TERMINAL SESSION</small></span>
-    </a>
-    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false"><i></i><i></i><i></i></button>
-    <nav class="main-nav nav" aria-label="주요 메뉴">
-      <a href="./manual.html">운용 안내<small>MANUAL</small></a>
-      <a href="./world.html">세계관 · 인물<small>WORLD</small></a>
-      <a href="./database.html">용어 · SPEC<small>DATABASE</small></a>
-      <a href="./play-guide.html">플레이 가이드<small>PLAY GUIDE</small></a>
-      <a href="./archive.html">아카이브<small>ARCHIVE</small></a>
-    </nav>
-    <div class="header-state"><span class="live-dot"></span> ORACLE LINK <b>LIVE</b></div>
-  </header>
+  <header class="site-header" data-site-header><div class="header-inner">
+<a class="wordmark" href="./lore/index.html" aria-label="TIU 세계관 홈"><b>TIU</b><span>WORLD ARCHIVE</span></a>
+<nav class="area-nav" aria-label="TIU 주요 영역"><a href="./lore/index.html" data-nav-copy="areaWorld">세계관</a><a href="./index.html" data-nav-copy="areaGame" aria-current="location">게임 안내</a></nav>
+<details class="site-menu"><summary data-nav-copy="menu">목차</summary><div class="menu-sheet"><div class="menu-sections">
+<nav class="menu-group" aria-label="세계관 목차"><p data-nav-copy="loreGroup">세계관 읽기</p><a href="./lore/index.html" data-nav-copy="lore0">세계 개요</a><a href="./lore/korea.html" data-nav-copy="lore1">한국 기록</a><a href="./lore/records.html" data-nav-copy="lore2">사건과 단서</a><a href="./lore/nations.html" data-nav-copy="lore3">세계 각지</a></nav>
+<nav class="menu-group" aria-label="게임 목차"><p data-nav-copy="gameGroup">게임과 자료</p><a href="./index.html" aria-current="page" data-nav-copy="game0">게임 소개</a><a href="./manual.html" data-nav-copy="game1">운용 안내</a><a href="./world.html" data-nav-copy="game2">한국지부 인물</a><a href="./database.html" data-nav-copy="game3">용어 · SPEC</a><a href="./play-guide.html" data-nav-copy="game4">플레이 가이드</a><a href="./archive.html" data-nav-copy="game5">게임 자료 색인</a></nav></div></div></details></div></header>
 
-  <main class="dashboard">
+  <main class="dashboard" id="top">
     <section class="hero panel">
       <div class="hero-copy">
         <p class="eyebrow">ORACLE KOREA BRANCH // KR-INIT-001</p>
@@ -165,8 +158,9 @@
         <p class="subtitle">한국지부 지휘관용 원격 통제 인터페이스</p>
         <p class="hero-desc">카드를 좌우로 밀어 봉쇄·자원·신뢰·평가를 조정하고, 제한된 정보 속에서 한국지부의 생존을 결정하십시오.</p>
         <div class="hero-actions">
-          <a class="button primary" href="https://tiu-art.itch.io/terminal-session-demo" target="_blank" rel="noopener">무료 데모 접속 <span>→</span></a>
-          <a class="button" href="./manual.html">지휘 교본 열람</a>
+          <a class="button primary" href="https://play.google.com/store/apps/details?id=io.github.artlyang.tiucard" target="_blank" rel="noopener noreferrer">Google Play에서 보기</a>
+          <a class="button" href="https://tiu-art.itch.io/terminal-session-demo" target="_blank" rel="noopener noreferrer">무료 데모</a>
+          <a class="button" href="./play-guide.html">플레이 방법</a>
           <a class="button" href="./lore/">TIU 세계관 둘러보기</a>
         </div>
       </div>
@@ -223,9 +217,10 @@
     </section>
   </main>
 
-  <footer class="footer"><a href="./lore/">TIU WORLD ARCHIVE</a><span>ORACLE KOREA BRANCH / KR-INIT-001</span><span><i class="live-dot"></i> SYSTEM STATUS: NOMINAL</span><span>CLASSIFIED DISTRIBUTION</span></footer>
-  <script src="./js/kor-init.js"></script>
+  <footer class="footer"><a href="./lore/">TIU WORLD ARCHIVE</a><span>ORACLE KOREA BRANCH / KR-INIT-001</span><span><i class="live-dot"></i> SYSTEM STATUS: NOMINAL</span><span>CLASSIFIED DISTRIBUTION</span><a class="footer-area" href="./lore/" data-nav-copy="areaWorld">세계관</a><a class="footer-area" href="./index.html" data-nav-copy="areaGame">게임 안내</a></footer>
+  <script src="./js/kor-init.js?v=20261015"></script>
   <script src="./js/globe-data.js"></script>
-  <script src="./js/globe-intro.js?v=2"></script>
+  <script src="./js/globe-intro.js?v=20261015"></script>
+<script src="./lore/js/site-navigation.js?v=20261015"></script>
 </body>
 </html>

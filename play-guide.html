@@ -16,29 +16,19 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="./assets/fonts/fonts.css?v=1">
   <link rel="stylesheet" href="./css/manual-oracle.css?v=12">
-  <link rel="stylesheet" href="./css/archive-theme.css?v=2">
+  <link rel="stylesheet" href="./css/archive-theme.css?v=20261015">
 </head>
 <body class="kor-init play-guide">
+<a class="site-skip" href="#top">본문으로 건너뛰기</a>
   <div class="grid-backdrop" aria-hidden="true"></div>
   <div class="noise-overlay" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <a class="brand" href="./lore/" aria-label="TIU 세계관 처음으로"><span><strong>TIU</strong><small>WORLD ARCHIVE</small></span></a>
-    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="companion-nav"><span data-site-copy="menu">메뉴</span></button>
-    <nav class="nav" id="companion-nav" aria-label="게임 안내"><a href="./manual.html" data-site-copy="nav0">운용 안내</a>
-<a href="./world.html" data-site-copy="nav1">세계관 · 인물</a>
-<a href="./database.html" data-site-copy="nav2">용어 · SPEC</a>
-<a href="./play-guide.html" class="is-current" aria-current="page" data-site-copy="nav3">플레이 가이드</a>
-<a href="./archive.html" data-site-copy="nav4">아카이브</a>
-
-      <div class="lang-switch" aria-label="언어 선택">
-        <button type="button" class="lang-button is-active" data-lang="ko" aria-pressed="true">KO</button>
-        <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
-        <button type="button" class="lang-button" data-lang="ja" aria-pressed="false">JA</button>
-      </div>
-    </nav>
-    <a class="header-demo" href="./index.html">TERMINAL SESSION</a>
-  </header>
+  <header class="site-header" data-site-header><div class="header-inner">
+<a class="wordmark" href="./lore/index.html" aria-label="TIU 세계관 홈"><b>TIU</b><span>WORLD ARCHIVE</span></a>
+<nav class="area-nav" aria-label="TIU 주요 영역"><a href="./lore/index.html" data-nav-copy="areaWorld">세계관</a><a href="./index.html" data-nav-copy="areaGame" aria-current="location">게임 안내</a></nav>
+<details class="site-menu"><summary data-nav-copy="menu">목차</summary><div class="menu-sheet"><div class="menu-sections">
+<nav class="menu-group" aria-label="세계관 목차"><p data-nav-copy="loreGroup">세계관 읽기</p><a href="./lore/index.html" data-nav-copy="lore0">세계 개요</a><a href="./lore/korea.html" data-nav-copy="lore1">한국 기록</a><a href="./lore/records.html" data-nav-copy="lore2">사건과 단서</a><a href="./lore/nations.html" data-nav-copy="lore3">세계 각지</a></nav>
+<nav class="menu-group" aria-label="게임 목차"><p data-nav-copy="gameGroup">게임과 자료</p><a href="./index.html" data-nav-copy="game0">게임 소개</a><a href="./manual.html" data-nav-copy="game1">운용 안내</a><a href="./world.html" data-nav-copy="game2">한국지부 인물</a><a href="./database.html" data-nav-copy="game3">용어 · SPEC</a><a href="./play-guide.html" aria-current="page" data-nav-copy="game4">플레이 가이드</a><a href="./archive.html" data-nav-copy="game5">게임 자료 색인</a></nav></div><div class="lang-switch" aria-label="언어 선택"><button type="button" class="lang-button is-active" data-lang="ko" aria-pressed="true">KO</button><button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button><button type="button" class="lang-button" data-lang="ja" aria-pressed="false">JA</button></div></div></details></div></header>
 
   <main id="top">
     <section class="hero section-shell">
@@ -108,7 +98,6 @@
 
     <section id="cycle" class="section-shell quick-brief">
       <div class="section-heading">
-        <p class="eyebrow">SESSION LOOP</p>
         <h2 data-i18n="cycleTitle">지휘관의 하루는 이렇게 흐릅니다</h2>
         <p data-i18n="cycleLead">오늘 내린 판단은 지부의 상태를 바꾸고, 다음 보고에 흔적을 남깁니다. 작은 변화부터 눈여겨보세요.</p>
       </div>
@@ -148,7 +137,6 @@
 
     <section id="card" class="section-shell context-section">
       <div class="section-heading">
-        <p class="eyebrow">CARD DECODER</p>
         <h2 data-i18n="cardTitle">선택지 너머의 결과를 읽는 법</h2>
         <p data-i18n="cardLead">모든 것을 지킬 수 있는 선택은 드뭅니다. 당장의 변화와 앞으로 남을 기록을 함께 생각해 보세요.</p>
       </div>
@@ -176,29 +164,14 @@
 
     <section id="screen" class="section-shell glossary-section">
       <div class="section-heading">
-        <p class="eyebrow">SCREEN TERMS</p>
         <h2 data-i18n="screenTitle">게임 화면 용어</h2>
         <p data-i18n="screenLead">게임을 하며 자주 만나게 될 화면과 표기를 모았습니다.</p>
       </div>
-      <div class="screen-grid">
-        <article class="screen-card"><span>DAY</span><strong data-i18n="screenDayTitle">일차</strong><p data-i18n="screenDayDesc">게임 안에서 흐른 날짜입니다.</p></article>
-        <article class="screen-card"><span>ACT</span><strong data-i18n="screenActTitle">단계</strong><p data-i18n="screenActDesc">이야기의 진행 단계를 나타냅니다.</p></article>
-        <article class="screen-card"><span>LOG</span><strong data-i18n="screenLogTitle">기록</strong><p data-i18n="screenLogDesc">선택과 대화, 임무가 남긴 기록입니다.</p></article>
-        <article class="screen-card"><span>ARC</span><strong data-i18n="screenArcTitle">아카이브</strong><p data-i18n="screenArcDesc">인물과 조직, 사건 자료를 읽는 곳입니다.</p></article>
-        <article class="screen-card"><span>EVENING</span><strong data-i18n="screenEveningTitle">이브닝</strong><p data-i18n="screenEveningDesc">하루가 끝나면 간부 한 명과 대화합니다.</p></article>
-        <article class="screen-card"><span>TABLE</span><strong data-i18n="screenTableTitle">조사테이블</strong><p data-i18n="screenTableDesc">확보한 증거를 놓고 연결하는 공간입니다.</p></article>
-        <article class="screen-card"><span>FACILITY</span><strong data-i18n="screenFacilityTitle">시설</strong><p data-i18n="screenFacilityDesc">보급·의료·격리·봉쇄를 돕는 시설입니다.</p></article>
-        <article class="screen-card"><span>MISSION</span><strong data-i18n="screenMissionTitle">현장 미션</strong><p data-i18n="screenMissionDesc">일부 카드에서 이어지는 현장 작전입니다.</p></article>
-        <article class="screen-card"><span>ENDING</span><strong data-i18n="screenEndingTitle">엔딩 기록</strong><p data-i18n="screenEndingDesc">이전 플레이의 결과와 결말을 모아둡니다.</p></article>
-        <article class="screen-card"><span>STATUS</span><strong data-i18n="screenStatusTitle">상태 태그</strong><p data-i18n="screenStatusDesc">현재 상황이 안정적인지, 위험한지 알려줍니다.</p></article>
-        <article class="screen-card"><span>LOCK</span><strong data-i18n="screenLockTitle">잠금 표시</strong><p data-i18n="screenLockDesc">기록을 열기 위한 조건이 남아 있습니다.</p></article>
-        <article class="screen-card locked-panel"><span>UNKNOWN</span><strong data-i18n="screenUnknownTitle">미해금 보조 지표</strong><p data-i18n="screenUnknownDesc">플레이를 거듭하며 일부 정보가 드러납니다.</p></article>
-      </div>
+      <dl class="screen-definitions"><div><dt><span class="mono">DAY</span><strong data-i18n="screenDayTitle">일차</strong></dt><dd data-i18n="screenDayDesc">게임 안에서 흐른 날짜입니다.</dd></div><div><dt><span class="mono">ACT</span><strong data-i18n="screenActTitle">단계</strong></dt><dd data-i18n="screenActDesc">이야기의 진행 단계를 나타냅니다.</dd></div><div><dt><span class="mono">LOG</span><strong data-i18n="screenLogTitle">기록</strong></dt><dd data-i18n="screenLogDesc">선택과 대화, 임무가 남긴 기록입니다.</dd></div><div><dt><span class="mono">ARC</span><strong data-i18n="screenArcTitle">아카이브</strong></dt><dd data-i18n="screenArcDesc">인물과 조직, 사건 자료를 읽는 곳입니다.</dd></div><div><dt><span class="mono">EVENING</span><strong data-i18n="screenEveningTitle">이브닝</strong></dt><dd data-i18n="screenEveningDesc">하루가 끝나면 간부 한 명과 대화합니다.</dd></div><div><dt><span class="mono">TABLE</span><strong data-i18n="screenTableTitle">조사테이블</strong></dt><dd data-i18n="screenTableDesc">확보한 증거를 놓고 연결하는 공간입니다.</dd></div><div><dt><span class="mono">FACILITY</span><strong data-i18n="screenFacilityTitle">시설</strong></dt><dd data-i18n="screenFacilityDesc">보급·의료·격리·봉쇄를 돕는 시설입니다.</dd></div><div><dt><span class="mono">MISSION</span><strong data-i18n="screenMissionTitle">현장 미션</strong></dt><dd data-i18n="screenMissionDesc">일부 카드에서 이어지는 현장 작전입니다.</dd></div><div><dt><span class="mono">ENDING</span><strong data-i18n="screenEndingTitle">엔딩 기록</strong></dt><dd data-i18n="screenEndingDesc">이전 플레이의 결과와 결말을 모아둡니다.</dd></div><div><dt><span class="mono">STATUS</span><strong data-i18n="screenStatusTitle">상태 태그</strong></dt><dd data-i18n="screenStatusDesc">현재 상황이 안정적인지, 위험한지 알려줍니다.</dd></div><div><dt><span class="mono">LOCK</span><strong data-i18n="screenLockTitle">잠금 표시</strong></dt><dd data-i18n="screenLockDesc">기록을 열기 위한 조건이 남아 있습니다.</dd></div><div><dt><span class="mono">UNKNOWN</span><strong data-i18n="screenUnknownTitle">미해금 보조 지표</strong></dt><dd data-i18n="screenUnknownDesc">플레이를 거듭하며 일부 정보가 드러납니다.</dd></div></dl>
     </section>
 
     <section id="resources-guide" class="section-shell resource-section">
       <div class="section-heading">
-        <p class="eyebrow">RESOURCE WARNING</p>
         <h2 data-i18n="warningTitle">네 가지 지표를 놓치지 마세요</h2>
         <p data-i18n="warningLead">지표 중 하나가 0에 닿으면 지휘를 이어갈 수 없습니다. 수치가 계속 내려간다면 최근의 선택과 보고를 돌아보세요.</p>
       </div>
@@ -212,26 +185,14 @@
 
     <section id="mission" class="section-shell play-section">
       <div class="section-heading">
-        <p class="eyebrow">FIELD MODULE</p>
         <h2 data-i18n="missionTitle">현장 미션과 미니게임</h2>
         <p data-i18n="missionLead">Act 2부터 일부 카드가 현장 임무로 이어집니다. 임무마다 요구하는 판단과 조작이 다르니 안내를 먼저 확인하세요.</p>
       </div>
-      <div class="mission-grid">
-        <article class="mission-card"><span>SIGNAL</span><strong data-i18n="mission1Title">신호 정렬</strong><p data-i18n="mission1Desc">소리와 패턴을 살펴 신호를 맞춥니다.</p></article>
-        <article class="mission-card"><span>SEQUENCE</span><strong data-i18n="mission2Title">봉인 시퀀스</strong><p data-i18n="mission2Desc">정해진 순서에 맞춰 격리와 봉쇄 절차를 수행합니다.</p></article>
-        <article class="mission-card"><span>BREACH</span><strong data-i18n="mission3Title">권한 흔적 추적</strong><p data-i18n="mission3Desc">단말에 남은 접근 흔적을 추적합니다.</p></article>
-        <article class="mission-card"><span>SUPPLY</span><strong data-i18n="mission4Title">보급 분배</strong><p data-i18n="mission4Desc">부족한 자원을 어디에 먼저 보낼지 결정합니다.</p></article>
-        <article class="mission-card"><span>MEDICAL</span><strong data-i18n="mission5Title">감염 스캔</strong><p data-i18n="mission5Desc">증상을 살피고 격리가 필요한지 판단합니다.</p></article>
-        <article class="mission-card"><span>CONTAIN</span><strong data-i18n="mission6Title">봉쇄 대응</strong><p data-i18n="mission6Desc">균열과 침투 지점을 막아 방벽을 유지합니다.</p></article>
-        <article class="mission-card"><span>ROUTE</span><strong data-i18n="mission7Title">경로 확보</strong><p data-i18n="mission7Desc">민간인과 현장팀이 이동할 경로를 확보합니다.</p></article>
-        <article class="mission-card"><span>SPECIMEN</span><strong data-i18n="mission8Title">표본 판별</strong><p data-i18n="mission8Desc">이변체의 유형과 현장의 위험을 확인합니다.</p></article>
-        <article class="mission-card"><span>COMMS</span><strong data-i18n="mission9Title">통신 복구</strong><p data-i18n="mission9Desc">끊어진 통신을 복구하고 보고를 이어갑니다.</p></article>
-      </div>
+      <div class="mission-list"><details class="mission-item"><summary><span class="mono">SIGNAL</span><strong data-i18n="mission1Title">신호 정렬</strong><img src="./lore/assets/icons/chevron-right.svg" class="reference-chevron" alt="" width="18" height="18"></summary><p data-i18n="mission1Desc">소리와 패턴을 살펴 신호를 맞춥니다.</p></details><details class="mission-item"><summary><span class="mono">SEQUENCE</span><strong data-i18n="mission2Title">봉인 시퀀스</strong><img src="./lore/assets/icons/chevron-right.svg" class="reference-chevron" alt="" width="18" height="18"></summary><p data-i18n="mission2Desc">정해진 순서에 맞춰 격리와 봉쇄 절차를 수행합니다.</p></details><details class="mission-item"><summary><span class="mono">BREACH</span><strong data-i18n="mission3Title">권한 흔적 추적</strong><img src="./lore/assets/icons/chevron-right.svg" class="reference-chevron" alt="" width="18" height="18"></summary><p data-i18n="mission3Desc">단말에 남은 접근 흔적을 추적합니다.</p></details><details class="mission-item"><summary><span class="mono">SUPPLY</span><strong data-i18n="mission4Title">보급 분배</strong><img src="./lore/assets/icons/chevron-right.svg" class="reference-chevron" alt="" width="18" height="18"></summary><p data-i18n="mission4Desc">부족한 자원을 어디에 먼저 보낼지 결정합니다.</p></details><details class="mission-item"><summary><span class="mono">MEDICAL</span><strong data-i18n="mission5Title">감염 스캔</strong><img src="./lore/assets/icons/chevron-right.svg" class="reference-chevron" alt="" width="18" height="18"></summary><p data-i18n="mission5Desc">증상을 살피고 격리가 필요한지 판단합니다.</p></details><details class="mission-item"><summary><span class="mono">CONTAIN</span><strong data-i18n="mission6Title">봉쇄 대응</strong><img src="./lore/assets/icons/chevron-right.svg" class="reference-chevron" alt="" width="18" height="18"></summary><p data-i18n="mission6Desc">균열과 침투 지점을 막아 방벽을 유지합니다.</p></details><details class="mission-item"><summary><span class="mono">ROUTE</span><strong data-i18n="mission7Title">경로 확보</strong><img src="./lore/assets/icons/chevron-right.svg" class="reference-chevron" alt="" width="18" height="18"></summary><p data-i18n="mission7Desc">민간인과 현장팀이 이동할 경로를 확보합니다.</p></details><details class="mission-item"><summary><span class="mono">SPECIMEN</span><strong data-i18n="mission8Title">표본 판별</strong><img src="./lore/assets/icons/chevron-right.svg" class="reference-chevron" alt="" width="18" height="18"></summary><p data-i18n="mission8Desc">이변체의 유형과 현장의 위험을 확인합니다.</p></details><details class="mission-item"><summary><span class="mono">COMMS</span><strong data-i18n="mission9Title">통신 복구</strong><img src="./lore/assets/icons/chevron-right.svg" class="reference-chevron" alt="" width="18" height="18"></summary><p data-i18n="mission9Desc">끊어진 통신을 복구하고 보고를 이어갑니다.</p></details></div>
     </section>
 
     <section id="access" class="section-shell context-section">
       <div class="section-heading">
-        <p class="eyebrow">ARCHIVE ACCESS</p>
         <h2 data-i18n="accessTitle">아직 열리지 않은 기록</h2>
         <p data-i18n="accessLead">잠긴 기록은 진행 상황에 따라 열립니다. 새 LOG를 얻거나 간부와 대화한 뒤 아카이브를 다시 살펴보세요.</p>
       </div>
@@ -251,10 +212,11 @@
   <footer class="site-footer">
     <span>TIU CARD COMPANION / KR-INIT-001</span>
     <span data-i18n="footerLock">첫 지휘를 위한 플레이 가이드 · 결말 스포일러 없음</span>
-  </footer>
+  <a class="footer-area" href="./lore/" data-nav-copy="areaWorld">세계관</a><a class="footer-area" href="./index.html" data-nav-copy="areaGame">게임 안내</a></footer>
 
-  <script src="./js/kor-init.js"></script>
-  <script src="./js/play-guide-i18n.js?v=20261008b"></script>
-  <script src="./js/site-chrome.js?v=1"></script>
+  <script src="./js/kor-init.js?v=20261015"></script>
+  <script src="./js/play-guide-i18n.js?v=20261015"></script>
+  <script src="./js/site-chrome.js?v=20261015"></script>
+<script src="./lore/js/site-navigation.js?v=20261015"></script>
 </body>
 </html>

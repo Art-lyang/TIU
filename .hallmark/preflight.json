@@ -1,0 +1,16 @@
+{
+  "scanDate": "2026-10-15",
+  "scope": "audit remediation across the existing public website",
+  "framework": "static HTML, CSS and JavaScript",
+  "reference": "approved lore/index.html and the audited public release 6e8938e",
+  "fontStack": {
+    "body": "Noto Sans KR",
+    "mono": "Share Tech Mono",
+    "source": "assets/fonts/fonts.css"
+  },
+  "paletteSource": "tokens.css",
+  "spacing": "existing 20px minimum page gutter and 1240px reading frame; named 4-point tokens for shared controls",
+  "motion": "existing canvas globe; no animation library; visibility and reduced-motion lifecycle verified",
+  "preserve": ["world-home photograph and composition", "approved dark green palette", "existing fonts", "canonical record text and game imagery", "public routes"],
+  "introduced": ["shared navigation", "searchable reference disclosures", "semantic shared tokens", "localized heading corrections"]
+}

@@ -7,13 +7,14 @@
   var ctx=canvas.getContext('2d');
   var DPR=Math.min(2,window.devicePixelRatio||1);
   var W,H,R,CX,CY;
+  var frame=0, stopped=false, observer;
   function resize(){
     W=canvas.clientWidth;H=canvas.clientHeight;
     canvas.width=W*DPR;canvas.height=H*DPR;
     ctx.setTransform(DPR,0,0,DPR,0,0);
     R=Math.min(W,H)*0.345;CX=W/2;CY=H*0.46;
   }
-  resize();window.addEventListener('resize',resize);
+  resize();window.addEventListener('resize',onResize);
 
   // 세계관 문서가 존재하는 지역만 관측 노드로 표기 (표시 전용)
   var KR={lon:129.11,lat:37.52,code:'KR-INIT-001',main:true};
@@ -36,6 +37,38 @@
   var TARGET_LAM=-KR.lon*DEG, TARGET_PHI=KR.lat*DEG; // phi=+lat 일 때 해당 위도가 화면 중앙
   var startLam=0,startPhi=0;
   var reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var motionQuery=window.matchMedia('(prefers-reduced-motion: reduce)');
+  function schedule(){
+    if(!frame&&!stopped&&!reduced&&mode!=='done'&&!document.hidden&&canvas.isConnected)frame=requestAnimationFrame(draw);
+  }
+  function stop(){
+    if(stopped)return;
+    stopped=true;mode='done';cancelAnimationFrame(frame);frame=0;
+    window.removeEventListener('resize',onResize);
+    document.removeEventListener('visibilitychange',onVisibility);
+    window.removeEventListener('pagehide',stop);
+    motionQuery.removeEventListener('change',onMotionChange);
+    if(observer)observer.disconnect();
+    if(btn)btn.removeEventListener('click',onAccess);
+    if(window.__stopGlobe===stop)delete window.__stopGlobe;
+  }
+  function onResize(){if(stopped)return;resize();if(reduced)draw(performance.now());}
+  function onVisibility(){
+    cancelAnimationFrame(frame);frame=0;
+    if(!canvas.isConnected){stop();return;}
+    if(!document.hidden){t0=performance.now();if(reduced)draw(t0);else schedule();}
+  }
+  function onMotionChange(event){
+    reduced=event.matches;cancelAnimationFrame(frame);frame=0;t0=performance.now();
+    if(reduced&&mode!=='idle'){go();return;}
+    if(reduced)draw(t0);else schedule();
+  }
+  window.__stopGlobe=stop;
+  document.addEventListener('visibilitychange',onVisibility);
+  window.addEventListener('pagehide',stop);
+  motionQuery.addEventListener('change',onMotionChange);
+  observer=new MutationObserver(function(){if(!canvas.isConnected)stop();});
+  observer.observe(document.body,{childList:true,subtree:true});
 
   function project(lon,lat){
     var l=lon*DEG+lam, p=lat*DEG;
@@ -50,8 +83,11 @@
   function ease(t){return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
 
   function draw(now){
+    frame=0;
+    if(stopped||!canvas.isConnected){stop();return;}
+    if(document.hidden)return;
     var dt=(now-t0)/1000;t0=now;
-    if(mode==='idle'){lam+=dt*0.055;}
+    if(mode==='idle'&&!reduced){lam+=dt*0.055;}
     else if(mode==='target'){
       modeT+=dt/1.15;var k=ease(Math.min(1,modeT));
       lam=startLam+(TARGET_LAM-startLam)*k;
@@ -60,7 +96,7 @@
     }else if(mode==='dive'){
       modeT+=dt/0.9;var k2=ease(Math.min(1,modeT));
       zoom=1+k2*3.4;
-      if(modeT>=1&&mode!=='done'){mode='done';go();}
+      if(modeT>=1&&mode!=='done'){mode='done';go();return;}
     }
     ctx.clearRect(0,0,W,H);
 
@@ -104,7 +140,7 @@
     }
 
     // 관측 노드
-    var pulse=(Math.sin(now/380)+1)/2;
+    var pulse=reduced?0:(Math.sin(now/380)+1)/2;
     for(var n=0;n<NODES.length;n++){
       var nd=NODES[n],pp=project(nd.lon,nd.lat);
       if(pp.z<=0.02)continue;
@@ -127,13 +163,13 @@
       ctx.fillStyle='rgba(190,255,220,'+(modeT*0.55)+')';
       ctx.fillRect(0,0,W,H);
     }
-    if(mode!=='done')requestAnimationFrame(draw);
+    schedule();
   }
 
-  function go(){if(window.__introDone){window.__introDone();}else{location.href='./manual.html';}}
+  function go(){stop();if(window.__introDone){window.__introDone();}else{location.href='./manual.html';}}
 
   var btn=document.getElementById('access');
-  if(btn)btn.addEventListener('click',function(e){
+  function onAccess(e){
     e.preventDefault();
     if(reduced||mode!=='idle'){go();return}
     btn.classList.add('is-armed');
@@ -144,7 +180,9 @@
     if(tgt-lam>Math.PI)lam+=TWO; if(lam-tgt>Math.PI)lam-=TWO;
     TARGET_LAM=tgt;
     startLam=lam;startPhi=phi;mode='target';modeT=0;
-  });
+    schedule();
+  }
+  if(btn)btn.addEventListener('click',onAccess);
 
-  requestAnimationFrame(draw);
+  if(reduced)draw(performance.now());else schedule();
 })();

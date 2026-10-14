@@ -5,7 +5,7 @@
 (function () {
   const TRANSLATIONS = {
     en: {
-      title: "World Archive | TERMINAL SESSION",
+      title: "Game Reference | TERMINAL SESSION",
       meta: "World archive for the card command game TERMINAL SESSION. The EV-Σ disaster, the Korean wall, Aberrant SPEC records, factions, and regional records.",
       text: {
         navKorea: "Operations Manual",
@@ -128,7 +128,7 @@
     },
 
     ja: {
-      title: "世界観アーカイブ | TERMINAL SESSION",
+      title: "ゲーム資料索引 | TERMINAL SESSION",
       meta: "カード指揮ゲーム TERMINAL SESSION の世界観アーカイブ。EV-Σ災厄、韓国圏の防壁、異変体SPEC、組織・勢力、世界各地の公開記録。",
       text: {
         navKorea: "運用教本",
@@ -251,7 +251,7 @@
     }
   };
 
-  const KO_TITLE = '세계관 아카이브 | TERMINAL SESSION';
+  const KO_TITLE = '게임 자료 색인 | TERMINAL SESSION';
   const KO_META = '카드 지휘 게임 TERMINAL SESSION의 세계관 아카이브. EV-Σ 재난, 한국권 방벽, 이변체 SPEC, 조직·세력, 세계 각 지역 공개 기록.';
 
   const originalText = new Map();

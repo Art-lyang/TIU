@@ -22,22 +22,53 @@
   const termCards = Array.from(document.querySelectorAll(".term-card"));
   const copyButton = document.getElementById("copyBriefing");
   const copyStatus = document.getElementById("copyStatus");
+  const searchInput = document.getElementById('reference-search');
+  const resultCount = document.getElementById('reference-count');
+  const emptyState = document.getElementById('reference-empty');
+  const resetSearch = document.getElementById('reference-reset');
+  let activeFilter = 'all';
+
+  function applyFilter() {
+    const query = searchInput ? searchInput.value.normalize('NFKC').trim().toLocaleLowerCase() : '';
+    let visible = 0;
+    termCards.forEach((card) => {
+      const matches = (activeFilter === 'all' || card.dataset.type === activeFilter) && (!query || card.textContent.normalize('NFKC').toLocaleLowerCase().includes(query));
+      card.classList.toggle('is-hidden', !matches);
+      card.hidden = !matches;
+      if (matches) visible++;
+      if (card.tagName === 'DETAILS') {
+        if (query && matches && !card.open) { card.open = true; card.dataset.searchOpened = 'true'; }
+        if (!query && card.dataset.searchOpened) { card.open = false; delete card.dataset.searchOpened; }
+      }
+    });
+    if (resultCount) {
+      const lang = document.documentElement.lang;
+      resultCount.textContent = lang === 'en' ? visible + ' of ' + termCards.length + ' entries' : lang === 'ja' ? visible + ' / ' + termCards.length + ' 件' : visible + '개 / 전체 ' + termCards.length + '개 자료';
+    }
+    if (emptyState) emptyState.hidden = visible > 0;
+  }
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const filter = button.dataset.filter || "all";
+      activeFilter = button.dataset.filter || "all";
 
       filterButtons.forEach((item) => {
         item.classList.toggle("is-active", item === button);
         item.setAttribute("aria-pressed", item === button ? "true" : "false");
       });
 
-      termCards.forEach((card) => {
-        const matches = filter === "all" || card.dataset.type === filter;
-        card.classList.toggle("is-hidden", !matches);
-      });
+      applyFilter();
     });
   });
+  if (searchInput) searchInput.addEventListener('input', applyFilter);
+  if (resetSearch) resetSearch.addEventListener('click', () => {
+    searchInput.value = '';
+    const all = filterButtons.find(button => button.dataset.filter === 'all');
+    if (all) all.click(); else { activeFilter = 'all'; applyFilter(); }
+    searchInput.focus({ preventScroll: true });
+  });
+  if (searchInput) new MutationObserver(applyFilter).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  if (termCards.length) applyFilter();
 
   if (copyButton && copyStatus) {
     copyButton.addEventListener("click", async () => {
